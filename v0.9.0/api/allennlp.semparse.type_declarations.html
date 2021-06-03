@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.semparse.type_declarations &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.semparse.worlds" href="allennlp.semparse.worlds.html" />
+    <link rel="prev" title="allennlp.semparse.executors" href="allennlp.semparse.executors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.semparse.html">allennlp.semparse</a> &raquo;</li>
+        
+      <li>allennlp.semparse.type_declarations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.semparse.type_declarations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.semparse.type_declarations">
+<span id="allennlp-semparse-type-declarations"></span><h1>allennlp.semparse.type_declarations<a class="headerlink" href="#module-allennlp.semparse.type_declarations" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-allennlp.semparse.type_declarations.type_declaration"></span><p>This module defines some classes that are generally useful for defining a type system for a new
+domain. We inherit the type logic in <code class="docutils literal notranslate"><span class="pre">nltk.sem.logic</span></code> and add some functionality on top of it
+here. There are two main improvements:
+1) Firstly, we allow defining multiple basic types with their own names (see <code class="docutils literal notranslate"><span class="pre">NamedBasicType</span></code>).
+2) Secondly, we allow defining function types that have placeholders in them (see
+<code class="docutils literal notranslate"><span class="pre">PlaceholderType</span></code>).
+We also extend NLTK’s <code class="docutils literal notranslate"><span class="pre">LogicParser</span></code> to define a <code class="docutils literal notranslate"><span class="pre">DynamicTypeLogicParser</span></code> that knows how to deal
+with the two improvements above.</p>
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.BinaryOpType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">BinaryOpType</code><span class="sig-paren">(</span><em class="sig-param">type_: nltk.sem.logic.BasicType = ?</em>, <em class="sig-param">allowed_substitutions: Set[nltk.sem.logic.BasicType] = None</em>, <em class="sig-param">signature: str = '&lt;#1</em>, <em class="sig-param">&lt;#1</em>, <em class="sig-param">#1&gt;&gt;'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L304-L359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.BinaryOpType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType" title="allennlp.semparse.type_declarations.type_declaration.PlaceholderType"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.semparse.type_declarations.type_declaration.PlaceholderType</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">BinaryOpType</span></code> is a function that takes two arguments of the same type and returns an
+argument of that type.  <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> are examples of this kind of function.
+The type signature of <code class="docutils literal notranslate"><span class="pre">BinaryOpType</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;#1,&lt;#1,#1&gt;&gt;</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>allowed_substitutions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Set[BasicType]</span></code>, optional (default=None)</span></dt><dd><p>If given, this sets restrictions on the types that can be substituted.  That is, say you
+have a unary operation that is only permitted for numbers and dates, you can pass those in
+here, and we will only consider those types when calling <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.substitute_any_type" title="allennlp.semparse.type_declarations.type_declaration.substitute_any_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">substitute_any_type()</span></code></a>.  If
+this is <code class="docutils literal notranslate"><span class="pre">None</span></code>, all basic types are allowed.</p>
+</dd>
+<dt><strong>signature</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=’&lt;#1,&lt;#1,#1&gt;&gt;’)</span></dt><dd><p>The signature of the operation is what will appear in action sequences that include this
+type.  The default value is suitable for functions that apply to any type.  If you have a
+restricted set of allowed substitutions, you likely want to change the type signature to
+reflect that.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.BinaryOpType.get_application_type">
+<code class="sig-name descname">get_application_type</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">argument_type: nltk.sem.logic.Type</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Type<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L349-L351"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.BinaryOpType.get_application_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the resulting type when this type is applied as a function to an argument of
+the given type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.BinaryOpType.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other: nltk.sem.logic.Type</em><span class="sig-paren">)</span> &#x2192; Union[nltk.sem.logic.Type, NoneType]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L331-L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.BinaryOpType.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">PlaceholderType.resolve</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.BinaryOpType.substitute_any_type">
+<code class="sig-name descname">substitute_any_type</code><span class="sig-paren">(</span><em class="sig-param">self, basic_types: Set[nltk.sem.logic.BasicType]</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L353-L359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.BinaryOpType.substitute_any_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Placeholders mess with substitutions, so even though this method is implemented in the
+superclass, we override it here with a <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> to be sure that subclasses
+think about what the right thing to do here is, and do it correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.ComplexType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">ComplexType</code><span class="sig-paren">(</span><em class="sig-param">first</em>, <em class="sig-param">second</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L22-L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.ComplexType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nltk.sem.logic.ComplexType</span></code></p>
+<p>In NLTK, a <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code> is a function.  These functions are curried, so if you need multiple
+arguments for your function you nest <code class="docutils literal notranslate"><span class="pre">ComplexTypes</span></code>.  That currying makes things difficult
+for us, and we mitigate the problems by adding <code class="docutils literal notranslate"><span class="pre">return_type</span></code> and <code class="docutils literal notranslate"><span class="pre">argument_type</span></code> functions
+to <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code>.</p>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.ComplexType.argument_types">
+<code class="sig-name descname">argument_types</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L42-L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.ComplexType.argument_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the types of all arguments to this function.  For functions returning a basic type,
+we grab all <code class="docutils literal notranslate"><span class="pre">.first</span></code> types until <code class="docutils literal notranslate"><span class="pre">.second</span></code> is no longer a <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code>.  That logic
+is implemented here in the base class.  If you have a higher-order function that returns a
+function itself, you need to override this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.ComplexType.return_type">
+<code class="sig-name descname">return_type</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Type<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L29-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.ComplexType.return_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the final return type for this function.  If the function takes a single argument,
+this is just <code class="docutils literal notranslate"><span class="pre">self.second</span></code>.  If the function takes multiple arguments and returns a basic
+type, this should be the final <code class="docutils literal notranslate"><span class="pre">.second</span></code> after following all complex types.  That is the
+implementation here in the base class.  If you have a higher-order function that returns a
+function itself, you need to override this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.ComplexType.substitute_any_type">
+<code class="sig-name descname">substitute_any_type</code><span class="sig-paren">(</span><em class="sig-param">self, basic_types: Set[nltk.sem.logic.BasicType]</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L56-L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.ComplexType.substitute_any_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a set of <code class="docutils literal notranslate"><span class="pre">BasicTypes</span></code> and replaces any instances of <code class="docutils literal notranslate"><span class="pre">ANY_TYPE</span></code> inside this
+complex type with each of those basic types.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.DynamicTypeApplicationExpression">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">DynamicTypeApplicationExpression</code><span class="sig-paren">(</span><em class="sig-param">function: nltk.sem.logic.Expression, argument: nltk.sem.logic.Expression, variables_with_placeholders: Set[str]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L380-L437"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.DynamicTypeApplicationExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nltk.sem.logic.ApplicationExpression</span></code></p>
+<p>NLTK’s <code class="docutils literal notranslate"><span class="pre">ApplicationExpression</span></code> (which represents function applications like P(x)) has two
+limitations, which we overcome by inheriting from <code class="docutils literal notranslate"><span class="pre">ApplicationExpression</span></code> and overriding two
+methods.</p>
+<p>Firstly, <code class="docutils literal notranslate"><span class="pre">ApplicationExpression</span></code> does not handle the case where P’s type involves
+placeholders (R, V, !=, etc.), which are special cases because their return types depend on the
+type of their arguments (x). We override the property <code class="docutils literal notranslate"><span class="pre">type</span></code> to redefine the type of the
+application.</p>
+<p>Secondly, NLTK’s variables only bind to entities, and thus the variable types are ‘e’ by
+default. We get around this issue by replacing x with X, whose initial type is ANY_TYPE, and
+later gets resolved based on the type signature of the function whose scope the variable
+appears in. This variable binding operation is implemented by overriding <code class="docutils literal notranslate"><span class="pre">_set_type</span></code> below.</p>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.DynamicTypeApplicationExpression.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.DynamicTypeApplicationExpression.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.DynamicTypeLogicParser">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">DynamicTypeLogicParser</code><span class="sig-paren">(</span><em class="sig-param">type_check: bool = True</em>, <em class="sig-param">constant_type_prefixes: Dict[str</em>, <em class="sig-param">nltk.sem.logic.BasicType] = None</em>, <em class="sig-param">type_signatures: Dict[str</em>, <em class="sig-param">nltk.sem.logic.Type] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L440-L479"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.DynamicTypeLogicParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nltk.sem.logic.LogicParser</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">DynamicTypeLogicParser</span></code> is a <code class="docutils literal notranslate"><span class="pre">LogicParser</span></code> that can deal with <code class="docutils literal notranslate"><span class="pre">NamedBasicType</span></code> and
+<code class="docutils literal notranslate"><span class="pre">PlaceholderType</span></code> appropriately. Our extension here does two things differently.</p>
+<p>Firstly, we should handle constants of different types. We do this by passing a dict of format
+<code class="docutils literal notranslate"><span class="pre">{name_prefix:</span> <span class="pre">type}</span></code> to the constructor. For example, your domain has entities of types
+unicorns and elves, and you have an entity “Phil” of type unicorn, and “Bob” of type “elf”. The
+names of the two entities should then be “unicorn:phil” and “elf:bob” respectively.</p>
+<p>Secondly, since we defined a new kind of <code class="docutils literal notranslate"><span class="pre">ApplicationExpression</span></code> above, the <code class="docutils literal notranslate"><span class="pre">LogicParser</span></code>
+should be able to create this new kind of expression.</p>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.DynamicTypeLogicParser.make_ApplicationExpression">
+<code class="sig-name descname">make_ApplicationExpression</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function</em>, <em class="sig-param">argument</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L462-L464"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.DynamicTypeLogicParser.make_ApplicationExpression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.DynamicTypeLogicParser.make_VariableExpression">
+<code class="sig-name descname">make_VariableExpression</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L466-L474"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.DynamicTypeLogicParser.make_VariableExpression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.HigherOrderType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">HigherOrderType</code><span class="sig-paren">(</span><em class="sig-param">num_arguments: int</em>, <em class="sig-param">first: nltk.sem.logic.Type</em>, <em class="sig-param">second: nltk.sem.logic.Type</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L68-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.HigherOrderType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.ComplexType" title="allennlp.semparse.type_declarations.type_declaration.ComplexType"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.semparse.type_declarations.type_declaration.ComplexType</span></code></a></p>
+<p>A higher-order function is a <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code> that returns functions.  We just override
+<code class="docutils literal notranslate"><span class="pre">return_type</span></code> and <code class="docutils literal notranslate"><span class="pre">argument_types</span></code> to make sure that these types are correct.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>num_arguments</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>How many arguments this function takes before returning a function.  We’ll go through this
+many levels of nested <code class="docutils literal notranslate"><span class="pre">ComplexTypes</span></code> before returning the final <code class="docutils literal notranslate"><span class="pre">.second</span></code> as our return
+type.</p>
+</dd>
+<dt><strong>first</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Type</span></code></span></dt><dd><p>Passed to NLTK’s ComplexType.</p>
+</dd>
+<dt><strong>second</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Type</span></code></span></dt><dd><p>Passed to NLTK’s ComplexType.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.HigherOrderType.argument_types">
+<code class="sig-name descname">argument_types</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L95-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.HigherOrderType.argument_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the types of all arguments to this function.  For functions returning a basic type,
+we grab all <code class="docutils literal notranslate"><span class="pre">.first</span></code> types until <code class="docutils literal notranslate"><span class="pre">.second</span></code> is no longer a <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code>.  That logic
+is implemented here in the base class.  If you have a higher-order function that returns a
+function itself, you need to override this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.HigherOrderType.return_type">
+<code class="sig-name descname">return_type</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Type<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L88-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.HigherOrderType.return_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the final return type for this function.  If the function takes a single argument,
+this is just <code class="docutils literal notranslate"><span class="pre">self.second</span></code>.  If the function takes multiple arguments and returns a basic
+type, this should be the final <code class="docutils literal notranslate"><span class="pre">.second</span></code> after following all complex types.  That is the
+implementation here in the base class.  If you have a higher-order function that returns a
+function itself, you need to override this method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.MultiMatchNamedBasicType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">MultiMatchNamedBasicType</code><span class="sig-paren">(</span><em class="sig-param">string_rep, types_to_match: List[nltk.sem.logic.BasicType]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L131-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.MultiMatchNamedBasicType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.NamedBasicType" title="allennlp.semparse.type_declarations.type_declaration.NamedBasicType"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.semparse.type_declarations.type_declaration.NamedBasicType</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">NamedBasicType</span></code> that matches with any type within a list of <code class="docutils literal notranslate"><span class="pre">BasicTypes</span></code> that it takes
+as an additional argument during instantiation. We just override the <code class="docutils literal notranslate"><span class="pre">matches</span></code> method in
+<code class="docutils literal notranslate"><span class="pre">BasicType</span></code> to match against any of the types given by the list.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>string_rep</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>String representation of the type, passed to super class.</p>
+</dd>
+<dt><strong>types_to_match</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[BasicType]</span></code></span></dt><dd><p>List of types that this type should match with.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.MultiMatchNamedBasicType.matches">
+<code class="sig-name descname">matches</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L150-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.MultiMatchNamedBasicType.matches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.NameMapper">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">NameMapper</code><span class="sig-paren">(</span><em class="sig-param">language_has_lambda: bool = False</em>, <em class="sig-param">alias_prefix: str = 'F'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L482-L537"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.NameMapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">LogicParser</span></code> we use has some naming conventions for functions (i.e. they should start
+with an upper case letter, and the remaining characters can only be digits). This means that we
+have to internally represent functions with unintuitive names. This class will automatically
+give unique names following the convention, and populate central mappings with these names. If
+for some reason you need to manually define the alias, you can do so by passing an alias to
+<cite>map_name_with_signature</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>language_has_lambda</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>If your language has lambda functions, the word “lambda” needs to be in the name mapping,
+mapped to the alias “”. NLTK understands this symbol, and it doesn’t need a type signature
+for it. Setting this flag to True adds the mapping to <cite>name_mapping</cite>.</p>
+</dd>
+<dt><strong>alias_prefix</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code> (optional, default=”F”)</span></dt><dd><p>The one letter prefix used for all aliases. You do not need to specify it if you have only
+instance of this class for you language. If not, you can specify a different prefix for each
+name mapping you use for your language.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.NameMapper.get_alias">
+<code class="sig-name descname">get_alias</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L530-L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.NameMapper.get_alias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.NameMapper.get_signature">
+<code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Type<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L535-L537"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.NameMapper.get_signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.NameMapper.map_name_with_signature">
+<code class="sig-name descname">map_name_with_signature</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">name: str</em>, <em class="sig-param">signature: nltk.sem.logic.Type</em>, <em class="sig-param">alias: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L514-L528"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.NameMapper.map_name_with_signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.NamedBasicType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">NamedBasicType</code><span class="sig-paren">(</span><em class="sig-param">string_rep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L105-L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.NamedBasicType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nltk.sem.logic.BasicType</span></code></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">BasicType</span></code> that also takes the name of the type as an argument to its constructor. Type
+resolution uses the output of <code class="docutils literal notranslate"><span class="pre">__str__</span></code> as well, so basic types with different
+representations do not resolve against each other.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>string_rep</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>String representation of the type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.NamedBasicType.str">
+<code class="sig-name descname">str</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L127-L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.NamedBasicType.str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.PlaceholderType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">PlaceholderType</code><span class="sig-paren">(</span><em class="sig-param">first</em>, <em class="sig-param">second</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L155-L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.ComplexType" title="allennlp.semparse.type_declarations.type_declaration.ComplexType"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.semparse.type_declarations.type_declaration.ComplexType</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">PlaceholderType</span></code> is a <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code> that involves placeholders, and thus its type
+resolution is context sensitive. This is an abstract class for all placeholder types like
+reverse, and, or, argmax, etc.</p>
+<p>Note that ANY_TYPE in NLTK’s type system doesn’t work like a wild card. Once the type of a
+variable gets resolved to a specific type, NLTK changes the type of that variable to that
+specific type. Hence, what NLTK calls “ANY_TYPE”, is essentially a “yet-to-be-decided” type.
+This is a problem because we may want the same variable to bind to different types within a
+logical form, and using ANY_TYPE for this purpose will cause a resolution failure. For example
+the count function may apply to both rows and cells in the same logical form, and making count
+of type <code class="docutils literal notranslate"><span class="pre">ComplexType(ANY_TYPE,</span> <span class="pre">DATE_NUM_TYPE)</span></code> will cause a resolution error. This class lets
+you define <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code> s with placeholders that are actually wild cards.</p>
+<p>The subclasses of this abstract class need to do three things
+1) Override the property <code class="docutils literal notranslate"><span class="pre">_signature</span></code> to define the type signature (this is just the
+signature’s string representation and will not affect type inference or checking). You will see
+this signature in action sequences.
+2) Override <code class="docutils literal notranslate"><span class="pre">resolve</span></code> to resolve the type appropriately (see the docstring in <code class="docutils literal notranslate"><span class="pre">resolve</span></code> for
+more information).
+3) Override <code class="docutils literal notranslate"><span class="pre">get_application_type</span></code> which returns the return type when this type is applied as
+a function to an argument of a specified type.  For example, if you defined a reverse type by
+inheriting from this class, <code class="docutils literal notranslate"><span class="pre">get_application_type</span></code> gets an argument of type <code class="docutils literal notranslate"><span class="pre">&lt;a,b&gt;</span></code>, it
+should return <code class="docutils literal notranslate"><span class="pre">&lt;b,a&gt;</span></code> .</p>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.PlaceholderType.get_application_type">
+<code class="sig-name descname">get_application_type</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">argument_type: nltk.sem.logic.Type</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Type<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L208-L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType.get_application_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the resulting type when this type is applied as a function to an argument of
+the given type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.PlaceholderType.matches">
+<code class="sig-name descname">matches</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L228-L231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType.matches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.PlaceholderType.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other: nltk.sem.logic.Type</em><span class="sig-paren">)</span> &#x2192; Union[nltk.sem.logic.Type, NoneType]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L183-L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is central to type inference and checking. When a variable’s type is being
+checked, we compare what we know of its type against what is expected of its type by its
+context. The expectation is provided as <code class="docutils literal notranslate"><span class="pre">other</span></code>. We make sure that there are no
+contradictions between this type and other, and return an updated type which may be more
+specific than the original type.</p>
+<p>For example, say this type is of the function variable F in F(cell), and we start out with
+<code class="docutils literal notranslate"><span class="pre">&lt;?,</span> <span class="pre">d&gt;</span></code> (that is, it takes any type and returns <code class="docutils literal notranslate"><span class="pre">d</span></code> ). Now we have already resolved
+cell to be of type <code class="docutils literal notranslate"><span class="pre">e</span></code> . Then <code class="docutils literal notranslate"><span class="pre">resolve</span></code> gets called with <code class="docutils literal notranslate"><span class="pre">other</span> <span class="pre">=</span> <span class="pre">&lt;e,</span> <span class="pre">?&gt;</span></code> , because
+we know F is a function that took a constant of type <code class="docutils literal notranslate"><span class="pre">e</span></code> . When we resolve <code class="docutils literal notranslate"><span class="pre">&lt;e,</span> <span class="pre">?&gt;</span></code>
+against <code class="docutils literal notranslate"><span class="pre">&lt;?,</span> <span class="pre">d&gt;</span></code> , there will not be a contradiction, because any type can be
+successfully resolved against <code class="docutils literal notranslate"><span class="pre">?</span></code> . Finally we return <code class="docutils literal notranslate"><span class="pre">&lt;e,</span> <span class="pre">d&gt;</span></code> as the resolved type.</p>
+<p>As a counter example, if we are trying to resolve <code class="docutils literal notranslate"><span class="pre">&lt;?,</span> <span class="pre">d&gt;</span></code> against <code class="docutils literal notranslate"><span class="pre">&lt;?,</span> <span class="pre">e&gt;</span></code> , the
+resolution fails, and in that case, this method returns <code class="docutils literal notranslate"><span class="pre">None</span></code> .</p>
+<p>Note that a successful resolution does not imply equality of types because of one of them
+may be ANY_TYPE, and so in the subclasses of this type, we explicitly resolve in both
+directions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.PlaceholderType.str">
+<code class="sig-name descname">str</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L241-L246"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType.str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.PlaceholderType.substitute_any_type">
+<code class="sig-name descname">substitute_any_type</code><span class="sig-paren">(</span><em class="sig-param">self, basic_types: Set[nltk.sem.logic.BasicType]</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L215-L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType.substitute_any_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Placeholders mess with substitutions, so even though this method is implemented in the
+superclass, we override it here with a <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> to be sure that subclasses
+think about what the right thing to do here is, and do it correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.TypedConstantExpression">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">TypedConstantExpression</code><span class="sig-paren">(</span><em class="sig-param">variable</em>, <em class="sig-param">default_type: nltk.sem.logic.Type</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L362-L377"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.TypedConstantExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nltk.sem.logic.ConstantExpression</span></code></p>
+<p>NLTK assumes all constants are of type <code class="docutils literal notranslate"><span class="pre">EntityType</span></code> (e) by default. We define this new class
+where we can pass a default type to the constructor and use that in the <code class="docutils literal notranslate"><span class="pre">_set_type</span></code> method.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.type_declaration.UnaryOpType">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">UnaryOpType</code><span class="sig-paren">(</span><em class="sig-param">type_: nltk.sem.logic.BasicType = ?</em>, <em class="sig-param">allowed_substitutions: Set[nltk.sem.logic.BasicType] = None</em>, <em class="sig-param">signature: str = '&lt;#1</em>, <em class="sig-param">#1&gt;'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L251-L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.UnaryOpType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.PlaceholderType" title="allennlp.semparse.type_declarations.type_declaration.PlaceholderType"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.semparse.type_declarations.type_declaration.PlaceholderType</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">UnaryOpType</span></code> is a kind of <code class="docutils literal notranslate"><span class="pre">PlaceholderType</span></code> that takes an argument of any type and returns
+an expression of the same type.  <code class="docutils literal notranslate"><span class="pre">identity</span></code> is an example of this kind of function.  The type
+signature of <code class="docutils literal notranslate"><span class="pre">UnaryOpType</span></code> is &lt;#1, #1&gt;.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>allowed_substitutions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Set[BasicType]</span></code>, optional (default=None)</span></dt><dd><p>If given, this sets restrictions on the types that can be substituted.  That is, say you
+have a unary operation that is only permitted for numbers and dates, you can pass those in
+here, and we will only consider those types when calling <a class="reference internal" href="#allennlp.semparse.type_declarations.type_declaration.substitute_any_type" title="allennlp.semparse.type_declarations.type_declaration.substitute_any_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">substitute_any_type()</span></code></a>.  If
+this is <code class="docutils literal notranslate"><span class="pre">None</span></code>, all basic types are allowed.</p>
+</dd>
+<dt><strong>signature</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=’&lt;#1,#1&gt;’)</span></dt><dd><p>The signature of the operation is what will appear in action sequences that include this
+type.  The default value is suitable for functions that apply to any type.  If you have a
+restricted set of allowed substitutions, you likely want to change the type signature to
+reflect that.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.UnaryOpType.get_application_type">
+<code class="sig-name descname">get_application_type</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">argument_type: nltk.sem.logic.Type</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Type<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L291-L293"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.UnaryOpType.get_application_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the resulting type when this type is applied as a function to an argument of
+the given type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.UnaryOpType.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span> &#x2192; Union[nltk.sem.logic.Type, NoneType]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L278-L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.UnaryOpType.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">PlaceholderType.resolve</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.type_declarations.type_declaration.UnaryOpType.substitute_any_type">
+<code class="sig-name descname">substitute_any_type</code><span class="sig-paren">(</span><em class="sig-param">self, basic_types: Set[nltk.sem.logic.BasicType]</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L295-L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.UnaryOpType.substitute_any_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Placeholders mess with substitutions, so even though this method is implemented in the
+superclass, we override it here with a <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> to be sure that subclasses
+think about what the right thing to do here is, and do it correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.semparse.type_declarations.type_declaration.get_valid_actions">
+<code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">get_valid_actions</code><span class="sig-paren">(</span><em class="sig-param">name_mapping: Dict[str, str], type_signatures: Dict[str, nltk.sem.logic.Type], basic_types: Set[nltk.sem.logic.Type], multi_match_mapping: Dict[nltk.sem.logic.Type, List[nltk.sem.logic.Type]] = None, valid_starting_types: Set[nltk.sem.logic.Type] = None, num_nested_lambdas: int = 0</em><span class="sig-paren">)</span> &#x2192; Dict[str, List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L600-L692"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.get_valid_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates all the valid actions starting from each non-terminal. For terminals of a specific
+type, we simply add a production from the type to the terminal. For all terminal <cite>functions</cite>,
+we additionally add a rule that allows their return type to be generated from an application of
+the function.  For example, the function <code class="docutils literal notranslate"><span class="pre">&lt;e,&lt;r,&lt;d,r&gt;&gt;&gt;</span></code>, which takes three arguments and
+returns an <code class="docutils literal notranslate"><span class="pre">r</span></code> would generate a the production rule <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">-&gt;</span> <span class="pre">[&lt;e,&lt;r,&lt;d,r&gt;&gt;&gt;,</span> <span class="pre">e,</span> <span class="pre">r,</span> <span class="pre">d]</span></code>.</p>
+<p>For functions that do not contain ANY_TYPE or placeholder types, this is straight-forward.
+When there are ANY_TYPES or placeholders, we substitute the ANY_TYPE with all possible basic
+types, and then produce a similar rule.  For example, the identity function, with type
+<code class="docutils literal notranslate"><span class="pre">&lt;#1,#1&gt;</span></code> and basic types <code class="docutils literal notranslate"><span class="pre">e</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>,  would produce the rules <code class="docutils literal notranslate"><span class="pre">e</span> <span class="pre">-&gt;</span> <span class="pre">[&lt;#1,#1&gt;,</span> <span class="pre">e]</span></code> and
+<code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">-&gt;</span> <span class="pre">[&lt;#1,#1&gt;,</span> <span class="pre">r]</span></code>.</p>
+<p>We additionally add a valid action from the start symbol to all <code class="docutils literal notranslate"><span class="pre">valid_starting_types</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>name_mapping</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code></span></dt><dd><p>The mapping of names that appear in your logical form languages to their aliases for NLTK.
+If you are getting all valid actions for a type declaration, this can be the
+<code class="docutils literal notranslate"><span class="pre">COMMON_NAME_MAPPING</span></code>.</p>
+</dd>
+<dt><strong>type_signatures</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Type]</span></code></span></dt><dd><p>The mapping from name aliases to their types. If you are getting all valid actions for a
+type declaration, this can be the <code class="docutils literal notranslate"><span class="pre">COMMON_TYPE_SIGNATURE</span></code>.</p>
+</dd>
+<dt><strong>basic_types</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Set[Type]</span></code></span></dt><dd><p>Set of all basic types in the type declaration.</p>
+</dd>
+<dt><strong>multi_match_mapping</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[Type,</span> <span class="pre">List[Type]]</span></code> (optional)</span></dt><dd><p>A mapping from <cite>MultiMatchNamedBasicTypes</cite> to the types they can match. This may be
+different from the type’s <code class="docutils literal notranslate"><span class="pre">types_to_match</span></code> field based on the context. While building action
+sequences that lead to complex types with <code class="docutils literal notranslate"><span class="pre">MultiMatchNamedBasicTypes</span></code>, if a type does not
+occur in this mapping, the default set of <code class="docutils literal notranslate"><span class="pre">types_to_match</span></code> for that type will be used.</p>
+</dd>
+<dt><strong>valid_starting_types</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Set[Type]</span></code>, optional</span></dt><dd><p>These are the valid starting types for your grammar; e.g., what types are we allowed to
+parse expressions into?  We will add a “START -&gt; TYPE” rule for each of these types.  If
+this is <code class="docutils literal notranslate"><span class="pre">None</span></code>, we default to using <code class="docutils literal notranslate"><span class="pre">basic_types</span></code>.</p>
+</dd>
+<dt><strong>num_nested_lambdas</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code> (optional)</span></dt><dd><p>Does the language used permit lambda expressions?  And if so, how many nested lambdas do we
+need to worry about?  We’ll add rules like “&lt;r,d&gt; -&gt; [‘lambda x’, d]” for all complex
+types, where the variable is determined by the number of nestings.  We currently only
+permit up to three levels of nesting, just for ease of implementation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.semparse.type_declarations.type_declaration.is_nonterminal">
+<code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">is_nonterminal</code><span class="sig-paren">(</span><em class="sig-param">production: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L703-L720"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.is_nonterminal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.semparse.type_declarations.type_declaration.substitute_any_type">
+<code class="sig-prename descclassname">allennlp.semparse.type_declarations.type_declaration.</code><code class="sig-name descname">substitute_any_type</code><span class="sig-paren">(</span><em class="sig-param">type_: nltk.sem.logic.Type, basic_types: Set[nltk.sem.logic.BasicType]</em><span class="sig-paren">)</span> &#x2192; List[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/type_declaration.py#L540-L554"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.type_declaration.substitute_any_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a type and a set of basic types, and substitutes all instances of ANY_TYPE with all
+possible basic types and returns a list with all possible combinations.  Note that this
+substitution is unconstrained.  That is, If you have a type with placeholders, &lt;#1,#1&gt; for
+example, this may substitute the placeholders with different basic types. In that case, you’d
+want to use <code class="docutils literal notranslate"><span class="pre">_substitute_placeholder_type</span></code> instead.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.semparse.type_declarations.quarel_type_declaration"></span><p>Defines all the types in the QuaRel domain.</p>
+<dl class="class">
+<dt id="allennlp.semparse.type_declarations.quarel_type_declaration.QuarelTypeDeclaration">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.type_declarations.quarel_type_declaration.</code><code class="sig-name descname">QuarelTypeDeclaration</code><span class="sig-paren">(</span><em class="sig-param">syntax: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/type_declarations/quarel_type_declaration.py#L6-L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.type_declarations.quarel_type_declaration.QuarelTypeDeclaration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.semparse.worlds.html" class="btn btn-neutral float-right" title="allennlp.semparse.worlds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.semparse.executors.html" class="btn btn-neutral float-left" title="allennlp.semparse.executors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

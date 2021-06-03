@@ -1,0 +1,1264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.predictors &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.modules" href="allennlp.modules.html" />
+    <link rel="prev" title="allennlp.models.srl_util" href="allennlp.models.srl_util.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>allennlp.predictors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.predictors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.predictors">
+<span id="allennlp-predictors"></span><h1>allennlp.predictors<a class="headerlink" href="#module-allennlp.predictors" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Predictor</span></code></a> is
+a wrapper for an AllenNLP <code class="docutils literal notranslate"><span class="pre">Model</span></code>
+that makes JSON predictions using JSON inputs. If you
+want to serve up a model through the web service
+(or using <code class="docutils literal notranslate"><span class="pre">allennlp.commands.predict</span></code>), you’ll need
+a <code class="docutils literal notranslate"><span class="pre">Predictor</span></code> that wraps it.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#predictor"><span class="std std-ref">Predictor</span></a></p></li>
+<li><p><a class="reference internal" href="#bidaf"><span class="std std-ref">BidafPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#decomposable-attention"><span class="std std-ref">DecomposableAttentionPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#dialog-qa"><span class="std std-ref">DialogQAPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#semantic-role-labeler"><span class="std std-ref">SemanticRoleLabelerPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#sentence-tagger"><span class="std std-ref">SentenceTaggerPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#coreference-resolution"><span class="std std-ref">CorefPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#constituency-parser"><span class="std std-ref">ConstituencyParserPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#biaffine-dependency-parser"><span class="std std-ref">BiaffineDependencyParserPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#simple-seq2seq"><span class="std std-ref">SimpleSeq2SeqPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#wikitables-parser"><span class="std std-ref">WikiTablesParserPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#nlvr-parser"><span class="std std-ref">NlvrParserPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#quarel-parser"><span class="std std-ref">QuarelParserPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#open-information-extraction"><span class="std std-ref">OpenIePredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#event2mind"><span class="std std-ref">Event2MindPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#atis-parser"><span class="std std-ref">AtisParserPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#text-classifier"><span class="std std-ref">TextClassifierPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#masked-language-model"><span class="std std-ref">MaskedLanguageModelPredictor</span></a></p></li>
+<li><p><a class="reference internal" href="#next-token-lm"><span class="std std-ref">NextTokenLMPredictor</span></a></p></li>
+</ul>
+<span class="target" id="module-allennlp.predictors.predictor"><span id="predictor"></span></span><dl class="class">
+<dt id="allennlp.predictors.predictor.Predictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.predictor.</code><code class="sig-name descname">Predictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L40-L288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>a <code class="docutils literal notranslate"><span class="pre">Predictor</span></code> is a thin wrapper around an AllenNLP model that handles JSON -&gt; JSON predictions
+that can be used for serving models through the web API or making predictions in bulk.</p>
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.capture_model_internals">
+<code class="sig-name descname">capture_model_internals</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Iterator[dict]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L146-L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.capture_model_internals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context manager that captures the internal-module outputs of
+this predictor’s model. The idea is that you could use it as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">predictor</span><span class="o">.</span><span class="n">capture_model_internals</span><span class="p">()</span> <span class="k">as</span> <span class="n">internals</span><span class="p">:</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">predict_json</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">outputs</span><span class="p">,</span> <span class="s2">&quot;model_internals&quot;</span><span class="p">:</span> <span class="n">internals</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.dump_line">
+<code class="sig-name descname">dump_line</code><span class="sig-paren">(</span><em class="sig-param">self, outputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L56-L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.dump_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you don’t want your outputs in JSON-lines format
+you can override this function to output them differently.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.from_archive">
+<em class="property">classmethod </em><code class="sig-name descname">from_archive</code><span class="sig-paren">(</span><em class="sig-param">archive: allennlp.models.archival.Archive</em>, <em class="sig-param">predictor_name: str = None</em>, <em class="sig-param">dataset_reader_to_load: str = 'validation'</em><span class="sig-paren">)</span> &#x2192; 'Predictor'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L259-L288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.from_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Predictor</span></code></a> from an <a class="reference internal" href="allennlp.models.archival.html#allennlp.models.archival.Archive" title="allennlp.models.archival.Archive"><code class="xref py py-class docutils literal notranslate"><span class="pre">Archive</span></code></a>;
+that is, from the result of training a model. Optionally specify which <cite>Predictor</cite>
+subclass; otherwise, the default one for the model will be used. Optionally specify
+which <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetReader</span></code> should be loaded; otherwise, the validation one will be used
+if it exists followed by the training dataset reader.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.from_path">
+<em class="property">classmethod </em><code class="sig-name descname">from_path</code><span class="sig-paren">(</span><em class="sig-param">archive_path: str</em>, <em class="sig-param">predictor_name: str = None</em>, <em class="sig-param">cuda_device: int = -1</em>, <em class="sig-param">dataset_reader_to_load: str = 'validation'</em><span class="sig-paren">)</span> &#x2192; 'Predictor'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L229-L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.from_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Predictor</span></code></a> from an archive path.</p>
+<p>If you need more detailed configuration options, such as overrides,
+please use <cite>from_archive</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>archive_path: ``str``</strong></dt><dd><p>The path to the archive.</p>
+</dd>
+<dt><strong>predictor_name: ``str``, optional (default=None)</strong></dt><dd><p>Name that the predictor is registered as, or None to use the
+predictor associated with the model.</p>
+</dd>
+<dt><strong>cuda_device: ``int``, optional (default=-1)</strong></dt><dd><p>If <cite>cuda_device</cite> is &gt;= 0, the model will be loaded onto the
+corresponding GPU. Otherwise it will be loaded onto the CPU.</p>
+</dd>
+<dt><strong>dataset_reader_to_load: ``str``, optional (default=”validation”)</strong></dt><dd><p>Which dataset reader to load from the archive, either “train” or
+“validation”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A Predictor instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.get_gradients">
+<code class="sig-name descname">get_gradients</code><span class="sig-paren">(</span><em class="sig-param">self, instances: List[allennlp.data.instance.Instance]</em><span class="sig-paren">)</span> &#x2192; Tuple[Dict[str, Any], Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L83-L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.get_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the gradients of the loss with respect to the model inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>instances: List[Instance]</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Tuple[Dict[str, Any], Dict[str, Any]]</dt><dd></dd>
+<dt>The first item is a Dict of gradient entries for each input.</dt><dd></dd>
+<dt>The keys have the form  <code class="docutils literal notranslate"><span class="pre">{grad_input_1:</span> <span class="pre">...,</span> <span class="pre">grad_input_2:</span> <span class="pre">...</span> <span class="pre">}</span></code></dt><dd></dd>
+<dt>up to the number of inputs given. The second item is the model’s output.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Takes a <code class="docutils literal notranslate"><span class="pre">JsonDict</span></code> representing the inputs of the model and converts
+them to <code class="xref py py-class docutils literal notranslate"><span class="pre">Instance`s,</span> <span class="pre">sends</span> <span class="pre">these</span> <span class="pre">through</span>
+<span class="pre">the</span> <span class="pre">model</span> <span class="pre">:func:`forward</span></code> function after registering hooks on the embedding
+layer of the model. Calls <code class="xref py py-func docutils literal notranslate"><span class="pre">backward()</span></code> on the loss and then removes the
+hooks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.json_to_labeled_instances">
+<code class="sig-name descname">json_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L67-L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.json_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts incoming json to a <a class="reference internal" href="allennlp.data.instance.html#allennlp.data.instance.Instance" title="allennlp.data.instance.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">Instance</span></code></a>,
+runs the model on the newly created instance, and adds labels to the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Instance</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.load_line">
+<code class="sig-name descname">load_line</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">line: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L49-L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.load_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>If your inputs are not in JSON-lines format (e.g. you have a CSV)
+you can override this function to parse them correctly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.predict_batch_instance">
+<code class="sig-name descname">predict_batch_instance</code><span class="sig-paren">(</span><em class="sig-param">self, instances: List[allennlp.data.instance.Instance]</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L211-L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.predict_batch_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.predict_batch_json">
+<code class="sig-name descname">predict_batch_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: List[Dict[str, Any]]</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L207-L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.predict_batch_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.predict_instance">
+<code class="sig-name descname">predict_instance</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">instance: allennlp.data.instance.Instance</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L180-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.predict_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.predict_json">
+<code class="sig-name descname">predict_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L63-L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.predictor.Predictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/predictor.py#L184-L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.predictor.Predictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a model’s outputs for an Instance, and it labels that instance according
+to the output. For example, in classification this function labels the instance according
+to the class with the highest probability. This function is used to to compute gradients
+of what the model predicted. The return type is a list because in some tasks there are
+multiple predictions in the output (e.g., in NER a model predicts multiple spans). In this
+case, each instance in the returned list of Instances contains an individual
+entity prediction as the label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.bidaf"><span id="bidaf"></span></span><dl class="class">
+<dt id="allennlp.predictors.bidaf.BidafPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.bidaf.</code><code class="sig-name descname">BidafPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/bidaf.py#L16-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.bidaf.BidafPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">BidirectionalAttentionFlow</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.bidaf.BidafPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">question: str</em>, <em class="sig-param">passage: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/bidaf.py#L21-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.bidaf.BidafPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a machine comprehension prediction on the supplied input.
+See <a class="reference external" href="https://rajpurkar.github.io/SQuAD-explorer/">https://rajpurkar.github.io/SQuAD-explorer/</a> for more information about the machine comprehension task.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>A question about the content in the supplied paragraph.  The question must be answerable by a
+span in the paragraph.</p>
+</dd>
+<dt><strong>passage</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>A paragraph of information relevant to the question.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary that represents the prediction made by the system.  The answer string will be under the</dt><dd></dd>
+<dt>“best_span_str” key.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.bidaf.BidafPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/bidaf.py#L50-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.bidaf.BidafPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a model’s outputs for an Instance, and it labels that instance according
+to the output. For example, in classification this function labels the instance according
+to the class with the highest probability. This function is used to to compute gradients
+of what the model predicted. The return type is a list because in some tasks there are
+multiple predictions in the output (e.g., in NER a model predicts multiple spans). In this
+case, each instance in the returned list of Instances contains an individual
+entity prediction as the label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.decomposable_attention"><span id="decomposable-attention"></span></span><dl class="class">
+<dt id="allennlp.predictors.decomposable_attention.DecomposableAttentionPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.decomposable_attention.</code><code class="sig-name descname">DecomposableAttentionPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/decomposable_attention.py#L14-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.decomposable_attention.DecomposableAttentionPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">DecomposableAttention</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.decomposable_attention.DecomposableAttentionPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">premise: str</em>, <em class="sig-param">hypothesis: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/decomposable_attention.py#L19-L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.decomposable_attention.DecomposableAttentionPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts whether the hypothesis is entailed by the premise text.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>premise</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>A passage representing what is assumed to be true.</p>
+</dd>
+<dt><strong>hypothesis</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>A sentence that may be entailed by the premise.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary where the key “label_probs” determines the probabilities of each of</dt><dd></dd>
+<dt>[entailment, contradiction, neutral].</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.decomposable_attention.DecomposableAttentionPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/decomposable_attention.py#L47-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.decomposable_attention.DecomposableAttentionPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a model’s outputs for an Instance, and it labels that instance according
+to the output. For example, in classification this function labels the instance according
+to the class with the highest probability. This function is used to to compute gradients
+of what the model predicted. The return type is a list because in some tasks there are
+multiple predictions in the output (e.g., in NER a model predicts multiple spans). In this
+case, each instance in the returned list of Instances contains an individual
+entity prediction as the label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.dialog_qa"><span id="dialog-qa"></span></span><dl class="class">
+<dt id="allennlp.predictors.dialog_qa.DialogQAPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.dialog_qa.</code><code class="sig-name descname">DialogQAPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em>, <em class="sig-param">language: str = 'en_core_web_sm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/dialog_qa.py#L12-L66"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.dialog_qa.DialogQAPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.predictors.dialog_qa.DialogQAPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">jsonline: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/dialog_qa.py#L17-L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.dialog_qa.DialogQAPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dialog-style question answering prediction on the supplied input.
+The supplied input json must contain a list of
+question answer pairs, containing question, answer, yesno, followup, id
+as well as the context (passage).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>jsonline: ``str``</strong></dt><dd><p>A json line that has the same format as the quac data file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary that represents the prediction made by the system.  The answer string will be under the</dt><dd></dd>
+<dt>“best_span_str” key.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.semantic_role_labeler"><span id="semantic-role-labeler"></span></span><dl class="class">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.semantic_role_labeler.</code><code class="sig-name descname">SemanticRoleLabelerPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em>, <em class="sig-param">language: str = 'en_core_web_sm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L14-L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">SemanticRoleLabeler</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.make_srl_string">
+<em class="property">static </em><code class="sig-name descname">make_srl_string</code><span class="sig-paren">(</span><em class="sig-param">words: List[str], tags: List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L73-L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.make_srl_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L22-L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts the semantic roles of the supplied sentence and returns a dictionary
+with the results.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;words&quot;</span><span class="o">:</span> <span class="p">[...],</span>
+ <span class="s2">&quot;verbs&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+    <span class="p">...</span>
+    <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+<span class="p">]}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sentence, ``str``</strong></dt><dd><p>The sentence to parse via semantic role labeling.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary representation of the semantic roles in the sentence.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_batch_json">
+<code class="sig-name descname">predict_batch_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: List[Dict[str, Any]]</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L134-L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_batch_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects JSON that looks like <code class="docutils literal notranslate"><span class="pre">[{&quot;sentence&quot;:</span> <span class="pre">&quot;...&quot;},</span> <span class="pre">{&quot;sentence&quot;:</span> <span class="pre">&quot;...&quot;},</span> <span class="pre">...]</span></code>
+and returns JSON that looks like</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;words&quot;</span><span class="o">:</span> <span class="p">[...],</span>
+     <span class="s2">&quot;verbs&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+        <span class="p">...</span>
+        <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+    <span class="p">]},</span>
+    <span class="p">{</span><span class="s2">&quot;words&quot;</span><span class="o">:</span> <span class="p">[...],</span>
+     <span class="s2">&quot;verbs&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+        <span class="p">...</span>
+        <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+    <span class="p">]}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_instances">
+<code class="sig-name descname">predict_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instances: List[allennlp.data.instance.Instance]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L210-L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_instances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_json">
+<code class="sig-name descname">predict_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L225-L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects JSON that looks like <code class="docutils literal notranslate"><span class="pre">{&quot;sentence&quot;:</span> <span class="pre">&quot;...&quot;}</span></code>
+and returns JSON that looks like</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;words&quot;</span><span class="o">:</span> <span class="p">[...],</span>
+ <span class="s2">&quot;verbs&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+    <span class="p">...</span>
+    <span class="p">{</span><span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[...]},</span>
+<span class="p">]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_tokenized">
+<code class="sig-name descname">predict_tokenized</code><span class="sig-paren">(</span><em class="sig-param">self, tokenized_sentence: List[str]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L47-L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_tokenized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts the semantic roles of the supplied sentence tokens and returns a dictionary
+with the results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tokenized_sentence, ``List[str]``</strong></dt><dd><p>The sentence tokens to parse via semantic role labeling.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary representation of the semantic roles in the sentence.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.tokens_to_instances">
+<code class="sig-name descname">tokens_to_instances</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tokens</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/semantic_role_labeler.py#L100-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.tokens_to_instances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.sentence_tagger"><span id="sentence-tagger"></span></span><dl class="class">
+<dt id="allennlp.predictors.sentence_tagger.SentenceTaggerPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.sentence_tagger.</code><code class="sig-name descname">SentenceTaggerPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em>, <em class="sig-param">language: str = 'en_core_web_sm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/sentence_tagger.py#L16-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.sentence_tagger.SentenceTaggerPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for any model that takes in a sentence and returns
+a single set of tags for it.  In particular, it can be used with
+the <a class="reference internal" href="allennlp.models.crf_tagger.html#allennlp.models.crf_tagger.CrfTagger" title="allennlp.models.crf_tagger.CrfTagger"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrfTagger</span></code></a> model
+and also
+the <a class="reference internal" href="allennlp.models.simple_tagger.html#allennlp.models.simple_tagger.SimpleTagger" title="allennlp.models.simple_tagger.SimpleTagger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleTagger</span></code></a> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.sentence_tagger.SentenceTaggerPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/sentence_tagger.py#L28-L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.sentence_tagger.SentenceTaggerPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.sentence_tagger.SentenceTaggerPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/sentence_tagger.py#L41-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.sentence_tagger.SentenceTaggerPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function currently only handles BIOUL tags.</p>
+<p>Imagine an NER model predicts three named entities (each one with potentially
+multiple tokens). For each individual entity, we create a new Instance that has
+the label set to only that entity and the rest of the tokens are labeled as outside.
+We then return a list of those Instances.</p>
+<p>For example:
+Mary  went to Seattle to visit Microsoft Research
+U-Per  O    O   U-Loc  O   O     B-Org     L-Org</p>
+<p>We create three instances.
+Mary  went to Seattle to visit Microsoft Research
+U-Per  O    O    O     O   O       O         O</p>
+<p>Mary  went to Seattle to visit Microsoft Research
+O      O    O   U-LOC  O   O       O         O</p>
+<p>Mary  went to Seattle to visit Microsoft Research
+O      O    O    O     O   O     B-Org     L-Org</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.coref"><span id="coreference-resolution"></span></span><dl class="class">
+<dt id="allennlp.predictors.coref.CorefPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.coref.</code><code class="sig-name descname">CorefPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em>, <em class="sig-param">language: str = 'en_core_web_sm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/coref.py#L17-L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.coref.CorefPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">CoreferenceResolver</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.coref.CorefPredictor.coref_resolved">
+<code class="sig-name descname">coref_resolved</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">document: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/coref.py#L154-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.coref.CorefPredictor.coref_resolved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce a document where each coreference is replaced by the its main mention</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>document</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>A string representation of a document.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A string with each coference replaced by its main mention</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.coref.CorefPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">document: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/coref.py#L28-L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.coref.CorefPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the coreference clusters in the given document.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;document&quot;</span><span class="o">:</span> <span class="p">[</span><span class="nx">tokenised</span> <span class="nb">document</span> <span class="nx">text</span><span class="p">]</span>
+<span class="s2">&quot;clusters&quot;</span><span class="o">:</span>
+  <span class="p">[</span>
+    <span class="p">[</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="p">....</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>document</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>A string representation of a document.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary representation of the predicted coreference clusters.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.coref.CorefPredictor.predict_tokenized">
+<code class="sig-name descname">predict_tokenized</code><span class="sig-paren">(</span><em class="sig-param">self, tokenized_document: List[str]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/coref.py#L62-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.coref.CorefPredictor.predict_tokenized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the coreference clusters in the given document.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>tokenized_document</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>A list of words representation of a tokenized document.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary representation of the predicted coreference clusters.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.coref.CorefPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/coref.py#L78-L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.coref.CorefPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes each predicted cluster and makes it into a labeled <code class="docutils literal notranslate"><span class="pre">Instance</span></code> with only that
+cluster labeled, so we can compute gradients of the loss <cite>on the model’s prediction of that
+cluster</cite>.  This lets us run interpretation methods using those gradients.  See superclass
+docstring for more info.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.coref.CorefPredictor.replace_corefs">
+<em class="property">static </em><code class="sig-name descname">replace_corefs</code><span class="sig-paren">(</span><em class="sig-param">document: spacy.tokens.doc.Doc, clusters: List[List[List[int]]]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/coref.py#L113-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.coref.CorefPredictor.replace_corefs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses a list of coreference clusters to convert a spacy document into a
+string, where each coreference is replaced by its main mention.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.constituency_parser"><span id="constituency-parser"></span></span><dl class="class">
+<dt id="allennlp.predictors.constituency_parser.ConstituencyParserPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.constituency_parser.</code><code class="sig-name descname">ConstituencyParserPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em>, <em class="sig-param">language: str = 'en_core_web_sm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/constituency_parser.py#L61-L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.constituency_parser.ConstituencyParserPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">SpanConstituencyParser</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.constituency_parser.ConstituencyParserPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/constituency_parser.py#L69-L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.constituency_parser.ConstituencyParserPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict a constituency parse for the given sentence.
+Parameters
+———-
+sentence The sentence to parse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A dictionary representation of the constituency tree.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.constituency_parser.ConstituencyParserPredictor.predict_batch_instance">
+<code class="sig-name descname">predict_batch_instance</code><span class="sig-paren">(</span><em class="sig-param">self, instances: List[allennlp.data.instance.Instance]</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/constituency_parser.py#L102-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.constituency_parser.ConstituencyParserPredictor.predict_batch_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.constituency_parser.ConstituencyParserPredictor.predict_instance">
+<code class="sig-name descname">predict_instance</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">instance: allennlp.data.instance.Instance</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/constituency_parser.py#L92-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.constituency_parser.ConstituencyParserPredictor.predict_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.seq2seq"><span id="seq2seq"></span></span><dl class="class">
+<dt id="allennlp.predictors.seq2seq.Seq2SeqPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.seq2seq.</code><code class="sig-name descname">Seq2SeqPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/seq2seq.py#L9-L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.seq2seq.Seq2SeqPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for sequence to sequence models, including
+<code class="xref py py-class docutils literal notranslate"><span class="pre">composed_seq2seq</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">simple_seq2seq</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">copynet_seq2seq</span></code>.</p>
+<dl class="method">
+<dt id="allennlp.predictors.seq2seq.Seq2SeqPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/seq2seq.py#L17-L18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.seq2seq.Seq2SeqPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.simple_seq2seq"><span id="simple-seq2seq"></span></span><dl class="class">
+<dt id="allennlp.predictors.simple_seq2seq.SimpleSeq2SeqPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.simple_seq2seq.</code><code class="sig-name descname">SimpleSeq2SeqPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/simple_seq2seq.py#L10-L17"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.simple_seq2seq.SimpleSeq2SeqPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.seq2seq.Seq2SeqPredictor" title="allennlp.predictors.seq2seq.Seq2SeqPredictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.seq2seq.Seq2SeqPredictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_seq2seq</span></code> model.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.wikitables_parser"><span id="wikitables-parser"></span></span><dl class="class">
+<dt id="allennlp.predictors.wikitables_parser.WikiTablesParserPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.wikitables_parser.</code><code class="sig-name descname">WikiTablesParserPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/wikitables_parser.py#L10-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.wikitables_parser.WikiTablesParserPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Wrapper for the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">WikiTablesSemanticParser</span></code>
+model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.wikitables_parser.WikiTablesParserPredictor.predict_json">
+<code class="sig-name descname">predict_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/wikitables_parser.py#L32-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.wikitables_parser.WikiTablesParserPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>We need to override this because of the interactive beam search aspects.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.nlvr_parser"><span id="nlvr-parser"></span></span><dl class="class">
+<dt id="allennlp.predictors.nlvr_parser.NlvrParserPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.nlvr_parser.</code><code class="sig-name descname">NlvrParserPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/nlvr_parser.py#L11-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.nlvr_parser.NlvrParserPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.predictors.nlvr_parser.NlvrParserPredictor.dump_line">
+<code class="sig-name descname">dump_line</code><span class="sig-paren">(</span><em class="sig-param">self, outputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/nlvr_parser.py#L31-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.nlvr_parser.NlvrParserPredictor.dump_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you don’t want your outputs in JSON-lines format
+you can override this function to output them differently.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.quarel_parser"><span id="quarel-parser"></span></span><dl class="class">
+<dt id="allennlp.predictors.quarel_parser.QuarelParserPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.quarel_parser.</code><code class="sig-name descname">QuarelParserPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/quarel_parser.py#L14-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.quarel_parser.QuarelParserPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Wrapper for the quarel_semantic_parser model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.quarel_parser.QuarelParserPredictor.predict_json">
+<code class="sig-name descname">predict_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/quarel_parser.py#L74-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.quarel_parser.QuarelParserPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.biaffine_dependency_parser"><span id="biaffine-dependency-parser"></span></span><dl class="class">
+<dt id="allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.biaffine_dependency_parser.</code><code class="sig-name descname">BiaffineDependencyParserPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em>, <em class="sig-param">language: str = 'en_core_web_sm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/biaffine_dependency_parser.py#L79-L190"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">BiaffineDependencyParser</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/biaffine_dependency_parser.py#L88-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict a dependency parse for the given sentence.
+Parameters
+———-
+sentence The sentence to parse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A dictionary representation of the dependency tree.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor.predict_batch_instance">
+<code class="sig-name descname">predict_batch_instance</code><span class="sig-paren">(</span><em class="sig-param">self, instances: List[allennlp.data.instance.Instance]</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/biaffine_dependency_parser.py#L127-L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor.predict_batch_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor.predict_instance">
+<code class="sig-name descname">predict_instance</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">instance: allennlp.data.instance.Instance</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/biaffine_dependency_parser.py#L116-L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.biaffine_dependency_parser.BiaffineDependencyParserPredictor.predict_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.open_information_extraction"><span id="open-information-extraction"></span></span><dl class="class">
+<dt id="allennlp.predictors.open_information_extraction.OpenIePredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">OpenIePredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L174-L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.OpenIePredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the :class: <cite>models.SemanticRolelabeler</cite> model (in its Open Information variant).
+Used by online demo and for prediction on an input file using command line.</p>
+<dl class="method">
+<dt id="allennlp.predictors.open_information_extraction.OpenIePredictor.predict_json">
+<code class="sig-name descname">predict_json</code><span class="sig-paren">(</span><em class="sig-param">self, inputs: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L198-L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.OpenIePredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create instance(s) after predicting the format. One sentence containing multiple verbs
+will lead to multiple instances.</p>
+<p>Expects JSON that looks like <code class="docutils literal notranslate"><span class="pre">{&quot;sentence&quot;:</span> <span class="pre">&quot;...&quot;}</span></code></p>
+<p>Returns a JSON that looks like</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;tokens&quot;</span><span class="o">:</span> <span class="p">[...],</span>
+ <span class="s2">&quot;tag_spans&quot;</span><span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;ARG0&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;V&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ARG1&quot;</span><span class="o">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+                 <span class="p">...}]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.consolidate_predictions">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">consolidate_predictions</code><span class="sig-paren">(</span><em class="sig-param">outputs: List[List[str]], sent_tokens: List[allennlp.data.tokenizers.token.Token]</em><span class="sig-paren">)</span> &#x2192; Dict[str, List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L132-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.consolidate_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identify that certain predicates are part of a multiword predicate
+(e.g., “decided to run”) in which case, we don’t need to return
+the embedded predicate (“run”).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.get_coherent_next_tag">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">get_coherent_next_tag</code><span class="sig-paren">(</span><em class="sig-param">prev_label: str</em>, <em class="sig-param">cur_label: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L88-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.get_coherent_next_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a coherent tag, given previous tag and current label.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.get_predicate_indices">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">get_predicate_indices</code><span class="sig-paren">(</span><em class="sig-param">tags: List[str]</em><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L63-L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.get_predicate_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the word indices of a predicate in BIO tags.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.get_predicate_text">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">get_predicate_text</code><span class="sig-paren">(</span><em class="sig-param">sent_tokens: List[allennlp.data.tokenizers.token.Token], tags: List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L69-L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.get_predicate_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the predicate in this prediction.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.join_mwp">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">join_mwp</code><span class="sig-paren">(</span><em class="sig-param">tags: List[str]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L13-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.join_mwp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Join multi-word predicates to a single
+predicate (‘V’) token.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.make_oie_string">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">make_oie_string</code><span class="sig-paren">(</span><em class="sig-param">tokens: List[allennlp.data.tokenizers.token.Token], tags: List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L35-L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.make_oie_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a list of model outputs (i.e., a list of lists of bio tags, each
+pertaining to a single word), returns an inline bracket representation of
+the prediction.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.merge_overlapping_predictions">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">merge_overlapping_predictions</code><span class="sig-paren">(</span><em class="sig-param">tags1: List[str], tags2: List[str]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L101-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.merge_overlapping_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two predictions into one. Assumes the predicate in tags1 overlap with
+the predicate of tags2.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.predicates_overlap">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">predicates_overlap</code><span class="sig-paren">(</span><em class="sig-param">tags1: List[str], tags2: List[str]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L76-L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.predicates_overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether the predicate in BIO tags1 overlap
+with those of tags2.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.predictors.open_information_extraction.sanitize_label">
+<code class="sig-prename descclassname">allennlp.predictors.open_information_extraction.</code><code class="sig-name descname">sanitize_label</code><span class="sig-paren">(</span><em class="sig-param">label: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/open_information_extraction.py#L161-L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.open_information_extraction.sanitize_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sanitize a BIO label - this deals with OIE
+labels sometimes having some noise, as parentheses.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.event2mind"><span id="event2mind"></span></span><dl class="class">
+<dt id="allennlp.predictors.event2mind.Event2MindPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.event2mind.</code><code class="sig-name descname">Event2MindPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/event2mind.py#L8-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.event2mind.Event2MindPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <a class="reference internal" href="allennlp.models.event2mind.html#module-allennlp.models.event2mind" title="allennlp.models.event2mind"><code class="xref py py-class docutils literal notranslate"><span class="pre">event2mind</span></code></a> model.</p>
+<dl class="method">
+<dt id="allennlp.predictors.event2mind.Event2MindPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">source: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/event2mind.py#L13-L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.event2mind.Event2MindPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a source string of some event, returns a JSON dictionary
+containing, for each target type, the top predicted sequences as
+indices, as tokens and the log probability of each.</p>
+<p>The JSON dictionary looks like:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="sb">`</span><span class="si">${</span><span class="nx">target_type</span><span class="si">}</span><span class="sb">_top_k_predictions`</span><span class="o">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">...],</span>
+    <span class="sb">`</span><span class="si">${</span><span class="nx">target_type</span><span class="si">}</span><span class="sb">_top_k_predicted_tokens`</span><span class="o">:</span> <span class="p">[[</span><span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="s2">&quot;feel&quot;</span><span class="p">,</span> <span class="s2">&quot;brave&quot;</span><span class="p">],</span> <span class="p">...],</span>
+    <span class="sb">`</span><span class="si">${</span><span class="nx">target_type</span><span class="si">}</span><span class="sb">_top_k_log_probabilities`</span><span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.301</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.046</span><span class="p">,</span> <span class="p">...]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By default <code class="docutils literal notranslate"><span class="pre">target_type</span></code> can be xreact, oreact and xintent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.atis_parser"><span id="atis-parser"></span></span><dl class="class">
+<dt id="allennlp.predictors.atis_parser.AtisParserPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.atis_parser.</code><code class="sig-name descname">AtisParserPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/atis_parser.py#L8-L18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.atis_parser.AtisParserPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for the <code class="xref py py-class docutils literal notranslate"><span class="pre">AtisSemanticParser</span></code> model.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.text_classifier"><span id="text-classifier"></span></span><dl class="class">
+<dt id="allennlp.predictors.text_classifier.TextClassifierPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.text_classifier.</code><code class="sig-name descname">TextClassifierPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/text_classifier.py#L15-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.text_classifier.TextClassifierPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<p>Predictor for any model that takes in a sentence and returns
+a single class for it.  In particular, it can be used with
+the <a class="reference internal" href="allennlp.models.basic_classifier.html#allennlp.models.basic_classifier.BasicClassifier" title="allennlp.models.basic_classifier.BasicClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicClassifier</span></code></a> model</p>
+<dl class="method">
+<dt id="allennlp.predictors.text_classifier.TextClassifierPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/text_classifier.py#L21-L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.text_classifier.TextClassifierPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.text_classifier.TextClassifierPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span> &#x2192; List[allennlp.data.instance.Instance]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/text_classifier.py#L36-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.text_classifier.TextClassifierPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a model’s outputs for an Instance, and it labels that instance according
+to the output. For example, in classification this function labels the instance according
+to the class with the highest probability. This function is used to to compute gradients
+of what the model predicted. The return type is a list because in some tasks there are
+multiple predictions in the output (e.g., in NER a model predicts multiple spans). In this
+case, each instance in the returned list of Instances contains an individual
+entity prediction as the label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.masked_language_model"><span id="masked-language-model"></span></span><dl class="class">
+<dt id="allennlp.predictors.masked_language_model.MaskedLanguageModelPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.masked_language_model.</code><code class="sig-name descname">MaskedLanguageModelPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/masked_language_model.py#L14-L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.masked_language_model.MaskedLanguageModelPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.predictors.masked_language_model.MaskedLanguageModelPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence_with_masks: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/masked_language_model.py#L15-L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.masked_language_model.MaskedLanguageModelPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.masked_language_model.MaskedLanguageModelPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/masked_language_model.py#L18-L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.masked_language_model.MaskedLanguageModelPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a model’s outputs for an Instance, and it labels that instance according
+to the output. For example, in classification this function labels the instance according
+to the class with the highest probability. This function is used to to compute gradients
+of what the model predicted. The return type is a list because in some tasks there are
+multiple predictions in the output (e.g., in NER a model predicts multiple spans). In this
+case, each instance in the returned list of Instances contains an individual
+entity prediction as the label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.predictors.next_token_lm"><span id="next-token-lm"></span></span><dl class="class">
+<dt id="allennlp.predictors.next_token_lm.NextTokenLMPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.predictors.next_token_lm.</code><code class="sig-name descname">NextTokenLMPredictor</code><span class="sig-paren">(</span><em class="sig-param">model: allennlp.models.model.Model</em>, <em class="sig-param">dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/next_token_lm.py#L14-L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.next_token_lm.NextTokenLMPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.predictors.predictor.Predictor" title="allennlp.predictors.predictor.Predictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.predictors.predictor.Predictor</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.predictors.next_token_lm.NextTokenLMPredictor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sentence: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/next_token_lm.py#L15-L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.next_token_lm.NextTokenLMPredictor.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.predictors.next_token_lm.NextTokenLMPredictor.predictions_to_labeled_instances">
+<code class="sig-name descname">predictions_to_labeled_instances</code><span class="sig-paren">(</span><em class="sig-param">self, instance: allennlp.data.instance.Instance, outputs: Dict[str, numpy.ndarray]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/predictors/next_token_lm.py#L18-L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.predictors.next_token_lm.NextTokenLMPredictor.predictions_to_labeled_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a model’s outputs for an Instance, and it labels that instance according
+to the output. For example, in classification this function labels the instance according
+to the class with the highest probability. This function is used to to compute gradients
+of what the model predicted. The return type is a list because in some tasks there are
+multiple predictions in the output (e.g., in NER a model predicts multiple spans). In this
+case, each instance in the returned list of Instances contains an individual
+entity prediction as the label.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.modules.html" class="btn btn-neutral float-right" title="allennlp.modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.models.srl_util.html" class="btn btn-neutral float-left" title="allennlp.models.srl_util" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

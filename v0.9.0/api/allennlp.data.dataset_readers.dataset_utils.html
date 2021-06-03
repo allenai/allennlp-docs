@@ -1,0 +1,995 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.data.dataset_readers.dataset_utils &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.data.dataset_readers.babi" href="allennlp.data.dataset_readers.babi.html" />
+    <link rel="prev" title="allennlp.data.dataset_readers.dataset_reader" href="allennlp.data.dataset_readers.dataset_reader.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.html">allennlp.data</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a> &raquo;</li>
+        
+      <li>allennlp.data.dataset_readers.dataset_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.data.dataset_readers.dataset_utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.data.dataset_readers.dataset_utils.ontonotes">
+<span id="allennlp-data-dataset-readers-dataset-utils"></span><h1>allennlp.data.dataset_readers.dataset_utils<a class="headerlink" href="#module-allennlp.data.dataset_readers.dataset_utils.ontonotes" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.ontonotes.</code><code class="sig-name descname">Ontonotes</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/ontonotes.py#L83-L449"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This DatasetReader is designed to read in the English OntoNotes v5.0 data
+in the format used by the CoNLL 2011/2012 shared tasks. In order to use this
+Reader, you must follow the instructions provided <a class="reference external" href="https://cemantix.org/data/ontonotes.html">here (v12 release):</a>, which will allow you to download
+the CoNLL style annotations for the  OntoNotes v5.0 release – LDC2013T19.tgz
+obtained from LDC.</p>
+<p>Once you have run the scripts on the extracted data, you will have a folder
+structured as follows:</p>
+<dl class="simple">
+<dt>conll-formatted-ontonotes-5.0/</dt><dd><dl class="simple">
+<dt>── data</dt><dd><dl class="simple">
+<dt>├── development</dt><dd><dl class="simple">
+<dt>└── data</dt><dd><dl class="simple">
+<dt>└── english</dt><dd><dl class="simple">
+<dt>└── annotations</dt><dd><p>├── bc
+├── bn
+├── mz
+├── nw
+├── pt
+├── tc
+└── wb</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>├── test</dt><dd><dl class="simple">
+<dt>└── data</dt><dd><dl class="simple">
+<dt>└── english</dt><dd><dl class="simple">
+<dt>└── annotations</dt><dd><p>├── bc
+├── bn
+├── mz
+├── nw
+├── pt
+├── tc
+└── wb</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>└── train</dt><dd><dl class="simple">
+<dt>└── data</dt><dd><dl class="simple">
+<dt>└── english</dt><dd><dl class="simple">
+<dt>└── annotations</dt><dd><p>├── bc
+├── bn
+├── mz
+├── nw
+├── pt
+├── tc
+└── wb</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>The file path provided to this class can then be any of the train, test or development
+directories(or the top level data directory, if you are not utilizing the splits).</p>
+<p>The data has the following format, ordered by column.</p>
+<dl>
+<dt>1 Document ID<span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>This is a variation on the document filename</p>
+</dd>
+<dt>2 Part number<span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Some files are divided into multiple parts numbered as 000, 001, 002, … etc.</p>
+</dd>
+<dt>3 Word number<span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>This is the word index of the word in that sentence.</p>
+</dd>
+<dt>4 Word<span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>This is the token as segmented/tokenized in the Treebank. Initially the <code class="docutils literal notranslate"><span class="pre">*_skel</span></code> file
+contain the placeholder [WORD] which gets replaced by the actual token from the
+Treebank which is part of the OntoNotes release.</p>
+</dd>
+<dt>5 POS Tag<span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>This is the Penn Treebank style part of speech. When parse information is missing,
+all part of speeches except the one for which there is some sense or proposition
+annotation are marked with a XX tag. The verb is marked with just a VERB tag.</p>
+</dd>
+<dt>6 Parse bit: <code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>This is the bracketed structure broken before the first open parenthesis in the parse,
+and the word/part-of-speech leaf replaced with a <code class="docutils literal notranslate"><span class="pre">*</span></code>. When the parse information is
+missing, the first word of a sentence is tagged as <code class="docutils literal notranslate"><span class="pre">(TOP*</span></code> and the last word is tagged
+as <code class="docutils literal notranslate"><span class="pre">*)</span></code> and all intermediate words are tagged with a <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+</dd>
+<dt>7 Predicate lemma: <code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>The predicate lemma is mentioned for the rows for which we have semantic role
+information or word sense information. All other rows are marked with a “-“.</p>
+</dd>
+<dt>8 Predicate Frameset ID: <code class="docutils literal notranslate"><span class="pre">int</span></code></dt><dd><p>The PropBank frameset ID of the predicate in Column 7.</p>
+</dd>
+<dt>9 Word sense: <code class="docutils literal notranslate"><span class="pre">float</span></code></dt><dd><p>This is the word sense of the word in Column 3.</p>
+</dd>
+<dt>10 Speaker/Author: <code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>This is the speaker or author name where available. Mostly in Broadcast Conversation
+and Web Log data. When not available the rows are marked with an “-“.</p>
+</dd>
+<dt>11 Named Entities: <code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>These columns identifies the spans representing various named entities. For documents
+which do not have named entity annotation, each line is represented with an <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+</dd>
+<dt>12+ Predicate Arguments: <code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><p>There is one column each of predicate argument structure information for the predicate
+mentioned in Column 7. If there are no predicates tagged in a sentence this is a
+single column with all rows marked with an <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+</dd>
+<dt>-1 Co-reference: <code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd><dl class="simple">
+<dt>Co-reference chain information encoded in a parenthesis structure. For documents that do</dt><dd><p>not have co-reference annotations, each line is represented with a “-“.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.dataset_document_iterator">
+<code class="sig-name descname">dataset_document_iterator</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file_path: str</em><span class="sig-paren">)</span> &#x2192; Iterator[List[allennlp.data.dataset_readers.dataset_utils.ontonotes.OntonotesSentence]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/ontonotes.py#L200-L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.dataset_document_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>An iterator over CONLL formatted files which yields documents, regardless
+of the number of document annotations in a particular file. This is useful
+for conll data which has been preprocessed, such as the preprocessing which
+takes place for the 2012 CONLL Coreference Resolution task.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.dataset_iterator">
+<code class="sig-name descname">dataset_iterator</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file_path: str</em><span class="sig-paren">)</span> &#x2192; Iterator[allennlp.data.dataset_readers.dataset_utils.ontonotes.OntonotesSentence]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/ontonotes.py#L176-L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.dataset_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>An iterator over the entire dataset, yielding all sentences processed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.dataset_path_iterator">
+<em class="property">static </em><code class="sig-name descname">dataset_path_iterator</code><span class="sig-paren">(</span><em class="sig-param">file_path: str</em><span class="sig-paren">)</span> &#x2192; Iterator[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/ontonotes.py#L183-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.dataset_path_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>An iterator returning file_paths in a directory
+containing CONLL-formatted files.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.sentence_iterator">
+<code class="sig-name descname">sentence_iterator</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">file_path: str</em><span class="sig-paren">)</span> &#x2192; Iterator[allennlp.data.dataset_readers.dataset_utils.ontonotes.OntonotesSentence]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/ontonotes.py#L227-L233"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.ontonotes.Ontonotes.sentence_iterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>An iterator over the sentences in an individual CONLL formatted file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.data.dataset_readers.dataset_utils.ontonotes.OntonotesSentence">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.ontonotes.</code><code class="sig-name descname">OntonotesSentence</code><span class="sig-paren">(</span><em class="sig-param">document_id: str, sentence_id: int, words: List[str], pos_tags: List[str], parse_tree: Optional[nltk.tree.Tree], predicate_lemmas: List[Optional[str]], predicate_framenet_ids: List[Optional[str]], word_senses: List[Optional[float]], speakers: List[Optional[str]], named_entities: List[str], srl_frames: List[Tuple[str, List[str]]], coref_spans: Set[Tuple[int, Tuple[int, int]]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/ontonotes.py#L14-L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.ontonotes.OntonotesSentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing the annotations available for a single CONLL formatted sentence.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>document_id</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>This is a variation on the document filename</p>
+</dd>
+<dt><strong>sentence_id</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>The integer ID of the sentence within a document.</p>
+</dd>
+<dt><strong>words</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>This is the tokens as segmented/tokenized in the Treebank.</p>
+</dd>
+<dt><strong>pos_tags</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>This is the Penn-Treebank-style part of speech. When parse information is missing,
+all parts of speech except the one for which there is some sense or proposition
+annotation are marked with a XX tag. The verb is marked with just a VERB tag.</p>
+</dd>
+<dt><strong>parse_tree</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">nltk.Tree</span></code></span></dt><dd><p>An nltk Tree representing the parse. It includes POS tags as pre-terminal nodes.
+When the parse information is missing, the parse will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>predicate_lemmas</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Optional[str]]</span></code></span></dt><dd><p>The predicate lemma of the words for which we have semantic role
+information or word sense information. All other indices are <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>predicate_framenet_ids</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Optional[int]]</span></code></span></dt><dd><p>The PropBank frameset ID of the lemmas in <code class="docutils literal notranslate"><span class="pre">predicate_lemmas</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>word_senses</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Optional[float]]</span></code></span></dt><dd><p>The word senses for the words in the sentence, or <code class="docutils literal notranslate"><span class="pre">None</span></code>. These are floats
+because the word sense can have values after the decimal, like <code class="docutils literal notranslate"><span class="pre">1.1</span></code>.</p>
+</dd>
+<dt><strong>speakers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Optional[str]]</span></code></span></dt><dd><p>The speaker information for the words in the sentence, if present, or <code class="docutils literal notranslate"><span class="pre">None</span></code>
+This is the speaker or author name where available. Mostly in Broadcast Conversation
+and Web Log data. When not available the rows are marked with an “-“.</p>
+</dd>
+<dt><strong>named_entities</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>The BIO tags for named entities in the sentence.</p>
+</dd>
+<dt><strong>srl_frames</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Tuple[str,</span> <span class="pre">List[str]]]</span></code></span></dt><dd><p>A dictionary keyed by the verb in the sentence for the given
+Propbank frame labels, in a BIO format.</p>
+</dd>
+<dt><strong>coref_spans</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Set[TypedSpan]</span></code></span></dt><dd><p>The spans for entity mentions involved in coreference resolution within the sentence.
+Each element is a tuple composed of (cluster_id, (start_index, end_index)). Indices
+are <cite>inclusive</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.dataset_utils.span_utils"></span><dl class="exception">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.InvalidTagSequence">
+<em class="property">exception </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">InvalidTagSequence</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L10-L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.InvalidTagSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.bio_tags_to_spans">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">bio_tags_to_spans</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence: List[str], classes_to_ignore: List[str] = None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[str, Tuple[int, int]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L69-L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.bio_tags_to_spans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a sequence corresponding to BIO tags, extracts spans.
+Spans are inclusive and can be of zero length, representing a single word span.
+Ill-formed spans are also included (i.e those which do not start with a “B-LABEL”),
+as otherwise it is possible to get a perfect precision score whilst still predicting
+ill-formed spans in addition to the correct spans. This function works properly when
+the spans are unlabeled (i.e., your labels are simply “B”, “I”, and “O”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tag_sequence</strong><span class="classifier">List[str], required.</span></dt><dd><p>The integer class labels for a sequence.</p>
+</dd>
+<dt><strong>classes_to_ignore</strong><span class="classifier">List[str], optional (default = None).</span></dt><dd><p>A list of string class labels <cite>excluding</cite> the bio tag
+which should be ignored when extracting spans.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>spans</strong><span class="classifier">List[TypedStringSpan]</span></dt><dd><p>The typed, extracted spans from the sequence, in the format (label, (span_start, span_end)).
+Note that the label <cite>does not</cite> contain any BIO tag prefixes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.bioul_tags_to_spans">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">bioul_tags_to_spans</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence: List[str], classes_to_ignore: List[str] = None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[str, Tuple[int, int]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L217-L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.bioul_tags_to_spans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a sequence corresponding to BIOUL tags, extracts spans.
+Spans are inclusive and can be of zero length, representing a single word span.
+Ill-formed spans are not allowed and will raise <code class="docutils literal notranslate"><span class="pre">InvalidTagSequence</span></code>.
+This function works properly when the spans are unlabeled (i.e., your labels are
+simply “B”, “I”, “O”, “U”, and “L”).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>tag_sequence</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, required.</span></dt><dd><p>The tag sequence encoded in BIOUL, e.g. [“B-PER”, “L-PER”, “O”].</p>
+</dd>
+<dt><strong>classes_to_ignore</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, optional (default = None).</span></dt><dd><p>A list of string class labels <cite>excluding</cite> the bio tag
+which should be ignored when extracting spans.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><strong>spans</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[TypedStringSpan]</span></code></span></dt><dd><p>The typed, extracted spans from the sequence, in the format (label, (span_start, span_end)).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.bmes_tags_to_spans">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">bmes_tags_to_spans</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence: List[str], classes_to_ignore: List[str] = None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[str, Tuple[int, int]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L376-L435"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.bmes_tags_to_spans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a sequence corresponding to BMES tags, extracts spans.
+Spans are inclusive and can be of zero length, representing a single word span.
+Ill-formed spans are also included (i.e those which do not start with a “B-LABEL”),
+as otherwise it is possible to get a perfect precision score whilst still predicting
+ill-formed spans in addition to the correct spans.
+This function works properly when the spans are unlabeled (i.e., your labels are
+simply “B”, “M”, “E” and “S”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tag_sequence</strong><span class="classifier">List[str], required.</span></dt><dd><p>The integer class labels for a sequence.</p>
+</dd>
+<dt><strong>classes_to_ignore</strong><span class="classifier">List[str], optional (default = None).</span></dt><dd><p>A list of string class labels <cite>excluding</cite> the bio tag
+which should be ignored when extracting spans.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>spans</strong><span class="classifier">List[TypedStringSpan]</span></dt><dd><p>The typed, extracted spans from the sequence, in the format (label, (span_start, span_end)).
+Note that the label <cite>does not</cite> contain any BIO tag prefixes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.enumerate_spans">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">enumerate_spans</code><span class="sig-paren">(</span><em class="sig-param">sentence: List[~T], offset: int = 0, max_span_width: int = None, min_span_width: int = 1, filter_function: Callable[[List[~T]], bool] = None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[int, int]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L20-L66"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.enumerate_spans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a sentence, return all token spans within the sentence. Spans are <cite>inclusive</cite>.
+Additionally, you can provide a maximum and minimum span width, which will be used
+to exclude spans outside of this range.</p>
+<p>Finally, you can provide a function mapping <code class="docutils literal notranslate"><span class="pre">List[T]</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>, which will
+be applied to every span to decide whether that span should be included. This
+allows filtering by length, regex matches, pos tags or any Spacy <code class="docutils literal notranslate"><span class="pre">Token</span></code>
+attributes, for example.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>sentence</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[T]</span></code>, required.</span></dt><dd><p>The sentence to generate spans for. The type is generic, as this function
+can be used with strings, or Spacy <code class="docutils literal notranslate"><span class="pre">Tokens</span></code> or other sequences.</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = 0)</span></dt><dd><p>A numeric offset to add to all span start and end indices. This is helpful
+if the sentence is part of a larger structure, such as a document, which
+the indices need to respect.</p>
+</dd>
+<dt><strong>max_span_width</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = None)</span></dt><dd><p>The maximum length of spans which should be included. Defaults to len(sentence).</p>
+</dd>
+<dt><strong>min_span_width</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = 1)</span></dt><dd><p>The minimum length of spans which should be included. Defaults to 1.</p>
+</dd>
+<dt><strong>filter_function</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Callable[[List[T]],</span> <span class="pre">bool]</span></code>, optional (default = None)</span></dt><dd><p>A function mapping sequences of the passed type T to a boolean value.
+If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the span is included in the returned spans from the
+sentence, otherwise it is excluded..</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.iob1_tags_to_spans">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">iob1_tags_to_spans</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence: List[str], classes_to_ignore: List[str] = None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[str, Tuple[int, int]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L142-L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.iob1_tags_to_spans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a sequence corresponding to IOB1 tags, extracts spans.
+Spans are inclusive and can be of zero length, representing a single word span.
+Ill-formed spans are also included (i.e., those where “B-LABEL” is not preceded
+by “I-LABEL” or “B-LABEL”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tag_sequence</strong><span class="classifier">List[str], required.</span></dt><dd><p>The integer class labels for a sequence.</p>
+</dd>
+<dt><strong>classes_to_ignore</strong><span class="classifier">List[str], optional (default = None).</span></dt><dd><p>A list of string class labels <cite>excluding</cite> the bio tag
+which should be ignored when extracting spans.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>spans</strong><span class="classifier">List[TypedStringSpan]</span></dt><dd><p>The typed, extracted spans from the sequence, in the format (label, (span_start, span_end)).
+Note that the label <cite>does not</cite> contain any BIO tag prefixes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.iob1_to_bioul">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">iob1_to_bioul</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence: List[str]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L262-L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.iob1_to_bioul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.span_utils.to_bioul">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.span_utils.</code><code class="sig-name descname">to_bioul</code><span class="sig-paren">(</span><em class="sig-param">tag_sequence: List[str], encoding: str = 'IOB1'</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/span_utils.py#L267-L373"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.span_utils.to_bioul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a tag sequence encoded with IOB1 labels, recode to BIOUL.</p>
+<p>In the IOB1 scheme, I is a token inside a span, O is a token outside
+a span and B is the beginning of span immediately following another
+span of the same type.</p>
+<p>In the BIO scheme, I is a token inside a span, O is a token outside
+a span and B is the beginning of a span.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>tag_sequence</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, required.</span></dt><dd><p>The tag sequence encoded in IOB1, e.g. [“I-PER”, “I-PER”, “O”].</p>
+</dd>
+<dt><strong>encoding</strong><span class="classifier"><cite>str</cite>, optional, (default = <code class="docutils literal notranslate"><span class="pre">IOB1</span></code>).</span></dt><dd><p>The encoding type to convert from. Must be either “IOB1” or “BIO”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bioul_sequence: <code class="docutils literal notranslate"><span class="pre">List[str]</span></code></dt><dd><p>The tag sequence encoded in IOB1, e.g. [“B-PER”, “L-PER”, “O”].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.dataset_utils.text2sql_utils"></span><p>Utility functions for reading the standardised text2sql datasets presented in
+<a class="reference external" href="https://arxiv.org/abs/1806.09029">“Improving Text to SQL Evaluation Methodology”</a></p>
+<dl class="class">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">SqlData</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L12-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<p>A utility class for reading in text2sql data.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>text</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>The tokens in the text of the query.</p>
+</dd>
+<dt><strong>text_with_variables</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>The tokens in the text of the query with variables
+mapped to table names/abstract variables.</p>
+</dd>
+<dt><strong>variable_tags</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>Labels for each word in <code class="docutils literal notranslate"><span class="pre">text</span></code> which correspond to
+which variable in the sql the token is linked to. “O”
+is used to denote no tag.</p>
+</dd>
+<dt><strong>sql</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>The tokens in the SQL query which corresponds to the text.</p>
+</dd>
+<dt><strong>text_variables</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code></span></dt><dd><p>A dictionary of variables associated with the text, e.g. {“city_name0”: “san fransisco”}</p>
+</dd>
+<dt><strong>sql_variables</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Dict[str,</span> <span class="pre">str]]</span></code></span></dt><dd><p>A dictionary of variables and column references associated with the sql query.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.sql">
+<em class="property">property </em><code class="sig-name descname">sql</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.sql_variables">
+<em class="property">property </em><code class="sig-name descname">sql_variables</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.sql_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.text">
+<em class="property">property </em><code class="sig-name descname">text</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.text_variables">
+<em class="property">property </em><code class="sig-name descname">text_variables</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.text_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.text_with_variables">
+<em class="property">property </em><code class="sig-name descname">text_with_variables</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.text_with_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.variable_tags">
+<em class="property">property </em><code class="sig-name descname">variable_tags</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData.variable_tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">TableColumn</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">column_type</em>, <em class="sig-param">is_primary_key</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L41-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn.column_type">
+<em class="property">property </em><code class="sig-name descname">column_type</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn.column_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn.is_primary_key">
+<em class="property">property </em><code class="sig-name descname">is_primary_key</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn.is_primary_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.clean_and_split_sql">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">clean_and_split_sql</code><span class="sig-paren">(</span><em class="sig-param">sql: str</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L89-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.clean_and_split_sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleans up and unifies a SQL query. This involves unifying quoted strings
+and splitting brackets which aren’t formatted consistently in the data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.clean_unneeded_aliases">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">clean_unneeded_aliases</code><span class="sig-paren">(</span><em class="sig-param">sql_tokens: List[str]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L123-L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.clean_unneeded_aliases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.column_has_numeric_type">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">column_has_numeric_type</code><span class="sig-paren">(</span><em class="sig-param">column: allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L56-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.column_has_numeric_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.column_has_string_type">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">column_has_string_type</code><span class="sig-paren">(</span><em class="sig-param">column: allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L46-L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.column_has_string_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.process_sql_data">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">process_sql_data</code><span class="sig-paren">(</span><em class="sig-param">data: List[Dict[str, Any]], use_all_sql: bool = False, use_all_queries: bool = False, remove_unneeded_aliases: bool = False, schema: Dict[str, List[allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn]] = None</em><span class="sig-paren">)</span> &#x2192; Iterable[allennlp.data.dataset_readers.dataset_utils.text2sql_utils.SqlData]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L187-L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.process_sql_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>A utility function for reading in text2sql data. The blob is
+the result of loading the json from a file produced by the script
+<code class="docutils literal notranslate"><span class="pre">scripts/reformat_text2sql_data.py</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">JsonDict</span></code></span></dt><dd></dd>
+<dt><strong>use_all_sql</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = False)</span></dt><dd><p>Whether to use all of the sql queries which have identical semantics,
+or whether to just use the first one.</p>
+</dd>
+<dt><strong>use_all_queries</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, (default = False)</span></dt><dd><p>Whether or not to enforce query sentence uniqueness. If false,
+duplicated queries will occur in the dataset as separate instances,
+as for a given SQL query, not only are there multiple queries with
+the same template, but there are also duplicate queries.</p>
+</dd>
+<dt><strong>remove_unneeded_aliases</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, (default = False)</span></dt><dd><p>The text2sql data by default creates alias names for <cite>all</cite> tables,
+regardless of whether the table is derived or if it is identical to
+the original (e.g SELECT TABLEalias0.COLUMN FROM TABLE AS TABLEalias0).
+This is not necessary and makes the action sequence and grammar manipulation
+much harder in a grammar based decoder. Note that this does not
+remove aliases which are legitimately required, such as when a new
+table is formed by performing operations on the original table.</p>
+</dd>
+<dt><strong>schema</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">List[TableColumn]]</span></code>, optional, (default = None)</span></dt><dd><p>A schema to resolve primary keys against. Converts ‘ID’ column names
+to their actual name with respect to the Primary Key for the table
+in the schema.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.read_dataset_schema">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">read_dataset_schema</code><span class="sig-paren">(</span><em class="sig-param">schema_path: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, List[allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L152-L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.read_dataset_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a schema from the text2sql data, returning a dictionary
+mapping table names to their columns and respective types.
+This handles columns in an arbitrary order and also allows
+either <code class="docutils literal notranslate"><span class="pre">{Table,</span> <span class="pre">Field}</span></code> or <code class="docutils literal notranslate"><span class="pre">{Table,</span> <span class="pre">Field}</span> <span class="pre">Name</span></code> as headers,
+because both appear in the data. It also uppercases table and
+column names if they are not already uppercase.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>schema_path</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, required.</span></dt><dd><p>The path to the csv schema.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A dictionary mapping table names to typed columns.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.replace_variables">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">replace_variables</code><span class="sig-paren">(</span><em class="sig-param">sentence: List[str], sentence_variables: Dict[str, str]</em><span class="sig-paren">)</span> &#x2192; Tuple[List[str], List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L65-L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.replace_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces abstract variables in text with their concrete counterparts.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.resolve_primary_keys_in_schema">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">resolve_primary_keys_in_schema</code><span class="sig-paren">(</span><em class="sig-param">sql_tokens: List[str], schema: Dict[str, List[allennlp.data.dataset_readers.dataset_utils.text2sql_utils.TableColumn]]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L104-L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.resolve_primary_keys_in_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some examples in the text2sql datasets use ID as a column reference to the
+column of a table which has a primary key. This causes problems if you are trying
+to constrain a grammar to only produce the column names directly, because you don’t
+know what ID refers to. So instead of dealing with that, we just replace it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.dataset_utils.text2sql_utils.split_table_and_column_names">
+<code class="sig-prename descclassname">allennlp.data.dataset_readers.dataset_utils.text2sql_utils.</code><code class="sig-name descname">split_table_and_column_names</code><span class="sig-paren">(</span><em class="sig-param">table: str</em><span class="sig-paren">)</span> &#x2192; Iterable[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/dataset_utils/text2sql_utils.py#L82-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.dataset_utils.text2sql_utils.split_table_and_column_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.data.dataset_readers.babi.html" class="btn btn-neutral float-right" title="allennlp.data.dataset_readers.babi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.data.dataset_readers.dataset_reader.html" class="btn btn-neutral float-left" title="allennlp.data.dataset_readers.dataset_reader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

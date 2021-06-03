@@ -1,0 +1,4196 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AllenNLP is a ..">
+      
+      
+        <link rel="canonical" href="https://allennlp.org/api/training/trainer/">
+      
+      
+      <link rel="shortcut icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>trainer - AllenNLP v1.1.0rc1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a46bcfb3.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trainer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://allennlp.org/" title="AllenNLP v1.1.0rc1" class="md-header-nav__button md-logo" aria-label="AllenNLP v1.1.0rc1">
+      
+  <img src="../../../img/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            AllenNLP v1.1.0rc1
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              trainer
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://allennlp.org/" title="AllenNLP v1.1.0rc1" class="md-nav__button md-logo" aria-label="AllenNLP v1.1.0rc1">
+      
+  <img src="../../../img/favicon.ico" alt="logo">
+
+    </a>
+    AllenNLP v1.1.0rc1
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/allenai/allennlp" title="Repository" class="md-nav__link">
+      Repository
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Versions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Versions" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Versions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/latest/" title="Latest" class="md-nav__link">
+      Latest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/stable/" title="Stable" class="md-nav__link">
+      Stable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/master/" title="Master" class="md-nav__link">
+      Master
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      commands
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="commands" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        commands
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/evaluate/" title="evaluate" class="md-nav__link">
+      evaluate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/find_learning_rate/" title="find_learning_rate" class="md-nav__link">
+      find_learning_rate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/predict/" title="predict" class="md-nav__link">
+      predict
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/print_results/" title="print_results" class="md-nav__link">
+      print_results
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/subcommand/" title="subcommand" class="md-nav__link">
+      subcommand
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/test_install/" title="test_install" class="md-nav__link">
+      test_install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../commands/train/" title="train" class="md-nav__link">
+      train
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      common
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="common" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        common
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/cached_transformers/" title="cached_transformers" class="md-nav__link">
+      cached_transformers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/checks/" title="checks" class="md-nav__link">
+      checks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/file_utils/" title="file_utils" class="md-nav__link">
+      file_utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/from_params/" title="from_params" class="md-nav__link">
+      from_params
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/lazy/" title="lazy" class="md-nav__link">
+      lazy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/logging/" title="logging" class="md-nav__link">
+      logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/params/" title="params" class="md-nav__link">
+      params
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/plugins/" title="plugins" class="md-nav__link">
+      plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/registrable/" title="registrable" class="md-nav__link">
+      registrable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-10" type="checkbox" id="nav-4-2-10">
+    
+    <label class="md-nav__link" for="nav-4-2-10">
+      testing
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="testing" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-2-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        testing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/testing/model_test_case/" title="model_test_case" class="md-nav__link">
+      model_test_case
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/testing/test_case/" title="test_case" class="md-nav__link">
+      test_case
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/tqdm/" title="tqdm" class="md-nav__link">
+      tqdm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../common/util/" title="util" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      data
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="data" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/batch/" title="batch" class="md-nav__link">
+      batch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataloader/" title="dataloader" class="md-nav__link">
+      dataloader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3">
+    
+    <label class="md-nav__link" for="nav-4-3-3">
+      dataset_readers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/babi/" title="babi" class="md-nav__link">
+      babi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/conll2003/" title="conll2003" class="md-nav__link">
+      conll2003
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/dataset_reader/" title="dataset_reader" class="md-nav__link">
+      dataset_reader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3-4" type="checkbox" id="nav-4-3-3-4">
+    
+    <label class="md-nav__link" for="nav-4-3-3-4">
+      dataset_utils
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_utils" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-3-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        dataset_utils
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/dataset_utils/span_utils/" title="span_utils" class="md-nav__link">
+      span_utils
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/interleaving_dataset_reader/" title="interleaving_dataset_reader" class="md-nav__link">
+      interleaving_dataset_reader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/sequence_tagging/" title="sequence_tagging" class="md-nav__link">
+      sequence_tagging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/sharded_dataset_reader/" title="sharded_dataset_reader" class="md-nav__link">
+      sharded_dataset_reader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/dataset_readers/text_classification_json/" title="text_classification_json" class="md-nav__link">
+      text_classification_json
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-4" type="checkbox" id="nav-4-3-4">
+    
+    <label class="md-nav__link" for="nav-4-3-4">
+      fields
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="fields" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        fields
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/adjacency_field/" title="adjacency_field" class="md-nav__link">
+      adjacency_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/array_field/" title="array_field" class="md-nav__link">
+      array_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/field/" title="field" class="md-nav__link">
+      field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/flag_field/" title="flag_field" class="md-nav__link">
+      flag_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/index_field/" title="index_field" class="md-nav__link">
+      index_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/label_field/" title="label_field" class="md-nav__link">
+      label_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/list_field/" title="list_field" class="md-nav__link">
+      list_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/metadata_field/" title="metadata_field" class="md-nav__link">
+      metadata_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/multilabel_field/" title="multilabel_field" class="md-nav__link">
+      multilabel_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/namespace_swapping_field/" title="namespace_swapping_field" class="md-nav__link">
+      namespace_swapping_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/sequence_field/" title="sequence_field" class="md-nav__link">
+      sequence_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/sequence_label_field/" title="sequence_label_field" class="md-nav__link">
+      sequence_label_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/span_field/" title="span_field" class="md-nav__link">
+      span_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/fields/text_field/" title="text_field" class="md-nav__link">
+      text_field
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/instance/" title="instance" class="md-nav__link">
+      instance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-6" type="checkbox" id="nav-4-3-6">
+    
+    <label class="md-nav__link" for="nav-4-3-6">
+      samplers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="samplers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        samplers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/samplers/bucket_batch_sampler/" title="bucket_batch_sampler" class="md-nav__link">
+      bucket_batch_sampler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/samplers/max_tokens_batch_sampler/" title="max_tokens_batch_sampler" class="md-nav__link">
+      max_tokens_batch_sampler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/samplers/samplers/" title="samplers" class="md-nav__link">
+      samplers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-7" type="checkbox" id="nav-4-3-7">
+    
+    <label class="md-nav__link" for="nav-4-3-7">
+      token_indexers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="token_indexers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        token_indexers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/elmo_indexer/" title="elmo_indexer" class="md-nav__link">
+      elmo_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/pretrained_transformer_indexer/" title="pretrained_transformer_indexer" class="md-nav__link">
+      pretrained_transformer_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/pretrained_transformer_mismatched_indexer/" title="pretrained_transformer_mismatched_indexer" class="md-nav__link">
+      pretrained_transformer_mismatched_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/single_id_token_indexer/" title="single_id_token_indexer" class="md-nav__link">
+      single_id_token_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/spacy_indexer/" title="spacy_indexer" class="md-nav__link">
+      spacy_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/token_characters_indexer/" title="token_characters_indexer" class="md-nav__link">
+      token_characters_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/token_indexers/token_indexer/" title="token_indexer" class="md-nav__link">
+      token_indexer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-8" type="checkbox" id="nav-4-3-8">
+    
+    <label class="md-nav__link" for="nav-4-3-8">
+      tokenizers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="tokenizers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        tokenizers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/character_tokenizer/" title="character_tokenizer" class="md-nav__link">
+      character_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/letters_digits_tokenizer/" title="letters_digits_tokenizer" class="md-nav__link">
+      letters_digits_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/pretrained_transformer_tokenizer/" title="pretrained_transformer_tokenizer" class="md-nav__link">
+      pretrained_transformer_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/sentence_splitter/" title="sentence_splitter" class="md-nav__link">
+      sentence_splitter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/spacy_tokenizer/" title="spacy_tokenizer" class="md-nav__link">
+      spacy_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/token/" title="token" class="md-nav__link">
+      token
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/tokenizer/" title="tokenizer" class="md-nav__link">
+      tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/tokenizers/whitespace_tokenizer/" title="whitespace_tokenizer" class="md-nav__link">
+      whitespace_tokenizer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/vocabulary/" title="vocabulary" class="md-nav__link">
+      vocabulary
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      interpret
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="interpret" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        interpret
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-1" type="checkbox" id="nav-4-4-1">
+    
+    <label class="md-nav__link" for="nav-4-4-1">
+      attackers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="attackers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        attackers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/attackers/attacker/" title="attacker" class="md-nav__link">
+      attacker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/attackers/hotflip/" title="hotflip" class="md-nav__link">
+      hotflip
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/attackers/input_reduction/" title="input_reduction" class="md-nav__link">
+      input_reduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/attackers/utils/" title="utils" class="md-nav__link">
+      utils
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-2" type="checkbox" id="nav-4-4-2">
+    
+    <label class="md-nav__link" for="nav-4-4-2">
+      saliency_interpreters
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="saliency_interpreters" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        saliency_interpreters
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/saliency_interpreters/integrated_gradient/" title="integrated_gradient" class="md-nav__link">
+      integrated_gradient
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/saliency_interpreters/saliency_interpreter/" title="saliency_interpreter" class="md-nav__link">
+      saliency_interpreter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/saliency_interpreters/simple_gradient/" title="simple_gradient" class="md-nav__link">
+      simple_gradient
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interpret/saliency_interpreters/smooth_gradient/" title="smooth_gradient" class="md-nav__link">
+      smooth_gradient
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      models
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../models/archival/" title="archival" class="md-nav__link">
+      archival
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../models/basic_classifier/" title="basic_classifier" class="md-nav__link">
+      basic_classifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../models/model/" title="model" class="md-nav__link">
+      model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../models/simple_tagger/" title="simple_tagger" class="md-nav__link">
+      simple_tagger
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+    
+    <label class="md-nav__link" for="nav-4-6">
+      modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-1" type="checkbox" id="nav-4-6-1">
+    
+    <label class="md-nav__link" for="nav-4-6-1">
+      attention
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="attention" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        attention
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/attention/additive_attention/" title="additive_attention" class="md-nav__link">
+      additive_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/attention/attention/" title="attention" class="md-nav__link">
+      attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/attention/bilinear_attention/" title="bilinear_attention" class="md-nav__link">
+      bilinear_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/attention/cosine_attention/" title="cosine_attention" class="md-nav__link">
+      cosine_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/attention/dot_product_attention/" title="dot_product_attention" class="md-nav__link">
+      dot_product_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/attention/linear_attention/" title="linear_attention" class="md-nav__link">
+      linear_attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/augmented_lstm/" title="augmented_lstm" class="md-nav__link">
+      augmented_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/bimpm_matching/" title="bimpm_matching" class="md-nav__link">
+      bimpm_matching
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/conditional_random_field/" title="conditional_random_field" class="md-nav__link">
+      conditional_random_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/elmo/" title="elmo" class="md-nav__link">
+      elmo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/elmo_lstm/" title="elmo_lstm" class="md-nav__link">
+      elmo_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/encoder_base/" title="encoder_base" class="md-nav__link">
+      encoder_base
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/feedforward/" title="feedforward" class="md-nav__link">
+      feedforward
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/gated_sum/" title="gated_sum" class="md-nav__link">
+      gated_sum
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/highway/" title="highway" class="md-nav__link">
+      highway
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/input_variational_dropout/" title="input_variational_dropout" class="md-nav__link">
+      input_variational_dropout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/layer_norm/" title="layer_norm" class="md-nav__link">
+      layer_norm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/lstm_cell_with_projection/" title="lstm_cell_with_projection" class="md-nav__link">
+      lstm_cell_with_projection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/masked_layer_norm/" title="masked_layer_norm" class="md-nav__link">
+      masked_layer_norm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-15" type="checkbox" id="nav-4-6-15">
+    
+    <label class="md-nav__link" for="nav-4-6-15">
+      matrix_attention
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="matrix_attention" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-15">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        matrix_attention
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/matrix_attention/bilinear_matrix_attention/" title="bilinear_matrix_attention" class="md-nav__link">
+      bilinear_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/matrix_attention/cosine_matrix_attention/" title="cosine_matrix_attention" class="md-nav__link">
+      cosine_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/matrix_attention/dot_product_matrix_attention/" title="dot_product_matrix_attention" class="md-nav__link">
+      dot_product_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/matrix_attention/linear_matrix_attention/" title="linear_matrix_attention" class="md-nav__link">
+      linear_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/matrix_attention/matrix_attention/" title="matrix_attention" class="md-nav__link">
+      matrix_attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/maxout/" title="maxout" class="md-nav__link">
+      maxout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/residual_with_layer_dropout/" title="residual_with_layer_dropout" class="md-nav__link">
+      residual_with_layer_dropout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/sampled_softmax_loss/" title="sampled_softmax_loss" class="md-nav__link">
+      sampled_softmax_loss
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/scalar_mix/" title="scalar_mix" class="md-nav__link">
+      scalar_mix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-20" type="checkbox" id="nav-4-6-20">
+    
+    <label class="md-nav__link" for="nav-4-6-20">
+      seq2seq_encoders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="seq2seq_encoders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-20">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        seq2seq_encoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/compose_encoder/" title="compose_encoder" class="md-nav__link">
+      compose_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/feedforward_encoder/" title="feedforward_encoder" class="md-nav__link">
+      feedforward_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/gated_cnn_encoder/" title="gated_cnn_encoder" class="md-nav__link">
+      gated_cnn_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/pass_through_encoder/" title="pass_through_encoder" class="md-nav__link">
+      pass_through_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/pytorch_seq2seq_wrapper/" title="pytorch_seq2seq_wrapper" class="md-nav__link">
+      pytorch_seq2seq_wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/pytorch_transformer_wrapper/" title="pytorch_transformer_wrapper" class="md-nav__link">
+      pytorch_transformer_wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2seq_encoders/seq2seq_encoder/" title="seq2seq_encoder" class="md-nav__link">
+      seq2seq_encoder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-21" type="checkbox" id="nav-4-6-21">
+    
+    <label class="md-nav__link" for="nav-4-6-21">
+      seq2vec_encoders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="seq2vec_encoders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-21">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        seq2vec_encoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/bert_pooler/" title="bert_pooler" class="md-nav__link">
+      bert_pooler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/boe_encoder/" title="boe_encoder" class="md-nav__link">
+      boe_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/cls_pooler/" title="cls_pooler" class="md-nav__link">
+      cls_pooler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/cnn_encoder/" title="cnn_encoder" class="md-nav__link">
+      cnn_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/cnn_highway_encoder/" title="cnn_highway_encoder" class="md-nav__link">
+      cnn_highway_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/pytorch_seq2vec_wrapper/" title="pytorch_seq2vec_wrapper" class="md-nav__link">
+      pytorch_seq2vec_wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/seq2vec_encoders/seq2vec_encoder/" title="seq2vec_encoder" class="md-nav__link">
+      seq2vec_encoder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/softmax_loss/" title="softmax_loss" class="md-nav__link">
+      softmax_loss
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-23" type="checkbox" id="nav-4-6-23">
+    
+    <label class="md-nav__link" for="nav-4-6-23">
+      span_extractors
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="span_extractors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        span_extractors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/span_extractors/bidirectional_endpoint_span_extractor/" title="bidirectional_endpoint_span_extractor" class="md-nav__link">
+      bidirectional_endpoint_span_extractor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/span_extractors/endpoint_span_extractor/" title="endpoint_span_extractor" class="md-nav__link">
+      endpoint_span_extractor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/span_extractors/self_attentive_span_extractor/" title="self_attentive_span_extractor" class="md-nav__link">
+      self_attentive_span_extractor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/span_extractors/span_extractor/" title="span_extractor" class="md-nav__link">
+      span_extractor
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/stacked_alternating_lstm/" title="stacked_alternating_lstm" class="md-nav__link">
+      stacked_alternating_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/stacked_bidirectional_lstm/" title="stacked_bidirectional_lstm" class="md-nav__link">
+      stacked_bidirectional_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-26" type="checkbox" id="nav-4-6-26">
+    
+    <label class="md-nav__link" for="nav-4-6-26">
+      text_field_embedders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="text_field_embedders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-26">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        text_field_embedders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/text_field_embedders/basic_text_field_embedder/" title="basic_text_field_embedder" class="md-nav__link">
+      basic_text_field_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/text_field_embedders/text_field_embedder/" title="text_field_embedder" class="md-nav__link">
+      text_field_embedder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/time_distributed/" title="time_distributed" class="md-nav__link">
+      time_distributed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-28" type="checkbox" id="nav-4-6-28">
+    
+    <label class="md-nav__link" for="nav-4-6-28">
+      token_embedders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="token_embedders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-28">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        token_embedders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/bag_of_word_counts_token_embedder/" title="bag_of_word_counts_token_embedder" class="md-nav__link">
+      bag_of_word_counts_token_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/elmo_token_embedder/" title="elmo_token_embedder" class="md-nav__link">
+      elmo_token_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/embedding/" title="embedding" class="md-nav__link">
+      embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/empty_embedder/" title="empty_embedder" class="md-nav__link">
+      empty_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/pass_through_token_embedder/" title="pass_through_token_embedder" class="md-nav__link">
+      pass_through_token_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/pretrained_transformer_embedder/" title="pretrained_transformer_embedder" class="md-nav__link">
+      pretrained_transformer_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/pretrained_transformer_mismatched_embedder/" title="pretrained_transformer_mismatched_embedder" class="md-nav__link">
+      pretrained_transformer_mismatched_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/token_characters_encoder/" title="token_characters_encoder" class="md-nav__link">
+      token_characters_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/token_embedders/token_embedder/" title="token_embedder" class="md-nav__link">
+      token_embedder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+    
+    <label class="md-nav__link" for="nav-4-7">
+      nn
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="nn" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        nn
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/activations/" title="activations" class="md-nav__link">
+      activations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/beam_search/" title="beam_search" class="md-nav__link">
+      beam_search
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/chu_liu_edmonds/" title="chu_liu_edmonds" class="md-nav__link">
+      chu_liu_edmonds
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/initializers/" title="initializers" class="md-nav__link">
+      initializers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7-5" type="checkbox" id="nav-4-7-5">
+    
+    <label class="md-nav__link" for="nav-4-7-5">
+      regularizers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="regularizers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-7-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        regularizers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/regularizers/regularizer/" title="regularizer" class="md-nav__link">
+      regularizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/regularizers/regularizer_applicator/" title="regularizer_applicator" class="md-nav__link">
+      regularizer_applicator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/regularizers/regularizers/" title="regularizers" class="md-nav__link">
+      regularizers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nn/util/" title="util" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      predictors
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../predictors/predictor/" title="predictor" class="md-nav__link">
+      predictor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../predictors/sentence_tagger/" title="sentence_tagger" class="md-nav__link">
+      sentence_tagger
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../predictors/text_classifier/" title="text_classifier" class="md-nav__link">
+      text_classifier
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="tools" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/archive_surgery/" title="archive_surgery" class="md-nav__link">
+      archive_surgery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/create_elmo_embeddings_from_vocab/" title="create_elmo_embeddings_from_vocab" class="md-nav__link">
+      create_elmo_embeddings_from_vocab
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/inspect_cache/" title="inspect_cache" class="md-nav__link">
+      inspect_cache
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" checked>
+    
+    <label class="md-nav__link" for="nav-4-10">
+      training
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="training" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        training
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../checkpointer/" title="checkpointer" class="md-nav__link">
+      checkpointer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-2" type="checkbox" id="nav-4-10-2">
+    
+    <label class="md-nav__link" for="nav-4-10-2">
+      learning_rate_schedulers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="learning_rate_schedulers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        learning_rate_schedulers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../learning_rate_schedulers/cosine/" title="cosine" class="md-nav__link">
+      cosine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../learning_rate_schedulers/learning_rate_scheduler/" title="learning_rate_scheduler" class="md-nav__link">
+      learning_rate_scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../learning_rate_schedulers/linear_with_warmup/" title="linear_with_warmup" class="md-nav__link">
+      linear_with_warmup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../learning_rate_schedulers/noam/" title="noam" class="md-nav__link">
+      noam
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../learning_rate_schedulers/polynomial_decay/" title="polynomial_decay" class="md-nav__link">
+      polynomial_decay
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../learning_rate_schedulers/slanted_triangular/" title="slanted_triangular" class="md-nav__link">
+      slanted_triangular
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metric_tracker/" title="metric_tracker" class="md-nav__link">
+      metric_tracker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-4" type="checkbox" id="nav-4-10-4">
+    
+    <label class="md-nav__link" for="nav-4-10-4">
+      metrics
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="metrics" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/attachment_scores/" title="attachment_scores" class="md-nav__link">
+      attachment_scores
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/auc/" title="auc" class="md-nav__link">
+      auc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/average/" title="average" class="md-nav__link">
+      average
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/bleu/" title="bleu" class="md-nav__link">
+      bleu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/boolean_accuracy/" title="boolean_accuracy" class="md-nav__link">
+      boolean_accuracy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/categorical_accuracy/" title="categorical_accuracy" class="md-nav__link">
+      categorical_accuracy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/covariance/" title="covariance" class="md-nav__link">
+      covariance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/entropy/" title="entropy" class="md-nav__link">
+      entropy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/evalb_bracketing_scorer/" title="evalb_bracketing_scorer" class="md-nav__link">
+      evalb_bracketing_scorer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/f1_measure/" title="f1_measure" class="md-nav__link">
+      f1_measure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/fbeta_measure/" title="fbeta_measure" class="md-nav__link">
+      fbeta_measure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/mean_absolute_error/" title="mean_absolute_error" class="md-nav__link">
+      mean_absolute_error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/metric/" title="metric" class="md-nav__link">
+      metric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/pearson_correlation/" title="pearson_correlation" class="md-nav__link">
+      pearson_correlation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/perplexity/" title="perplexity" class="md-nav__link">
+      perplexity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/rouge/" title="rouge" class="md-nav__link">
+      rouge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/sequence_accuracy/" title="sequence_accuracy" class="md-nav__link">
+      sequence_accuracy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/span_based_f1_measure/" title="span_based_f1_measure" class="md-nav__link">
+      span_based_f1_measure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/spearman_correlation/" title="spearman_correlation" class="md-nav__link">
+      spearman_correlation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metrics/unigram_recall/" title="unigram_recall" class="md-nav__link">
+      unigram_recall
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-5" type="checkbox" id="nav-4-10-5">
+    
+    <label class="md-nav__link" for="nav-4-10-5">
+      momentum_schedulers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="momentum_schedulers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        momentum_schedulers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../momentum_schedulers/inverted_triangular/" title="inverted_triangular" class="md-nav__link">
+      inverted_triangular
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../momentum_schedulers/momentum_scheduler/" title="momentum_scheduler" class="md-nav__link">
+      momentum_scheduler
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../moving_average/" title="moving_average" class="md-nav__link">
+      moving_average
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../no_op_trainer/" title="no_op_trainer" class="md-nav__link">
+      no_op_trainer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../optimizers/" title="optimizers" class="md-nav__link">
+      optimizers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../scheduler/" title="scheduler" class="md-nav__link">
+      scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tensorboard_writer/" title="tensorboard_writer" class="md-nav__link">
+      tensorboard_writer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        trainer
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="trainer" class="md-nav__link md-nav__link--active">
+      trainer
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trainer" class="md-nav__link">
+    Trainer
+  </a>
+  
+    <nav class="md-nav" aria-label="Trainer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_implementation" class="md-nav__link">
+    default_implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train" class="md-nav__link">
+    train
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_checkpoint_state" class="md-nav__link">
+    get_checkpoint_state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batchcallback" class="md-nav__link">
+    BatchCallback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensoboardbatchmemoryusage" class="md-nav__link">
+    TensoboardBatchMemoryUsage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epochcallback" class="md-nav__link">
+    EpochCallback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradientdescenttrainer" class="md-nav__link">
+    GradientDescentTrainer
+  </a>
+  
+    <nav class="md-nav" aria-label="GradientDescentTrainer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rescale_gradients" class="md-nav__link">
+    rescale_gradients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_outputs" class="md-nav__link">
+    batch_outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train_1" class="md-nav__link">
+    train
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_checkpoint_state_1" class="md-nav__link">
+    get_checkpoint_state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from_partial_objects" class="md-nav__link">
+    from_partial_objects
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../util/" title="util" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../CONTRIBUTING/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../CHANGELOG/" title="CHANGELOG" class="md-nav__link">
+      CHANGELOG
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://raw.githubusercontent.com/allenai/allennlp/master/LICENSE" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trainer" class="md-nav__link">
+    Trainer
+  </a>
+  
+    <nav class="md-nav" aria-label="Trainer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_implementation" class="md-nav__link">
+    default_implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train" class="md-nav__link">
+    train
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_checkpoint_state" class="md-nav__link">
+    get_checkpoint_state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batchcallback" class="md-nav__link">
+    BatchCallback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensoboardbatchmemoryusage" class="md-nav__link">
+    TensoboardBatchMemoryUsage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epochcallback" class="md-nav__link">
+    EpochCallback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradientdescenttrainer" class="md-nav__link">
+    GradientDescentTrainer
+  </a>
+  
+    <nav class="md-nav" aria-label="GradientDescentTrainer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rescale_gradients" class="md-nav__link">
+    rescale_gradients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_outputs" class="md-nav__link">
+    batch_outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train_1" class="md-nav__link">
+    train
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_checkpoint_state_1" class="md-nav__link">
+    get_checkpoint_state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from_partial_objects" class="md-nav__link">
+    from_partial_objects
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>trainer</h1>
+                
+                <p>[ <em>allennlp</em><em>.training</em><strong>.trainer</strong> ]</p>
+<hr />
+<p><a name=".allennlp.training.trainer.Trainer"></a></p>
+<h2 id="trainer">Trainer<a class="headerlink" href="#trainer" title="Permanent link">#</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Trainer</span><span class="p">(</span><span class="n">Registrable</span><span class="p">):</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">serialization_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">cuda_device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">distributed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">local_rank</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">world_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+
+<p>The base class for an AllenNLP trainer. It can do pretty much
+anything you want. Your subclass should implement <code>train</code>
+and also probably <code>from_params</code>.</p>
+<p><a name=".allennlp.training.trainer.Trainer.default_implementation"></a></p>
+<h3 id="default_implementation">default_implementation<a class="headerlink" href="#default_implementation" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Trainer</span><span class="p">(</span><span class="n">Registrable</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="n">default_implementation</span> <span class="o">=</span> <span class="s2">&quot;gradient_descent&quot;</span>
+</code></pre></div>
+
+
+<p><a name=".allennlp.training.trainer.Trainer.train"></a></p>
+<h3 id="train">train<a class="headerlink" href="#train" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Trainer</span><span class="p">(</span><span class="n">Registrable</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</code></pre></div>
+
+
+<p>Train a model and return the results.</p>
+<p><a name=".allennlp.training.trainer.Trainer.get_checkpoint_state"></a></p>
+<h3 id="get_checkpoint_state">get_checkpoint_state<a class="headerlink" href="#get_checkpoint_state" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Trainer</span><span class="p">(</span><span class="n">Registrable</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@contextmanager</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_checkpoint_state</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]</span>
+</code></pre></div>
+
+
+<p>Returns a tuple of (model state, training state), where training state could have several
+internal components (e.g., for an, optimizer, learning rate scheduler, etc.).</p>
+<p>This is a context manager, and should be called as <code>with trainer.get_checkpoint_state() as
+state:</code>, so that the trainer has the opportunity to change and restore its internal state
+for checkpointing.  This is used, e.g., for moving averages of model weights.</p>
+<p><a name=".allennlp.training.trainer.BatchCallback"></a></p>
+<h2 id="batchcallback">BatchCallback<a class="headerlink" href="#batchcallback" title="Permanent link">#</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">BatchCallback</span><span class="p">(</span><span class="n">Registrable</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>An optional callback that you can pass to the <code>GradientDescentTrainer</code> that will be called at
+the end of every batch, during both training and validation.  The default implementation
+does nothing. You can implement your own callback and do whatever you want, such as saving
+predictions to disk or extra logging.</p>
+<p><a name=".allennlp.training.trainer.TensoboardBatchMemoryUsage"></a></p>
+<h2 id="tensoboardbatchmemoryusage">TensoboardBatchMemoryUsage<a class="headerlink" href="#tensoboardbatchmemoryusage" title="Permanent link">#</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">TensoboardBatchMemoryUsage</span><span class="p">(</span><span class="n">BatchCallback</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Logs the CPU and GPU memory usage to tensorboard on every batch.</p>
+<p>This is mainly used for debugging as it can cause a significant slowdown in training.</p>
+<p><a name=".allennlp.training.trainer.EpochCallback"></a></p>
+<h2 id="epochcallback">EpochCallback<a class="headerlink" href="#epochcallback" title="Permanent link">#</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">EpochCallback</span><span class="p">(</span><span class="n">Registrable</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>An optional callback that you can pass to the <code>GradientDescentTrainer</code> that will be called at
+the end of every epoch (and before the start of training, with <code>epoch=-1</code>). The default
+implementation does nothing. You can implement your own callback and do whatever you want, such
+as additional modifications of the trainer's state in between epochs.</p>
+<p><a name=".allennlp.training.trainer.GradientDescentTrainer"></a></p>
+<h2 id="gradientdescenttrainer">GradientDescentTrainer<a class="headerlink" href="#gradientdescenttrainer" title="Permanent link">#</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">GradientDescentTrainer</span><span class="p">(</span><span class="n">Trainer</span><span class="p">):</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">optimizer</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">data_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">patience</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">validation_metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-loss&quot;</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">validation_data_loader</span><span class="p">:</span> <span class="n">DataLoader</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">num_epochs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">serialization_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">checkpointer</span><span class="p">:</span> <span class="n">Checkpointer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">cuda_device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">grad_norm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">grad_clipping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">learning_rate_scheduler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LearningRateScheduler</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">momentum_scheduler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MomentumScheduler</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">tensorboard_writer</span><span class="p">:</span> <span class="n">TensorboardWriter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">moving_average</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MovingAverage</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">batch_callbacks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BatchCallback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">epoch_callbacks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EpochCallback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">distributed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">local_rank</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">world_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">num_gradient_accumulation_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">opt_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+
+<p>A trainer for doing supervised learning with gradient descent. It just takes a labeled dataset
+and a <code>DataLoader</code>, and uses the supplied <code>Optimizer</code> to learn the weights for your model over
+some fixed number of epochs. You can also pass in a validation dataloader and enable early
+stopping. There are many other bells and whistles as well.</p>
+<p>Registered as a <code>Trainer</code> with the name "gradient_descent" (and is also the default <code>Trainer</code>).
+The constructor that is registered is <code>from_partial_objects</code> - see the arguments to that
+function for the exact keys that should be used, if you are using a configuration file.  They
+largely match the arguments to <code>__init__</code>, and we don't repeat their docstrings in
+<code>from_partial_objects</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>model</strong> : <code>Model</code> <br>
+    An AllenNLP model to be optimized. Pytorch Modules can also be optimized if
+    their <code>forward</code> method returns a dictionary with a "loss" key, containing a
+    scalar tensor representing the loss function to be optimized.</p>
+<p>If you are training your model using GPUs, your model should already be
+on the correct device. (If you are using our <code>train</code> command this will be
+handled for you.)</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately.</p>
+</li>
+<li>
+<p><strong>optimizer</strong> : <code>torch.nn.Optimizer</code> <br>
+    An instance of a Pytorch Optimizer, instantiated with the parameters of the
+    model to be optimized.</p>
+</li>
+<li>
+<p><strong>data_loader</strong> : <code>DataLoader</code> <br>
+    A <code>DataLoader</code> containing your <code>Dataset</code>, yielding padded indexed batches.</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately.</p>
+</li>
+<li>
+<p><strong>patience</strong> : <code>Optional[int] &gt; 0</code>, optional (default = <code>None</code>) <br>
+    Number of epochs to be patient before early stopping: the training is stopped
+    after <code>patience</code> epochs with no improvement. If given, it must be <code>&gt; 0</code>.
+    If None, early stopping is disabled.</p>
+</li>
+<li>
+<p><strong>validation_metric</strong> : <code>str</code>, optional (default = <code>"-loss"</code>) <br>
+    Validation metric to measure for whether to stop training using patience
+    and whether to serialize an <code>is_best</code> model each epoch. The metric name
+    must be prepended with either "+" or "-", which specifies whether the metric
+    is an increasing or decreasing function.</p>
+</li>
+<li>
+<p><strong>validation_data_loader</strong> : <code>DataLoader</code>, optional (default = <code>None</code>) <br>
+    A <code>DataLoader</code> to use for the validation set.  If <code>None</code>, then
+    use the training <code>DataLoader</code> with the validation data.</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately.</p>
+</li>
+<li>
+<p><strong>num_epochs</strong> : <code>int</code>, optional (default = <code>20</code>) <br>
+    Number of training epochs.</p>
+</li>
+<li>
+<p><strong>serialization_dir</strong> : <code>str</code>, optional (default = <code>None</code>) <br>
+    Path to directory for saving and loading model files. Models will not be saved if
+    this parameter is not passed.</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately.</p>
+</li>
+<li>
+<p><strong>checkpointer</strong> : <code>Checkpointer</code>, optional (default = <code>None</code>) <br>
+    A <code>Checkpointer</code> is responsible for periodically saving model weights.  If none is given
+    here, we will construct one with default parameters.</p>
+</li>
+<li>
+<p><strong>cuda_device</strong> : <code>int</code>, optional (default = <code>-1</code>) <br>
+    An integer specifying the CUDA device(s) to use for this process. If -1, the CPU is used.
+    Data parallelism is controlled at the allennlp train level, so each trainer will have a single
+    GPU.</p>
+</li>
+<li>
+<p><strong>grad_norm</strong> : <code>float</code>, optional (default = <code>None</code>) <br>
+    If provided, gradient norms will be rescaled to have a maximum of this value.</p>
+</li>
+<li>
+<p><strong>grad_clipping</strong> : <code>float</code>, optional (default = <code>None</code>) <br>
+    If provided, gradients will be clipped <code>during the backward pass</code> to have an (absolute)
+    maximum of this value.  If you are getting <code>NaNs</code> in your gradients during training
+    that are not solved by using <code>grad_norm</code>, you may need this.</p>
+</li>
+<li>
+<p><strong>learning_rate_scheduler</strong> : <code>LearningRateScheduler</code>, optional (default = <code>None</code>) <br>
+    If specified, the learning rate will be decayed with respect to
+    this schedule at the end of each epoch (or batch, if the scheduler implements
+    the <code>step_batch</code> method). If you use <code>torch.optim.lr_scheduler.ReduceLROnPlateau</code>,
+    this will use the <code>validation_metric</code> provided to determine if learning has plateaued.
+    To support updating the learning rate on every batch, this can optionally implement
+    <code>step_batch(batch_num_total)</code> which updates the learning rate given the batch number.</p>
+</li>
+<li>
+<p><strong>momentum_scheduler</strong> : <code>MomentumScheduler</code>, optional (default = <code>None</code>) <br>
+    If specified, the momentum will be updated at the end of each batch or epoch
+    according to the schedule.</p>
+</li>
+<li>
+<p><strong>tensorboard_writer</strong> : <code>TensorboardWriter</code>, optional <br>
+    If this is not provided, we will construct a <code>TensorboardWriter</code> with default
+    parameters and use that.</p>
+</li>
+<li>
+<p><strong>moving_average</strong> : <code>MovingAverage</code>, optional (default = <code>None</code>) <br>
+    If provided, we will maintain moving averages for all parameters. During training, we
+    employ a shadow variable for each parameter, which maintains the moving average. During
+    evaluation, we backup the original parameters and assign the moving averages to corresponding
+    parameters. Be careful that when saving the checkpoint, we will save the moving averages of
+    parameters. This is necessary because we want the saved model to perform as well as the validated
+    model if we load it later. But this may cause problems if you restart the training from checkpoint.</p>
+</li>
+<li>
+<p><strong>batch_callbacks</strong> : <code>List[BatchCallback]</code>, optional (default = <code>None</code>) <br>
+    A list of callbacks that will be called at the end of every batch, during both train and
+    validation.</p>
+</li>
+<li>
+<p><strong>epoch_callbacks</strong> : <code>List[EpochCallback]</code>, optional (default = <code>None</code>) <br>
+    A list of callbacks that will be called at the end of every epoch, and at the start of
+    training (with epoch = -1).</p>
+</li>
+<li>
+<p><strong>distributed</strong> : <code>bool</code>, optional (default = <code>False</code>) <br>
+    If set, PyTorch's <code>DistributedDataParallel</code> is used to train the model in multiple GPUs. This also
+    requires <code>world_size</code> to be greater than 1.</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately (you need a top-level "distributed" key, next to
+the "trainer" entry, that specifies a list of "cuda_devices").</p>
+</li>
+<li>
+<p><strong>local_rank</strong> : <code>int</code>, optional (default = <code>0</code>) <br>
+    This is the unique identifier of the <code>Trainer</code> in a distributed process group. The GPU device id is
+    used as the rank.</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately.</p>
+</li>
+<li>
+<p><strong>world_size</strong> : <code>int</code>, optional (default = <code>1</code>) <br>
+    The number of <code>Trainer</code> workers participating in the distributed training.</p>
+<p>In a typical AllenNLP configuration file, this parameter does not get an entry under the
+"trainer", it gets constructed separately.</p>
+</li>
+<li>
+<p><strong>num_gradient_accumulation_steps</strong> : <code>int</code>, optional (default = <code>1</code>) <br>
+    Gradients are accumulated for the given number of steps before doing an optimizer step. This can
+    be useful to accommodate batches that are larger than the RAM size. Refer <a href="https://tinyurl.com/y5mv44fw">Thomas Wolf's
+    post</a> for details on Gradient Accumulation.</p>
+</li>
+<li>
+<p><strong>opt_level</strong> : <code>str</code>, optional (default = <code>None</code>) <br>
+    Each opt_level establishes a set of properties that govern Amp’s implementation of pure or mixed
+    precision training. Must be a choice of <code>"O0"</code>, <code>"O1"</code>, <code>"O2"</code>, or <code>"O3"</code>.
+    See <a href="https://nvidia.github.io/apex/amp.html#opt-levels-and-properties">the Apex documentation</a> for
+    more details. If <code>None</code>, Amp is not used. Defaults to <code>None</code>.</p>
+</li>
+</ul>
+<p><a name=".allennlp.training.trainer.GradientDescentTrainer.rescale_gradients"></a></p>
+<h3 id="rescale_gradients">rescale_gradients<a class="headerlink" href="#rescale_gradients" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">GradientDescentTrainer</span><span class="p">(</span><span class="n">Trainer</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">rescale_gradients</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+
+<p>Performs gradient rescaling. Is a no-op if gradient rescaling is not enabled.</p>
+<p>Returns the norm of the gradients.</p>
+<p><a name=".allennlp.training.trainer.GradientDescentTrainer.batch_outputs"></a></p>
+<h3 id="batch_outputs">batch_outputs<a class="headerlink" href="#batch_outputs" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">GradientDescentTrainer</span><span class="p">(</span><span class="n">Trainer</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">batch_outputs</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">batch</span><span class="p">:</span> <span class="n">TensorDict</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">for_training</span><span class="p">:</span> <span class="nb">bool</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</code></pre></div>
+
+
+<p>Does a forward pass on the given batch and returns the output dictionary that the model
+returns, after adding any specified regularization penalty to the loss (if training).</p>
+<p><a name=".allennlp.training.trainer.GradientDescentTrainer.train"></a></p>
+<h3 id="train_1">train<a class="headerlink" href="#train_1" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">GradientDescentTrainer</span><span class="p">(</span><span class="n">Trainer</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</code></pre></div>
+
+
+<p>Trains the supplied model with the supplied parameters.</p>
+<p><a name=".allennlp.training.trainer.GradientDescentTrainer.get_checkpoint_state"></a></p>
+<h3 id="get_checkpoint_state_1">get_checkpoint_state<a class="headerlink" href="#get_checkpoint_state_1" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">GradientDescentTrainer</span><span class="p">(</span><span class="n">Trainer</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@contextmanager</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_checkpoint_state</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]</span>
+</code></pre></div>
+
+
+<p><a name=".allennlp.training.trainer.GradientDescentTrainer.from_partial_objects"></a></p>
+<h3 id="from_partial_objects">from_partial_objects<a class="headerlink" href="#from_partial_objects" title="Permanent link">#</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">GradientDescentTrainer</span><span class="p">(</span><span class="n">Trainer</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@classmethod</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">from_partial_objects</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">cls</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">serialization_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">data_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">validation_data_loader</span><span class="p">:</span> <span class="n">DataLoader</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">local_rank</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">patience</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">validation_metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-loss&quot;</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">num_epochs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">cuda_device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">grad_norm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">grad_clipping</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">distributed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">world_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">num_gradient_accumulation_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">opt_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">no_grad</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">optimizer</span><span class="p">:</span> <span class="n">Lazy</span><span class="p">[</span><span class="n">Optimizer</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">learning_rate_scheduler</span><span class="p">:</span> <span class="n">Lazy</span><span class="p">[</span><span class="n">LearningRateScheduler</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">momentum_scheduler</span><span class="p">:</span> <span class="n">Lazy</span><span class="p">[</span><span class="n">MomentumScheduler</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">tensorboard_writer</span><span class="p">:</span> <span class="n">Lazy</span><span class="p">[</span><span class="n">TensorboardWriter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">moving_average</span><span class="p">:</span> <span class="n">Lazy</span><span class="p">[</span><span class="n">MovingAverage</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">checkpointer</span><span class="p">:</span> <span class="n">Lazy</span><span class="p">[</span><span class="n">Checkpointer</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">batch_callbacks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BatchCallback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">epoch_callbacks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EpochCallback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Trainer&quot;</span>
+</code></pre></div>
+
+
+<p>This method exists so that we can have a documented method to construct this class using
+<code>FromParams</code>. If you are not using <code>FromParams</code> or config files, you can safely ignore this
+method.</p>
+<p>The reason we can't just use <code>__init__</code> with <code>FromParams</code> here is because there are
+sequential dependencies to this class's arguments.  Anything that has a <code>Lazy[]</code> type
+annotation needs something from one of the non-<code>Lazy</code> arguments.  The <code>Optimizer</code> needs to
+have the parameters from the <code>Model</code> before it's constructed, and the <code>Schedulers</code> need to
+have the <code>Optimizer</code>. Because of this, the typical way we construct things <code>FromParams</code>
+doesn't work, so we use <code>Lazy</code> to allow for constructing the objects sequentially.</p>
+<p>If you're not using <code>FromParams</code>, you can just construct these arguments in the right order
+yourself in your code and call the constructor directly.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../tensorboard_writer/" title="tensorboard_writer" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                tensorboard_writer
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../util/" title="util" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                util
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

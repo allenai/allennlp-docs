@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.data.vocabulary &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.interpret" href="allennlp.interpret.html" />
+    <link rel="prev" title="allennlp.data.tokenizers" href="allennlp.data.tokenizers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.html">allennlp.data</a> &raquo;</li>
+        
+      <li>allennlp.data.vocabulary</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.data.vocabulary.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.data.vocabulary">
+<span id="allennlp-data-vocabulary"></span><h1>allennlp.data.vocabulary<a class="headerlink" href="#module-allennlp.data.vocabulary" title="Permalink to this headline">¶</a></h1>
+<p>A Vocabulary maps strings to integers, allowing for strings to be mapped to an
+out-of-vocabulary token.</p>
+<dl class="class">
+<dt id="allennlp.data.vocabulary.Vocabulary">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.vocabulary.</code><code class="sig-name descname">Vocabulary</code><span class="sig-paren">(</span><em class="sig-param">counter: Dict[str</em>, <em class="sig-param">Dict[str</em>, <em class="sig-param">int]] = None</em>, <em class="sig-param">min_count: Dict[str</em>, <em class="sig-param">int] = None</em>, <em class="sig-param">max_vocab_size: Union[int</em>, <em class="sig-param">Dict[str</em>, <em class="sig-param">int]] = None</em>, <em class="sig-param">non_padded_namespaces: Iterable[str] = ('*tags'</em>, <em class="sig-param">'*labels')</em>, <em class="sig-param">pretrained_files: Optional[Dict[str</em>, <em class="sig-param">str]] = None</em>, <em class="sig-param">only_include_pretrained_words: bool = False</em>, <em class="sig-param">tokens_to_add: Dict[str</em>, <em class="sig-param">List[str]] = None</em>, <em class="sig-param">min_pretrained_embeddings: Dict[str</em>, <em class="sig-param">int] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L137-L695"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>A Vocabulary maps strings to integers, allowing for strings to be mapped to an
+out-of-vocabulary token.</p>
+<p>Vocabularies are fit to a particular dataset, which we use to decide which tokens are
+in-vocabulary.</p>
+<p>Vocabularies also allow for several different namespaces, so you can have separate indices for
+‘a’ as a word, and ‘a’ as a character, for instance, and so we can use this object to also map
+tag and label strings to indices, for a unified <a class="reference internal" href="allennlp.data.fields.html#allennlp.data.fields.field.Field" title="allennlp.data.fields.field.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a> API.  Most of the
+methods on this class allow you to pass in a namespace; by default we use the ‘tokens’
+namespace, and you can omit the namespace argument everywhere and just use the default.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>counter</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Dict[str,</span> <span class="pre">int]]</span></code>, optional (default=``None``)</span></dt><dd><p>A collection of counts from which to initialize this vocabulary.  We will examine the
+counts and, together with the other parameters to this class, use them to decide which
+words are in-vocabulary.  If this is <code class="docutils literal notranslate"><span class="pre">None</span></code>, we just won’t initialize the vocabulary with
+anything.</p>
+</dd>
+<dt><strong>min_count</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">int]</span></code>, optional (default=None)</span></dt><dd><p>When initializing the vocab from a counter, you can specify a minimum count, and every
+token with a count less than this will not be added to the dictionary.  These minimum
+counts are <cite>namespace-specific</cite>, so you can specify different minimums for labels versus
+words tokens, for example.  If a namespace does not have a key in the given dictionary, we
+will add all seen tokens to that namespace.</p>
+</dd>
+<dt><strong>max_vocab_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Union[int,</span> <span class="pre">Dict[str,</span> <span class="pre">int]]</span></code>, optional (default=``None``)</span></dt><dd><p>If you want to cap the number of tokens in your vocabulary, you can do so with this
+parameter.  If you specify a single integer, every namespace will have its vocabulary fixed
+to be no larger than this.  If you specify a dictionary, then each namespace in the
+<code class="docutils literal notranslate"><span class="pre">counter</span></code> can have a separate maximum vocabulary size.  Any missing key will have a value
+of <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means no cap on the vocabulary size.</p>
+</dd>
+<dt><strong>non_padded_namespaces</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Iterable[str]</span></code>, optional</span></dt><dd><p>By default, we assume you are mapping word / character tokens to integers, and so you want
+to reserve word indices for padding and out-of-vocabulary tokens.  However, if you are
+mapping NER or SRL tags, or class labels, to integers, you probably do not want to reserve
+indices for padding and out-of-vocabulary tokens.  Use this field to specify which
+namespaces should <cite>not</cite> have padding and OOV tokens added.</p>
+<p>The format of each element of this is either a string, which must match field names
+exactly,  or <code class="docutils literal notranslate"><span class="pre">*</span></code> followed by a string, which we match as a suffix against field names.</p>
+<p>We try to make the default here reasonable, so that you don’t have to think about this.
+The default is <code class="docutils literal notranslate"><span class="pre">(&quot;*tags&quot;,</span> <span class="pre">&quot;*labels&quot;)</span></code>, so as long as your namespace ends in “tags” or
+“labels” (which is true by default for all tag and label fields in this code), you don’t
+have to specify anything here.</p>
+</dd>
+<dt><strong>pretrained_files</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code>, optional</span></dt><dd><p>If provided, this map specifies the path to optional pretrained embedding files for each
+namespace. This can be used to either restrict the vocabulary to only words which appear
+in this file, or to ensure that any words in this file are included in the vocabulary
+regardless of their count, depending on the value of <code class="docutils literal notranslate"><span class="pre">only_include_pretrained_words</span></code>.
+Words which appear in the pretrained embedding file but not in the data are NOT included
+in the Vocabulary.</p>
+</dd>
+<dt><strong>min_pretrained_embeddings</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">int]</span></code>, optional</span></dt><dd><p>If provided, specifies for each namespace a minimum number of lines (typically the
+most common words) to keep from pretrained embedding files, even for words not
+appearing in the data.</p>
+</dd>
+<dt><strong>only_include_pretrained_words</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=False)</span></dt><dd><p>This defines the strategy for using any pretrained embedding files which may have been
+specified in <code class="docutils literal notranslate"><span class="pre">pretrained_files</span></code>. If False, an inclusive strategy is used: and words
+which are in the <code class="docutils literal notranslate"><span class="pre">counter</span></code> and in the pretrained file are added to the <code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code>,
+regardless of whether their count exceeds <code class="docutils literal notranslate"><span class="pre">min_count</span></code> or not. If True, we use an
+exclusive strategy: words are only included in the Vocabulary if they are in the pretrained
+embedding file (their count must still be at least <code class="docutils literal notranslate"><span class="pre">min_count</span></code>).</p>
+</dd>
+<dt><strong>tokens_to_add</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">List[str]]</span></code>, optional (default=None)</span></dt><dd><p>If given, this is a list of tokens to add to the vocabulary, keyed by the namespace to add
+the tokens to.  This is a way to be sure that certain items appear in your vocabulary,
+regardless of any other vocabulary computation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.add_token_to_namespace">
+<code class="sig-name descname">add_token_to_namespace</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">token: str</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L603-L617"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.add_token_to_namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds <code class="docutils literal notranslate"><span class="pre">token</span></code> to the index, if it is not already present.  Either way, we return the index of
+the token.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.add_tokens_to_namespace">
+<code class="sig-name descname">add_tokens_to_namespace</code><span class="sig-paren">(</span><em class="sig-param">self, tokens: List[str], namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L619-L624"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.add_tokens_to_namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds <code class="docutils literal notranslate"><span class="pre">tokens</span></code> to the index, if they are not already present.  Either way, we return the
+indices of the tokens in the order that they were given.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="allennlp.data.vocabulary.Vocabulary.default_implementation">
+<code class="sig-name descname">default_implementation</code><em class="property">: str</em><em class="property"> = 'default'</em><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.default_implementation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.extend_from_instances">
+<code class="sig-name descname">extend_from_instances</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">params: allennlp.common.params.Params</em>, <em class="sig-param">instances: Iterable[ForwardRef('adi.Instance')] = ()</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L569-L595"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.extend_from_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends an already generated vocabulary using a collection of instances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.from_files">
+<em class="property">classmethod </em><code class="sig-name descname">from_files</code><span class="sig-paren">(</span><em class="sig-param">directory: str</em><span class="sig-paren">)</span> &#x2192; 'Vocabulary'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L296-L326"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a <code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code> that was serialized using <code class="docutils literal notranslate"><span class="pre">save_to_files</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>directory</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>The directory containing the serialized vocabulary.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.from_instances">
+<em class="property">classmethod </em><code class="sig-name descname">from_instances</code><span class="sig-paren">(</span><em class="sig-param">instances: Iterable[ForwardRef('adi.Instance')], min_count: Dict[str, int] = None, max_vocab_size: Union[int, Dict[str, int]] = None, non_padded_namespaces: Iterable[str] = ('*tags', '*labels'), pretrained_files: Union[Dict[str, str], NoneType] = None, only_include_pretrained_words: bool = False, tokens_to_add: Dict[str, List[str]] = None, min_pretrained_embeddings: Dict[str, int] = None</em><span class="sig-paren">)</span> &#x2192; 'Vocabulary'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L380-L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a vocabulary given a collection of <cite>Instances</cite> and some parameters.
+We count all of the vocabulary items in the instances, then pass those counts
+and the other parameters, to <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>.  See that method for a description
+of what the other parameters do.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">params: allennlp.common.params.Params</em>, <em class="sig-param">instances: Iterable[ForwardRef('adi.Instance')] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L411-L487"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>There are two possible ways to build a vocabulary; from a
+collection of instances, using <a class="reference internal" href="#allennlp.data.vocabulary.Vocabulary.from_instances" title="allennlp.data.vocabulary.Vocabulary.from_instances"><code class="xref py py-func docutils literal notranslate"><span class="pre">Vocabulary.from_instances()</span></code></a>, or
+from a pre-saved vocabulary, using <a class="reference internal" href="#allennlp.data.vocabulary.Vocabulary.from_files" title="allennlp.data.vocabulary.Vocabulary.from_files"><code class="xref py py-func docutils literal notranslate"><span class="pre">Vocabulary.from_files()</span></code></a>.
+You can also extend pre-saved vocabulary with collection of instances
+using this method. This method wraps these options, allowing their
+specification from a <code class="docutils literal notranslate"><span class="pre">Params</span></code> object, generated from a JSON
+configuration file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params: Params, required.</strong></dt><dd></dd>
+<dt><strong>instances: Iterable[‘adi.Instance’], optional</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">params</span></code> doesn’t contain a <code class="docutils literal notranslate"><span class="pre">directory_path</span></code> key,
+the <code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code> can be built directly from a collection of
+instances (i.e. a dataset). If <code class="docutils literal notranslate"><span class="pre">extend</span></code> key is set False,
+dataset instances will be ignored and final vocabulary will be
+one loaded from <code class="docutils literal notranslate"><span class="pre">directory_path</span></code>. If <code class="docutils literal notranslate"><span class="pre">extend</span></code> key is set True,
+dataset instances will be used to extend the vocabulary loaded
+from <code class="docutils literal notranslate"><span class="pre">directory_path</span></code> and that will be final vocabulary used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A <code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.get_index_to_token_vocabulary">
+<code class="sig-name descname">get_index_to_token_vocabulary</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; Dict[int, str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L626-L627"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_index_to_token_vocabulary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.get_token_from_index">
+<code class="sig-name descname">get_token_from_index</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">index: int</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L643-L644"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_from_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.get_token_index">
+<code class="sig-name descname">get_token_index</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">token: str</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L632-L641"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.get_token_to_index_vocabulary">
+<code class="sig-name descname">get_token_to_index_vocabulary</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; Dict[str, int]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L629-L630"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_to_index_vocabulary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.get_vocab_size">
+<code class="sig-name descname">get_vocab_size</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L646-L647"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.is_padded">
+<code class="sig-name descname">is_padded</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">namespace: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L597-L601"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.is_padded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not there are padding and OOV tokens added to the given namespace.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.print_statistics">
+<code class="sig-name descname">print_statistics</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L669-L695"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.print_statistics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.save_to_files">
+<code class="sig-name descname">save_to_files</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">directory: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L270-L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.save_to_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist this Vocabulary to files so it can be reloaded later.
+Each namespace corresponds to one file.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>directory</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>The directory where we save the serialized vocabulary.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.vocabulary.Vocabulary.set_from_file">
+<code class="sig-name descname">set_from_file</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename: str</em>, <em class="sig-param">is_padded: bool = True</em>, <em class="sig-param">oov_token: str = '&#64;&#64;UNKNOWN&#64;&#64;'</em>, <em class="sig-param">namespace: str = 'tokens'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L328-L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.set_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you already have a vocabulary file for a trained model somewhere, and you really want to
+use that vocabulary file instead of just setting the vocabulary from a dataset, for
+whatever reason, you can do that with this method.  You must specify the namespace to use,
+and we assume that you want to use padding and OOV tokens for this.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>filename</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>The file containing the vocabulary to load.  It should be formatted as one token per
+line, with nothing else in the line.  The index we assign to the token is the line
+number in the file (1-indexed if <code class="docutils literal notranslate"><span class="pre">is_padded</span></code>, 0-indexed otherwise).  Note that this
+file should contain the OOV token string!</p>
+</dd>
+<dt><strong>is_padded</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=True)</span></dt><dd><p>Is this vocabulary padded?  For token / word / character vocabularies, this should be
+<code class="docutils literal notranslate"><span class="pre">True</span></code>; while for tag or label vocabularies, this should typically be <code class="docutils literal notranslate"><span class="pre">False</span></code>.  If
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, we add a padding token with index 0, and we enforce that the <code class="docutils literal notranslate"><span class="pre">oov_token</span></code> is
+present in the file.</p>
+</dd>
+<dt><strong>oov_token</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=DEFAULT_OOV_TOKEN)</span></dt><dd><p>What token does this vocabulary use to represent out-of-vocabulary characters?  This
+must show up as a line in the vocabulary file.  When we find it, we replace
+<code class="docutils literal notranslate"><span class="pre">oov_token</span></code> with <code class="docutils literal notranslate"><span class="pre">self._oov_token</span></code>, because we only use one OOV token across
+namespaces.</p>
+</dd>
+<dt><strong>namespace</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=”tokens”)</span></dt><dd><p>What namespace should we overwrite with this vocab file?</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.vocabulary.pop_max_vocab_size">
+<code class="sig-prename descclassname">allennlp.data.vocabulary.</code><code class="sig-name descname">pop_max_vocab_size</code><span class="sig-paren">(</span><em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; Union[int, Dict[str, int]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L117-L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.pop_max_vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>max_vocab_size limits the size of the vocabulary, not including the &#64;&#64;UNKNOWN&#64;&#64; token.</p>
+<p>max_vocab_size is allowed to be either an int or a Dict[str, int] (or nothing).
+But it could also be a string representing an int (in the case of environment variable
+substitution). So we need some complex logic to handle it.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.interpret.html" class="btn btn-neutral float-right" title="allennlp.interpret" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.data.tokenizers.html" class="btn btn-neutral float-left" title="allennlp.data.tokenizers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

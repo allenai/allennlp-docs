@@ -1,0 +1,3878 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AllenNLP is a ..">
+      
+      
+        <link rel="canonical" href="https://allennlp.org/CONTRIBUTING/">
+      
+      
+      <link rel="shortcut icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.0">
+    
+    
+      
+        <title>Contributing - AllenNLP v1.1.0rc2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.b5d04df8.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9ab2c1f8.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contributing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://allennlp.org/" title="AllenNLP v1.1.0rc2" class="md-header-nav__button md-logo" aria-label="AllenNLP v1.1.0rc2">
+      
+  <img src="../img/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            AllenNLP v1.1.0rc2
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Contributing
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://allennlp.org/" title="AllenNLP v1.1.0rc2" class="md-nav__button md-logo" aria-label="AllenNLP v1.1.0rc2">
+      
+  <img src="../img/favicon.ico" alt="logo">
+
+    </a>
+    AllenNLP v1.1.0rc2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/allenai/allennlp" title="Repository" class="md-nav__link">
+      Repository
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Versions
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Versions" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Versions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/latest/" title="Latest" class="md-nav__link">
+      Latest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/stable/" title="Stable" class="md-nav__link">
+      Stable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/master/" title="Master" class="md-nav__link">
+      Master
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      commands
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="commands" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        commands
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/evaluate/" title="evaluate" class="md-nav__link">
+      evaluate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/find_learning_rate/" title="find_learning_rate" class="md-nav__link">
+      find_learning_rate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/predict/" title="predict" class="md-nav__link">
+      predict
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/print_results/" title="print_results" class="md-nav__link">
+      print_results
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/subcommand/" title="subcommand" class="md-nav__link">
+      subcommand
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/test_install/" title="test_install" class="md-nav__link">
+      test_install
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/commands/train/" title="train" class="md-nav__link">
+      train
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      common
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="common" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        common
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/cached_transformers/" title="cached_transformers" class="md-nav__link">
+      cached_transformers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/checks/" title="checks" class="md-nav__link">
+      checks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/file_utils/" title="file_utils" class="md-nav__link">
+      file_utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/from_params/" title="from_params" class="md-nav__link">
+      from_params
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/lazy/" title="lazy" class="md-nav__link">
+      lazy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/logging/" title="logging" class="md-nav__link">
+      logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/params/" title="params" class="md-nav__link">
+      params
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/plugins/" title="plugins" class="md-nav__link">
+      plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/registrable/" title="registrable" class="md-nav__link">
+      registrable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-10" type="checkbox" id="nav-4-2-10">
+    
+    <label class="md-nav__link" for="nav-4-2-10">
+      testing
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="testing" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-2-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        testing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/testing/model_test_case/" title="model_test_case" class="md-nav__link">
+      model_test_case
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/testing/test_case/" title="test_case" class="md-nav__link">
+      test_case
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/tqdm/" title="tqdm" class="md-nav__link">
+      tqdm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/common/util/" title="util" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      data
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="data" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/batch/" title="batch" class="md-nav__link">
+      batch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataloader/" title="dataloader" class="md-nav__link">
+      dataloader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3">
+    
+    <label class="md-nav__link" for="nav-4-3-3">
+      dataset_readers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/babi/" title="babi" class="md-nav__link">
+      babi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/conll2003/" title="conll2003" class="md-nav__link">
+      conll2003
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/dataset_reader/" title="dataset_reader" class="md-nav__link">
+      dataset_reader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3-4" type="checkbox" id="nav-4-3-3-4">
+    
+    <label class="md-nav__link" for="nav-4-3-3-4">
+      dataset_utils
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_utils" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-3-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        dataset_utils
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/dataset_utils/span_utils/" title="span_utils" class="md-nav__link">
+      span_utils
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/interleaving_dataset_reader/" title="interleaving_dataset_reader" class="md-nav__link">
+      interleaving_dataset_reader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/sequence_tagging/" title="sequence_tagging" class="md-nav__link">
+      sequence_tagging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/sharded_dataset_reader/" title="sharded_dataset_reader" class="md-nav__link">
+      sharded_dataset_reader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/dataset_readers/text_classification_json/" title="text_classification_json" class="md-nav__link">
+      text_classification_json
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-4" type="checkbox" id="nav-4-3-4">
+    
+    <label class="md-nav__link" for="nav-4-3-4">
+      fields
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="fields" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        fields
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/adjacency_field/" title="adjacency_field" class="md-nav__link">
+      adjacency_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/array_field/" title="array_field" class="md-nav__link">
+      array_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/field/" title="field" class="md-nav__link">
+      field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/flag_field/" title="flag_field" class="md-nav__link">
+      flag_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/index_field/" title="index_field" class="md-nav__link">
+      index_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/label_field/" title="label_field" class="md-nav__link">
+      label_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/list_field/" title="list_field" class="md-nav__link">
+      list_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/metadata_field/" title="metadata_field" class="md-nav__link">
+      metadata_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/multilabel_field/" title="multilabel_field" class="md-nav__link">
+      multilabel_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/namespace_swapping_field/" title="namespace_swapping_field" class="md-nav__link">
+      namespace_swapping_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/sequence_field/" title="sequence_field" class="md-nav__link">
+      sequence_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/sequence_label_field/" title="sequence_label_field" class="md-nav__link">
+      sequence_label_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/span_field/" title="span_field" class="md-nav__link">
+      span_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/fields/text_field/" title="text_field" class="md-nav__link">
+      text_field
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/instance/" title="instance" class="md-nav__link">
+      instance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-6" type="checkbox" id="nav-4-3-6">
+    
+    <label class="md-nav__link" for="nav-4-3-6">
+      samplers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="samplers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        samplers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/samplers/bucket_batch_sampler/" title="bucket_batch_sampler" class="md-nav__link">
+      bucket_batch_sampler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/samplers/max_tokens_batch_sampler/" title="max_tokens_batch_sampler" class="md-nav__link">
+      max_tokens_batch_sampler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/samplers/samplers/" title="samplers" class="md-nav__link">
+      samplers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-7" type="checkbox" id="nav-4-3-7">
+    
+    <label class="md-nav__link" for="nav-4-3-7">
+      token_indexers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="token_indexers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        token_indexers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/elmo_indexer/" title="elmo_indexer" class="md-nav__link">
+      elmo_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/pretrained_transformer_indexer/" title="pretrained_transformer_indexer" class="md-nav__link">
+      pretrained_transformer_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/pretrained_transformer_mismatched_indexer/" title="pretrained_transformer_mismatched_indexer" class="md-nav__link">
+      pretrained_transformer_mismatched_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/single_id_token_indexer/" title="single_id_token_indexer" class="md-nav__link">
+      single_id_token_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/spacy_indexer/" title="spacy_indexer" class="md-nav__link">
+      spacy_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/token_characters_indexer/" title="token_characters_indexer" class="md-nav__link">
+      token_characters_indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/token_indexers/token_indexer/" title="token_indexer" class="md-nav__link">
+      token_indexer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-8" type="checkbox" id="nav-4-3-8">
+    
+    <label class="md-nav__link" for="nav-4-3-8">
+      tokenizers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="tokenizers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        tokenizers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/character_tokenizer/" title="character_tokenizer" class="md-nav__link">
+      character_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/letters_digits_tokenizer/" title="letters_digits_tokenizer" class="md-nav__link">
+      letters_digits_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/pretrained_transformer_tokenizer/" title="pretrained_transformer_tokenizer" class="md-nav__link">
+      pretrained_transformer_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/sentence_splitter/" title="sentence_splitter" class="md-nav__link">
+      sentence_splitter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/spacy_tokenizer/" title="spacy_tokenizer" class="md-nav__link">
+      spacy_tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/token/" title="token" class="md-nav__link">
+      token
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/tokenizer/" title="tokenizer" class="md-nav__link">
+      tokenizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/tokenizers/whitespace_tokenizer/" title="whitespace_tokenizer" class="md-nav__link">
+      whitespace_tokenizer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/data/vocabulary/" title="vocabulary" class="md-nav__link">
+      vocabulary
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      interpret
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="interpret" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        interpret
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-1" type="checkbox" id="nav-4-4-1">
+    
+    <label class="md-nav__link" for="nav-4-4-1">
+      attackers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="attackers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        attackers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/attackers/attacker/" title="attacker" class="md-nav__link">
+      attacker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/attackers/hotflip/" title="hotflip" class="md-nav__link">
+      hotflip
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/attackers/input_reduction/" title="input_reduction" class="md-nav__link">
+      input_reduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/attackers/utils/" title="utils" class="md-nav__link">
+      utils
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-2" type="checkbox" id="nav-4-4-2">
+    
+    <label class="md-nav__link" for="nav-4-4-2">
+      saliency_interpreters
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="saliency_interpreters" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        saliency_interpreters
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/saliency_interpreters/integrated_gradient/" title="integrated_gradient" class="md-nav__link">
+      integrated_gradient
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/saliency_interpreters/saliency_interpreter/" title="saliency_interpreter" class="md-nav__link">
+      saliency_interpreter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/saliency_interpreters/simple_gradient/" title="simple_gradient" class="md-nav__link">
+      simple_gradient
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/interpret/saliency_interpreters/smooth_gradient/" title="smooth_gradient" class="md-nav__link">
+      smooth_gradient
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      models
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/models/archival/" title="archival" class="md-nav__link">
+      archival
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/models/basic_classifier/" title="basic_classifier" class="md-nav__link">
+      basic_classifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/models/model/" title="model" class="md-nav__link">
+      model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/models/simple_tagger/" title="simple_tagger" class="md-nav__link">
+      simple_tagger
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+    
+    <label class="md-nav__link" for="nav-4-6">
+      modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-1" type="checkbox" id="nav-4-6-1">
+    
+    <label class="md-nav__link" for="nav-4-6-1">
+      attention
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="attention" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        attention
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/attention/additive_attention/" title="additive_attention" class="md-nav__link">
+      additive_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/attention/attention/" title="attention" class="md-nav__link">
+      attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/attention/bilinear_attention/" title="bilinear_attention" class="md-nav__link">
+      bilinear_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/attention/cosine_attention/" title="cosine_attention" class="md-nav__link">
+      cosine_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/attention/dot_product_attention/" title="dot_product_attention" class="md-nav__link">
+      dot_product_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/attention/linear_attention/" title="linear_attention" class="md-nav__link">
+      linear_attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/augmented_lstm/" title="augmented_lstm" class="md-nav__link">
+      augmented_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/bimpm_matching/" title="bimpm_matching" class="md-nav__link">
+      bimpm_matching
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/conditional_random_field/" title="conditional_random_field" class="md-nav__link">
+      conditional_random_field
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/elmo/" title="elmo" class="md-nav__link">
+      elmo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/elmo_lstm/" title="elmo_lstm" class="md-nav__link">
+      elmo_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/encoder_base/" title="encoder_base" class="md-nav__link">
+      encoder_base
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/feedforward/" title="feedforward" class="md-nav__link">
+      feedforward
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/gated_sum/" title="gated_sum" class="md-nav__link">
+      gated_sum
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/highway/" title="highway" class="md-nav__link">
+      highway
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/input_variational_dropout/" title="input_variational_dropout" class="md-nav__link">
+      input_variational_dropout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/layer_norm/" title="layer_norm" class="md-nav__link">
+      layer_norm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/lstm_cell_with_projection/" title="lstm_cell_with_projection" class="md-nav__link">
+      lstm_cell_with_projection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/masked_layer_norm/" title="masked_layer_norm" class="md-nav__link">
+      masked_layer_norm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-15" type="checkbox" id="nav-4-6-15">
+    
+    <label class="md-nav__link" for="nav-4-6-15">
+      matrix_attention
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="matrix_attention" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-15">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        matrix_attention
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/matrix_attention/bilinear_matrix_attention/" title="bilinear_matrix_attention" class="md-nav__link">
+      bilinear_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/matrix_attention/cosine_matrix_attention/" title="cosine_matrix_attention" class="md-nav__link">
+      cosine_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/matrix_attention/dot_product_matrix_attention/" title="dot_product_matrix_attention" class="md-nav__link">
+      dot_product_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/matrix_attention/linear_matrix_attention/" title="linear_matrix_attention" class="md-nav__link">
+      linear_matrix_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/matrix_attention/matrix_attention/" title="matrix_attention" class="md-nav__link">
+      matrix_attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/maxout/" title="maxout" class="md-nav__link">
+      maxout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/residual_with_layer_dropout/" title="residual_with_layer_dropout" class="md-nav__link">
+      residual_with_layer_dropout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/sampled_softmax_loss/" title="sampled_softmax_loss" class="md-nav__link">
+      sampled_softmax_loss
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/scalar_mix/" title="scalar_mix" class="md-nav__link">
+      scalar_mix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-20" type="checkbox" id="nav-4-6-20">
+    
+    <label class="md-nav__link" for="nav-4-6-20">
+      seq2seq_encoders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="seq2seq_encoders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-20">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        seq2seq_encoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/compose_encoder/" title="compose_encoder" class="md-nav__link">
+      compose_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/feedforward_encoder/" title="feedforward_encoder" class="md-nav__link">
+      feedforward_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/gated_cnn_encoder/" title="gated_cnn_encoder" class="md-nav__link">
+      gated_cnn_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/pass_through_encoder/" title="pass_through_encoder" class="md-nav__link">
+      pass_through_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/pytorch_seq2seq_wrapper/" title="pytorch_seq2seq_wrapper" class="md-nav__link">
+      pytorch_seq2seq_wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/pytorch_transformer_wrapper/" title="pytorch_transformer_wrapper" class="md-nav__link">
+      pytorch_transformer_wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2seq_encoders/seq2seq_encoder/" title="seq2seq_encoder" class="md-nav__link">
+      seq2seq_encoder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-21" type="checkbox" id="nav-4-6-21">
+    
+    <label class="md-nav__link" for="nav-4-6-21">
+      seq2vec_encoders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="seq2vec_encoders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-21">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        seq2vec_encoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/bert_pooler/" title="bert_pooler" class="md-nav__link">
+      bert_pooler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/boe_encoder/" title="boe_encoder" class="md-nav__link">
+      boe_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/cls_pooler/" title="cls_pooler" class="md-nav__link">
+      cls_pooler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/cnn_encoder/" title="cnn_encoder" class="md-nav__link">
+      cnn_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/cnn_highway_encoder/" title="cnn_highway_encoder" class="md-nav__link">
+      cnn_highway_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/pytorch_seq2vec_wrapper/" title="pytorch_seq2vec_wrapper" class="md-nav__link">
+      pytorch_seq2vec_wrapper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/seq2vec_encoders/seq2vec_encoder/" title="seq2vec_encoder" class="md-nav__link">
+      seq2vec_encoder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/softmax_loss/" title="softmax_loss" class="md-nav__link">
+      softmax_loss
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-23" type="checkbox" id="nav-4-6-23">
+    
+    <label class="md-nav__link" for="nav-4-6-23">
+      span_extractors
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="span_extractors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        span_extractors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/span_extractors/bidirectional_endpoint_span_extractor/" title="bidirectional_endpoint_span_extractor" class="md-nav__link">
+      bidirectional_endpoint_span_extractor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/span_extractors/endpoint_span_extractor/" title="endpoint_span_extractor" class="md-nav__link">
+      endpoint_span_extractor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/span_extractors/self_attentive_span_extractor/" title="self_attentive_span_extractor" class="md-nav__link">
+      self_attentive_span_extractor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/span_extractors/span_extractor/" title="span_extractor" class="md-nav__link">
+      span_extractor
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/stacked_alternating_lstm/" title="stacked_alternating_lstm" class="md-nav__link">
+      stacked_alternating_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/stacked_bidirectional_lstm/" title="stacked_bidirectional_lstm" class="md-nav__link">
+      stacked_bidirectional_lstm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-26" type="checkbox" id="nav-4-6-26">
+    
+    <label class="md-nav__link" for="nav-4-6-26">
+      text_field_embedders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="text_field_embedders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-26">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        text_field_embedders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/text_field_embedders/basic_text_field_embedder/" title="basic_text_field_embedder" class="md-nav__link">
+      basic_text_field_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/text_field_embedders/text_field_embedder/" title="text_field_embedder" class="md-nav__link">
+      text_field_embedder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/time_distributed/" title="time_distributed" class="md-nav__link">
+      time_distributed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-28" type="checkbox" id="nav-4-6-28">
+    
+    <label class="md-nav__link" for="nav-4-6-28">
+      token_embedders
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="token_embedders" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-28">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        token_embedders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/bag_of_word_counts_token_embedder/" title="bag_of_word_counts_token_embedder" class="md-nav__link">
+      bag_of_word_counts_token_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/elmo_token_embedder/" title="elmo_token_embedder" class="md-nav__link">
+      elmo_token_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/embedding/" title="embedding" class="md-nav__link">
+      embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/empty_embedder/" title="empty_embedder" class="md-nav__link">
+      empty_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/pass_through_token_embedder/" title="pass_through_token_embedder" class="md-nav__link">
+      pass_through_token_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/pretrained_transformer_embedder/" title="pretrained_transformer_embedder" class="md-nav__link">
+      pretrained_transformer_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/pretrained_transformer_mismatched_embedder/" title="pretrained_transformer_mismatched_embedder" class="md-nav__link">
+      pretrained_transformer_mismatched_embedder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/token_characters_encoder/" title="token_characters_encoder" class="md-nav__link">
+      token_characters_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/modules/token_embedders/token_embedder/" title="token_embedder" class="md-nav__link">
+      token_embedder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+    
+    <label class="md-nav__link" for="nav-4-7">
+      nn
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="nn" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        nn
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/activations/" title="activations" class="md-nav__link">
+      activations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/beam_search/" title="beam_search" class="md-nav__link">
+      beam_search
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/chu_liu_edmonds/" title="chu_liu_edmonds" class="md-nav__link">
+      chu_liu_edmonds
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/initializers/" title="initializers" class="md-nav__link">
+      initializers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7-5" type="checkbox" id="nav-4-7-5">
+    
+    <label class="md-nav__link" for="nav-4-7-5">
+      regularizers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="regularizers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-7-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        regularizers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/regularizers/regularizer/" title="regularizer" class="md-nav__link">
+      regularizer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/regularizers/regularizer_applicator/" title="regularizer_applicator" class="md-nav__link">
+      regularizer_applicator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/regularizers/regularizers/" title="regularizers" class="md-nav__link">
+      regularizers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/nn/util/" title="util" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      predictors
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/predictors/predictor/" title="predictor" class="md-nav__link">
+      predictor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/predictors/sentence_tagger/" title="sentence_tagger" class="md-nav__link">
+      sentence_tagger
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/predictors/text_classifier/" title="text_classifier" class="md-nav__link">
+      text_classifier
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="tools" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/tools/archive_surgery/" title="archive_surgery" class="md-nav__link">
+      archive_surgery
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/tools/create_elmo_embeddings_from_vocab/" title="create_elmo_embeddings_from_vocab" class="md-nav__link">
+      create_elmo_embeddings_from_vocab
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/tools/inspect_cache/" title="inspect_cache" class="md-nav__link">
+      inspect_cache
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      training
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="training" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        training
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/checkpointer/" title="checkpointer" class="md-nav__link">
+      checkpointer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-2" type="checkbox" id="nav-4-10-2">
+    
+    <label class="md-nav__link" for="nav-4-10-2">
+      learning_rate_schedulers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="learning_rate_schedulers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        learning_rate_schedulers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/learning_rate_schedulers/cosine/" title="cosine" class="md-nav__link">
+      cosine
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/learning_rate_schedulers/learning_rate_scheduler/" title="learning_rate_scheduler" class="md-nav__link">
+      learning_rate_scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/learning_rate_schedulers/linear_with_warmup/" title="linear_with_warmup" class="md-nav__link">
+      linear_with_warmup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/learning_rate_schedulers/noam/" title="noam" class="md-nav__link">
+      noam
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/learning_rate_schedulers/polynomial_decay/" title="polynomial_decay" class="md-nav__link">
+      polynomial_decay
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/learning_rate_schedulers/slanted_triangular/" title="slanted_triangular" class="md-nav__link">
+      slanted_triangular
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metric_tracker/" title="metric_tracker" class="md-nav__link">
+      metric_tracker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-4" type="checkbox" id="nav-4-10-4">
+    
+    <label class="md-nav__link" for="nav-4-10-4">
+      metrics
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="metrics" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/attachment_scores/" title="attachment_scores" class="md-nav__link">
+      attachment_scores
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/auc/" title="auc" class="md-nav__link">
+      auc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/average/" title="average" class="md-nav__link">
+      average
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/bleu/" title="bleu" class="md-nav__link">
+      bleu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/boolean_accuracy/" title="boolean_accuracy" class="md-nav__link">
+      boolean_accuracy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/categorical_accuracy/" title="categorical_accuracy" class="md-nav__link">
+      categorical_accuracy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/covariance/" title="covariance" class="md-nav__link">
+      covariance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/entropy/" title="entropy" class="md-nav__link">
+      entropy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/evalb_bracketing_scorer/" title="evalb_bracketing_scorer" class="md-nav__link">
+      evalb_bracketing_scorer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/f1_measure/" title="f1_measure" class="md-nav__link">
+      f1_measure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/fbeta_measure/" title="fbeta_measure" class="md-nav__link">
+      fbeta_measure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/mean_absolute_error/" title="mean_absolute_error" class="md-nav__link">
+      mean_absolute_error
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/metric/" title="metric" class="md-nav__link">
+      metric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/pearson_correlation/" title="pearson_correlation" class="md-nav__link">
+      pearson_correlation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/perplexity/" title="perplexity" class="md-nav__link">
+      perplexity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/rouge/" title="rouge" class="md-nav__link">
+      rouge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/sequence_accuracy/" title="sequence_accuracy" class="md-nav__link">
+      sequence_accuracy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/span_based_f1_measure/" title="span_based_f1_measure" class="md-nav__link">
+      span_based_f1_measure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/spearman_correlation/" title="spearman_correlation" class="md-nav__link">
+      spearman_correlation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/metrics/unigram_recall/" title="unigram_recall" class="md-nav__link">
+      unigram_recall
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-5" type="checkbox" id="nav-4-10-5">
+    
+    <label class="md-nav__link" for="nav-4-10-5">
+      momentum_schedulers
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="momentum_schedulers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        momentum_schedulers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/momentum_schedulers/inverted_triangular/" title="inverted_triangular" class="md-nav__link">
+      inverted_triangular
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/momentum_schedulers/momentum_scheduler/" title="momentum_scheduler" class="md-nav__link">
+      momentum_scheduler
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/moving_average/" title="moving_average" class="md-nav__link">
+      moving_average
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/no_op_trainer/" title="no_op_trainer" class="md-nav__link">
+      no_op_trainer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/optimizers/" title="optimizers" class="md-nav__link">
+      optimizers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/scheduler/" title="scheduler" class="md-nav__link">
+      scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/tensorboard_writer/" title="tensorboard_writer" class="md-nav__link">
+      tensorboard_writer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/trainer/" title="trainer" class="md-nav__link">
+      trainer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/training/util/" title="util" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Contributing
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Contributing" class="md-nav__link md-nav__link--active">
+      Contributing
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-contribute" class="md-nav__link">
+    How Can I Contribute?
+  </a>
+  
+    <nav class="md-nav" aria-label="How Can I Contribute?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes-and-new-features" class="md-nav__link">
+    Bug fixes and new features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-pull-request" class="md-nav__link">
+    Making a pull request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-models" class="md-nav__link">
+    New models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../CHANGELOG/" title="CHANGELOG" class="md-nav__link">
+      CHANGELOG
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://raw.githubusercontent.com/allenai/allennlp/master/LICENSE" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-contribute" class="md-nav__link">
+    How Can I Contribute?
+  </a>
+  
+    <nav class="md-nav" aria-label="How Can I Contribute?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes-and-new-features" class="md-nav__link">
+    Bug fixes and new features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-pull-request" class="md-nav__link">
+    Making a pull request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-models" class="md-nav__link">
+    New models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">#</a></h1>
+<p>Thanks for considering contributing!  We want AllenNLP to be <em>the way</em> to do cutting-edge NLP research, but we cannot
+get there without community support.</p>
+<h2 id="how-can-i-contribute">How Can I Contribute?<a class="headerlink" href="#how-can-i-contribute" title="Permanent link">#</a></h2>
+<h3 id="bug-fixes-and-new-features">Bug fixes and new features<a class="headerlink" href="#bug-fixes-and-new-features" title="Permanent link">#</a></h3>
+<p><strong>Did you find a bug?</strong></p>
+<p>First, do <a href="https://github.com/allenai/allennlp/issues">a quick search</a> to see whether your issue has already been reported.
+If your issue has already been reported, please comment on the existing issue.</p>
+<p>Otherwise, open <a href="https://github.com/allenai/allennlp/issues">a new GitHub issue</a>.  Be sure to include a clear title
+and description.  The description should include as much relevant information as possible.  The description should
+explain how to reproduce the erroneous behavior as well as the behavior you expect to see.  Ideally you would include a
+code sample or an executable test case demonstrating the expected behavior.</p>
+<p><strong>Do you have a suggestion for an enhancement?</strong></p>
+<p>We use GitHub issues to track enhancement requests.  Before you create an enhancement request:</p>
+<ul>
+<li>
+<p>Make sure you have a clear idea of the enhancement you would like.  If you have a vague idea, consider discussing
+it first on a GitHub issue.</p>
+</li>
+<li>
+<p>Check the documentation to make sure your feature does not already exist.</p>
+</li>
+<li>
+<p>Do <a href="https://github.com/allenai/allennlp/issues">a quick search</a> to see whether your enhancement has already been suggested.</p>
+</li>
+</ul>
+<p>When creating your enhancement request, please:</p>
+<ul>
+<li>
+<p>Provide a clear title and description.</p>
+</li>
+<li>
+<p>Explain why the enhancement would be useful.  It may be helpful to highlight the feature in other libraries.</p>
+</li>
+<li>
+<p>Include code examples to demonstrate how the enhancement would be used.</p>
+</li>
+</ul>
+<h3 id="making-a-pull-request">Making a pull request<a class="headerlink" href="#making-a-pull-request" title="Permanent link">#</a></h3>
+<p>When you're ready to contribute code to address an open issue, please follow these guidelines to help us be able to review your pull request (PR) quickly.</p>
+<ol>
+<li>
+<p><strong>Initial setup</strong> (only do this once)</p>
+<p><details><summary>Expand details 👇</summary><br/></p>
+<p>If you haven't already done so, please <a href="https://help.github.com/en/enterprise/2.13/user/articles/fork-a-repo">fork</a> this repository on GitHub.</p>
+<p>Then clone your fork locally with</p>
+<div class="codehilite"><pre><span></span><code><span class="err">git clone https://github.com/USERNAME/allennlp.git</span>
+</code></pre></div>
+
+
+<p>or </p>
+<div class="codehilite"><pre><span></span><code><span class="err">git clone git@github.com:USERNAME/allennlp.git</span>
+</code></pre></div>
+
+
+<p>At this point the local clone of your fork only knows that it came from <em>your</em> repo, github.com/USERNAME/allennlp.git, but doesn't know anything the <em>main</em> repo, <a href="https://github.com/allenai/allennlp">https://github.com/allenai/allennlp.git</a>. You can see this by running</p>
+<div class="codehilite"><pre><span></span><code><span class="err">git remote -v</span>
+</code></pre></div>
+
+
+<p>which will output something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">origin https://github.com/USERNAME/allennlp.git (fetch)</span>
+<span class="err">origin https://github.com/USERNAME/allennlp.git (push)</span>
+</code></pre></div>
+
+
+<p>This means that your local clone can only track changes from your fork, but not from the main repo, and so you won't be able to keep your fork up-to-date with the main repo over time. Therefor you'll need to add another "remote" to your clone that points to <a href="https://github.com/allenai/allennlp">https://github.com/allenai/allennlp.git</a>. To do this, run the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">git remote add upstream https://github.com/allenai/allennlp.git</span>
+</code></pre></div>
+
+
+<p>Now if you do <code>git remote -v</code> again, you'll see</p>
+<div class="codehilite"><pre><span></span><code><span class="err">origin https://github.com/USERNAME/allennlp.git (fetch)</span>
+<span class="err">origin https://github.com/USERNAME/allennlp.git (push)</span>
+<span class="err">upstream https://github.com/allenai/allennlp.git (fetch)</span>
+<span class="err">upstream https://github.com/allenai/allennlp.git (push)</span>
+</code></pre></div>
+
+
+<p>Finally, you'll need to create a Python 3.6 or 3.7 virtual environment suitable for working on AllenNLP. There a number of tools out there that making working with virtual environments easier, but the most direct way is with the <a href="https://docs.python.org/3.7/library/venv.html"><code>venv</code> module</a> in the standard library.</p>
+<p>Once your virtual environment is activated, you can install your local clone in "editable mode" with</p>
+<div class="codehilite"><pre><span></span><code><span class="err">pip install -e . </span>
+<span class="err">pip install -r dev-requirements.txt</span>
+</code></pre></div>
+
+
+<p>The "editable mode" comes from the <code>-e</code> argument to <code>pip</code>, and essential just creates a symbolic link from the site-packages directory of your virtual environment to the source code in your local clone. That way any changes you make will be immediately reflected in your virtual environment.</p>
+</details>
+
+</li>
+<li>
+<p><strong>Ensure your fork is up-to-date</strong></p>
+<p><details><summary>Expand details 👇</summary><br/></p>
+<p>Once you've added an "upstream" remote pointing to <a href="https://github.com/allenai/allennlp">https://github.com/allenai/allennlp.git</a>, keeping your fork up-to-date is easy:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">git checkout master  # if not already on master</span>
+<span class="err">git pull --rebase upstream master</span>
+<span class="err">git push</span>
+</code></pre></div>
+
+
+</details>
+
+</li>
+<li>
+<p><strong>Create a new branch to work on your fix or enhancement</strong></p>
+<p><details><summary>Expand details 👇</summary><br/></p>
+<p>Commiting directly to the master branch of your fork is not recommended. It will be easier to keep your fork clean if you work on a seperate branch for each contribution you intend to make.</p>
+<p>You can create a new branch with</p>
+<div class="codehilite"><pre><span></span><code><span class="err"># replace BRANCH with whatever name you want to give it</span>
+<span class="err">git checkout -b BRANCH</span>
+<span class="err">git push -u origin BRANCH</span>
+</code></pre></div>
+
+
+</details>
+
+</li>
+<li>
+<p><strong>Test your changes</strong></p>
+<p><details><summary>Expand details 👇</summary><br/></p>
+<p>Our continuous integration (CI) testing runs <a href="https://github.com/allenai/allennlp/actions?query=workflow%3APR">a number of checks</a> for each pull request on <a href="https://github.com/features/actions">GitHub Actions</a>. You can run most of these tests locally, which is something you should do <em>before</em> opening a PR to help speed up the review process and make it easier for us.</p>
+<p>First, you should run <a href="https://github.com/psf/black"><code>black</code></a> to make sure you code is formatted consistently. Many IDEs support code formatters as plugins, so you may be able to setup black to run automatically everytime you save. <a href="https://github.com/psf/black/tree/master/plugin"><code>black.vim</code></a> will give you this functionality in Vim, for example. But <code>black</code> is also easy to run directly from the command line. Just run this from the root of your clone:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">black .</span>
+</code></pre></div>
+
+
+<p>Our CI also uses <a href="https://github.com/allenai/allennlp/tree/master/tests"><code>flake8</code></a> to lint the code base and <a href="http://mypy-lang.org/"><code>mypy</code></a> for type-checking. You should run both of these next with</p>
+<div class="codehilite"><pre><span></span><code><span class="err">make lint</span>
+</code></pre></div>
+
+
+<p>and</p>
+<div class="codehilite"><pre><span></span><code><span class="err">make typecheck</span>
+</code></pre></div>
+
+
+<p>We also strive to maintain high test coverage, so most contributions should include additions to <a href="https://github.com/allenai/allennlp/tree/master/tests">the unit tests</a>. These tests are run with <a href="https://docs.pytest.org/en/latest/"><code>pytest</code></a>, which you can use to locally run any test modules that you've added or changed.</p>
+<p>For example, if you've fixed a bug in <code>allennlp/nn/util.py</code>, you can run the tests specific to that module with</p>
+<div class="codehilite"><pre><span></span><code><span class="err">pytest -v tests/nn/util_test.py</span>
+</code></pre></div>
+
+
+<p>Our CI will automatically check that test coverage stays above a certain threshold (around 90%). To check the coverage locally in this example, you could run</p>
+<div class="codehilite"><pre><span></span><code><span class="err">pytest -v --cov allennlp.nn.util tests/nn/util_test.py</span>
+</code></pre></div>
+
+
+<p>If your contribution involves changes to any docstrings, you should make sure the API documentation can build without errors. For that, just run</p>
+<div class="codehilite"><pre><span></span><code><span class="err">make build-docs</span>
+</code></pre></div>
+
+
+<p>If the build fails, it's most likely due to small formatting issues. If the error message isn't clear, feel free to comment on this in your pull request.</p>
+<p>You can also serve and view the docs locally with</p>
+<div class="codehilite"><pre><span></span><code><span class="err">make serve-docs</span>
+</code></pre></div>
+
+
+<p>And finally, please update the <a href="https://github.com/allenai/allennlp/blob/master/CHANGELOG.md">CHANGELOG</a> with notes on your contribution in the "Unreleased" section at the top.</p>
+<p>After all of the above checks have passed, you can now open <a href="https://github.com/allenai/allennlp/pulls">a new GitHub pull request</a>.
+Make sure you have a clear description of the problem and the solution, and include a link to relevant issues.</p>
+<p>We look forward to reviewing your PR!</p>
+</details>
+
+</li>
+</ol>
+<h3 id="new-models">New models<a class="headerlink" href="#new-models" title="Permanent link">#</a></h3>
+<p><strong>Do you have a new state-of-the-art model?</strong></p>
+<p>We are always looking for new models to add to our collection. The most popular models are usually added to the official <a href="https://github.com/allenai/allennlp-models">AllenNLP Models</a> repository, and in some cases to the <a href="https://demo.allennlp.org/">AllenNLP Demo</a>.</p>
+<p>If you think your model should be part of AllenNLP Models, please <a href="https://github.com/allenai/allennlp-models/pulls">create a pull request</a> in the models repo that includes:</p>
+<ul>
+<li>
+<p>Any code changes needed to support your new model.</p>
+</li>
+<li>
+<p>A link to the model itself.  Please do not check your model into the GitHub repository, but instead upload it in the
+PR conversation or provide a link to it at an external location.</p>
+</li>
+</ul>
+<p>In the description of your PR, please clearly explain the task your model performs along with the relevant metrics on an established dataset.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../api/training/util/" title="util" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                util
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../CHANGELOG/" title="CHANGELOG" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                CHANGELOG
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.92ffa368.min.js"></script>
+      <script src="../assets/javascripts/bundle.5123e3d4.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

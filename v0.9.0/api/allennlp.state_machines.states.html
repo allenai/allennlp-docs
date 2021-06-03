@@ -1,0 +1,846 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.state_machines.states &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.state_machines.trainers" href="allennlp.state_machines.trainers.html" />
+    <link rel="prev" title="allennlp.state_machines" href="allennlp.state_machines.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.state_machines.html">allennlp.state_machines</a> &raquo;</li>
+        
+      <li>allennlp.state_machines.states</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.state_machines.states.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.state_machines.states">
+<span id="allennlp-state-machines-states"></span><h1>allennlp.state_machines.states<a class="headerlink" href="#module-allennlp.state_machines.states" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the <code class="docutils literal notranslate"><span class="pre">State</span></code> abstraction for defining state-machine-based decoders, and some
+pre-built concrete <code class="docutils literal notranslate"><span class="pre">State</span></code> classes for various kinds of decoding (e.g., a <code class="docutils literal notranslate"><span class="pre">GrammarBasedState</span></code>
+for doing grammar-based decoding, where the output is a sequence of production rules from a
+grammar).</p>
+<p>The module also has some <code class="docutils literal notranslate"><span class="pre">Statelet</span></code> classes to help represent the <code class="docutils literal notranslate"><span class="pre">State</span></code> by grouping together
+related pieces, including <code class="docutils literal notranslate"><span class="pre">RnnStatelet</span></code>, which you can use to keep track of a decoder RNN’s
+internal state, <code class="docutils literal notranslate"><span class="pre">GrammarStatelet</span></code>, which keeps track of what actions are allowed at each timestep
+of decoding (if your outputs are production rules from a grammar), and <code class="docutils literal notranslate"><span class="pre">ChecklistStatelet</span></code> that
+keeps track of coverage information if you are training a coverage-based parser.</p>
+<span class="target" id="module-allennlp.state_machines.states.state"></span><dl class="class">
+<dt id="allennlp.state_machines.states.state.State">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.state.</code><code class="sig-name descname">State</code><span class="sig-paren">(</span><em class="sig-param">batch_indices: List[int], action_history: List[List[int]], score: List[torch.Tensor]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/state.py#L11-L72"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.state.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Generic</span></code></p>
+<p>Represents the (batched) state of a transition-based decoder.</p>
+<p>There are two different kinds of batching we need to distinguish here.  First, there’s the
+batch of training instances passed to <code class="docutils literal notranslate"><span class="pre">model.forward()</span></code>.  We’ll use “batch” and
+<code class="docutils literal notranslate"><span class="pre">batch_size</span></code> to refer to this through the docs and code.  We additionally batch together
+computation for several states at the same time, where each state could be from the same
+training instance in the original batch, or different instances.  We use “group” and
+<code class="docutils literal notranslate"><span class="pre">group_size</span></code> in the docs and code to refer to this kind of batching, to distinguish it from
+the batch of training instances.</p>
+<p>So, using this terminology, a single <code class="docutils literal notranslate"><span class="pre">State</span></code> object represents a <cite>grouped</cite> collection of
+states.  Because different states in this group might finish at different timesteps, we have
+methods and member variables to handle some bookkeeping around this, to split and regroup
+things.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>batch_indices</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[int]</span></code></span></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">group_size</span></code>-length list, where each element specifies which <code class="docutils literal notranslate"><span class="pre">batch_index</span></code> that group
+element came from.</p>
+<p>Our internal variables (like scores, action histories, hidden states, whatever) are
+<cite>grouped</cite>, and our <code class="docutils literal notranslate"><span class="pre">group_size</span></code> is likely different from the original <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>.
+This variable keeps track of which batch instance each group element came from (e.g., to
+know what the correct action sequences are, or which encoder outputs to use).</p>
+</dd>
+<dt><strong>action_history</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[int]]</span></code></span></dt><dd><p>The list of actions taken so far in this state.  This is also grouped, so each state in the
+group has a list of actions.</p>
+</dd>
+<dt><strong>score</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[torch.Tensor]</span></code></span></dt><dd><p>This state’s score.  It’s a variable, because typically we’ll be computing a loss based on
+this score, and using it for backprop during training.  Like the other variables here, this
+is a <code class="docutils literal notranslate"><span class="pre">group_size</span></code>-length list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.states.state.State.combine_states">
+<em class="property">classmethod </em><code class="sig-name descname">combine_states</code><span class="sig-paren">(</span><em class="sig-param">states: List[~T]</em><span class="sig-paren">)</span> &#x2192; ~T<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/state.py#L62-L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.state.State.combine_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines a list of states, each with their own group size, into a single state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.state.State.is_finished">
+<code class="sig-name descname">is_finished</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/state.py#L54-L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.state.State.is_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this state has a <code class="docutils literal notranslate"><span class="pre">group_size</span></code> of 1, this returns whether the single action sequence in
+this state is finished or not.  If this state has a <code class="docutils literal notranslate"><span class="pre">group_size</span></code> other than 1, this
+method raises an error.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.states.grammar_based_state"></span><dl class="class">
+<dt id="allennlp.state_machines.states.grammar_based_state.GrammarBasedState">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.grammar_based_state.</code><code class="sig-name descname">GrammarBasedState</code><span class="sig-paren">(</span><em class="sig-param">batch_indices: List[int], action_history: List[List[int]], score: List[torch.Tensor], rnn_state: List[allennlp.state_machines.states.rnn_statelet.RnnStatelet], grammar_state: List[allennlp.state_machines.states.grammar_statelet.GrammarStatelet], possible_actions: List[List[allennlp.data.fields.production_rule_field.ProductionRule]], extras: List[Any] = None, debug_info: List = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_based_state.py#L13-L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.state_machines.states.state.State" title="allennlp.state_machines.states.state.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.state_machines.states.state.State</span></code></a></p>
+<p>A generic State that’s suitable for most models that do grammar-based decoding.  We keep around
+a <cite>group</cite> of states, and each element in the group has a few things: a batch index, an action
+history, a score, an <code class="docutils literal notranslate"><span class="pre">RnnStatelet</span></code>, and a <code class="docutils literal notranslate"><span class="pre">GrammarStatelet</span></code>.  We additionally have some
+information that’s independent of any particular group element: a list of all possible actions
+for all batch instances passed to <code class="docutils literal notranslate"><span class="pre">model.forward()</span></code>, and a <code class="docutils literal notranslate"><span class="pre">extras</span></code> field that you can use
+if you really need some extra information about each batch instance (like a string description,
+or other metadata).</p>
+<p>Finally, we also have a specially-treated, optional <code class="docutils literal notranslate"><span class="pre">debug_info</span></code> field.  If this is given, it
+should be an empty list for each group instance when the initial state is created.  In that
+case, we will keep around information about the actions considered at each timestep of decoding
+and other things that you might want to visualize in a demo.  This probably isn’t necessary for
+training, and to get it right we need to copy a bunch of data structures for each new state, so
+it’s best used only at evaluation / demo time.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>batch_indices</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[int]</span></code></span></dt><dd><p>Passed to super class; see docs there.</p>
+</dd>
+<dt><strong>action_history</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[int]]</span></code></span></dt><dd><p>Passed to super class; see docs there.</p>
+</dd>
+<dt><strong>score</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[torch.Tensor]</span></code></span></dt><dd><p>Passed to super class; see docs there.</p>
+</dd>
+<dt><strong>rnn_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[RnnStatelet]</span></code></span></dt><dd><p>An <code class="docutils literal notranslate"><span class="pre">RnnStatelet</span></code> for every group element.  This keeps track of the current decoder hidden
+state, the previous decoder output, the output from the encoder (for computing attentions),
+and other things that are typical seq2seq decoder state things.</p>
+</dd>
+<dt><strong>grammar_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[GrammarStatelet]</span></code></span></dt><dd><p>This hold the current grammar state for each element of the group.  The <code class="docutils literal notranslate"><span class="pre">GrammarStatelet</span></code>
+keeps track of which actions are currently valid.</p>
+</dd>
+<dt><strong>possible_actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[ProductionRule]]</span></code></span></dt><dd><p>The list of all possible actions that was passed to <code class="docutils literal notranslate"><span class="pre">model.forward()</span></code>.  We need this so
+we can recover production strings, which we need to update grammar states.</p>
+</dd>
+<dt><strong>extras</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Any]</span></code>, optional (default=None)</span></dt><dd><p>If you need to keep around some extra data for each instance in the batch, you can put that
+in here, without adding another field.  This should be used <cite>very sparingly</cite>, as there is
+no type checking or anything done on the contents of this field, and it will just be passed
+around between <code class="docutils literal notranslate"><span class="pre">States</span></code> as-is, without copying.</p>
+</dd>
+<dt><strong>debug_info</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Any]</span></code>, optional (default=None).</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_based_state.GrammarBasedState.combine_states">
+<em class="property">classmethod </em><code class="sig-name descname">combine_states</code><span class="sig-paren">(</span><em class="sig-param">states: Sequence[ForwardRef('GrammarBasedState')]</em><span class="sig-paren">)</span> &#x2192; 'GrammarBasedState'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_based_state.py#L121-L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState.combine_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines a list of states, each with their own group size, into a single state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_based_state.GrammarBasedState.get_valid_actions">
+<code class="sig-name descname">get_valid_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Tuple[torch.Tensor, torch.Tensor, List[int]]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_based_state.py#L110-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState.get_valid_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of valid actions for each element of the group.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_based_state.GrammarBasedState.is_finished">
+<code class="sig-name descname">is_finished</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_based_state.py#L116-L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState.is_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this state has a <code class="docutils literal notranslate"><span class="pre">group_size</span></code> of 1, this returns whether the single action sequence in
+this state is finished or not.  If this state has a <code class="docutils literal notranslate"><span class="pre">group_size</span></code> other than 1, this
+method raises an error.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_based_state.GrammarBasedState.new_state_from_group_index">
+<code class="sig-name descname">new_state_from_group_index</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">group_index: int</em>, <em class="sig-param">action: int</em>, <em class="sig-param">new_score: torch.Tensor</em>, <em class="sig-param">new_rnn_state: allennlp.state_machines.states.rnn_statelet.RnnStatelet</em>, <em class="sig-param">considered_actions: List[int] = None</em>, <em class="sig-param">action_probabilities: List[float] = None</em>, <em class="sig-param">attention_weights: torch.Tensor = None</em><span class="sig-paren">)</span> &#x2192; 'GrammarBasedState'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_based_state.py#L71-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState.new_state_from_group_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_based_state.GrammarBasedState.print_action_history">
+<code class="sig-name descname">print_action_history</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">group_index: int = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_based_state.py#L102-L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState.print_action_history" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.states.coverage_state"></span><dl class="class">
+<dt id="allennlp.state_machines.states.coverage_state.CoverageState">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.coverage_state.</code><code class="sig-name descname">CoverageState</code><span class="sig-paren">(</span><em class="sig-param">batch_indices: List[int], action_history: List[List[int]], score: List[torch.Tensor], rnn_state: List[allennlp.state_machines.states.rnn_statelet.RnnStatelet], grammar_state: List[allennlp.state_machines.states.grammar_statelet.GrammarStatelet], checklist_state: List[allennlp.state_machines.states.checklist_statelet.ChecklistStatelet], possible_actions: List[List[allennlp.data.fields.production_rule_field.ProductionRule]], extras: List[Any] = None, debug_info: List = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/coverage_state.py#L13-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.coverage_state.CoverageState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.state_machines.states.grammar_based_state.GrammarBasedState" title="allennlp.state_machines.states.grammar_based_state.GrammarBasedState"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.state_machines.states.grammar_based_state.GrammarBasedState</span></code></a></p>
+<p>This <code class="docutils literal notranslate"><span class="pre">State</span></code> adds one field to a <code class="docutils literal notranslate"><span class="pre">GrammarBasedState</span></code>: a <code class="docutils literal notranslate"><span class="pre">ChecklistStatelet</span></code>
+that is used to specify a set of actions that should be taken during decoder, and keep track of
+which of those actions have already been selected.</p>
+<p>We only provide documentation for the <code class="docutils literal notranslate"><span class="pre">ChecklistStatelet</span></code> here; for the rest, see
+<code class="xref py py-class docutils literal notranslate"><span class="pre">GrammarBasedState</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>batch_indices</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[int]</span></code></span></dt><dd></dd>
+<dt><strong>action_history</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[int]]</span></code></span></dt><dd></dd>
+<dt><strong>score</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[torch.Tensor]</span></code></span></dt><dd></dd>
+<dt><strong>rnn_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[RnnStatelet]</span></code></span></dt><dd></dd>
+<dt><strong>grammar_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[GrammarStatelet]</span></code></span></dt><dd></dd>
+<dt><strong>checklist_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[ChecklistStatelet]</span></code></span></dt><dd><p>This holds the current checklist state for each element of the group.  The
+<code class="docutils literal notranslate"><span class="pre">ChecklistStatelet</span></code> keeps track of which actions are preferred by some agenda, and which
+of those have already been selected during decoding.</p>
+</dd>
+<dt><strong>possible_actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[ProductionRule]]</span></code></span></dt><dd></dd>
+<dt><strong>extras</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Any]</span></code>, optional (default=None)</span></dt><dd></dd>
+<dt><strong>debug_info</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Any]</span></code>, optional (default=None).</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.states.coverage_state.CoverageState.combine_states">
+<em class="property">classmethod </em><code class="sig-name descname">combine_states</code><span class="sig-paren">(</span><em class="sig-param">states: Sequence[ForwardRef('CoverageState')]</em><span class="sig-paren">)</span> &#x2192; 'CoverageState'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/coverage_state.py#L83-L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.coverage_state.CoverageState.combine_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines a list of states, each with their own group size, into a single state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.coverage_state.CoverageState.new_state_from_group_index">
+<code class="sig-name descname">new_state_from_group_index</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">group_index: int</em>, <em class="sig-param">action: int</em>, <em class="sig-param">new_score: torch.Tensor</em>, <em class="sig-param">new_rnn_state: allennlp.state_machines.states.rnn_statelet.RnnStatelet</em>, <em class="sig-param">considered_actions: List[int] = None</em>, <em class="sig-param">action_probabilities: List[float] = None</em>, <em class="sig-param">attention_weights: torch.Tensor = None</em><span class="sig-paren">)</span> &#x2192; 'CoverageState'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/coverage_state.py#L57-L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.coverage_state.CoverageState.new_state_from_group_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.states.rnn_statelet"></span><dl class="class">
+<dt id="allennlp.state_machines.states.rnn_statelet.RnnStatelet">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.rnn_statelet.</code><code class="sig-name descname">RnnStatelet</code><span class="sig-paren">(</span><em class="sig-param">hidden_state: torch.Tensor, memory_cell: torch.Tensor, previous_action_embedding: torch.Tensor, attended_input: torch.Tensor, encoder_outputs: List[torch.Tensor], encoder_output_mask: List[torch.Tensor]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/rnn_statelet.py#L8-L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.rnn_statelet.RnnStatelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class keeps track of all of decoder-RNN-related variables that you need during decoding.
+This includes things like the current decoder hidden state, the memory cell (for LSTM
+decoders), the encoder output that you need for computing attentions, and so on.</p>
+<p>This is intended to be used <cite>inside</cite> a <code class="docutils literal notranslate"><span class="pre">State</span></code>, which likely has other things it has to keep
+track of for doing constrained decoding.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>hidden_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>This holds the LSTM hidden state, with shape <code class="docutils literal notranslate"><span class="pre">(decoder_output_dim,)</span></code> if the decoder
+has 1 layer and <code class="docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">decoder_output_dim)</span></code> otherwise.</p>
+</dd>
+<dt><strong>memory_cell</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>This holds the LSTM memory cell, with shape <code class="docutils literal notranslate"><span class="pre">(decoder_output_dim,)</span></code> if the decoder has
+1 layer and <code class="docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">decoder_output_dim)</span></code> otherwise.</p>
+</dd>
+<dt><strong>previous_action_embedding</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>This holds the embedding for the action we took at the last timestep (which gets input to
+the decoder).  Has shape <code class="docutils literal notranslate"><span class="pre">(action_embedding_dim,)</span></code>.</p>
+</dd>
+<dt><strong>attended_input</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>This holds the attention-weighted sum over the input representations that we computed in
+the previous timestep.  We keep this as part of the state because we use the previous
+attention as part of our decoder cell update.  Has shape <code class="docutils literal notranslate"><span class="pre">(encoder_output_dim,)</span></code>.</p>
+</dd>
+<dt><strong>encoder_outputs</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[torch.Tensor]</span></code></span></dt><dd><p>A list of variables, each of shape <code class="docutils literal notranslate"><span class="pre">(input_sequence_length,</span> <span class="pre">encoder_output_dim)</span></code>,
+containing the encoder outputs at each timestep.  The list is over batch elements, and we
+do the input this way so we can easily do a <code class="docutils literal notranslate"><span class="pre">torch.cat</span></code> on a list of indices into this
+batched list.</p>
+<p>Note that all of the above parameters are single tensors, while the encoder outputs and
+mask are lists of length <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>.  We always pass around the encoder outputs and
+mask unmodified, regardless of what’s in the grouping for this state.  We’ll use the
+<code class="docutils literal notranslate"><span class="pre">batch_indices</span></code> for the group to pull pieces out of these lists when we’re ready to
+actually do some computation.</p>
+</dd>
+<dt><strong>encoder_output_mask</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[torch.Tensor]</span></code></span></dt><dd><p>A list of variables, each of shape <code class="docutils literal notranslate"><span class="pre">(input_sequence_length,)</span></code>, containing a mask over
+question tokens for each batch instance.  This is a list over batch elements, for the same
+reasons as above.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.states.grammar_statelet"></span><dl class="class">
+<dt id="allennlp.state_machines.states.grammar_statelet.GrammarStatelet">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.grammar_statelet.</code><code class="sig-name descname">GrammarStatelet</code><span class="sig-paren">(</span><em class="sig-param">nonterminal_stack: List[str], valid_actions: Dict[str, ActionRepresentation], is_nonterminal: Callable[[str], bool], reverse_productions: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_statelet.py#L8-L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_statelet.GrammarStatelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Generic</span></code></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">GrammarStatelet</span></code> keeps track of the currently valid actions at every step of decoding.</p>
+<p>This class is relatively simple: we have a non-terminal stack which tracks which non-terminals
+we still need to expand.  At every timestep of decoding, we take an action that pops something
+off of the non-terminal stack, and possibly pushes more things on.  The grammar state is
+“finished” when the non-terminal stack is empty.</p>
+<p>At any point during decoding, you can query this object to get a representation of all of the
+valid actions in the current state.  The representation is something that you provide when
+constructing the initial state, in whatever form you want, and we just hold on to it for you
+and return it when you ask.  Putting this in here is purely for convenience, to group together
+pieces of state that are related to taking actions - if you want to handle the action
+representations outside of this class, that would work just fine too.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>nonterminal_stack</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>Holds the list of non-terminals that still need to be expanded.  This starts out as
+[START_SYMBOL], and decoding ends when this is empty.  Every time we take an action, we
+update the non-terminal stack and the context-dependent valid actions, and we use what’s on
+the stack to decide which actions are valid in the current state.</p>
+</dd>
+<dt><strong>valid_actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">ActionRepresentation]</span></code></span></dt><dd><p>A mapping from non-terminals (represented as strings) to all valid expansions of that
+non-terminal.  The class that constructs this object can pick how it wants the actions to
+be represented.</p>
+</dd>
+<dt><strong>is_nonterminal</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Callable[[str],</span> <span class="pre">bool]</span></code></span></dt><dd><p>A function that is used to determine whether each piece of the RHS of the action string is
+a non-terminal that needs to be added to the non-terminal stack.  You can use
+<code class="docutils literal notranslate"><span class="pre">type_declaraction.is_nonterminal</span></code> here, or write your own function if that one doesn’t
+work for your domain.</p>
+</dd>
+<dt><strong>reverse_productions: ``bool``, optional (default=True)</strong></dt><dd><p>A flag that reverses the production rules when <code class="docutils literal notranslate"><span class="pre">True</span></code>. If the production rules are
+reversed, then the first non-terminal in the production will be popped off the stack first,
+giving us left-to-right production.  If this is <code class="docutils literal notranslate"><span class="pre">False</span></code>, you will get right-to-left
+production.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_statelet.GrammarStatelet.get_valid_actions">
+<code class="sig-name descname">get_valid_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; ~ActionRepresentation<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_statelet.py#L63-L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_statelet.GrammarStatelet.get_valid_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the valid actions in the current grammar state.  The <cite>Model</cite> determines what
+exactly this looks like when it constructs the <cite>valid_actions</cite> dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_statelet.GrammarStatelet.is_finished">
+<code class="sig-name descname">is_finished</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_statelet.py#L56-L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_statelet.GrammarStatelet.is_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Have we finished producing our logical form?  We have finished producing the logical form
+if and only if there are no more non-terminals on the stack.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.grammar_statelet.GrammarStatelet.take_action">
+<code class="sig-name descname">take_action</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">production_rule: str</em><span class="sig-paren">)</span> &#x2192; 'GrammarStatelet'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/grammar_statelet.py#L70-L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.grammar_statelet.GrammarStatelet.take_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an action in the current grammar state, returning a new grammar state with whatever
+updates are necessary.  The production rule is assumed to be formatted as “LHS -&gt; RHS”.</p>
+<p>This will update the non-terminal stack.  Updating the non-terminal stack involves popping
+the non-terminal that was expanded off of the stack, then pushing on any non-terminals in
+the production rule back on the stack.</p>
+<p>For example, if our current <code class="docutils literal notranslate"><span class="pre">nonterminal_stack</span></code> is <code class="docutils literal notranslate"><span class="pre">[&quot;r&quot;,</span> <span class="pre">&quot;&lt;e,r&gt;&quot;,</span> <span class="pre">&quot;d&quot;]</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">action</span></code> is <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">-&gt;</span> <span class="pre">[&lt;e,d&gt;,</span> <span class="pre">e]</span></code>, the resulting stack will be <code class="docutils literal notranslate"><span class="pre">[&quot;r&quot;,</span> <span class="pre">&quot;&lt;e,r&gt;&quot;,</span> <span class="pre">&quot;e&quot;,</span>
+<span class="pre">&quot;&lt;e,d&gt;&quot;]</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">self._reverse_productions</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> then we push the non-terminals on in
+in their given order, which means that the first non-terminal in the production rule gets
+popped off the stack <cite>last</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.states.lambda_grammar_statelet"></span><dl class="class">
+<dt id="allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.lambda_grammar_statelet.</code><code class="sig-name descname">LambdaGrammarStatelet</code><span class="sig-paren">(</span><em class="sig-param">nonterminal_stack: List[str], lambda_stacks: Dict[Tuple[str, str], List[str]], valid_actions: Dict[str, Dict[str, Tuple[torch.Tensor, torch.Tensor, List[int]]]], context_actions: Dict[str, Tuple[torch.Tensor, torch.Tensor, int]], is_nonterminal: Callable[[str], bool]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/lambda_grammar_statelet.py#L11-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">LambdaGrammarStatelet</span></code> is a <code class="docutils literal notranslate"><span class="pre">GrammarStatelet</span></code> that adds lambda productions.  These
+productions change the valid actions depending on the current state (you can produce lambda
+variables inside the scope of a lambda expression), so we need some extra bookkeeping to keep
+track of them.</p>
+<p>We only use this for the <code class="docutils literal notranslate"><span class="pre">WikiTablesSemanticParser</span></code>, and so we just hard-code the action
+representation type here, because the way we handle the context / global / linked action
+representations is a little convoluted.  It would be hard to make this generic in the way that
+we use it.  So we’ll not worry about that until there are other use cases of this class that
+need it.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>nonterminal_stack</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>Holds the list of non-terminals that still need to be expanded.  This starts out as
+[START_SYMBOL], and decoding ends when this is empty.  Every time we take an action, we
+update the non-terminal stack and the context-dependent valid actions, and we use what’s on
+the stack to decide which actions are valid in the current state.</p>
+</dd>
+<dt><strong>lambda_stacks</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[Tuple[str,</span> <span class="pre">str],</span> <span class="pre">List[str]]</span></code></span></dt><dd><p>The lambda stack keeps track of when we’re in the scope of a lambda function.  The
+dictionary is keyed by the production rule we are adding (like “r -&gt; x”, separated into
+left hand side and right hand side, where the LHS is the type of the lambda variable and
+the RHS is the variable itself), and the value is a nonterminal stack much like
+<code class="docutils literal notranslate"><span class="pre">nonterminal_stack</span></code>.  When the stack becomes empty, we remove the lambda entry.</p>
+</dd>
+<dt><strong>valid_actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Dict[str,</span> <span class="pre">Tuple[torch.Tensor,</span> <span class="pre">torch.Tensor,</span> <span class="pre">List[int]]]]</span></code></span></dt><dd><p>A mapping from non-terminals (represented as strings) to all valid expansions of that
+non-terminal.  The way we represent the valid expansions is a little complicated: we use a
+dictionary of <cite>action types</cite>, where the key is the action type (like “global”, “linked”, or
+whatever your model is expecting), and the value is a tuple representing all actions of
+that type.  The tuple is (input tensor, output tensor, action id).  The input tensor has
+the representation that is used when <cite>selecting</cite> actions, for all actions of this type.
+The output tensor has the representation that is used when feeding the action to the next
+step of the decoder (this could just be the same as the input tensor).  The action ids are
+a list of indices into the main action list for each batch instance.</p>
+</dd>
+<dt><strong>context_actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Tuple[torch.Tensor,</span> <span class="pre">torch.Tensor,</span> <span class="pre">int]]</span></code></span></dt><dd><p>Variable actions are never included in the <code class="docutils literal notranslate"><span class="pre">valid_actions</span></code> dictionary, because they are
+only valid depending on the current grammar state.  This dictionary maps from the string
+representation of all such actions to the tensor representations of the actions.  These
+will get added onto the “global” key in the <code class="docutils literal notranslate"><span class="pre">valid_actions</span></code> when they are allowed.</p>
+</dd>
+<dt><strong>is_nonterminal</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Callable[[str],</span> <span class="pre">bool]</span></code></span></dt><dd><p>A function that is used to determine whether each piece of the RHS of the action string is
+a non-terminal that needs to be added to the non-terminal stack.  You can use
+<code class="docutils literal notranslate"><span class="pre">type_declaraction.is_nonterminal</span></code> here, or write your own function if that one doesn’t
+work for your domain.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet.get_valid_actions">
+<code class="sig-name descname">get_valid_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, Tuple[torch.Tensor, torch.Tensor, List[int]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/lambda_grammar_statelet.py#L77-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet.get_valid_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the valid actions in the current grammar state.  See the class docstring for a
+description of what we’re returning here.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet.is_finished">
+<code class="sig-name descname">is_finished</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/lambda_grammar_statelet.py#L70-L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet.is_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Have we finished producing our logical form?  We have finished producing the logical form
+if and only if there are no more non-terminals on the stack.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet.take_action">
+<code class="sig-name descname">take_action</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">production_rule: str</em><span class="sig-paren">)</span> &#x2192; 'LambdaGrammarStatelet'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/lambda_grammar_statelet.py#L102-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.lambda_grammar_statelet.LambdaGrammarStatelet.take_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an action in the current grammar state, returning a new grammar state with whatever
+updates are necessary.  The production rule is assumed to be formatted as “LHS -&gt; RHS”.</p>
+<p>This will update the non-terminal stack and the context-dependent actions.  Updating the
+non-terminal stack involves popping the non-terminal that was expanded off of the stack,
+then pushing on any non-terminals in the production rule back on the stack.  We push the
+non-terminals on in <cite>reverse</cite> order, so that the first non-terminal in the production rule
+gets popped off the stack first.</p>
+<p>For example, if our current <code class="docutils literal notranslate"><span class="pre">nonterminal_stack</span></code> is <code class="docutils literal notranslate"><span class="pre">[&quot;r&quot;,</span> <span class="pre">&quot;&lt;e,r&gt;&quot;,</span> <span class="pre">&quot;d&quot;]</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">action</span></code> is <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">-&gt;</span> <span class="pre">[&lt;e,d&gt;,</span> <span class="pre">e]</span></code>, the resulting stack will be <code class="docutils literal notranslate"><span class="pre">[&quot;r&quot;,</span> <span class="pre">&quot;&lt;e,r&gt;&quot;,</span> <span class="pre">&quot;e&quot;,</span>
+<span class="pre">&quot;&lt;e,d&gt;&quot;]</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.states.checklist_statelet"></span><dl class="class">
+<dt id="allennlp.state_machines.states.checklist_statelet.ChecklistStatelet">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.states.checklist_statelet.</code><code class="sig-name descname">ChecklistStatelet</code><span class="sig-paren">(</span><em class="sig-param">terminal_actions: torch.Tensor</em>, <em class="sig-param">checklist_target: torch.Tensor</em>, <em class="sig-param">checklist_mask: torch.Tensor</em>, <em class="sig-param">checklist: torch.Tensor</em>, <em class="sig-param">terminal_indices_dict: Dict[int</em>, <em class="sig-param">int] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/checklist_statelet.py#L8-L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.checklist_statelet.ChecklistStatelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class keeps track of checklist related variables that are used while training a coverage
+based semantic parser (or any other kind of transition based constrained decoder). This is
+intended to be used within a <code class="docutils literal notranslate"><span class="pre">State</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>terminal_actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>A vector containing the indices of terminal actions, required for computing checklists for
+next states based on current actions. The idea is that we will build checklists
+corresponding to the presence or absence of just the terminal actions. But in principle,
+they can be all actions that are relevant to checklist computation.</p>
+</dd>
+<dt><strong>checklist_target</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>Targets corresponding to checklist that indicate the states in which we want the checklist to
+ideally be. It is the same size as <code class="docutils literal notranslate"><span class="pre">terminal_actions</span></code>, and it contains 1 for each corresponding
+action in the list that we want to see in the final logical form, and 0 for each corresponding
+action that we do not.</p>
+</dd>
+<dt><strong>checklist_mask</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>Mask corresponding to <code class="docutils literal notranslate"><span class="pre">terminal_actions</span></code>, indicating which of those actions are relevant
+for checklist computation. For example, if the parser is penalizing non-agenda terminal
+actions, all the terminal actions are relevant.</p>
+</dd>
+<dt><strong>checklist</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>A checklist indicating how many times each action in its agenda has been chosen previously.
+It contains the actual counts of the agenda actions.</p>
+</dd>
+<dt><strong>terminal_indices_dict: ``Dict[int, int]``, optional</strong></dt><dd><p>Mapping from batch action indices to indices in any of the four vectors above. If not
+provided, this mapping will be computed here.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.states.checklist_statelet.ChecklistStatelet.get_balance">
+<code class="sig-name descname">get_balance</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/checklist_statelet.py#L70-L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.checklist_statelet.ChecklistStatelet.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.states.checklist_statelet.ChecklistStatelet.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">action: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; 'ChecklistStatelet'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/states/checklist_statelet.py#L57-L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.states.checklist_statelet.ChecklistStatelet.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an action index, updates checklist and returns an updated state.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.state_machines.trainers.html" class="btn btn-neutral float-right" title="allennlp.state_machines.trainers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.state_machines.html" class="btn btn-neutral float-left" title="allennlp.state_machines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

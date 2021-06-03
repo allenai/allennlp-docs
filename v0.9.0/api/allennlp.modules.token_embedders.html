@@ -1,0 +1,1252 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.modules.token_embedders &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.modules.scalar_mix" href="allennlp.modules.scalar_mix.html" />
+    <link rel="prev" title="allennlp.modules.time_distributed" href="allennlp.modules.time_distributed.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
+        
+      <li>allennlp.modules.token_embedders</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.modules.token_embedders.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.modules.token_embedders">
+<span id="allennlp-modules-token-embedders"></span><h1>allennlp.modules.token_embedders<a class="headerlink" href="#module-allennlp.modules.token_embedders" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">TokenEmbedder</span></code></a> is a <code class="docutils literal notranslate"><span class="pre">Module</span></code> that
+embeds one-hot-encoded tokens as vectors.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#token-embedder"><span class="std std-ref">TokenEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#embedding"><span class="std std-ref">Embedding</span></a></p></li>
+<li><p><a class="reference internal" href="#token-characters-encoder"><span class="std std-ref">TokenCharactersEncoder</span></a></p></li>
+<li><p><a class="reference internal" href="#elmo-token-embedder"><span class="std std-ref">ELMoTokenEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#elmo-token-embedder-multilang"><span class="std std-ref">ElmoTokenEmbedderMultiLang</span></a></p></li>
+<li><p><a class="reference internal" href="#openai-transformer-embedder"><span class="std std-ref">OpenaiTransformerEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#bert-token-embedder"><span class="std std-ref">BertTokenEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#language-model-token-embedder"><span class="std std-ref">LanguageModelTokenEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#bag-of-words-counts-token-embedder"><span class="std std-ref">BagOfWordsCountsTokenEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#pass-through-token-embedder"><span class="std std-ref">PassThroughTokenEmbedder</span></a></p></li>
+<li><p><a class="reference internal" href="#pretrained-transformer-embedder"><span class="std std-ref">PretrainedTransformerEmbedder</span></a></p></li>
+</ul>
+<span class="target" id="module-allennlp.modules.token_embedders.token_embedder"><span id="token-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.token_embedder.TokenEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.token_embedder.</code><code class="sig-name descname">TokenEmbedder</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_embedder.py#L5-L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> is a <code class="docutils literal notranslate"><span class="pre">Module</span></code> that takes as input a tensor with integer ids that have
+been output from a <code class="xref py py-class docutils literal notranslate"><span class="pre">TokenIndexer</span></code> and outputs a vector per token in the
+input.  The input typically has shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_tokens)</span></code> or <code class="docutils literal notranslate"><span class="pre">(batch_size,</span>
+<span class="pre">num_tokens,</span> <span class="pre">num_characters)</span></code>, and the output is of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_tokens,</span>
+<span class="pre">output_dim)</span></code>.  The simplest <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> is just an embedding layer, but for
+character-level input, it could also be some kind of character encoder.</p>
+<p>We add a single method to the basic <code class="docutils literal notranslate"><span class="pre">Module</span></code> API: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder.get_output_dim" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder.get_output_dim"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_output_dim()</span></code></a>.  This lets us
+more easily compute output dimensions for the <code class="xref py py-class docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code>,
+which we might need when defining model parameters such as LSTMs or linear layers, which need
+to know their input dimension before the layers are called.</p>
+<dl class="attribute">
+<dt id="allennlp.modules.token_embedders.token_embedder.TokenEmbedder.default_implementation">
+<code class="sig-name descname">default_implementation</code><em class="property">: str</em><em class="property"> = 'embedding'</em><a class="headerlink" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder.default_implementation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.token_embedder.TokenEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_embedder.py#L21-L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.embedding"><span id="embedding"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.embedding.Embedding">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.embedding.</code><code class="sig-name descname">Embedding</code><span class="sig-paren">(</span><em class="sig-param">num_embeddings: int</em>, <em class="sig-param">embedding_dim: int</em>, <em class="sig-param">projection_dim: int = None</em>, <em class="sig-param">weight: torch.FloatTensor = None</em>, <em class="sig-param">padding_index: int = None</em>, <em class="sig-param">trainable: bool = True</em>, <em class="sig-param">max_norm: float = None</em>, <em class="sig-param">norm_type: float = 2.0</em>, <em class="sig-param">scale_grad_by_freq: bool = False</em>, <em class="sig-param">sparse: bool = False</em>, <em class="sig-param">vocab_namespace: str = None</em>, <em class="sig-param">pretrained_file: str = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L30-L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.Embedding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>A more featureful embedding module than the default in Pytorch.  Adds the ability to:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>embed higher-order inputs</p></li>
+<li><p>pre-specify the weight matrix</p></li>
+<li><p>use a non-trainable embedding</p></li>
+<li><p>project the resultant embeddings to some other dimension (which only makes sense with
+non-trainable embeddings).</p></li>
+<li><p>build all of this easily <code class="docutils literal notranslate"><span class="pre">from_params</span></code></p></li>
+</ol>
+</div></blockquote>
+<p>Note that if you are using our data API and are trying to embed a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TextField</span></code>, you should use a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code> instead of using this directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>num_embeddings</strong><span class="classifier">int</span></dt><dd><p>Size of the dictionary of embeddings (vocabulary size).</p>
+</dd>
+<dt><strong>embedding_dim</strong><span class="classifier">int</span></dt><dd><p>The size of each embedding vector.</p>
+</dd>
+<dt><strong>projection_dim</strong><span class="classifier">int, (optional, default=None)</span></dt><dd><p>If given, we add a projection layer after the embedding layer.  This really only makes
+sense if <code class="docutils literal notranslate"><span class="pre">trainable</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>weight</strong><span class="classifier">torch.FloatTensor, (optional, default=None)</span></dt><dd><p>A pre-initialised weight matrix for the embedding lookup, allowing the use of
+pretrained vectors.</p>
+</dd>
+<dt><strong>padding_index</strong><span class="classifier">int, (optional, default=None)</span></dt><dd><p>If given, pads the output with zeros whenever it encounters the index.</p>
+</dd>
+<dt><strong>trainable</strong><span class="classifier">bool, (optional, default=True)</span></dt><dd><p>Whether or not to optimize the embedding parameters.</p>
+</dd>
+<dt><strong>max_norm</strong><span class="classifier">float, (optional, default=None)</span></dt><dd><p>If given, will renormalize the embeddings to always have a norm lesser than this</p>
+</dd>
+<dt><strong>norm_type</strong><span class="classifier">float, (optional, default=2)</span></dt><dd><p>The p of the p-norm to compute for the max_norm option</p>
+</dd>
+<dt><strong>scale_grad_by_freq</strong><span class="classifier">boolean, (optional, default=False)</span></dt><dd><p>If given, this will scale gradients by the frequency of the words in the mini-batch.</p>
+</dd>
+<dt><strong>sparse</strong><span class="classifier">bool, (optional, default=False)</span></dt><dd><p>Whether or not the Pytorch backend should use a sparse representation of the embedding weight.</p>
+</dd>
+<dt><strong>vocab_namespace</strong><span class="classifier">str, (optional, default=None)</span></dt><dd><p>In case of fine-tuning/transfer learning, the model’s embedding matrix needs to be
+extended according to the size of extended-vocabulary. To be able to know how much to
+extend the embedding-matrix, it’s necessary to know which vocab_namspace was used to
+construct it in the original training. We store vocab_namespace used during the original
+training as an attribute, so that it can be retrieved during fine-tuning.</p>
+</dd>
+<dt><strong>pretrained_file</strong><span class="classifier">str, (optional, default=None)</span></dt><dd><p>Used to keep track of what is the source of the weights and loading more embeddings at test time.
+<strong>It does not load the weights from this pretrained_file.</strong> For that purpose, use
+<code class="docutils literal notranslate"><span class="pre">Embedding.from_params</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>An Embedding module.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.Embedding.extend_vocab">
+<code class="sig-name descname">extend_vocab</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">extended_vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">vocab_namespace: str = None</em>, <em class="sig-param">extension_pretrained_file: str = None</em>, <em class="sig-param">model_path: str = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L156-L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.Embedding.extend_vocab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends the embedding matrix according to the extended vocabulary.
+If extension_pretrained_file is available, it will be used for initializing the new words
+embeddings in the extended vocabulary; otherwise we will check if _pretrained_file attribute
+is already available. If none is available, they will be initialized with xavier uniform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>extended_vocab</strong><span class="classifier">Vocabulary:</span></dt><dd><p>Vocabulary extended from original vocabulary used to construct
+this <code class="docutils literal notranslate"><span class="pre">Embedding</span></code>.</p>
+</dd>
+<dt><strong>vocab_namespace</strong><span class="classifier">str, (optional, default=None)</span></dt><dd><p>In case you know what vocab_namespace should be used for extension, you
+can pass it. If not passed, it will check if vocab_namespace used at the
+time of <code class="docutils literal notranslate"><span class="pre">Embedding</span></code> construction is available. If so, this namespace
+will be used or else extend_vocab will be a no-op.</p>
+</dd>
+<dt><strong>extension_pretrained_file</strong><span class="classifier">str, (optional, default=None)</span></dt><dd><p>A file containing pretrained embeddings can be specified here. It can be
+the path to a local file or an URL of a (cached) remote file. Check format
+details in <code class="docutils literal notranslate"><span class="pre">from_params</span></code> of <code class="docutils literal notranslate"><span class="pre">Embedding</span></code> class.</p>
+</dd>
+<dt><strong>model_path</strong><span class="classifier">str, (optional, default=None)</span></dt><dd><p>Path traversing the model attributes upto this embedding module.
+Eg. “_text_field_embedder.token_embedder_tokens”. This is only useful
+to give helpful error message when extend_vocab is implicitly called
+by fine-tune or any other command.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.Embedding.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L130-L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.Embedding.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.Embedding.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; 'Embedding'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L247-L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.Embedding.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>We need the vocabulary here to know how many items we need to embed, and we look for a
+<code class="docutils literal notranslate"><span class="pre">vocab_namespace</span></code> key in the parameter dictionary to know which vocabulary to use.  If
+you know beforehand exactly how many embeddings you need, or aren’t using a vocabulary
+mapping for the things getting embedded here, then you can pass in the <code class="docutils literal notranslate"><span class="pre">num_embeddings</span></code>
+key directly, and the vocabulary will be ignored.</p>
+<p>In the configuration file, a file containing pretrained embeddings can be specified
+using the parameter <code class="docutils literal notranslate"><span class="pre">&quot;pretrained_file&quot;</span></code>.
+It can be the path to a local file or an URL of a (cached) remote file.
+Two formats are supported:</p>
+<blockquote>
+<div><ul>
+<li><p>hdf5 file - containing an embedding matrix in the form of a torch.Tensor;</p></li>
+<li><p>text file - an utf-8 encoded text file with space separated fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="p">[</span><span class="n">dim</span> <span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="n">dim</span> <span class="mi">2</span><span class="p">]</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>The text file can eventually be compressed with gzip, bz2, lzma or zip.
+You can even select a single file inside an archive containing multiple files
+using the URI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;(archive_uri)#file_path_inside_the_archive&quot;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">archive_uri</span></code> can be a file system path or a URL. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;(https://nlp.stanford.edu/data/glove.twitter.27B.zip)#glove.twitter.27B.200d.txt&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.Embedding.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L126-L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.Embedding.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsFileURI">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.embedding.</code><code class="sig-name descname">EmbeddingsFileURI</code><span class="sig-paren">(</span><em class="sig-param">main_file_uri</em>, <em class="sig-param">path_inside_archive</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L474-L476"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsFileURI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsFileURI.main_file_uri">
+<em class="property">property </em><code class="sig-name descname">main_file_uri</code><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsFileURI.main_file_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsFileURI.path_inside_archive">
+<em class="property">property </em><code class="sig-name descname">path_inside_archive</code><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsFileURI.path_inside_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsTextFile">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.embedding.</code><code class="sig-name descname">EmbeddingsTextFile</code><span class="sig-paren">(</span><em class="sig-param">file_uri: str</em>, <em class="sig-param">encoding: str = 'utf-8'</em>, <em class="sig-param">cache_dir: str = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L488-L648"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsTextFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Iterator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Generic</span></code></p>
+<p>Utility class for opening embeddings text files. Handles various compression formats,
+as well as context management.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file_uri: str</strong></dt><dd><p>It can be:</p>
+<ul class="simple">
+<li><p>a file system path or a URL of an eventually compressed text file or a zip/tar archive
+containing a single file.</p></li>
+<li><p>URI of the type <code class="docutils literal notranslate"><span class="pre">(archive_path_or_url)#file_path_inside_archive</span></code> if the text file
+is contained in a multi-file archive.</p></li>
+</ul>
+</dd>
+<dt><strong>encoding: str</strong></dt><dd></dd>
+<dt><strong>cache_dir: str</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.DEFAULT_ENCODING">
+<code class="sig-name descname">DEFAULT_ENCODING</code><em class="property"> = 'utf-8'</em><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.DEFAULT_ENCODING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L599-L602"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L593-L594"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.readline">
+<code class="sig-name descname">readline</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L596-L597"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.EmbeddingsTextFile.readline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.modules.token_embedders.embedding.format_embeddings_file_uri">
+<code class="sig-prename descclassname">allennlp.modules.token_embedders.embedding.</code><code class="sig-name descname">format_embeddings_file_uri</code><span class="sig-paren">(</span><em class="sig-param">main_file_path_or_url: str</em>, <em class="sig-param">path_inside_archive: Union[str</em>, <em class="sig-param">NoneType] = None</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L467-L471"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.format_embeddings_file_uri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.modules.token_embedders.embedding.parse_embeddings_file_uri">
+<code class="sig-prename descclassname">allennlp.modules.token_embedders.embedding.</code><code class="sig-name descname">parse_embeddings_file_uri</code><span class="sig-paren">(</span><em class="sig-param">uri: str</em><span class="sig-paren">)</span> &#x2192; 'EmbeddingsFileURI'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/embedding.py#L479-L485"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.embedding.parse_embeddings_file_uri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.token_characters_encoder"><span id="token-characters-encoder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.token_characters_encoder.</code><code class="sig-name descname">TokenCharactersEncoder</code><span class="sig-paren">(</span><em class="sig-param">embedding: allennlp.modules.token_embedders.embedding.Embedding</em>, <em class="sig-param">encoder: allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</em>, <em class="sig-param">dropout: float = 0.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_characters_encoder.py#L11-L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">TokenCharactersEncoder</span></code> takes the output of a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TokenCharactersIndexer</span></code>, which is a tensor of shape
+(batch_size, num_tokens, num_characters), embeds the characters, runs a token-level encoder, and
+returns the result, which is a tensor of shape (batch_size, num_tokens, encoding_dim).  We also
+optionally apply dropout after the token-level encoder.</p>
+<p>We take the embedding and encoding modules as input, so this class is itself quite simple.</p>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">token_characters: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_characters_encoder.py#L33-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; 'TokenCharactersEncoder'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_characters_encoder.py#L38-L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the automatic implementation of <cite>from_params</cite>. Any class that subclasses <cite>FromParams</cite>
+(or <cite>Registrable</cite>, which itself subclasses <cite>FromParams</cite>) gets this implementation for free.
+If you want your class to be instantiated from params in the “obvious” way – pop off parameters
+and hand them to your constructor with the same names – this provides that functionality.</p>
+<p>If you need more complex logic in your from <cite>from_params</cite> method, you’ll have to implement
+your own method that overrides this one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_characters_encoder.py#L30-L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.elmo_token_embedder"><span id="elmo-token-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.elmo_token_embedder.</code><code class="sig-name descname">ElmoTokenEmbedder</code><span class="sig-paren">(</span><em class="sig-param">options_file: str</em>, <em class="sig-param">weight_file: str</em>, <em class="sig-param">do_layer_norm: bool = False</em>, <em class="sig-param">dropout: float = 0.5</em>, <em class="sig-param">requires_grad: bool = False</em>, <em class="sig-param">projection_dim: int = None</em>, <em class="sig-param">vocab_to_cache: List[str] = None</em>, <em class="sig-param">scalar_mix_parameters: List[float] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L12-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Compute a single layer of ELMo representations.</p>
+<p>This class serves as a convenience when you only want to use one layer of
+ELMo representations at the input of your network.  It’s essentially a wrapper
+around Elmo(num_output_representations=1, …)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>options_file</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, required.</span></dt><dd><p>An ELMo JSON options file.</p>
+</dd>
+<dt><strong>weight_file</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, required.</span></dt><dd><p>An ELMo hdf5 weight file.</p>
+</dd>
+<dt><strong>do_layer_norm</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional.</span></dt><dd><p>Should we apply layer normalization (passed to <code class="docutils literal notranslate"><span class="pre">ScalarMix</span></code>)?</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional, (default = 0.5).</span></dt><dd><p>The dropout value to be applied to the ELMo representations.</p>
+</dd>
+<dt><strong>requires_grad</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional</span></dt><dd><p>If True, compute gradient of ELMo parameters for fine tuning.</p>
+</dd>
+<dt><strong>projection_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional</span></dt><dd><p>If given, we will project the ELMo embedding down to this dimension.  We recommend that you
+try using ELMo with a lot of dropout and no projection first, but we have found a few cases
+where projection helps (particularly where there is very limited training data).</p>
+</dd>
+<dt><strong>vocab_to_cache</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, optional.</span></dt><dd><p>A list of words to pre-compute and cache character convolutions
+for. If you use this option, the ElmoTokenEmbedder expects that you pass word
+indices of shape (batch_size, timesteps) to forward, instead
+of character indices. If you use this option and pass a word which
+wasn’t pre-cached, this will break.</p>
+</dd>
+<dt><strong>scalar_mix_parameters</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[int]</span></code>, optional, (default=None)</span></dt><dd><p>If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, use these scalar mix parameters to weight the representations
+produced by different layers. These mixing weights are not updated during
+training. The mixing weights here should be the unnormalized (i.e., pre-softmax)
+weights. So, if you wanted to use only the 1st layer of a 2-layer ELMo,
+you can set this to [-9e10, 1, -9e10 ].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em>, <em class="sig-param">word_inputs: torch.Tensor = None</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L78-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>inputs: ``torch.Tensor``</strong></dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">50)</span></code> of character ids representing the current batch.</p>
+</dd>
+<dt><strong>word_inputs</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional.</span></dt><dd><p>If you passed a cached vocab, you can in addition pass a tensor of shape
+<code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code>, which represent word ids which have been pre-cached.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The ELMo representations for the input sequence, shape</dt><dd></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">embedding_dim)</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; 'ElmoTokenEmbedder'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L105-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the automatic implementation of <cite>from_params</cite>. Any class that subclasses <cite>FromParams</cite>
+(or <cite>Registrable</cite>, which itself subclasses <cite>FromParams</cite>) gets this implementation for free.
+If you want your class to be instantiated from params in the “obvious” way – pop off parameters
+and hand them to your constructor with the same names – this provides that functionality.</p>
+<p>If you need more complex logic in your from <cite>from_params</cite> method, you’ll have to implement
+your own method that overrides this one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L75-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.elmo_token_embedder_multilang"><span id="elmo-token-embedder-multilang"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.elmo_token_embedder_multilang.</code><code class="sig-name descname">ElmoTokenEmbedderMultiLang</code><span class="sig-paren">(</span><em class="sig-param">options_files: Dict[str, str], weight_files: Dict[str, str], do_layer_norm: bool = False, dropout: float = 0.5, requires_grad: bool = False, projection_dim: int = None, vocab_to_cache: List[str] = None, scalar_mix_parameters: List[float] = None, aligning_files: Dict[str, str] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder_multilang.py#L14-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>A multilingual ELMo embedder - extending ElmoTokenEmbedder for multiple languages.
+Each language has different weights for the ELMo model and an alignment matrix.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>options_files</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code>, required.</span></dt><dd><p>A dictionary of language identifier to an ELMo JSON options file.</p>
+</dd>
+<dt><strong>weight_files</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code>, required.</span></dt><dd><p>A dictionary of language identifier to an ELMo hdf5 weight file.</p>
+</dd>
+<dt><strong>do_layer_norm</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional.</span></dt><dd><p>Should we apply layer normalization (passed to <code class="docutils literal notranslate"><span class="pre">ScalarMix</span></code>)?</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional.</span></dt><dd><p>The dropout value to be applied to the ELMo representations.</p>
+</dd>
+<dt><strong>requires_grad</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional</span></dt><dd><p>If True, compute gradient of ELMo parameters for fine tuning.</p>
+</dd>
+<dt><strong>projection_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional</span></dt><dd><p>If given, we will project the ELMo embedding down to this dimension.  We recommend that you
+try using ELMo with a lot of dropout and no projection first, but we have found a few cases
+where projection helps (particulary where there is very limited training data).</p>
+</dd>
+<dt><strong>vocab_to_cache</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, optional, (default = 0.5).</span></dt><dd><p>A list of words to pre-compute and cache character convolutions
+for. If you use this option, the ElmoTokenEmbedder expects that you pass word
+indices of shape (batch_size, timesteps) to forward, instead
+of character indices. If you use this option and pass a word which
+wasn’t pre-cached, this will break.</p>
+</dd>
+<dt><strong>scalar_mix_parameters</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[int]</span></code>, optional, (default=None).</span></dt><dd><p>If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, use these scalar mix parameters to weight the representations
+produced by different layers. These mixing weights are not updated during
+training.</p>
+</dd>
+<dt><strong>aligning_files</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code>, optional, (default={}).</span></dt><dd><p>A dictionary of language identifier to a pth file with an alignment matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em>, <em class="sig-param">lang: str</em>, <em class="sig-param">word_inputs: torch.Tensor = None</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder_multilang.py#L111-L141"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>inputs: ``torch.Tensor``</strong></dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">50)</span></code> of character ids representing the current batch.</p>
+</dd>
+<dt><strong>lang</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, , required.</span></dt><dd><p>The language of the ELMo embedder to use.</p>
+</dd>
+<dt><strong>word_inputs</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional.</span></dt><dd><p>If you passed a cached vocab, you can in addition pass a tensor of shape
+<code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code>, which represent word ids which have been pre-cached.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The ELMo representations for the given language for the input sequence, shape</dt><dd></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">embedding_dim)</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; 'ElmoTokenEmbedderMultiLang'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder_multilang.py#L144-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the automatic implementation of <cite>from_params</cite>. Any class that subclasses <cite>FromParams</cite>
+(or <cite>Registrable</cite>, which itself subclasses <cite>FromParams</cite>) gets this implementation for free.
+If you want your class to be instantiated from params in the “obvious” way – pop off parameters
+and hand them to your constructor with the same names – this provides that functionality.</p>
+<p>If you need more complex logic in your from <cite>from_params</cite> method, you’ll have to implement
+your own method that overrides this one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder_multilang.py#L108-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder_multilang.ElmoTokenEmbedderMultiLang.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.openai_transformer_embedder"><span id="openai-transformer-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.openai_transformer_embedder.OpenaiTransformerEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.openai_transformer_embedder.</code><code class="sig-name descname">OpenaiTransformerEmbedder</code><span class="sig-paren">(</span><em class="sig-param">transformer: allennlp.modules.openai_transformer.OpenaiTransformer</em>, <em class="sig-param">top_layer_only: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/openai_transformer_embedder.py#L10-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.openai_transformer_embedder.OpenaiTransformerEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Takes a byte-pair representation of a batch of sentences
+(as produced by the <code class="docutils literal notranslate"><span class="pre">OpenaiTransformerBytePairIndexer</span></code>)
+and generates a <cite>ScalarMix</cite> of the corresponding contextual embeddings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transformer: ``OpenaiTransformer``, required.</strong></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">OpenaiTransformer</span></code> module used for the embeddings.</p>
+</dd>
+<dt><strong>top_layer_only: ``bool``, optional (default = ``False``)</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then only return the top layer instead of apply the scalar mix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.openai_transformer_embedder.OpenaiTransformerEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em>, <em class="sig-param">offsets: torch.Tensor = None</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/openai_transformer_embedder.py#L41-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.openai_transformer_embedder.OpenaiTransformerEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inputs: ``torch.Tensor``, required</strong></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_timesteps)</span></code> tensor representing the byte-pair encodings
+for the current batch.</p>
+</dd>
+<dt><strong>offsets: ``torch.Tensor``, required</strong></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">max_sequence_length)</span></code> tensor representing the word offsets
+for the current batch.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">[torch.Tensor]</span></code></dt><dd><p>An embedding representation of the input sequence
+having shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">embedding_dim)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.openai_transformer_embedder.OpenaiTransformerEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/openai_transformer_embedder.py#L35-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.openai_transformer_embedder.OpenaiTransformerEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>The last dimension of the output, not the shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.bert_token_embedder"><span id="bert-token-embedder"></span></span><p>A <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> which uses one of the BERT models
+(<a class="reference external" href="https://github.com/google-research/bert">https://github.com/google-research/bert</a>)
+to produce embeddings.</p>
+<p>At its core it uses Hugging Face’s PyTorch implementation
+(<a class="reference external" href="https://github.com/huggingface/pytorch-pretrained-BERT">https://github.com/huggingface/pytorch-pretrained-BERT</a>),
+so thanks to them!</p>
+<dl class="class">
+<dt id="allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.bert_token_embedder.</code><code class="sig-name descname">BertEmbedder</code><span class="sig-paren">(</span><em class="sig-param">bert_model: pytorch_pretrained_bert.modeling.BertModel</em>, <em class="sig-param">top_layer_only: bool = False</em>, <em class="sig-param">max_pieces: int = 512</em>, <em class="sig-param">num_start_tokens: int = 1</em>, <em class="sig-param">num_end_tokens: int = 1</em>, <em class="sig-param">scalar_mix_parameters: List[float] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bert_token_embedder.py#L45-L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> that produces BERT embeddings for your tokens.
+Should be paired with a <code class="docutils literal notranslate"><span class="pre">BertIndexer</span></code>, which produces wordpiece ids.</p>
+<p>Most likely you probably want to use <code class="docutils literal notranslate"><span class="pre">PretrainedBertEmbedder</span></code>
+for one of the named pretrained models, not this base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>bert_model: ``BertModel``</strong></dt><dd><p>The BERT model being wrapped.</p>
+</dd>
+<dt><strong>top_layer_only: ``bool``, optional (default = ``False``)</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then only return the top layer instead of apply the scalar mix.</p>
+</dd>
+<dt><strong>max_pieces</strong><span class="classifier">int, optional (default: 512)</span></dt><dd><p>The BERT embedder uses positional embeddings and so has a corresponding
+maximum length for its input ids. Assuming the inputs are windowed
+and padded appropriately by this length, the embedder will split them into a
+large batch, feed them into BERT, and recombine the output as if it was a
+longer sequence.</p>
+</dd>
+<dt><strong>num_start_tokens</strong><span class="classifier">int, optional (default: 1)</span></dt><dd><p>The number of starting special tokens input to BERT (usually 1, i.e., [CLS])</p>
+</dd>
+<dt><strong>num_end_tokens</strong><span class="classifier">int, optional (default: 1)</span></dt><dd><p>The number of ending tokens input to BERT (usually 1, i.e., [SEP])</p>
+</dd>
+<dt><strong>scalar_mix_parameters: ``List[float]``, optional, (default = None)</strong></dt><dd><p>If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, use these scalar mix parameters to weight the representations
+produced by different layers. These mixing weights are not updated during
+training.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">input_ids: torch.LongTensor</em>, <em class="sig-param">offsets: torch.LongTensor = None</em>, <em class="sig-param">token_type_ids: torch.LongTensor = None</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bert_token_embedder.py#L99-L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>input_ids</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code></span></dt><dd><p>The (batch_size, …, max_sequence_length) tensor of wordpiece ids.</p>
+</dd>
+<dt><strong>offsets</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code>, optional</span></dt><dd><p>The BERT embeddings are one per wordpiece. However it’s possible/likely
+you might want one per original token. In that case, <code class="docutils literal notranslate"><span class="pre">offsets</span></code>
+represents the indices of the desired wordpiece for each original token.
+Depending on how your token indexer is configured, this could be the
+position of the last wordpiece for each token, or it could be the position
+of the first wordpiece for each token.</p>
+<p>For example, if you had the sentence “Definitely not”, and if the corresponding
+wordpieces were [“Def”, “##in”, “##ite”, “##ly”, “not”], then the input_ids
+would be 5 wordpiece ids, and the “last wordpiece” offsets would be [3, 4].
+If offsets are provided, the returned tensor will contain only the wordpiece
+embeddings at those positions, and (in particular) will contain one embedding
+per token. If offsets are not provided, the entire tensor of wordpiece embeddings
+will be returned.</p>
+</dd>
+<dt><strong>token_type_ids</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code>, optional</span></dt><dd><p>If an input consists of two sentences (as in the BERT paper),
+tokens from the first sentence should have type 0 and tokens from
+the second sentence should have type 1.  If you don’t provide this
+(the default BertIndexer doesn’t) then it’s assumed to be all 0s.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bert_token_embedder.py#L96-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.modules.token_embedders.bert_token_embedder.PretrainedBertEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.bert_token_embedder.</code><code class="sig-name descname">PretrainedBertEmbedder</code><span class="sig-paren">(</span><em class="sig-param">pretrained_model: str</em>, <em class="sig-param">requires_grad: bool = False</em>, <em class="sig-param">top_layer_only: bool = False</em>, <em class="sig-param">scalar_mix_parameters: List[float] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bert_token_embedder.py#L247-L275"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bert_token_embedder.PretrainedBertEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder" title="allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.bert_token_embedder.BertEmbedder</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>pretrained_model: ``str``</strong></dt><dd><p>Either the name of the pretrained model to use (e.g. ‘bert-base-uncased’),
+or the path to the .tar.gz file with the model weights.</p>
+<p>If the name is a key in the list of pretrained models at
+<a class="reference external" href="https://github.com/huggingface/pytorch-pretrained-BERT/blob/master/pytorch_pretrained_bert/modeling.py#L41">https://github.com/huggingface/pytorch-pretrained-BERT/blob/master/pytorch_pretrained_bert/modeling.py#L41</a>
+the corresponding path will be used; otherwise it will be interpreted as a path or URL.</p>
+</dd>
+<dt><strong>requires_grad</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = False)</span></dt><dd><p>If True, compute gradient of BERT parameters for fine tuning.</p>
+</dd>
+<dt><strong>top_layer_only: ``bool``, optional (default = ``False``)</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then only return the top layer instead of apply the scalar mix.</p>
+</dd>
+<dt><strong>scalar_mix_parameters: ``List[float]``, optional, (default = None)</strong></dt><dd><p>If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, use these scalar mix parameters to weight the representations
+produced by different layers. These mixing weights are not updated during
+training.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.modules.token_embedders.bert_token_embedder.PretrainedBertModel">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.bert_token_embedder.</code><code class="sig-name descname">PretrainedBertModel</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bert_token_embedder.py#L25-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bert_token_embedder.PretrainedBertModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>In some instances you may want to load the same BERT model twice
+(e.g. to use as a token embedder and also as a pooling layer).
+This factory provides a cache so that you don’t actually have to load the model twice.</p>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.bert_token_embedder.PretrainedBertModel.load">
+<em class="property">classmethod </em><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">model_name: str</em>, <em class="sig-param">cache_model: bool = True</em><span class="sig-paren">)</span> &#x2192; pytorch_pretrained_bert.modeling.BertModel<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bert_token_embedder.py#L33-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bert_token_embedder.PretrainedBertModel.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.language_model_token_embedder"><span id="language-model-token-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.language_model_token_embedder.LanguageModelTokenEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.language_model_token_embedder.</code><code class="sig-name descname">LanguageModelTokenEmbedder</code><span class="sig-paren">(</span><em class="sig-param">archive_file: str</em>, <em class="sig-param">dropout: float = None</em>, <em class="sig-param">bos_eos_tokens: Tuple[str</em>, <em class="sig-param">str] = ('&lt;S&gt;'</em>, <em class="sig-param">'&lt;/S&gt;')</em>, <em class="sig-param">remove_bos_eos: bool = True</em>, <em class="sig-param">requires_grad: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/language_model_token_embedder.py#L18-L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.language_model_token_embedder.LanguageModelTokenEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Compute a single layer of representations from a (optionally bidirectional)
+language model. This is done by computing a learned scalar
+average of the layers from the LM. Typically the LM’s weights
+will be fixed, but they can be fine tuned by setting <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>archive_file</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, required</span></dt><dd><p>An archive file, typically model.tar.gz, from a LanguageModel.
+The contextualizer used by the LM must satisfy two requirements:</p>
+<ol class="arabic simple">
+<li><p>It must have a num_layers field.</p></li>
+<li><p>It must take a boolean return_all_layers parameter in its constructor.</p></li>
+</ol>
+<p>See BidirectionalLanguageModelTransformer for their definitions.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional.</span></dt><dd><p>The dropout value to be applied to the representations.</p>
+</dd>
+<dt><strong>bos_eos_tokens</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Tuple[str,</span> <span class="pre">str]</span></code>, optional (default=``(“&lt;S&gt;”, “&lt;/S&gt;”)``)</span></dt><dd><p>These will be indexed and placed around the indexed tokens. Necessary if the language model
+was trained with them, but they were injected external to an indexer.</p>
+</dd>
+<dt><strong>remove_bos_eos: ``bool``, optional (default: True)</strong></dt><dd><p>Typically the provided token indexes will be augmented with begin-sentence and end-sentence
+tokens. (Alternatively, you can pass bos_eos_tokens.) If this flag is True the
+corresponding embeddings will be removed from the return values.</p>
+<p>Warning: This only removes a single start and single end token!</p>
+</dd>
+<dt><strong>requires_grad</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default: False)</span></dt><dd><p>If True, compute gradient of bidirectional language model parameters for fine tuning.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.language_model_token_embedder.LanguageModelTokenEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/language_model_token_embedder.py#L146-L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.language_model_token_embedder.LanguageModelTokenEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inputs: ``torch.Tensor``</strong></dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">...)</span></code> of token ids representing the current batch.
+These must have been produced using the same indexer the LM was trained on.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The bidirectional language model representations for the input sequence, shape</dt><dd></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">embedding_dim)</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.language_model_token_embedder.LanguageModelTokenEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/language_model_token_embedder.py#L143-L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.language_model_token_embedder.LanguageModelTokenEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.bag_of_word_counts_token_embedder"><span id="bag-of-words-counts-token-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.</code><code class="sig-name descname">BagOfWordCountsTokenEmbedder</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">vocab_namespace: str</em>, <em class="sig-param">projection_dim: int = None</em>, <em class="sig-param">ignore_oov: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bag_of_word_counts_token_embedder.py#L10-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Represents a sequence of tokens as a bag of (discrete) word ids, as it was done
+in the pre-neural days.</p>
+<p>Each sequence gets a vector of length vocabulary size, where the i’th entry in the vector
+corresponds to number of times the i’th token in the vocabulary appears in the sequence.</p>
+<p>By default, we ignore padding tokens.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab: ``Vocabulary``</strong></dt><dd></dd>
+<dt><strong>vocab_namespace: ``str``</strong></dt><dd><p>namespace of vocabulary to embed</p>
+</dd>
+<dt><strong>projection_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = <code class="docutils literal notranslate"><span class="pre">None</span></code>)</span></dt><dd><p>if specified, will project the resulting bag of words representation
+to specified dimension.</p>
+</dd>
+<dt><strong>ignore_oov</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = <code class="docutils literal notranslate"><span class="pre">False</span></code>)</span></dt><dd><p>If true, we ignore the OOV token.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bag_of_word_counts_token_embedder.py#L53-L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inputs: ``torch.Tensor``</strong></dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">sequence_length)</span></code> of word ids
+representing the current batch.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The bag-of-words representations for the input sequence, shape</dt><dd></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">vocab_size)</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; 'BagOfWordCountsTokenEmbedder'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bag_of_word_counts_token_embedder.py#L85-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>we look for a <code class="docutils literal notranslate"><span class="pre">vocab_namespace</span></code> key in the parameter dictionary
+to know which vocabulary to use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/bag_of_word_counts_token_embedder.py#L50-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.bag_of_word_counts_token_embedder.BagOfWordCountsTokenEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.pass_through_token_embedder"><span id="pass-through-token-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.pass_through_token_embedder.PassThroughTokenEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.pass_through_token_embedder.</code><code class="sig-name descname">PassThroughTokenEmbedder</code><span class="sig-paren">(</span><em class="sig-param">hidden_dim: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/pass_through_token_embedder.py#L6-L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.pass_through_token_embedder.PassThroughTokenEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Assumes that the input is already vectorized in some way,
+and just returns it.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>hidden_dim</strong><span class="classifier"><cite>int</cite>, required.</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.pass_through_token_embedder.PassThroughTokenEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/pass_through_token_embedder.py#L23-L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.pass_through_token_embedder.PassThroughTokenEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.pass_through_token_embedder.PassThroughTokenEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/pass_through_token_embedder.py#L20-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.pass_through_token_embedder.PassThroughTokenEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.pretrained_transformer_embedder"><span id="pretrained-transformer-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.token_embedders.pretrained_transformer_embedder.PretrainedTransformerEmbedder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.token_embedders.pretrained_transformer_embedder.</code><code class="sig-name descname">PretrainedTransformerEmbedder</code><span class="sig-paren">(</span><em class="sig-param">model_name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/pretrained_transformer_embedder.py#L9-L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.pretrained_transformer_embedder.PretrainedTransformerEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Uses a pretrained model from <code class="docutils literal notranslate"><span class="pre">pytorch-transformers</span></code> as a <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code>.</p>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.pretrained_transformer_embedder.PretrainedTransformerEmbedder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">token_ids: torch.LongTensor</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/pretrained_transformer_embedder.py#L24-L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.pretrained_transformer_embedder.PretrainedTransformerEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.pretrained_transformer_embedder.PretrainedTransformerEmbedder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/pretrained_transformer_embedder.py#L20-L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.pretrained_transformer_embedder.PretrainedTransformerEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal notranslate"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.modules.scalar_mix.html" class="btn btn-neutral float-right" title="allennlp.modules.scalar_mix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.modules.time_distributed.html" class="btn btn-neutral float-left" title="allennlp.modules.time_distributed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

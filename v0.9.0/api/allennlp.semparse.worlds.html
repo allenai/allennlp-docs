@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.semparse.worlds &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.semparse.domain_languages" href="allennlp.semparse.domain_languages.html" />
+    <link rel="prev" title="allennlp.semparse.type_declarations" href="allennlp.semparse.type_declarations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.semparse.html">allennlp.semparse</a> &raquo;</li>
+        
+      <li>allennlp.semparse.worlds</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.semparse.worlds.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.semparse.worlds">
+<span id="allennlp-semparse-worlds"></span><h1>allennlp.semparse.worlds<a class="headerlink" href="#module-allennlp.semparse.worlds" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-allennlp.semparse.worlds.world"></span><dl class="class">
+<dt id="allennlp.semparse.worlds.world.World">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.worlds.world.</code><code class="sig-name descname">World</code><span class="sig-paren">(</span><em class="sig-param">constant_type_prefixes: Dict[str</em>, <em class="sig-param">nltk.sem.logic.BasicType] = None</em>, <em class="sig-param">global_type_signatures: Dict[str</em>, <em class="sig-param">nltk.sem.logic.Type] = None</em>, <em class="sig-param">global_name_mapping: Dict[str</em>, <em class="sig-param">str] = None</em>, <em class="sig-param">num_nested_lambdas: int = 0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L17-L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for defining a world in a new domain. This class defines a method to translate a
+logical form as per a naming convention that works with NLTK’s <code class="docutils literal notranslate"><span class="pre">LogicParser</span></code>. The sub-classes
+can decide on the convention by overriding the <code class="docutils literal notranslate"><span class="pre">_map_name</span></code> method that does token level
+mapping. This class also defines methods for transforming logical form strings into parsed
+<code class="docutils literal notranslate"><span class="pre">Expressions</span></code>, and <code class="docutils literal notranslate"><span class="pre">Expressions</span></code> into action sequences.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>constant_type_prefixes</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">BasicType]</span></code> (optional)</span></dt><dd><p>If you have an unbounded number of constants in your domain, you are required to add
+prefixes to their names to denote their types. This is the mapping from prefixes to types.</p>
+</dd>
+<dt><strong>global_type_signatures</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Type]</span></code> (optional)</span></dt><dd><p>A mapping from translated names to their types.</p>
+</dd>
+<dt><strong>global_name_mapping</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code> (optional)</span></dt><dd><p>A name mapping from the original names in the domain to the translated names.</p>
+</dd>
+<dt><strong>num_nested_lambdas</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code> (optional)</span></dt><dd><p>Does the language used in this <code class="docutils literal notranslate"><span class="pre">World</span></code> permit lambda expressions?  And if so, how many
+nested lambdas do we need to worry about?  This is important when considering the space of
+all possible actions, which we need to enumerate a priori for the parser.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.all_possible_actions">
+<code class="sig-name descname">all_possible_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L142-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.all_possible_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_action_sequence">
+<code class="sig-name descname">get_action_sequence</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">expression: nltk.sem.logic.Expression</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L237-L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_action_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sequence of actions (as strings) that resulted in the given expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_basic_types">
+<code class="sig-name descname">get_basic_types</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Set[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L171-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_basic_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of basic types (types of entities) in the world.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_logical_form">
+<code class="sig-name descname">get_logical_form</code><span class="sig-paren">(</span><em class="sig-param">self, action_sequence: List[str], add_var_function: bool = True</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L245-L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_logical_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an action sequence and constructs a logical form from it. This is useful if you want
+to get a logical form from a decoded sequence of actions generated by a transition based
+semantic parser.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>action_sequence</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code></span></dt><dd><p>The sequence of actions as strings (eg.: <code class="docutils literal notranslate"><span class="pre">['{START_SYMBOL}</span> <span class="pre">-&gt;</span> <span class="pre">t',</span> <span class="pre">'t</span> <span class="pre">-&gt;</span> <span class="pre">&lt;e,t&gt;',</span> <span class="pre">...]</span></code>).</p>
+</dd>
+<dt><strong>add_var_function</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional)</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">var</span></code> is a special function that some languages use within lambda functions to
+indicate the use of a variable (eg.: <code class="docutils literal notranslate"><span class="pre">(lambda</span> <span class="pre">x</span> <span class="pre">(fb:row.row.year</span> <span class="pre">(var</span> <span class="pre">x)))</span></code>). Due to
+the way constrained decoding is currently implemented, it is easier for the decoder to
+not produce these functions. In that case, setting this flag adds the function in the
+logical form even though it is not present in the action sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_multi_match_mapping">
+<code class="sig-name descname">get_multi_match_mapping</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[nltk.sem.logic.Type, List[nltk.sem.logic.Type]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L184-L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_multi_match_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a mapping from each <cite>MultiMatchNamedBasicType</cite> to all the <cite>NamedBasicTypes</cite> that it
+matches.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_name_mapping">
+<code class="sig-name descname">get_name_mapping</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L68-L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_name_mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_paths_to_root">
+<code class="sig-name descname">get_paths_to_root</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">action: str</em>, <em class="sig-param">max_path_length: int = 20</em>, <em class="sig-param">beam_size: int = 30</em>, <em class="sig-param">max_num_paths: int = 10</em><span class="sig-paren">)</span> &#x2192; List[List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L98-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_paths_to_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given action, returns at most <code class="docutils literal notranslate"><span class="pre">max_num_paths</span></code> paths to the root (production with
+<code class="docutils literal notranslate"><span class="pre">START_SYMBOL</span></code>) that are not longer than <code class="docutils literal notranslate"><span class="pre">max_path_length</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_type_signatures">
+<code class="sig-name descname">get_type_signatures</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L72-L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_type_signatures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_valid_actions">
+<code class="sig-name descname">get_valid_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L87-L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_valid_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.get_valid_starting_types">
+<code class="sig-name descname">get_valid_starting_types</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Set[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L177-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.get_valid_starting_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of all types t, such that actions <code class="docutils literal notranslate"><span class="pre">{START_SYMBOL}</span> <span class="pre">-&gt;</span> <span class="pre">t</span></code> are valid. In other
+words, these are all the possible types of complete logical forms in this world.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.is_terminal">
+<code class="sig-name descname">is_terminal</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">symbol: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L76-L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.is_terminal" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will be called on nodes of a logical form tree, which are either non-terminal
+symbols that can be expanded or terminal symbols that must be leaf nodes.  Returns <code class="docutils literal notranslate"><span class="pre">True</span></code>
+if the given symbol is a terminal symbol.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.world.World.parse_logical_form">
+<code class="sig-name descname">parse_logical_form</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">logical_form: str</em>, <em class="sig-param">remove_var_function: bool = True</em><span class="sig-paren">)</span> &#x2192; nltk.sem.logic.Expression<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/world.py#L206-L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.world.World.parse_logical_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a logical form as a string, maps its tokens using the mapping and returns a parsed expression.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>logical_form</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>Logical form to parse</p>
+</dd>
+<dt><strong>remove_var_function</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional)</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">var</span></code> is a special function that some languages use within lambda functions to
+indicate the usage of a variable. If your language uses it, and you do not want to
+include it in the parsed expression, set this flag. You may want to do this if you are
+generating an action sequence from this parsed expression, because it is easier to let
+the decoder not produce this function due to the way constrained decoding is currently
+implemented.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.semparse.worlds.atis_world"></span><dl class="class">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.worlds.atis_world.</code><code class="sig-name descname">AtisWorld</code><span class="sig-paren">(</span><em class="sig-param">utterances: List[str], tokenizer: allennlp.data.tokenizers.tokenizer.Tokenizer = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L45-L448"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>World representation for the Atis SQL domain. This class has a <code class="docutils literal notranslate"><span class="pre">SqlTableContext</span></code> which holds the base
+grammar, it then augments this grammar by constraining each column to the values that are allowed in it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>utterances: ``List[str]``</strong></dt><dd><p>A list of utterances in the interaction, the last element in this list is the
+current utterance that we are interested in.</p>
+</dd>
+<dt><strong>tokenizer: ``Tokenizer``, optional (default=``WordTokenizer()``)</strong></dt><dd><p>We use this tokenizer to tokenize the utterances.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.add_dates_to_number_linking_scores">
+<code class="sig-name descname">add_dates_to_number_linking_scores</code><span class="sig-paren">(</span><em class="sig-param">self, number_linking_scores: Dict[str, Tuple[str, str, List[int]]], current_tokenized_utterance: List[allennlp.data.tokenizers.token.Token]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L227-L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.add_dates_to_number_linking_scores" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.add_to_number_linking_scores">
+<code class="sig-name descname">add_to_number_linking_scores</code><span class="sig-paren">(</span><em class="sig-param">self, all_numbers: Set[str], number_linking_scores: Dict[str, Tuple[str, str, List[int]]], get_number_linking_dict: Callable[[str, List[allennlp.data.tokenizers.token.Token]], Dict[str, List[int]]], current_tokenized_utterance: List[allennlp.data.tokenizers.token.Token], nonterminal: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L274-L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.add_to_number_linking_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a helper method for adding different types of numbers (eg. starting time ranges) as entities.
+We first go through all utterances in the interaction and find the numbers of a certain type and add
+them to the set <code class="docutils literal notranslate"><span class="pre">all_numbers</span></code>, which is initialized with default values. We want to add all numbers
+that occur in the interaction, and not just the current turn because the query could contain numbers
+that were triggered before the current turn. For each entity, we then check if it is triggered by tokens
+in the current utterance and construct the linking score.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.all_possible_actions">
+<code class="sig-name descname">all_possible_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L413-L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.all_possible_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sorted list of strings representing all possible actions
+of the form: nonterminal -&gt; [right_hand_side]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.database_file">
+<code class="sig-name descname">database_file</code><em class="property"> = 'https://allennlp.s3.amazonaws.com/datasets/atis/atis.db'</em><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.database_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.get_action_sequence">
+<code class="sig-name descname">get_action_sequence</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">query: str</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L405-L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.get_action_sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.get_valid_actions">
+<code class="sig-name descname">get_valid_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Dict[str, List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L224-L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.get_valid_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="allennlp.semparse.worlds.atis_world.AtisWorld.sql_table_context">
+<code class="sig-name descname">sql_table_context</code><em class="property"> = None</em><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.AtisWorld.sql_table_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.semparse.worlds.atis_world.get_strings_from_utterance">
+<code class="sig-prename descclassname">allennlp.semparse.worlds.atis_world.</code><code class="sig-name descname">get_strings_from_utterance</code><span class="sig-paren">(</span><em class="sig-param">tokenized_utterance: List[allennlp.data.tokenizers.token.Token]</em><span class="sig-paren">)</span> &#x2192; Dict[str, List[int]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/atis_world.py#L15-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.atis_world.get_strings_from_utterance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Based on the current utterance, return a dictionary where the keys are the strings in
+the database that map to lists of the token indices that they are linked to.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.semparse.worlds.text2sql_world"></span><dl class="class">
+<dt id="allennlp.semparse.worlds.text2sql_world.Text2SqlWorld">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.worlds.text2sql_world.</code><code class="sig-name descname">Text2SqlWorld</code><span class="sig-paren">(</span><em class="sig-param">schema_path: str</em>, <em class="sig-param">cursor: sqlite3.Cursor = None</em>, <em class="sig-param">use_prelinked_entities: bool = True</em>, <em class="sig-param">variable_free: bool = True</em>, <em class="sig-param">use_untyped_entities: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/text2sql_world.py#L22-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.text2sql_world.Text2SqlWorld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>World representation for any of the Text2Sql datasets.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>schema_path: ``str``</strong></dt><dd><p>A path to a schema file which we read into a dictionary
+representing the SQL tables in the dataset, the keys are the
+names of the tables that map to lists of the table’s column names.</p>
+</dd>
+<dt><strong>cursor</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Cursor</span></code>, optional (default = None)</span></dt><dd><p>An optional cursor for a database, which is used to add
+database values to the grammar.</p>
+</dd>
+<dt><strong>use_prelinked_entities</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, (default = True)</span></dt><dd><p>Whether or not to use the pre-linked entities from the text2sql data.
+We take this parameter here because it effects whether we need to add
+table values to the grammar.</p>
+</dd>
+<dt><strong>variable_free</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = True)</span></dt><dd><p>Denotes whether the data being parsed by the grammar is variable free.
+If it is, the grammar is modified to be less expressive by removing
+elements which are not necessary if the data is variable free.</p>
+</dd>
+<dt><strong>use_untyped_entities</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = False)</span></dt><dd><p>Whether or not to try to infer the types of prelinked variables.
+If not, they are added as untyped values to the grammar instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.semparse.worlds.text2sql_world.Text2SqlWorld.get_action_sequence_and_all_actions">
+<code class="sig-name descname">get_action_sequence_and_all_actions</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">query: List[str] = None</em>, <em class="sig-param">prelinked_entities: Dict[str</em>, <em class="sig-param">Dict[str</em>, <em class="sig-param">str]] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[str], List[str]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/text2sql_world.py#L64-L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.text2sql_world.Text2SqlWorld.get_action_sequence_and_all_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.text2sql_world.Text2SqlWorld.is_global_rule">
+<code class="sig-name descname">is_global_rule</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">production_rule: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/text2sql_world.py#L124-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.text2sql_world.Text2SqlWorld.is_global_rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.semparse.worlds.quarel_world"></span><p>This module defines QuarelWorld, with a simple domain theory for reasoning about
+qualitative relations.</p>
+<dl class="class">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.semparse.worlds.quarel_world.</code><code class="sig-name descname">QuarelWorld</code><span class="sig-paren">(</span><em class="sig-param">table_graph: allennlp.semparse.contexts.knowledge_graph.KnowledgeGraph</em>, <em class="sig-param">syntax: str</em>, <em class="sig-param">qr_coeff_sets: List[Dict[str</em>, <em class="sig-param">int]] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/quarel_world.py#L16-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.semparse.worlds.world.World" title="allennlp.semparse.worlds.world.World"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.semparse.worlds.world.World</span></code></a></p>
+<p>Class defining the QuaRel domain theory world.</p>
+<dl class="method">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld.execute">
+<code class="sig-name descname">execute</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">lf_raw: str</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/quarel_world.py#L167-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Very basic model for executing friction logical forms. For now returns answer index (or
+-1 if no answer can be concluded)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld.get_basic_types">
+<code class="sig-name descname">get_basic_types</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Set[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/quarel_world.py#L85-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld.get_basic_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of basic types (types of entities) in the world.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld.get_valid_starting_types">
+<code class="sig-name descname">get_valid_starting_types</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; Set[nltk.sem.logic.Type]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/quarel_world.py#L89-L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld.get_valid_starting_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of all types t, such that actions <code class="docutils literal notranslate"><span class="pre">{START_SYMBOL}</span> <span class="pre">-&gt;</span> <span class="pre">t</span></code> are valid. In other
+words, these are all the possible types of complete logical forms in this world.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld.is_table_entity">
+<code class="sig-name descname">is_table_entity</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">entity_name: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/semparse/worlds/quarel_world.py#L51-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld.is_table_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the given entity is one of the entities in the table.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld.qr_coeff_sets_default">
+<code class="sig-name descname">qr_coeff_sets_default</code><em class="property"> = [{'friction': 1, 'speed': -1, 'smoothness': -1, 'distance': -1, 'heat': 1}, {'speed': 1, 'time': -1}, {'speed': 1, 'distance': 1}, {'time': 1, 'distance': 1}, {'weight': 1, 'acceleration': -1}, {'strength': 1, 'distance': 1}, {'strength': 1, 'thickness': 1}, {'mass': 1, 'gravity': 1}, {'flexibility': 1, 'breakability': -1}, {'distance': 1, 'loudness': -1, 'brightness': -1, 'apparentSize': -1}, {'exerciseIntensity': 1, 'amountSweat': 1}]</em><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld.qr_coeff_sets_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="allennlp.semparse.worlds.quarel_world.QuarelWorld.qr_size">
+<code class="sig-name descname">qr_size</code><em class="property"> = {'high': 1, 'higher': 1, 'low': -1, 'lower': -1}</em><a class="headerlink" href="#allennlp.semparse.worlds.quarel_world.QuarelWorld.qr_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.semparse.domain_languages.html" class="btn btn-neutral float-right" title="allennlp.semparse.domain_languages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.semparse.type_declarations.html" class="btn btn-neutral float-left" title="allennlp.semparse.type_declarations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
