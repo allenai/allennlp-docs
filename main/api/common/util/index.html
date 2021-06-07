@@ -5373,7 +5373,10 @@ set to the previous value.</p>
 <code>sys.path</code>.</p>
 <p><a name=".allennlp.common.util.import_module_and_submodules"></a></p>
 <h2 id="import_module_and_submodules">import_module_and_submodules<a class="headerlink" href="#import_module_and_submodules" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">import_module_and_submodules</span><span class="p">(</span><span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">import_module_and_submodules</span><span class="p">(</span>
+    <span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">exclude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 <p>Import all submodules under the given package.
 Primarily useful so that people using AllenNLP as a library
