@@ -3889,6 +3889,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../backward/" class="md-nav__link">
+        backward
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -3930,6 +3942,13 @@
           <li class="md-nav__item">
   <a href="#on_start" class="md-nav__link">
     on_start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on_backward" class="md-nav__link">
+    on_backward
   </a>
   
 </li>
@@ -4705,6 +4724,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#on_backward" class="md-nav__link">
+    on_backward
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#on_batch" class="md-nav__link">
     on_batch
   </a>
@@ -4772,7 +4798,7 @@
  <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serialization_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 <p>A general callback object that handles multiple events.</p>
-<p>This class has <code>on_batch</code>, <code>on_epoch</code>, and <code>on_end</code> methods, corresponding to
+<p>This class has <code>on_backward</code>, <code>on_batch</code>, <code>on_epoch</code>, and <code>on_end</code> methods, corresponding to
 each callback type. Each one receives the state of the wrapper object as <code>self</code>.
 This enables easier state sharing between related callbacks.</p>
 <p>Also, this callback type is instantiated with <code>serialization_dir</code> and <code>on_start</code> is called
@@ -4790,6 +4816,21 @@ and saving its own files next to the config/checkpoints/logs/etc.</p>
  <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 <p>This callback hook is called before the training is started.</p>
+<p><a name=".allennlp.training.callbacks.callback.TrainerCallback.on_backward"></a></p>
+<h3 id="on_backward">on_backward<a class="headerlink" href="#on_backward" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TrainerCallback</span><span class="p">(</span><span class="n">Registrable</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">on_backward</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">trainer</span><span class="p">:</span> <span class="s2">&quot;GradientDescentTrainer&quot;</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">batch_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span>
+ <span class="o">|</span>     <span class="n">backward_called</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="o">**</span><span class="n">kwargs</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+<p>This callback hook performs backpropagation and allows for gradient manipulation.
+<code>backward_called</code> indicates if <code>loss.backward</code> has been called prior to this callback.
+<code>on_backward</code> should return <code>True</code> if and only if <code>loss.backward</code> is called in its body.</p>
 <p><a name=".allennlp.training.callbacks.callback.TrainerCallback.on_batch"></a></p>
 <h3 id="on_batch">on_batch<a class="headerlink" href="#on_batch" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TrainerCallback</span><span class="p">(</span><span class="n">Registrable</span><span class="p">):</span>
@@ -4868,7 +4909,7 @@ and saving its own files next to the config/checkpoints/logs/etc.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../../tools/inspect_cache/" class="md-footer__link md-footer__link--prev" aria-label="Previous: inspect_cache" rel="prev">
+        <a href="../backward/" class="md-footer__link md-footer__link--prev" aria-label="Previous: backward" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -4877,7 +4918,7 @@ and saving its own files next to the config/checkpoints/logs/etc.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              inspect_cache
+              backward
             </div>
           </div>
         </a>

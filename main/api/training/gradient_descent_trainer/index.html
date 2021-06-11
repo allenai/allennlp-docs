@@ -3889,6 +3889,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../callbacks/backward/" class="md-nav__link">
+        backward
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../callbacks/callback/" class="md-nav__link">
         callback
       </a>
@@ -4934,7 +4946,7 @@ which you can do with <code>model = model.cuda()</code>.</p>
     model if we load it later. But this may cause problems if you restart the training from checkpoint.</p>
 </li>
 <li>
-<p><strong>callbacks</strong> : <code>List[Lazy[TrainerCallback]]</code>, optional (default = <code>None</code>) <br>
+<p><strong>callbacks</strong> : <code>List[TrainerCallback]</code>, optional (default = <code>None</code>) <br>
     A list of callbacks that can be called at certain events: e.g. each batch, epoch, and at the start
     and end of training, etc.</p>
 </li>
