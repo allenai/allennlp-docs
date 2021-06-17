@@ -11,21 +11,21 @@
       
       
       
-        <link rel="canonical" href="https://allennlp.org/api/training/metrics/auc/">
+        <link rel="canonical" href="https://allennlp.org/api/fairness/adversarial_bias_mitigator/">
       
-      <link rel="icon" href="../../../../img/favicon.ico">
+      <link rel="icon" href="../../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.8">
     
     
       
-        <title>auc - AllenNLP v2.5.1</title>
+        <title>adversarial_bias_mitigator - AllenNLP v2.5.1</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -44,7 +44,7 @@
     
     
     
-      <link rel="stylesheet" href="../../../../css/extra.css">
+      <link rel="stylesheet" href="../../../css/extra.css">
     
     
       
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="grey">
   
     
-    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#auc" class="md-skip">
+        <a href="#adversarialbiasmitigator" class="md-skip">
           Skip to content
         </a>
       
@@ -82,9 +82,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="AllenNLP v2.5.1" class="md-header__button md-logo" aria-label="AllenNLP v2.5.1" data-md-component="logo">
+    <a href="../../.." title="AllenNLP v2.5.1" class="md-header__button md-logo" aria-label="AllenNLP v2.5.1" data-md-component="logo">
       
-  <img src="../../../../img/favicon.ico" alt="logo">
+  <img src="../../../img/favicon.ico" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              auc
+              adversarial_bias_mitigator
             
           </span>
         </div>
@@ -161,9 +161,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="AllenNLP v2.5.1" class="md-nav__button md-logo" aria-label="AllenNLP v2.5.1" data-md-component="logo">
+    <a href="../../.." title="AllenNLP v2.5.1" class="md-nav__button md-logo" aria-label="AllenNLP v2.5.1" data-md-component="logo">
       
-  <img src="../../../../img/favicon.ico" alt="logo">
+  <img src="../../../img/favicon.ico" alt="logo">
 
     </a>
     AllenNLP v2.5.1
@@ -179,7 +179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -319,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/build_vocab/" class="md-nav__link">
+      <a href="../../commands/build_vocab/" class="md-nav__link">
         build_vocab
       </a>
     </li>
@@ -331,7 +331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/cached_path/" class="md-nav__link">
+      <a href="../../commands/cached_path/" class="md-nav__link">
         cached_path
       </a>
     </li>
@@ -343,7 +343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/checklist/" class="md-nav__link">
+      <a href="../../commands/checklist/" class="md-nav__link">
         checklist
       </a>
     </li>
@@ -355,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/count_instances/" class="md-nav__link">
+      <a href="../../commands/count_instances/" class="md-nav__link">
         count_instances
       </a>
     </li>
@@ -367,7 +367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/diff/" class="md-nav__link">
+      <a href="../../commands/diff/" class="md-nav__link">
         diff
       </a>
     </li>
@@ -379,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/evaluate/" class="md-nav__link">
+      <a href="../../commands/evaluate/" class="md-nav__link">
         evaluate
       </a>
     </li>
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/find_learning_rate/" class="md-nav__link">
+      <a href="../../commands/find_learning_rate/" class="md-nav__link">
         find_learning_rate
       </a>
     </li>
@@ -403,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/predict/" class="md-nav__link">
+      <a href="../../commands/predict/" class="md-nav__link">
         predict
       </a>
     </li>
@@ -415,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/print_results/" class="md-nav__link">
+      <a href="../../commands/print_results/" class="md-nav__link">
         print_results
       </a>
     </li>
@@ -427,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/subcommand/" class="md-nav__link">
+      <a href="../../commands/subcommand/" class="md-nav__link">
         subcommand
       </a>
     </li>
@@ -439,7 +439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/test_install/" class="md-nav__link">
+      <a href="../../commands/test_install/" class="md-nav__link">
         test_install
       </a>
     </li>
@@ -451,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../commands/train/" class="md-nav__link">
+      <a href="../../commands/train/" class="md-nav__link">
         train
       </a>
     </li>
@@ -490,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/cached_transformers/" class="md-nav__link">
+      <a href="../../common/cached_transformers/" class="md-nav__link">
         cached_transformers
       </a>
     </li>
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/checks/" class="md-nav__link">
+      <a href="../../common/checks/" class="md-nav__link">
         checks
       </a>
     </li>
@@ -514,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/file_utils/" class="md-nav__link">
+      <a href="../../common/file_utils/" class="md-nav__link">
         file_utils
       </a>
     </li>
@@ -526,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/from_params/" class="md-nav__link">
+      <a href="../../common/from_params/" class="md-nav__link">
         from_params
       </a>
     </li>
@@ -538,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/lazy/" class="md-nav__link">
+      <a href="../../common/lazy/" class="md-nav__link">
         lazy
       </a>
     </li>
@@ -550,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/logging/" class="md-nav__link">
+      <a href="../../common/logging/" class="md-nav__link">
         logging
       </a>
     </li>
@@ -562,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/meta/" class="md-nav__link">
+      <a href="../../common/meta/" class="md-nav__link">
         meta
       </a>
     </li>
@@ -574,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/model_card/" class="md-nav__link">
+      <a href="../../common/model_card/" class="md-nav__link">
         model_card
       </a>
     </li>
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/params/" class="md-nav__link">
+      <a href="../../common/params/" class="md-nav__link">
         params
       </a>
     </li>
@@ -598,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/plugins/" class="md-nav__link">
+      <a href="../../common/plugins/" class="md-nav__link">
         plugins
       </a>
     </li>
@@ -610,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/registrable/" class="md-nav__link">
+      <a href="../../common/registrable/" class="md-nav__link">
         registrable
       </a>
     </li>
@@ -622,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/task_card/" class="md-nav__link">
+      <a href="../../common/task_card/" class="md-nav__link">
         task_card
       </a>
     </li>
@@ -655,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/testing/checklist_test/" class="md-nav__link">
+      <a href="../../common/testing/checklist_test/" class="md-nav__link">
         checklist_test
       </a>
     </li>
@@ -667,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/testing/confidence_check_test/" class="md-nav__link">
+      <a href="../../common/testing/confidence_check_test/" class="md-nav__link">
         confidence_check_test
       </a>
     </li>
@@ -679,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/testing/distributed_test/" class="md-nav__link">
+      <a href="../../common/testing/distributed_test/" class="md-nav__link">
         distributed_test
       </a>
     </li>
@@ -691,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/testing/interpret_test/" class="md-nav__link">
+      <a href="../../common/testing/interpret_test/" class="md-nav__link">
         interpret_test
       </a>
     </li>
@@ -703,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/testing/model_test_case/" class="md-nav__link">
+      <a href="../../common/testing/model_test_case/" class="md-nav__link">
         model_test_case
       </a>
     </li>
@@ -715,7 +715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/testing/test_case/" class="md-nav__link">
+      <a href="../../common/testing/test_case/" class="md-nav__link">
         test_case
       </a>
     </li>
@@ -733,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/tqdm/" class="md-nav__link">
+      <a href="../../common/tqdm/" class="md-nav__link">
         tqdm
       </a>
     </li>
@@ -745,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../common/util/" class="md-nav__link">
+      <a href="../../common/util/" class="md-nav__link">
         util
       </a>
     </li>
@@ -784,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/normalization_bias_verification/" class="md-nav__link">
+      <a href="../../confidence_checks/normalization_bias_verification/" class="md-nav__link">
         normalization_bias_verification
       </a>
     </li>
@@ -817,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/task_checklists/question_answering_suite/" class="md-nav__link">
+      <a href="../../confidence_checks/task_checklists/question_answering_suite/" class="md-nav__link">
         question_answering_suite
       </a>
     </li>
@@ -829,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/task_checklists/sentiment_analysis_suite/" class="md-nav__link">
+      <a href="../../confidence_checks/task_checklists/sentiment_analysis_suite/" class="md-nav__link">
         sentiment_analysis_suite
       </a>
     </li>
@@ -841,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/task_checklists/task_suite/" class="md-nav__link">
+      <a href="../../confidence_checks/task_checklists/task_suite/" class="md-nav__link">
         task_suite
       </a>
     </li>
@@ -853,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/task_checklists/textual_entailment_suite/" class="md-nav__link">
+      <a href="../../confidence_checks/task_checklists/textual_entailment_suite/" class="md-nav__link">
         textual_entailment_suite
       </a>
     </li>
@@ -865,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/task_checklists/utils/" class="md-nav__link">
+      <a href="../../confidence_checks/task_checklists/utils/" class="md-nav__link">
         utils
       </a>
     </li>
@@ -883,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../confidence_checks/verification_base/" class="md-nav__link">
+      <a href="../../confidence_checks/verification_base/" class="md-nav__link">
         verification_base
       </a>
     </li>
@@ -922,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/batch/" class="md-nav__link">
+      <a href="../../data/batch/" class="md-nav__link">
         batch
       </a>
     </li>
@@ -955,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/data_collator/" class="md-nav__link">
+      <a href="../../data/data_loaders/data_collator/" class="md-nav__link">
         data_collator
       </a>
     </li>
@@ -967,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/data_loader/" class="md-nav__link">
+      <a href="../../data/data_loaders/data_loader/" class="md-nav__link">
         data_loader
       </a>
     </li>
@@ -979,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multiprocess_data_loader/" class="md-nav__link">
+      <a href="../../data/data_loaders/multiprocess_data_loader/" class="md-nav__link">
         multiprocess_data_loader
       </a>
     </li>
@@ -991,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multitask_data_loader/" class="md-nav__link">
+      <a href="../../data/data_loaders/multitask_data_loader/" class="md-nav__link">
         multitask_data_loader
       </a>
     </li>
@@ -1003,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multitask_epoch_sampler/" class="md-nav__link">
+      <a href="../../data/data_loaders/multitask_epoch_sampler/" class="md-nav__link">
         multitask_epoch_sampler
       </a>
     </li>
@@ -1015,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multitask_scheduler/" class="md-nav__link">
+      <a href="../../data/data_loaders/multitask_scheduler/" class="md-nav__link">
         multitask_scheduler
       </a>
     </li>
@@ -1027,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/simple_data_loader/" class="md-nav__link">
+      <a href="../../data/data_loaders/simple_data_loader/" class="md-nav__link">
         simple_data_loader
       </a>
     </li>
@@ -1066,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/babi/" class="md-nav__link">
+      <a href="../../data/dataset_readers/babi/" class="md-nav__link">
         babi
       </a>
     </li>
@@ -1078,7 +1078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/conll2003/" class="md-nav__link">
+      <a href="../../data/dataset_readers/conll2003/" class="md-nav__link">
         conll2003
       </a>
     </li>
@@ -1090,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/dataset_reader/" class="md-nav__link">
+      <a href="../../data/dataset_readers/dataset_reader/" class="md-nav__link">
         dataset_reader
       </a>
     </li>
@@ -1123,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/dataset_utils/span_utils/" class="md-nav__link">
+      <a href="../../data/dataset_readers/dataset_utils/span_utils/" class="md-nav__link">
         span_utils
       </a>
     </li>
@@ -1141,7 +1141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/interleaving_dataset_reader/" class="md-nav__link">
+      <a href="../../data/dataset_readers/interleaving_dataset_reader/" class="md-nav__link">
         interleaving_dataset_reader
       </a>
     </li>
@@ -1153,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/multitask/" class="md-nav__link">
+      <a href="../../data/dataset_readers/multitask/" class="md-nav__link">
         multitask
       </a>
     </li>
@@ -1165,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/sequence_tagging/" class="md-nav__link">
+      <a href="../../data/dataset_readers/sequence_tagging/" class="md-nav__link">
         sequence_tagging
       </a>
     </li>
@@ -1177,7 +1177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/sharded_dataset_reader/" class="md-nav__link">
+      <a href="../../data/dataset_readers/sharded_dataset_reader/" class="md-nav__link">
         sharded_dataset_reader
       </a>
     </li>
@@ -1189,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/text_classification_json/" class="md-nav__link">
+      <a href="../../data/dataset_readers/text_classification_json/" class="md-nav__link">
         text_classification_json
       </a>
     </li>
@@ -1228,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/adjacency_field/" class="md-nav__link">
+      <a href="../../data/fields/adjacency_field/" class="md-nav__link">
         adjacency_field
       </a>
     </li>
@@ -1240,7 +1240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/array_field/" class="md-nav__link">
+      <a href="../../data/fields/array_field/" class="md-nav__link">
         array_field
       </a>
     </li>
@@ -1252,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/field/" class="md-nav__link">
+      <a href="../../data/fields/field/" class="md-nav__link">
         field
       </a>
     </li>
@@ -1264,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/flag_field/" class="md-nav__link">
+      <a href="../../data/fields/flag_field/" class="md-nav__link">
         flag_field
       </a>
     </li>
@@ -1276,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/index_field/" class="md-nav__link">
+      <a href="../../data/fields/index_field/" class="md-nav__link">
         index_field
       </a>
     </li>
@@ -1288,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/label_field/" class="md-nav__link">
+      <a href="../../data/fields/label_field/" class="md-nav__link">
         label_field
       </a>
     </li>
@@ -1300,7 +1300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/list_field/" class="md-nav__link">
+      <a href="../../data/fields/list_field/" class="md-nav__link">
         list_field
       </a>
     </li>
@@ -1312,7 +1312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/metadata_field/" class="md-nav__link">
+      <a href="../../data/fields/metadata_field/" class="md-nav__link">
         metadata_field
       </a>
     </li>
@@ -1324,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/multilabel_field/" class="md-nav__link">
+      <a href="../../data/fields/multilabel_field/" class="md-nav__link">
         multilabel_field
       </a>
     </li>
@@ -1336,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/namespace_swapping_field/" class="md-nav__link">
+      <a href="../../data/fields/namespace_swapping_field/" class="md-nav__link">
         namespace_swapping_field
       </a>
     </li>
@@ -1348,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/sequence_field/" class="md-nav__link">
+      <a href="../../data/fields/sequence_field/" class="md-nav__link">
         sequence_field
       </a>
     </li>
@@ -1360,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/sequence_label_field/" class="md-nav__link">
+      <a href="../../data/fields/sequence_label_field/" class="md-nav__link">
         sequence_label_field
       </a>
     </li>
@@ -1372,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/span_field/" class="md-nav__link">
+      <a href="../../data/fields/span_field/" class="md-nav__link">
         span_field
       </a>
     </li>
@@ -1384,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/tensor_field/" class="md-nav__link">
+      <a href="../../data/fields/tensor_field/" class="md-nav__link">
         tensor_field
       </a>
     </li>
@@ -1396,7 +1396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/text_field/" class="md-nav__link">
+      <a href="../../data/fields/text_field/" class="md-nav__link">
         text_field
       </a>
     </li>
@@ -1414,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/image_loader/" class="md-nav__link">
+      <a href="../../data/image_loader/" class="md-nav__link">
         image_loader
       </a>
     </li>
@@ -1426,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/instance/" class="md-nav__link">
+      <a href="../../data/instance/" class="md-nav__link">
         instance
       </a>
     </li>
@@ -1459,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/samplers/batch_sampler/" class="md-nav__link">
+      <a href="../../data/samplers/batch_sampler/" class="md-nav__link">
         batch_sampler
       </a>
     </li>
@@ -1471,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/samplers/bucket_batch_sampler/" class="md-nav__link">
+      <a href="../../data/samplers/bucket_batch_sampler/" class="md-nav__link">
         bucket_batch_sampler
       </a>
     </li>
@@ -1483,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/samplers/max_tokens_batch_sampler/" class="md-nav__link">
+      <a href="../../data/samplers/max_tokens_batch_sampler/" class="md-nav__link">
         max_tokens_batch_sampler
       </a>
     </li>
@@ -1522,7 +1522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/elmo_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/elmo_indexer/" class="md-nav__link">
         elmo_indexer
       </a>
     </li>
@@ -1534,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/pretrained_transformer_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/pretrained_transformer_indexer/" class="md-nav__link">
         pretrained_transformer_indexer
       </a>
     </li>
@@ -1546,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/pretrained_transformer_mismatched_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/pretrained_transformer_mismatched_indexer/" class="md-nav__link">
         pretrained_transformer_mismatched_indexer
       </a>
     </li>
@@ -1558,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/single_id_token_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/single_id_token_indexer/" class="md-nav__link">
         single_id_token_indexer
       </a>
     </li>
@@ -1570,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/spacy_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/spacy_indexer/" class="md-nav__link">
         spacy_indexer
       </a>
     </li>
@@ -1582,7 +1582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/token_characters_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/token_characters_indexer/" class="md-nav__link">
         token_characters_indexer
       </a>
     </li>
@@ -1594,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/token_indexer/" class="md-nav__link">
+      <a href="../../data/token_indexers/token_indexer/" class="md-nav__link">
         token_indexer
       </a>
     </li>
@@ -1633,7 +1633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/character_tokenizer/" class="md-nav__link">
+      <a href="../../data/tokenizers/character_tokenizer/" class="md-nav__link">
         character_tokenizer
       </a>
     </li>
@@ -1645,7 +1645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/letters_digits_tokenizer/" class="md-nav__link">
+      <a href="../../data/tokenizers/letters_digits_tokenizer/" class="md-nav__link">
         letters_digits_tokenizer
       </a>
     </li>
@@ -1657,7 +1657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/pretrained_transformer_tokenizer/" class="md-nav__link">
+      <a href="../../data/tokenizers/pretrained_transformer_tokenizer/" class="md-nav__link">
         pretrained_transformer_tokenizer
       </a>
     </li>
@@ -1669,7 +1669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/sentence_splitter/" class="md-nav__link">
+      <a href="../../data/tokenizers/sentence_splitter/" class="md-nav__link">
         sentence_splitter
       </a>
     </li>
@@ -1681,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/spacy_tokenizer/" class="md-nav__link">
+      <a href="../../data/tokenizers/spacy_tokenizer/" class="md-nav__link">
         spacy_tokenizer
       </a>
     </li>
@@ -1693,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/token_class/" class="md-nav__link">
+      <a href="../../data/tokenizers/token_class/" class="md-nav__link">
         token_class
       </a>
     </li>
@@ -1705,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/tokenizer/" class="md-nav__link">
+      <a href="../../data/tokenizers/tokenizer/" class="md-nav__link">
         tokenizer
       </a>
     </li>
@@ -1717,7 +1717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/whitespace_tokenizer/" class="md-nav__link">
+      <a href="../../data/tokenizers/whitespace_tokenizer/" class="md-nav__link">
         whitespace_tokenizer
       </a>
     </li>
@@ -1735,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/vocabulary/" class="md-nav__link">
+      <a href="../../data/vocabulary/" class="md-nav__link">
         vocabulary
       </a>
     </li>
@@ -1751,12 +1751,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
       
       <label class="md-nav__link" for="__nav_4_5">
         fairness
@@ -1772,11 +1774,170 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../fairness/adversarial_bias_mitigator/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          adversarial_bias_mitigator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         adversarial_bias_mitigator
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adversarialbiasmitigator" class="md-nav__link">
+    AdversarialBiasMitigator
+  </a>
+  
+    <nav class="md-nav" aria-label="AdversarialBiasMitigator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#train" class="md-nav__link">
+    train
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward" class="md-nav__link">
+    forward
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward_on_instance" class="md-nav__link">
+    forward_on_instance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward_on_instances" class="md-nav__link">
+    forward_on_instances
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_regularization_penalty" class="md-nav__link">
+    get_regularization_penalty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_parameters_for_histogram_logging" class="md-nav__link">
+    get_parameters_for_histogram_logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_parameters_for_histogram_tensorboard_logging" class="md-nav__link">
+    get_parameters_for_histogram_tensorboard_logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make_output_human_readable" class="md-nav__link">
+    make_output_human_readable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_metrics" class="md-nav__link">
+    get_metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extend_embedder_vocab" class="md-nav__link">
+    extend_embedder_vocab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedforwardregressionadversary" class="md-nav__link">
+    FeedForwardRegressionAdversary
+  </a>
+  
+    <nav class="md-nav" aria-label="FeedForwardRegressionAdversary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward_1" class="md-nav__link">
+    forward
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adversarialbiasmitigatorbackwardcallback" class="md-nav__link">
+    AdversarialBiasMitigatorBackwardCallback
+  </a>
+  
+    <nav class="md-nav" aria-label="AdversarialBiasMitigatorBackwardCallback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on_backward" class="md-nav__link">
+    on_backward
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__call__" class="md-nav__link">
+    __call__
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1786,7 +1947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_direction/" class="md-nav__link">
+      <a href="../bias_direction/" class="md-nav__link">
         bias_direction
       </a>
     </li>
@@ -1798,7 +1959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_direction_wrappers/" class="md-nav__link">
+      <a href="../bias_direction_wrappers/" class="md-nav__link">
         bias_direction_wrappers
       </a>
     </li>
@@ -1810,7 +1971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_metrics/" class="md-nav__link">
+      <a href="../bias_metrics/" class="md-nav__link">
         bias_metrics
       </a>
     </li>
@@ -1822,7 +1983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_mitigator_applicator/" class="md-nav__link">
+      <a href="../bias_mitigator_applicator/" class="md-nav__link">
         bias_mitigator_applicator
       </a>
     </li>
@@ -1834,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_mitigator_wrappers/" class="md-nav__link">
+      <a href="../bias_mitigator_wrappers/" class="md-nav__link">
         bias_mitigator_wrappers
       </a>
     </li>
@@ -1846,7 +2007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_mitigators/" class="md-nav__link">
+      <a href="../bias_mitigators/" class="md-nav__link">
         bias_mitigators
       </a>
     </li>
@@ -1858,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/bias_utils/" class="md-nav__link">
+      <a href="../bias_utils/" class="md-nav__link">
         bias_utils
       </a>
     </li>
@@ -1870,7 +2031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fairness/fairness_metrics/" class="md-nav__link">
+      <a href="../fairness_metrics/" class="md-nav__link">
         fairness_metrics
       </a>
     </li>
@@ -1930,7 +2091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/attackers/attacker/" class="md-nav__link">
+      <a href="../../interpret/attackers/attacker/" class="md-nav__link">
         attacker
       </a>
     </li>
@@ -1942,7 +2103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/attackers/hotflip/" class="md-nav__link">
+      <a href="../../interpret/attackers/hotflip/" class="md-nav__link">
         hotflip
       </a>
     </li>
@@ -1954,7 +2115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/attackers/input_reduction/" class="md-nav__link">
+      <a href="../../interpret/attackers/input_reduction/" class="md-nav__link">
         input_reduction
       </a>
     </li>
@@ -1966,7 +2127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/attackers/utils/" class="md-nav__link">
+      <a href="../../interpret/attackers/utils/" class="md-nav__link">
         utils
       </a>
     </li>
@@ -2005,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/influence_interpreters/influence_interpreter/" class="md-nav__link">
+      <a href="../../interpret/influence_interpreters/influence_interpreter/" class="md-nav__link">
         influence_interpreter
       </a>
     </li>
@@ -2017,7 +2178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/influence_interpreters/simple_influence/" class="md-nav__link">
+      <a href="../../interpret/influence_interpreters/simple_influence/" class="md-nav__link">
         simple_influence
       </a>
     </li>
@@ -2056,7 +2217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/saliency_interpreters/integrated_gradient/" class="md-nav__link">
+      <a href="../../interpret/saliency_interpreters/integrated_gradient/" class="md-nav__link">
         integrated_gradient
       </a>
     </li>
@@ -2068,7 +2229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/saliency_interpreters/saliency_interpreter/" class="md-nav__link">
+      <a href="../../interpret/saliency_interpreters/saliency_interpreter/" class="md-nav__link">
         saliency_interpreter
       </a>
     </li>
@@ -2080,7 +2241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/saliency_interpreters/simple_gradient/" class="md-nav__link">
+      <a href="../../interpret/saliency_interpreters/simple_gradient/" class="md-nav__link">
         simple_gradient
       </a>
     </li>
@@ -2092,7 +2253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interpret/saliency_interpreters/smooth_gradient/" class="md-nav__link">
+      <a href="../../interpret/saliency_interpreters/smooth_gradient/" class="md-nav__link">
         smooth_gradient
       </a>
     </li>
@@ -2137,7 +2298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/archival/" class="md-nav__link">
+      <a href="../../models/archival/" class="md-nav__link">
         archival
       </a>
     </li>
@@ -2149,7 +2310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/basic_classifier/" class="md-nav__link">
+      <a href="../../models/basic_classifier/" class="md-nav__link">
         basic_classifier
       </a>
     </li>
@@ -2182,7 +2343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/heads/classifier_head/" class="md-nav__link">
+      <a href="../../models/heads/classifier_head/" class="md-nav__link">
         classifier_head
       </a>
     </li>
@@ -2194,7 +2355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/heads/head/" class="md-nav__link">
+      <a href="../../models/heads/head/" class="md-nav__link">
         head
       </a>
     </li>
@@ -2212,7 +2373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/model/" class="md-nav__link">
+      <a href="../../models/model/" class="md-nav__link">
         model
       </a>
     </li>
@@ -2224,7 +2385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/multitask/" class="md-nav__link">
+      <a href="../../models/multitask/" class="md-nav__link">
         multitask
       </a>
     </li>
@@ -2236,7 +2397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/simple_tagger/" class="md-nav__link">
+      <a href="../../models/simple_tagger/" class="md-nav__link">
         simple_tagger
       </a>
     </li>
@@ -2296,7 +2457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/additive_attention/" class="md-nav__link">
+      <a href="../../modules/attention/additive_attention/" class="md-nav__link">
         additive_attention
       </a>
     </li>
@@ -2308,7 +2469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/attention/" class="md-nav__link">
+      <a href="../../modules/attention/attention/" class="md-nav__link">
         attention
       </a>
     </li>
@@ -2320,7 +2481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/bilinear_attention/" class="md-nav__link">
+      <a href="../../modules/attention/bilinear_attention/" class="md-nav__link">
         bilinear_attention
       </a>
     </li>
@@ -2332,7 +2493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/cosine_attention/" class="md-nav__link">
+      <a href="../../modules/attention/cosine_attention/" class="md-nav__link">
         cosine_attention
       </a>
     </li>
@@ -2344,7 +2505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/dot_product_attention/" class="md-nav__link">
+      <a href="../../modules/attention/dot_product_attention/" class="md-nav__link">
         dot_product_attention
       </a>
     </li>
@@ -2356,7 +2517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/linear_attention/" class="md-nav__link">
+      <a href="../../modules/attention/linear_attention/" class="md-nav__link">
         linear_attention
       </a>
     </li>
@@ -2368,7 +2529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/attention/scaled_dot_product_attention/" class="md-nav__link">
+      <a href="../../modules/attention/scaled_dot_product_attention/" class="md-nav__link">
         scaled_dot_product_attention
       </a>
     </li>
@@ -2386,7 +2547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/augmented_lstm/" class="md-nav__link">
+      <a href="../../modules/augmented_lstm/" class="md-nav__link">
         augmented_lstm
       </a>
     </li>
@@ -2419,7 +2580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/backbones/backbone/" class="md-nav__link">
+      <a href="../../modules/backbones/backbone/" class="md-nav__link">
         backbone
       </a>
     </li>
@@ -2431,7 +2592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/backbones/pretrained_transformer_backbone/" class="md-nav__link">
+      <a href="../../modules/backbones/pretrained_transformer_backbone/" class="md-nav__link">
         pretrained_transformer_backbone
       </a>
     </li>
@@ -2443,7 +2604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/backbones/vilbert_backbone/" class="md-nav__link">
+      <a href="../../modules/backbones/vilbert_backbone/" class="md-nav__link">
         vilbert_backbone
       </a>
     </li>
@@ -2461,7 +2622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/bimpm_matching/" class="md-nav__link">
+      <a href="../../modules/bimpm_matching/" class="md-nav__link">
         bimpm_matching
       </a>
     </li>
@@ -2473,7 +2634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/conditional_random_field/" class="md-nav__link">
+      <a href="../../modules/conditional_random_field/" class="md-nav__link">
         conditional_random_field
       </a>
     </li>
@@ -2485,7 +2646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/elmo/" class="md-nav__link">
+      <a href="../../modules/elmo/" class="md-nav__link">
         elmo
       </a>
     </li>
@@ -2497,7 +2658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/elmo_lstm/" class="md-nav__link">
+      <a href="../../modules/elmo_lstm/" class="md-nav__link">
         elmo_lstm
       </a>
     </li>
@@ -2509,7 +2670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/encoder_base/" class="md-nav__link">
+      <a href="../../modules/encoder_base/" class="md-nav__link">
         encoder_base
       </a>
     </li>
@@ -2521,7 +2682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/feedforward/" class="md-nav__link">
+      <a href="../../modules/feedforward/" class="md-nav__link">
         feedforward
       </a>
     </li>
@@ -2533,7 +2694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/gated_sum/" class="md-nav__link">
+      <a href="../../modules/gated_sum/" class="md-nav__link">
         gated_sum
       </a>
     </li>
@@ -2545,7 +2706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/highway/" class="md-nav__link">
+      <a href="../../modules/highway/" class="md-nav__link">
         highway
       </a>
     </li>
@@ -2557,7 +2718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/input_variational_dropout/" class="md-nav__link">
+      <a href="../../modules/input_variational_dropout/" class="md-nav__link">
         input_variational_dropout
       </a>
     </li>
@@ -2569,7 +2730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/layer_norm/" class="md-nav__link">
+      <a href="../../modules/layer_norm/" class="md-nav__link">
         layer_norm
       </a>
     </li>
@@ -2581,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/lstm_cell_with_projection/" class="md-nav__link">
+      <a href="../../modules/lstm_cell_with_projection/" class="md-nav__link">
         lstm_cell_with_projection
       </a>
     </li>
@@ -2593,7 +2754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/masked_layer_norm/" class="md-nav__link">
+      <a href="../../modules/masked_layer_norm/" class="md-nav__link">
         masked_layer_norm
       </a>
     </li>
@@ -2626,7 +2787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/matrix_attention/bilinear_matrix_attention/" class="md-nav__link">
+      <a href="../../modules/matrix_attention/bilinear_matrix_attention/" class="md-nav__link">
         bilinear_matrix_attention
       </a>
     </li>
@@ -2638,7 +2799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/matrix_attention/cosine_matrix_attention/" class="md-nav__link">
+      <a href="../../modules/matrix_attention/cosine_matrix_attention/" class="md-nav__link">
         cosine_matrix_attention
       </a>
     </li>
@@ -2650,7 +2811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/matrix_attention/dot_product_matrix_attention/" class="md-nav__link">
+      <a href="../../modules/matrix_attention/dot_product_matrix_attention/" class="md-nav__link">
         dot_product_matrix_attention
       </a>
     </li>
@@ -2662,7 +2823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/matrix_attention/linear_matrix_attention/" class="md-nav__link">
+      <a href="../../modules/matrix_attention/linear_matrix_attention/" class="md-nav__link">
         linear_matrix_attention
       </a>
     </li>
@@ -2674,7 +2835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/matrix_attention/matrix_attention/" class="md-nav__link">
+      <a href="../../modules/matrix_attention/matrix_attention/" class="md-nav__link">
         matrix_attention
       </a>
     </li>
@@ -2692,7 +2853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/maxout/" class="md-nav__link">
+      <a href="../../modules/maxout/" class="md-nav__link">
         maxout
       </a>
     </li>
@@ -2704,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/residual_with_layer_dropout/" class="md-nav__link">
+      <a href="../../modules/residual_with_layer_dropout/" class="md-nav__link">
         residual_with_layer_dropout
       </a>
     </li>
@@ -2716,7 +2877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/sampled_softmax_loss/" class="md-nav__link">
+      <a href="../../modules/sampled_softmax_loss/" class="md-nav__link">
         sampled_softmax_loss
       </a>
     </li>
@@ -2728,7 +2889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/scalar_mix/" class="md-nav__link">
+      <a href="../../modules/scalar_mix/" class="md-nav__link">
         scalar_mix
       </a>
     </li>
@@ -2761,7 +2922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/compose_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/compose_encoder/" class="md-nav__link">
         compose_encoder
       </a>
     </li>
@@ -2773,7 +2934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/feedforward_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/feedforward_encoder/" class="md-nav__link">
         feedforward_encoder
       </a>
     </li>
@@ -2785,7 +2946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/gated_cnn_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/gated_cnn_encoder/" class="md-nav__link">
         gated_cnn_encoder
       </a>
     </li>
@@ -2797,7 +2958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/pass_through_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/pass_through_encoder/" class="md-nav__link">
         pass_through_encoder
       </a>
     </li>
@@ -2809,7 +2970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/pytorch_seq2seq_wrapper/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/pytorch_seq2seq_wrapper/" class="md-nav__link">
         pytorch_seq2seq_wrapper
       </a>
     </li>
@@ -2821,7 +2982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/pytorch_transformer_wrapper/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/pytorch_transformer_wrapper/" class="md-nav__link">
         pytorch_transformer_wrapper
       </a>
     </li>
@@ -2833,7 +2994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2seq_encoders/seq2seq_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2seq_encoders/seq2seq_encoder/" class="md-nav__link">
         seq2seq_encoder
       </a>
     </li>
@@ -2872,7 +3033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/bert_pooler/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/bert_pooler/" class="md-nav__link">
         bert_pooler
       </a>
     </li>
@@ -2884,7 +3045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/boe_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/boe_encoder/" class="md-nav__link">
         boe_encoder
       </a>
     </li>
@@ -2896,7 +3057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/cls_pooler/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/cls_pooler/" class="md-nav__link">
         cls_pooler
       </a>
     </li>
@@ -2908,7 +3069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/cnn_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/cnn_encoder/" class="md-nav__link">
         cnn_encoder
       </a>
     </li>
@@ -2920,7 +3081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/cnn_highway_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/cnn_highway_encoder/" class="md-nav__link">
         cnn_highway_encoder
       </a>
     </li>
@@ -2932,7 +3093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/pytorch_seq2vec_wrapper/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/pytorch_seq2vec_wrapper/" class="md-nav__link">
         pytorch_seq2vec_wrapper
       </a>
     </li>
@@ -2944,7 +3105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/seq2vec_encoders/seq2vec_encoder/" class="md-nav__link">
+      <a href="../../modules/seq2vec_encoders/seq2vec_encoder/" class="md-nav__link">
         seq2vec_encoder
       </a>
     </li>
@@ -2962,7 +3123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/softmax_loss/" class="md-nav__link">
+      <a href="../../modules/softmax_loss/" class="md-nav__link">
         softmax_loss
       </a>
     </li>
@@ -2995,7 +3156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/span_extractors/bidirectional_endpoint_span_extractor/" class="md-nav__link">
+      <a href="../../modules/span_extractors/bidirectional_endpoint_span_extractor/" class="md-nav__link">
         bidirectional_endpoint_span_extractor
       </a>
     </li>
@@ -3007,7 +3168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/span_extractors/endpoint_span_extractor/" class="md-nav__link">
+      <a href="../../modules/span_extractors/endpoint_span_extractor/" class="md-nav__link">
         endpoint_span_extractor
       </a>
     </li>
@@ -3019,7 +3180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/span_extractors/self_attentive_span_extractor/" class="md-nav__link">
+      <a href="../../modules/span_extractors/self_attentive_span_extractor/" class="md-nav__link">
         self_attentive_span_extractor
       </a>
     </li>
@@ -3031,7 +3192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/span_extractors/span_extractor/" class="md-nav__link">
+      <a href="../../modules/span_extractors/span_extractor/" class="md-nav__link">
         span_extractor
       </a>
     </li>
@@ -3043,7 +3204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/span_extractors/span_extractor_with_span_width_embedding/" class="md-nav__link">
+      <a href="../../modules/span_extractors/span_extractor_with_span_width_embedding/" class="md-nav__link">
         span_extractor_with_span_width_embedding
       </a>
     </li>
@@ -3061,7 +3222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/stacked_alternating_lstm/" class="md-nav__link">
+      <a href="../../modules/stacked_alternating_lstm/" class="md-nav__link">
         stacked_alternating_lstm
       </a>
     </li>
@@ -3073,7 +3234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/stacked_bidirectional_lstm/" class="md-nav__link">
+      <a href="../../modules/stacked_bidirectional_lstm/" class="md-nav__link">
         stacked_bidirectional_lstm
       </a>
     </li>
@@ -3106,7 +3267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/text_field_embedders/basic_text_field_embedder/" class="md-nav__link">
+      <a href="../../modules/text_field_embedders/basic_text_field_embedder/" class="md-nav__link">
         basic_text_field_embedder
       </a>
     </li>
@@ -3118,7 +3279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/text_field_embedders/text_field_embedder/" class="md-nav__link">
+      <a href="../../modules/text_field_embedders/text_field_embedder/" class="md-nav__link">
         text_field_embedder
       </a>
     </li>
@@ -3136,7 +3297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/time_distributed/" class="md-nav__link">
+      <a href="../../modules/time_distributed/" class="md-nav__link">
         time_distributed
       </a>
     </li>
@@ -3169,7 +3330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/bag_of_word_counts_token_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/bag_of_word_counts_token_embedder/" class="md-nav__link">
         bag_of_word_counts_token_embedder
       </a>
     </li>
@@ -3181,7 +3342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/elmo_token_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/elmo_token_embedder/" class="md-nav__link">
         elmo_token_embedder
       </a>
     </li>
@@ -3193,7 +3354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/embedding/" class="md-nav__link">
+      <a href="../../modules/token_embedders/embedding/" class="md-nav__link">
         embedding
       </a>
     </li>
@@ -3205,7 +3366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/empty_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/empty_embedder/" class="md-nav__link">
         empty_embedder
       </a>
     </li>
@@ -3217,7 +3378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/pass_through_token_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/pass_through_token_embedder/" class="md-nav__link">
         pass_through_token_embedder
       </a>
     </li>
@@ -3229,7 +3390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/pretrained_transformer_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/pretrained_transformer_embedder/" class="md-nav__link">
         pretrained_transformer_embedder
       </a>
     </li>
@@ -3241,7 +3402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/pretrained_transformer_mismatched_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/pretrained_transformer_mismatched_embedder/" class="md-nav__link">
         pretrained_transformer_mismatched_embedder
       </a>
     </li>
@@ -3253,7 +3414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/token_characters_encoder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/token_characters_encoder/" class="md-nav__link">
         token_characters_encoder
       </a>
     </li>
@@ -3265,7 +3426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/token_embedders/token_embedder/" class="md-nav__link">
+      <a href="../../modules/token_embedders/token_embedder/" class="md-nav__link">
         token_embedder
       </a>
     </li>
@@ -3304,7 +3465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/activation_layer/" class="md-nav__link">
+      <a href="../../modules/transformer/activation_layer/" class="md-nav__link">
         activation_layer
       </a>
     </li>
@@ -3316,7 +3477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/attention_module/" class="md-nav__link">
+      <a href="../../modules/transformer/attention_module/" class="md-nav__link">
         attention_module
       </a>
     </li>
@@ -3328,7 +3489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/bimodal_attention/" class="md-nav__link">
+      <a href="../../modules/transformer/bimodal_attention/" class="md-nav__link">
         bimodal_attention
       </a>
     </li>
@@ -3340,7 +3501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/bimodal_connection_layer/" class="md-nav__link">
+      <a href="../../modules/transformer/bimodal_connection_layer/" class="md-nav__link">
         bimodal_connection_layer
       </a>
     </li>
@@ -3352,7 +3513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/bimodal_encoder/" class="md-nav__link">
+      <a href="../../modules/transformer/bimodal_encoder/" class="md-nav__link">
         bimodal_encoder
       </a>
     </li>
@@ -3364,7 +3525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/layer_norm/" class="md-nav__link">
+      <a href="../../modules/transformer/layer_norm/" class="md-nav__link">
         layer_norm
       </a>
     </li>
@@ -3376,7 +3537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/output_layer/" class="md-nav__link">
+      <a href="../../modules/transformer/output_layer/" class="md-nav__link">
         output_layer
       </a>
     </li>
@@ -3388,7 +3549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/positional_encoding/" class="md-nav__link">
+      <a href="../../modules/transformer/positional_encoding/" class="md-nav__link">
         positional_encoding
       </a>
     </li>
@@ -3400,7 +3561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/t5/" class="md-nav__link">
+      <a href="../../modules/transformer/t5/" class="md-nav__link">
         t5
       </a>
     </li>
@@ -3412,7 +3573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/transformer_embeddings/" class="md-nav__link">
+      <a href="../../modules/transformer/transformer_embeddings/" class="md-nav__link">
         transformer_embeddings
       </a>
     </li>
@@ -3424,7 +3585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/transformer_layer/" class="md-nav__link">
+      <a href="../../modules/transformer/transformer_layer/" class="md-nav__link">
         transformer_layer
       </a>
     </li>
@@ -3436,7 +3597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/transformer_module/" class="md-nav__link">
+      <a href="../../modules/transformer/transformer_module/" class="md-nav__link">
         transformer_module
       </a>
     </li>
@@ -3448,7 +3609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/transformer_pooler/" class="md-nav__link">
+      <a href="../../modules/transformer/transformer_pooler/" class="md-nav__link">
         transformer_pooler
       </a>
     </li>
@@ -3460,7 +3621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/transformer_stack/" class="md-nav__link">
+      <a href="../../modules/transformer/transformer_stack/" class="md-nav__link">
         transformer_stack
       </a>
     </li>
@@ -3472,7 +3633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/transformer/util/" class="md-nav__link">
+      <a href="../../modules/transformer/util/" class="md-nav__link">
         util
       </a>
     </li>
@@ -3490,7 +3651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/util/" class="md-nav__link">
+      <a href="../../modules/util/" class="md-nav__link">
         util
       </a>
     </li>
@@ -3523,7 +3684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/vision/grid_embedder/" class="md-nav__link">
+      <a href="../../modules/vision/grid_embedder/" class="md-nav__link">
         grid_embedder
       </a>
     </li>
@@ -3535,7 +3696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/vision/image2image/" class="md-nav__link">
+      <a href="../../modules/vision/image2image/" class="md-nav__link">
         image2image
       </a>
     </li>
@@ -3547,7 +3708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/vision/region_detector/" class="md-nav__link">
+      <a href="../../modules/vision/region_detector/" class="md-nav__link">
         region_detector
       </a>
     </li>
@@ -3592,7 +3753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/activations/" class="md-nav__link">
+      <a href="../../nn/activations/" class="md-nav__link">
         activations
       </a>
     </li>
@@ -3604,7 +3765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/beam_search/" class="md-nav__link">
+      <a href="../../nn/beam_search/" class="md-nav__link">
         beam_search
       </a>
     </li>
@@ -3616,7 +3777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/chu_liu_edmonds/" class="md-nav__link">
+      <a href="../../nn/chu_liu_edmonds/" class="md-nav__link">
         chu_liu_edmonds
       </a>
     </li>
@@ -3628,7 +3789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/initializers/" class="md-nav__link">
+      <a href="../../nn/initializers/" class="md-nav__link">
         initializers
       </a>
     </li>
@@ -3661,7 +3822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/regularizers/regularizer/" class="md-nav__link">
+      <a href="../../nn/regularizers/regularizer/" class="md-nav__link">
         regularizer
       </a>
     </li>
@@ -3673,7 +3834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/regularizers/regularizer_applicator/" class="md-nav__link">
+      <a href="../../nn/regularizers/regularizer_applicator/" class="md-nav__link">
         regularizer_applicator
       </a>
     </li>
@@ -3685,7 +3846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/regularizers/regularizers/" class="md-nav__link">
+      <a href="../../nn/regularizers/regularizers/" class="md-nav__link">
         regularizers
       </a>
     </li>
@@ -3703,7 +3864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../nn/util/" class="md-nav__link">
+      <a href="../../nn/util/" class="md-nav__link">
         util
       </a>
     </li>
@@ -3742,7 +3903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../predictors/multitask/" class="md-nav__link">
+      <a href="../../predictors/multitask/" class="md-nav__link">
         multitask
       </a>
     </li>
@@ -3754,7 +3915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../predictors/predictor/" class="md-nav__link">
+      <a href="../../predictors/predictor/" class="md-nav__link">
         predictor
       </a>
     </li>
@@ -3766,7 +3927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../predictors/sentence_tagger/" class="md-nav__link">
+      <a href="../../predictors/sentence_tagger/" class="md-nav__link">
         sentence_tagger
       </a>
     </li>
@@ -3778,7 +3939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../predictors/text_classifier/" class="md-nav__link">
+      <a href="../../predictors/text_classifier/" class="md-nav__link">
         text_classifier
       </a>
     </li>
@@ -3817,7 +3978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/archive_surgery/" class="md-nav__link">
+      <a href="../../tools/archive_surgery/" class="md-nav__link">
         archive_surgery
       </a>
     </li>
@@ -3829,7 +3990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/create_elmo_embeddings_from_vocab/" class="md-nav__link">
+      <a href="../../tools/create_elmo_embeddings_from_vocab/" class="md-nav__link">
         create_elmo_embeddings_from_vocab
       </a>
     </li>
@@ -3841,7 +4002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tools/inspect_cache/" class="md-nav__link">
+      <a href="../../tools/inspect_cache/" class="md-nav__link">
         inspect_cache
       </a>
     </li>
@@ -3857,14 +4018,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" >
       
       <label class="md-nav__link" for="__nav_4_12">
         training
@@ -3903,7 +4062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/backward/" class="md-nav__link">
+      <a href="../../training/callbacks/backward/" class="md-nav__link">
         backward
       </a>
     </li>
@@ -3915,7 +4074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/callback/" class="md-nav__link">
+      <a href="../../training/callbacks/callback/" class="md-nav__link">
         callback
       </a>
     </li>
@@ -3927,7 +4086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/confidence_checks/" class="md-nav__link">
+      <a href="../../training/callbacks/confidence_checks/" class="md-nav__link">
         confidence_checks
       </a>
     </li>
@@ -3939,7 +4098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/console_logger/" class="md-nav__link">
+      <a href="../../training/callbacks/console_logger/" class="md-nav__link">
         console_logger
       </a>
     </li>
@@ -3951,7 +4110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/log_writer/" class="md-nav__link">
+      <a href="../../training/callbacks/log_writer/" class="md-nav__link">
         log_writer
       </a>
     </li>
@@ -3963,7 +4122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/tensorboard/" class="md-nav__link">
+      <a href="../../training/callbacks/tensorboard/" class="md-nav__link">
         tensorboard
       </a>
     </li>
@@ -3975,7 +4134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/track_epoch/" class="md-nav__link">
+      <a href="../../training/callbacks/track_epoch/" class="md-nav__link">
         track_epoch
       </a>
     </li>
@@ -3987,7 +4146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/wandb/" class="md-nav__link">
+      <a href="../../training/callbacks/wandb/" class="md-nav__link">
         wandb
       </a>
     </li>
@@ -4005,7 +4164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../checkpointer/" class="md-nav__link">
+      <a href="../../training/checkpointer/" class="md-nav__link">
         checkpointer
       </a>
     </li>
@@ -4017,7 +4176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gradient_descent_trainer/" class="md-nav__link">
+      <a href="../../training/gradient_descent_trainer/" class="md-nav__link">
         gradient_descent_trainer
       </a>
     </li>
@@ -4050,7 +4209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/combined/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/combined/" class="md-nav__link">
         combined
       </a>
     </li>
@@ -4062,7 +4221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/cosine/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/cosine/" class="md-nav__link">
         cosine
       </a>
     </li>
@@ -4074,7 +4233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/learning_rate_scheduler/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/learning_rate_scheduler/" class="md-nav__link">
         learning_rate_scheduler
       </a>
     </li>
@@ -4086,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/linear_with_warmup/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/linear_with_warmup/" class="md-nav__link">
         linear_with_warmup
       </a>
     </li>
@@ -4098,7 +4257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/noam/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/noam/" class="md-nav__link">
         noam
       </a>
     </li>
@@ -4110,7 +4269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/polynomial_decay/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/polynomial_decay/" class="md-nav__link">
         polynomial_decay
       </a>
     </li>
@@ -4122,7 +4281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning_rate_schedulers/slanted_triangular/" class="md-nav__link">
+      <a href="../../training/learning_rate_schedulers/slanted_triangular/" class="md-nav__link">
         slanted_triangular
       </a>
     </li>
@@ -4140,7 +4299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metric_tracker/" class="md-nav__link">
+      <a href="../../training/metric_tracker/" class="md-nav__link">
         metric_tracker
       </a>
     </li>
@@ -4150,14 +4309,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12_6" type="checkbox" id="__nav_4_12_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12_6" type="checkbox" id="__nav_4_12_6" >
       
       <label class="md-nav__link" for="__nav_4_12_6">
         metrics
@@ -4175,7 +4332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../attachment_scores/" class="md-nav__link">
+      <a href="../../training/metrics/attachment_scores/" class="md-nav__link">
         attachment_scores
       </a>
     </li>
@@ -4185,74 +4342,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          auc
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../training/metrics/auc/" class="md-nav__link">
         auc
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#auc" class="md-nav__link">
-    Auc
-  </a>
-  
-    <nav class="md-nav" aria-label="Auc">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#__call__" class="md-nav__link">
-    __call__
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get_metric" class="md-nav__link">
-    get_metric
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reset" class="md-nav__link">
-    reset
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4262,7 +4356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../average/" class="md-nav__link">
+      <a href="../../training/metrics/average/" class="md-nav__link">
         average
       </a>
     </li>
@@ -4274,7 +4368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bleu/" class="md-nav__link">
+      <a href="../../training/metrics/bleu/" class="md-nav__link">
         bleu
       </a>
     </li>
@@ -4286,7 +4380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../boolean_accuracy/" class="md-nav__link">
+      <a href="../../training/metrics/boolean_accuracy/" class="md-nav__link">
         boolean_accuracy
       </a>
     </li>
@@ -4298,7 +4392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../categorical_accuracy/" class="md-nav__link">
+      <a href="../../training/metrics/categorical_accuracy/" class="md-nav__link">
         categorical_accuracy
       </a>
     </li>
@@ -4310,7 +4404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../covariance/" class="md-nav__link">
+      <a href="../../training/metrics/covariance/" class="md-nav__link">
         covariance
       </a>
     </li>
@@ -4322,7 +4416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entropy/" class="md-nav__link">
+      <a href="../../training/metrics/entropy/" class="md-nav__link">
         entropy
       </a>
     </li>
@@ -4334,7 +4428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../evalb_bracketing_scorer/" class="md-nav__link">
+      <a href="../../training/metrics/evalb_bracketing_scorer/" class="md-nav__link">
         evalb_bracketing_scorer
       </a>
     </li>
@@ -4346,7 +4440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../f1_measure/" class="md-nav__link">
+      <a href="../../training/metrics/f1_measure/" class="md-nav__link">
         f1_measure
       </a>
     </li>
@@ -4358,7 +4452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fbeta_measure/" class="md-nav__link">
+      <a href="../../training/metrics/fbeta_measure/" class="md-nav__link">
         fbeta_measure
       </a>
     </li>
@@ -4370,7 +4464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fbeta_multi_label_measure/" class="md-nav__link">
+      <a href="../../training/metrics/fbeta_multi_label_measure/" class="md-nav__link">
         fbeta_multi_label_measure
       </a>
     </li>
@@ -4382,7 +4476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mean_absolute_error/" class="md-nav__link">
+      <a href="../../training/metrics/mean_absolute_error/" class="md-nav__link">
         mean_absolute_error
       </a>
     </li>
@@ -4394,7 +4488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metric/" class="md-nav__link">
+      <a href="../../training/metrics/metric/" class="md-nav__link">
         metric
       </a>
     </li>
@@ -4406,7 +4500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pearson_correlation/" class="md-nav__link">
+      <a href="../../training/metrics/pearson_correlation/" class="md-nav__link">
         pearson_correlation
       </a>
     </li>
@@ -4418,7 +4512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../perplexity/" class="md-nav__link">
+      <a href="../../training/metrics/perplexity/" class="md-nav__link">
         perplexity
       </a>
     </li>
@@ -4430,7 +4524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rouge/" class="md-nav__link">
+      <a href="../../training/metrics/rouge/" class="md-nav__link">
         rouge
       </a>
     </li>
@@ -4442,7 +4536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sequence_accuracy/" class="md-nav__link">
+      <a href="../../training/metrics/sequence_accuracy/" class="md-nav__link">
         sequence_accuracy
       </a>
     </li>
@@ -4454,7 +4548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../span_based_f1_measure/" class="md-nav__link">
+      <a href="../../training/metrics/span_based_f1_measure/" class="md-nav__link">
         span_based_f1_measure
       </a>
     </li>
@@ -4466,7 +4560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../spearman_correlation/" class="md-nav__link">
+      <a href="../../training/metrics/spearman_correlation/" class="md-nav__link">
         spearman_correlation
       </a>
     </li>
@@ -4478,7 +4572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../unigram_recall/" class="md-nav__link">
+      <a href="../../training/metrics/unigram_recall/" class="md-nav__link">
         unigram_recall
       </a>
     </li>
@@ -4517,7 +4611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../momentum_schedulers/inverted_triangular/" class="md-nav__link">
+      <a href="../../training/momentum_schedulers/inverted_triangular/" class="md-nav__link">
         inverted_triangular
       </a>
     </li>
@@ -4529,7 +4623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../momentum_schedulers/momentum_scheduler/" class="md-nav__link">
+      <a href="../../training/momentum_schedulers/momentum_scheduler/" class="md-nav__link">
         momentum_scheduler
       </a>
     </li>
@@ -4547,7 +4641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../moving_average/" class="md-nav__link">
+      <a href="../../training/moving_average/" class="md-nav__link">
         moving_average
       </a>
     </li>
@@ -4559,7 +4653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../no_op_trainer/" class="md-nav__link">
+      <a href="../../training/no_op_trainer/" class="md-nav__link">
         no_op_trainer
       </a>
     </li>
@@ -4571,7 +4665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimizers/" class="md-nav__link">
+      <a href="../../training/optimizers/" class="md-nav__link">
         optimizers
       </a>
     </li>
@@ -4583,7 +4677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scheduler/" class="md-nav__link">
+      <a href="../../training/scheduler/" class="md-nav__link">
         scheduler
       </a>
     </li>
@@ -4595,7 +4689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../trainer/" class="md-nav__link">
+      <a href="../../training/trainer/" class="md-nav__link">
         trainer
       </a>
     </li>
@@ -4607,7 +4701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../util/" class="md-nav__link">
+      <a href="../../training/util/" class="md-nav__link">
         util
       </a>
     </li>
@@ -4634,7 +4728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CONTRIBUTING/" class="md-nav__link">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
         Contributing
       </a>
     </li>
@@ -4649,7 +4743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CHANGELOG/" class="md-nav__link">
+      <a href="../../../CHANGELOG/" class="md-nav__link">
         CHANGELOG
       </a>
     </li>
@@ -4695,36 +4789,132 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#auc" class="md-nav__link">
-    Auc
+  <a href="#adversarialbiasmitigator" class="md-nav__link">
+    AdversarialBiasMitigator
   </a>
   
-    <nav class="md-nav" aria-label="Auc">
+    <nav class="md-nav" aria-label="AdversarialBiasMitigator">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#__call__" class="md-nav__link">
-    __call__
+  <a href="#train" class="md-nav__link">
+    train
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get_metric" class="md-nav__link">
-    get_metric
+  <a href="#forward" class="md-nav__link">
+    forward
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reset" class="md-nav__link">
-    reset
+  <a href="#forward_on_instance" class="md-nav__link">
+    forward_on_instance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward_on_instances" class="md-nav__link">
+    forward_on_instances
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_regularization_penalty" class="md-nav__link">
+    get_regularization_penalty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_parameters_for_histogram_logging" class="md-nav__link">
+    get_parameters_for_histogram_logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_parameters_for_histogram_tensorboard_logging" class="md-nav__link">
+    get_parameters_for_histogram_tensorboard_logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make_output_human_readable" class="md-nav__link">
+    make_output_human_readable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_metrics" class="md-nav__link">
+    get_metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extend_embedder_vocab" class="md-nav__link">
+    extend_embedder_vocab
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedforwardregressionadversary" class="md-nav__link">
+    FeedForwardRegressionAdversary
+  </a>
+  
+    <nav class="md-nav" aria-label="FeedForwardRegressionAdversary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward_1" class="md-nav__link">
+    forward
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adversarialbiasmitigatorbackwardcallback" class="md-nav__link">
+    AdversarialBiasMitigatorBackwardCallback
+  </a>
+  
+    <nav class="md-nav" aria-label="AdversarialBiasMitigatorBackwardCallback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on_backward" class="md-nav__link">
+    on_backward
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__call__" class="md-nav__link">
+    __call__
+  </a>
   
 </li>
       
@@ -4741,59 +4931,261 @@
               
                 
                 
-                  <h1>auc</h1>
+                  <h1>adversarial_bias_mitigator</h1>
                 
                 <div>
- <p class="alignleft"><i>allennlp</i><i>.training</i><i>.metrics</i><strong>.auc</strong></p>
- <p class="alignright"><a class="sourcelink" href="https://github.com/allenai/allennlp/blob/main/allennlp/training/metrics/auc.py">[SOURCE]</a></p>
+ <p class="alignleft"><i>allennlp</i><i>.fairness</i><strong>.adversarial_bias_mitigator</strong></p>
+ <p class="alignright"><a class="sourcelink" href="https://github.com/allenai/allennlp/blob/main/allennlp/fairness/adversarial_bias_mitigator.py">[SOURCE]</a></p>
 </div>
 <div style="clear: both;"></div>
 
 <hr />
-<p><a name=".allennlp.training.metrics.auc.Auc"></a></p>
-<h2 id="auc">Auc<a class="headerlink" href="#auc" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nd">@Metric</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;auc&quot;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">Auc</span><span class="p">(</span><span class="n">Metric</span><span class="p">):</span>
- <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">positive_label</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div>
-<p>The AUC Metric measures the area under the receiver-operating characteristic
-(ROC) curve for binary classification problems.</p>
-<p><a name=".allennlp.training.metrics.auc.Auc.__call__"></a></p>
-<h3 id="__call__">__call__<a class="headerlink" href="#__call__" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Auc</span><span class="p">(</span><span class="n">Metric</span><span class="p">):</span>
- <span class="o">|</span> <span class="o">...</span>
- <span class="o">|</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+<p>A Model wrapper to adversarially mitigate biases in
+predictions produced by a pretrained model for a downstream task.</p>
+<p>The documentation and explanations are heavily based on:
+Zhang, B.H., Lemoine, B., &amp; Mitchell, M. (2018).
+<a href="https://api.semanticscholar.org/CorpusID:9424845">Mitigating Unwanted Biases with Adversarial Learning</a>.
+Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society.
+and <a href="https://colab.research.google.com/notebooks/
+ml_fairness/adversarial_debiasing.ipynb">Mitigating Unwanted Biases in Word Embeddings
+with Adversarial Learning</a> colab notebook.</p>
+<p>Adversarial networks mitigate some biases based on the idea that
+predicting an outcome Y given an input X should ideally be independent
+of some protected variable Z. Informally, "knowing Y would not help
+you predict Z any better than chance" (Zaldivar et al., 2018). This
+can be achieved using two networks in a series, where the first attempts to predict
+Y using X as input, and the second attempts to use the predicted value of Y to recover Z.
+Please refer to Figure 1 of <a href="https://api.semanticscholar.org/CorpusID:9424845">Mitigating Unwanted Biases with Adversarial Learning</a>. Ideally, we would
+like the first network to predict Y without permitting the second network to predict
+Z any better than chance.</p>
+<p>For common NLP tasks, it's usually clear what X and Y are,
+but Z is not always available. We can construct our own Z by:</p>
+<ol>
+<li>
+<p>computing a bias direction (e.g. for binary gender)</p>
+</li>
+<li>
+<p>computing the inner product of static sentence embeddings and the bias direction</p>
+</li>
+</ol>
+<p>Training adversarial networks is extremely difficult. It is important to:</p>
+<ol>
+<li>
+<p>lower the step size of both the predictor and adversary to train both
+models slowly to avoid parameters diverging,</p>
+</li>
+<li>
+<p>initialize the parameters of the adversary to be small to avoid the predictor
+overfitting against a sub-optimal adversary,</p>
+</li>
+<li>
+<p>increase the adversary’s learning rate to prevent divergence if the
+predictor is too good at hiding the protected variable from the adversary.</p>
+</li>
+</ol>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator"></a></p>
+<h2 id="adversarialbiasmitigator">AdversarialBiasMitigator<a class="headerlink" href="#adversarialbiasmitigator" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nd">@Model</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;adversarial_bias_mitigator&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
  <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">predictions</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">gold_labels</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+ <span class="o">|</span>     <span class="n">vocab</span><span class="p">:</span> <span class="n">Vocabulary</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">predictor</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">adversary</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">bias_direction</span><span class="p">:</span> <span class="n">BiasDirectionWrapper</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">predictor_output_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="o">**</span><span class="n">kwargs</span>
  <span class="o">|</span> <span class="p">)</span>
 </code></pre></div>
-<h4 id="__call__.parameters">Parameters<a class="headerlink" href="#__call__.parameters" title="Permanent link">&para;</a></h4>
+<p>Wrapper class to adversarially mitigate biases in any pretrained Model.</p>
+<h4 id="adversarialbiasmitigator.parameters">Parameters<a class="headerlink" href="#adversarialbiasmitigator.parameters" title="Permanent link">&para;</a></h4>
 
 <ul>
-<li><strong>predictions</strong> : <code>torch.Tensor</code> <br>
-    A one-dimensional tensor of prediction scores of shape (batch_size).</li>
-<li><strong>gold_labels</strong> : <code>torch.Tensor</code> <br>
-    A one-dimensional label tensor of shape (batch_size), with {1, 0}
-    entries for positive and negative class. If it's not binary,
-    <code>positive_label</code> should be passed in the initialization.</li>
-<li><strong>mask</strong> : <code>torch.BoolTensor</code>, optional (default = <code>None</code>) <br>
-    A one-dimensional label tensor of shape (batch_size).</li>
+<li><strong>vocab</strong> : <code>Vocabulary</code> <br>
+    Vocabulary of predictor.</li>
+<li><strong>predictor</strong> : <code>Model</code> <br>
+    Model for which to mitigate biases.</li>
+<li><strong>adversary</strong> : <code>Model</code> <br>
+    Model that attempts to recover protected variable values from predictor's predictions.</li>
+<li><strong>bias_direction</strong> : <code>BiasDirectionWrapper</code> <br>
+    Bias direction used by adversarial bias mitigator.</li>
+<li><strong>predictor_output_key</strong> : <code>str</code> <br>
+    Key corresponding to output in <code>output_dict</code> of predictor that should be passed as input
+    to adversary.</li>
 </ul>
-<p><a name=".allennlp.training.metrics.auc.Auc.get_metric"></a></p>
-<h3 id="get_metric">get_metric<a class="headerlink" href="#get_metric" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Auc</span><span class="p">(</span><span class="n">Metric</span><span class="p">):</span>
- <span class="o">|</span> <span class="o">...</span>
- <span class="o">|</span> <span class="k">def</span> <span class="nf">get_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-<p><a name=".allennlp.training.metrics.auc.Auc.reset"></a></p>
-<h3 id="reset">reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Auc</span><span class="p">(</span><span class="n">Metric</span><span class="p">):</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>adversary must use same vocab as predictor, if it requires a vocab.</p>
+</div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.train"></a></p>
+<h3 id="train">train<a class="headerlink" href="#train" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
  <span class="o">|</span> <span class="o">...</span>
  <span class="o">|</span> <span class="nd">@overrides</span>
- <span class="o">|</span> <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.forward"></a></p>
+<h3 id="forward">forward<a class="headerlink" href="#forward" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.forward_on_instance"></a></p>
+<h3 id="forward_on_instance">forward_on_instance<a class="headerlink" href="#forward_on_instance" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">forward_on_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.forward_on_instances"></a></p>
+<h3 id="forward_on_instances">forward_on_instances<a class="headerlink" href="#forward_on_instances" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">forward_on_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.get_regularization_penalty"></a></p>
+<h3 id="get_regularization_penalty">get_regularization_penalty<a class="headerlink" href="#get_regularization_penalty" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_regularization_penalty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.get_parameters_for_histogram_logging"></a></p>
+<h3 id="get_parameters_for_histogram_logging">get_parameters_for_histogram_logging<a class="headerlink" href="#get_parameters_for_histogram_logging" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_parameters_for_histogram_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.get_parameters_for_histogram_tensorboard_logging"></a></p>
+<h3 id="get_parameters_for_histogram_tensorboard_logging">get_parameters_for_histogram_tensorboard_logging<a class="headerlink" href="#get_parameters_for_histogram_tensorboard_logging" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_parameters_for_histogram_tensorboard_logging</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="o">**</span><span class="n">kwargs</span>
+ <span class="o">|</span> <span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.make_output_human_readable"></a></p>
+<h3 id="make_output_human_readable">make_output_human_readable<a class="headerlink" href="#make_output_human_readable" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">make_output_human_readable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.get_metrics"></a></p>
+<h3 id="get_metrics">get_metrics<a class="headerlink" href="#get_metrics" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigator.extend_embedder_vocab"></a></p>
+<h3 id="extend_embedder_vocab">extend_embedder_vocab<a class="headerlink" href="#extend_embedder_vocab" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigator</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">extend_embedder_vocab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.FeedForwardRegressionAdversary"></a></p>
+<h2 id="feedforwardregressionadversary">FeedForwardRegressionAdversary<a class="headerlink" href="#feedforwardregressionadversary" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nd">@Model</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;feedforward_regression_adversary&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">FeedForwardRegressionAdversary</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">vocab</span><span class="p">:</span> <span class="n">Vocabulary</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">feedforward</span><span class="p">:</span> <span class="n">FeedForward</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">initializer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">InitializerApplicator</span><span class="p">]</span> <span class="o">=</span> <span class="n">InitializerApplicator</span><span class="p">(),</span>
+ <span class="o">|</span>     <span class="o">**</span><span class="n">kwargs</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+<p>This <code>Model</code> implements a simple feedforward regression adversary.</p>
+<p>Registered as a <code>Model</code> with name "feedforward_regression_adversary".</p>
+<h4 id="feedforwardregressionadversary.parameters">Parameters<a class="headerlink" href="#feedforwardregressionadversary.parameters" title="Permanent link">&para;</a></h4>
+
+<ul>
+<li><strong>vocab</strong> : <code>Vocabulary</code> <br></li>
+<li><strong>feedforward</strong> : <code>FeedForward</code> <br>
+    A feedforward layer.</li>
+<li><strong>initializer</strong> : <code>Optional[InitializerApplicator]</code>, optional (default = <code>InitializerApplicator()</code>) <br>
+    If provided, will be used to initialize the model parameters.</li>
+</ul>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.FeedForwardRegressionAdversary.forward"></a></p>
+<h3 id="forward_1">forward<a class="headerlink" href="#forward_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FeedForwardRegressionAdversary</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">label</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</code></pre></div>
+<h4 id="forward.parameters">Parameters<a class="headerlink" href="#forward.parameters" title="Permanent link">&para;</a></h4>
+
+<ul>
+<li><strong>input</strong> : <code>torch.FloatTensor</code> <br>
+    A tensor of size (batch_size, ...).</li>
+<li><strong>label</strong> : <code>torch.FloatTensor</code> <br>
+    A tensor of the same size as input.</li>
+</ul>
+<h4 id="forward.returns">Returns<a class="headerlink" href="#forward.returns" title="Permanent link">&para;</a></h4>
+
+<ul>
+<li>An output dictionary consisting of: <br><ul>
+<li><code>loss</code> : <code>torch.FloatTensor</code>
+    A scalar loss to be optimised.</li>
+</ul>
+</li>
+</ul>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigatorBackwardCallback"></a></p>
+<h2 id="adversarialbiasmitigatorbackwardcallback">AdversarialBiasMitigatorBackwardCallback<a class="headerlink" href="#adversarialbiasmitigatorbackwardcallback" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nd">@TrainerCallback</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;adversarial_bias_mitigator_backward&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AdversarialBiasMitigatorBackwardCallback</span><span class="p">(</span><span class="n">TrainerCallback</span><span class="p">):</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">serialization_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">adversary_loss_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+<p>Performs backpropagation for adversarial bias mitigation.
+While the adversary's gradients are computed normally,
+the predictor's gradients are computed such that updates to the
+predictor's parameters will not aid the adversary and will
+make it more difficult for the adversary to recover protected variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Intended to be used with <code>AdversarialBiasMitigator</code>.
+trainer.model is expected to have <code>predictor</code> and <code>adversary</code> data members.</p>
+</div>
+<h4 id="adversarialbiasmitigatorbackwardcallback.parameters">Parameters<a class="headerlink" href="#adversarialbiasmitigatorbackwardcallback.parameters" title="Permanent link">&para;</a></h4>
+
+<ul>
+<li><strong>adversary_loss_weight</strong> : <code>float</code>, optional (default = <code>1.0</code>) <br>
+    Quantifies how difficult predictor makes it for adversary to recover protected variables.</li>
+</ul>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator.AdversarialBiasMitigatorBackwardCallback.on_backward"></a></p>
+<h3 id="on_backward">on_backward<a class="headerlink" href="#on_backward" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AdversarialBiasMitigatorBackwardCallback</span><span class="p">(</span><span class="n">TrainerCallback</span><span class="p">):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">on_backward</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">trainer</span><span class="p">:</span> <span class="n">GradientDescentTrainer</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">batch_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span>
+ <span class="o">|</span>     <span class="n">backward_called</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="o">**</span><span class="n">kwargs</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+<p><a name=".allennlp.fairness.adversarial_bias_mitigator._AdversaryLabelHook.__call__"></a></p>
+<h2 id="__call__">__call__<a class="headerlink" href="#__call__" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">_AdversaryLabelHook</span><span class="p">:</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">module_in</span><span class="p">,</span> <span class="n">module_out</span><span class="p">)</span>
+</code></pre></div>
+<p>Called as forward hook.</p>
                 
               
               
@@ -4813,7 +5205,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../attachment_scores/" class="md-footer__link md-footer__link--prev" aria-label="Previous: attachment_scores" rel="prev">
+        <a href="../../data/vocabulary/" class="md-footer__link md-footer__link--prev" aria-label="Previous: vocabulary" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -4822,20 +5214,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              attachment_scores
+              vocabulary
             </div>
           </div>
         </a>
       
       
         
-        <a href="../average/" class="md-footer__link md-footer__link--next" aria-label="Next: average" rel="next">
+        <a href="../bias_direction/" class="md-footer__link md-footer__link--next" aria-label="Next: bias_direction" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              average
+              bias_direction
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -4864,10 +5256,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>

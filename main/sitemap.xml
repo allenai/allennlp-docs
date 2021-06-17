@@ -372,6 +372,10 @@
      <lastmod>2021-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://allennlp.org/api/fairness/adversarial_bias_mitigator/</loc>
+     <lastmod>2021-06-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://allennlp.org/api/fairness/bias_direction/</loc>
      <lastmod>2021-06-17</lastmod>
      <changefreq>daily</changefreq>

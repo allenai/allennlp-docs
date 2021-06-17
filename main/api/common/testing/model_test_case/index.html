@@ -1869,6 +1869,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../fairness/adversarial_bias_mitigator/" class="md-nav__link">
+        adversarial_bias_mitigator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../fairness/bias_direction/" class="md-nav__link">
         bias_direction
       </a>
@@ -4833,6 +4845,7 @@ with added methods for testing <a href="../../../models/model/"><code>Model</cod
  <span class="o">|</span>     <span class="n">metric_terminal_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">metric_tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">disable_dropout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">which_loss</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
  <span class="o">|</span> <span class="p">)</span>
 </code></pre></div>
@@ -4869,6 +4882,9 @@ with added methods for testing <a href="../../../models/model/"><code>Model</cod
 <li><strong>disable_dropout</strong> : <code>bool</code>, optional (default = <code>True</code>) <br>
     If True we will set all dropout to 0 before checking gradients. (Otherwise, with small
     datasets, you may get zero gradients because of unlucky dropout.)</li>
+<li><strong>which_loss</strong> : <code>str</code>, optional (default = <code>"loss"</code>) <br>
+    Specifies which loss to test. For example, which_loss may be "adversary_loss" for
+    <code>adversarial_bias_mitigator</code>.</li>
 </ul>
 <p><a name=".allennlp.common.testing.model_test_case.ModelTestCase.ensure_model_can_train"></a></p>
 <h3 id="ensure_model_can_train">ensure_model_can_train<a class="headerlink" href="#ensure_model_can_train" title="Permanent link">&para;</a></h3>
@@ -4937,7 +4953,8 @@ the <code>Trainer</code> object itself, and grab the <code>Model</code> and othe
  <span class="o">|</span>     <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">model_batch</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]],</span>
  <span class="o">|</span>     <span class="n">params_to_ignore</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">disable_dropout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+ <span class="o">|</span>     <span class="n">disable_dropout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">which_loss</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span>
  <span class="o">|</span> <span class="p">)</span>
 </code></pre></div>
 <p><a name=".allennlp.common.testing.model_test_case.ModelTestCase.ensure_batch_predictions_are_consistent"></a></p>
