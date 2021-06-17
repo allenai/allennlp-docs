@@ -4769,8 +4769,7 @@ language-conditioned image attention in the linguistic stream."</p>
  <span class="o">|</span>     <span class="n">input_tensor2</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">attention_mask1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">attention_mask2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">co_attention_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">use_co_attention_mask</span><span class="o">=</span><span class="kc">False</span>
+ <span class="o">|</span>     <span class="n">co_attention_mask</span><span class="o">=</span><span class="kc">None</span>
  <span class="o">|</span> <span class="p">)</span>
 </code></pre></div>
 <h4 id="forward.parameters">Parameters<a class="headerlink" href="#forward.parameters" title="Permanent link">&para;</a></h4>
@@ -4796,8 +4795,6 @@ language-conditioned image attention in the linguistic stream."</p>
     about the interaction between the two modalities. For example,
     if you know which words correspond to which regions in the image,
     this mask can be applied to limit the attention given the bias.</li>
-<li><strong>use_co_attention_mask</strong> : <code>bool</code> <br>
-    Whether to use co_attention_mask or not, default = <code>False</code>.</li>
 </ul>
                 
               
