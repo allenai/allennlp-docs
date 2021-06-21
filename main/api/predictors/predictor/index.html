@@ -5073,7 +5073,8 @@ Instances contains an individual entity prediction as the label.</p>
  <span class="o">|</span>     <span class="n">dataset_reader_to_load</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;validation&quot;</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">frozen</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">import_plugins</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">overrides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+ <span class="o">|</span>     <span class="n">overrides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="o">**</span><span class="n">kwargs</span>
  <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Predictor&quot;</span>
 </code></pre></div>
 <p>Instantiate a <code>Predictor</code> from an archive path.</p>
@@ -5102,6 +5103,9 @@ please use <code>from_archive</code>.</p>
     can be found by <code>allennlp.common.plugins.import_plugins()</code>.</li>
 <li><strong>overrides</strong> : <code>Union[str, Dict[str, Any]]</code>, optional (default = <code>""</code>) <br>
     JSON overrides to apply to the unarchived <code>Params</code> object.</li>
+<li><strong>**kwargs</strong> : <code>Any</code> <br>
+    Additional key-word arguments that will be passed to the <code>Predictor</code>'s
+    <code>__init__()</code> method.</li>
 </ul>
 <h4 id="from_path.returns">Returns<a class="headerlink" href="#from_path.returns" title="Permanent link">&para;</a></h4>
 
