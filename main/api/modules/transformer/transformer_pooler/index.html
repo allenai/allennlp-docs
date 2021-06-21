@@ -4699,7 +4699,12 @@
 <p><a name=".allennlp.modules.transformer.transformer_pooler.TransformerPooler"></a></p>
 <h2 id="transformerpooler">TransformerPooler<a class="headerlink" href="#transformerpooler" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerPooler</span><span class="p">(</span><span class="n">ActivationLayer</span><span class="p">,</span>  <span class="n">FromParams</span><span class="p">):</span>
- <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intermediate_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">hidden_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">intermediate_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">activation</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;relu&quot;</span>
+ <span class="o">|</span> <span class="p">)</span>
 </code></pre></div>
                 
               

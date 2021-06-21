@@ -4870,7 +4870,8 @@ Details in the paper:
  <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">input_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">token_type_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">position_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+ <span class="o">|</span>     <span class="n">position_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">attention_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
  <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 </code></pre></div>
 <h4 id="forward.parameters">Parameters<a class="headerlink" href="#forward.parameters" title="Permanent link">&para;</a></h4>
@@ -4878,6 +4879,8 @@ Details in the paper:
 <ul>
 <li><strong>input_ids</strong> : <code>torch.Tensor</code> <br>
     Shape <code>batch_size x seq_len</code></li>
+<li><strong>attention_mask</strong> : <code>torch.Tensor</code> <br>
+    Shape <code>batch_size x seq_len</code>. This parameter is ignored, but it is here for compatibility.</li>
 <li><strong>token_type_ids</strong> : <code>torch.Tensor</code>, optional <br>
     Shape <code>batch_size x seq_len</code></li>
 <li><strong>position_ids</strong> : <code>torch.Tensor</code>, optional <br>
