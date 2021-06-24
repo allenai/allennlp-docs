@@ -1401,6 +1401,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/data/fields/transformer_text_field/" class="md-nav__link">
+        transformer_text_field
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -6265,6 +6277,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>The activation layer in the transformer toolkit now can be queried for its output dimension.</li>
 <li><code>TransformerEmbeddings</code> now takes, but ignores, a parameter for the attention mask. This is needed for compatibility with some other modules that get called the same way and use the mask.</li>
 <li><code>TransformerPooler</code> can now be instantiated from a pretrained transformer module, just like the other modules in the transformer toolkit.</li>
+<li><code>TransformerTextField</code>, for cases where you don't care about AllenNLP's advanced text handling capabilities.</li>
 <li>Added <code>TransformerModule._post_load_pretrained_state_dict_hook()</code> method. Can be used to modify <code>missing_keys</code> and <code>unexpected_keys</code> after
   loading a pretrained state dictionary. This is useful when tying weights, for example.</li>
 </ul>

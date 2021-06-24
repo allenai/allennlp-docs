@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://allennlp.org/api/training/learning_rate_schedulers/polynomial_decay/">
+        <link rel="canonical" href="https://allennlp.org/api/data/fields/transformer_text_field/">
       
       <link rel="icon" href="../../../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.8">
     
     
       
-        <title>polynomial_decay - AllenNLP v2.5.1</title>
+        <title>transformer_text_field - AllenNLP v2.5.1</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#polynomialdecay" class="md-skip">
+        <a href="#transformertextfield" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              polynomial_decay
+              transformer_text_field
             
           </span>
         </div>
@@ -899,12 +899,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
       
       <label class="md-nav__link" for="__nav_4_4">
         data
@@ -922,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/batch/" class="md-nav__link">
+      <a href="../../batch/" class="md-nav__link">
         batch
       </a>
     </li>
@@ -955,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/data_collator/" class="md-nav__link">
+      <a href="../../data_loaders/data_collator/" class="md-nav__link">
         data_collator
       </a>
     </li>
@@ -967,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/data_loader/" class="md-nav__link">
+      <a href="../../data_loaders/data_loader/" class="md-nav__link">
         data_loader
       </a>
     </li>
@@ -979,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multiprocess_data_loader/" class="md-nav__link">
+      <a href="../../data_loaders/multiprocess_data_loader/" class="md-nav__link">
         multiprocess_data_loader
       </a>
     </li>
@@ -991,7 +993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multitask_data_loader/" class="md-nav__link">
+      <a href="../../data_loaders/multitask_data_loader/" class="md-nav__link">
         multitask_data_loader
       </a>
     </li>
@@ -1003,7 +1005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multitask_epoch_sampler/" class="md-nav__link">
+      <a href="../../data_loaders/multitask_epoch_sampler/" class="md-nav__link">
         multitask_epoch_sampler
       </a>
     </li>
@@ -1015,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/multitask_scheduler/" class="md-nav__link">
+      <a href="../../data_loaders/multitask_scheduler/" class="md-nav__link">
         multitask_scheduler
       </a>
     </li>
@@ -1027,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/data_loaders/simple_data_loader/" class="md-nav__link">
+      <a href="../../data_loaders/simple_data_loader/" class="md-nav__link">
         simple_data_loader
       </a>
     </li>
@@ -1066,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/babi/" class="md-nav__link">
+      <a href="../../dataset_readers/babi/" class="md-nav__link">
         babi
       </a>
     </li>
@@ -1078,7 +1080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/conll2003/" class="md-nav__link">
+      <a href="../../dataset_readers/conll2003/" class="md-nav__link">
         conll2003
       </a>
     </li>
@@ -1090,7 +1092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/dataset_reader/" class="md-nav__link">
+      <a href="../../dataset_readers/dataset_reader/" class="md-nav__link">
         dataset_reader
       </a>
     </li>
@@ -1123,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/dataset_utils/span_utils/" class="md-nav__link">
+      <a href="../../dataset_readers/dataset_utils/span_utils/" class="md-nav__link">
         span_utils
       </a>
     </li>
@@ -1141,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/interleaving_dataset_reader/" class="md-nav__link">
+      <a href="../../dataset_readers/interleaving_dataset_reader/" class="md-nav__link">
         interleaving_dataset_reader
       </a>
     </li>
@@ -1153,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/multitask/" class="md-nav__link">
+      <a href="../../dataset_readers/multitask/" class="md-nav__link">
         multitask
       </a>
     </li>
@@ -1165,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/sequence_tagging/" class="md-nav__link">
+      <a href="../../dataset_readers/sequence_tagging/" class="md-nav__link">
         sequence_tagging
       </a>
     </li>
@@ -1177,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/sharded_dataset_reader/" class="md-nav__link">
+      <a href="../../dataset_readers/sharded_dataset_reader/" class="md-nav__link">
         sharded_dataset_reader
       </a>
     </li>
@@ -1189,7 +1191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/dataset_readers/text_classification_json/" class="md-nav__link">
+      <a href="../../dataset_readers/text_classification_json/" class="md-nav__link">
         text_classification_json
       </a>
     </li>
@@ -1205,12 +1207,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_4" type="checkbox" id="__nav_4_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_4" type="checkbox" id="__nav_4_4_4" checked>
       
       <label class="md-nav__link" for="__nav_4_4_4">
         fields
@@ -1228,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/adjacency_field/" class="md-nav__link">
+      <a href="../adjacency_field/" class="md-nav__link">
         adjacency_field
       </a>
     </li>
@@ -1240,7 +1244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/array_field/" class="md-nav__link">
+      <a href="../array_field/" class="md-nav__link">
         array_field
       </a>
     </li>
@@ -1252,7 +1256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/field/" class="md-nav__link">
+      <a href="../field/" class="md-nav__link">
         field
       </a>
     </li>
@@ -1264,7 +1268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/flag_field/" class="md-nav__link">
+      <a href="../flag_field/" class="md-nav__link">
         flag_field
       </a>
     </li>
@@ -1276,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/index_field/" class="md-nav__link">
+      <a href="../index_field/" class="md-nav__link">
         index_field
       </a>
     </li>
@@ -1288,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/label_field/" class="md-nav__link">
+      <a href="../label_field/" class="md-nav__link">
         label_field
       </a>
     </li>
@@ -1300,7 +1304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/list_field/" class="md-nav__link">
+      <a href="../list_field/" class="md-nav__link">
         list_field
       </a>
     </li>
@@ -1312,7 +1316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/metadata_field/" class="md-nav__link">
+      <a href="../metadata_field/" class="md-nav__link">
         metadata_field
       </a>
     </li>
@@ -1324,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/multilabel_field/" class="md-nav__link">
+      <a href="../multilabel_field/" class="md-nav__link">
         multilabel_field
       </a>
     </li>
@@ -1336,7 +1340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/namespace_swapping_field/" class="md-nav__link">
+      <a href="../namespace_swapping_field/" class="md-nav__link">
         namespace_swapping_field
       </a>
     </li>
@@ -1348,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/sequence_field/" class="md-nav__link">
+      <a href="../sequence_field/" class="md-nav__link">
         sequence_field
       </a>
     </li>
@@ -1360,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/sequence_label_field/" class="md-nav__link">
+      <a href="../sequence_label_field/" class="md-nav__link">
         sequence_label_field
       </a>
     </li>
@@ -1372,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/span_field/" class="md-nav__link">
+      <a href="../span_field/" class="md-nav__link">
         span_field
       </a>
     </li>
@@ -1384,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/tensor_field/" class="md-nav__link">
+      <a href="../tensor_field/" class="md-nav__link">
         tensor_field
       </a>
     </li>
@@ -1396,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/fields/text_field/" class="md-nav__link">
+      <a href="../text_field/" class="md-nav__link">
         text_field
       </a>
     </li>
@@ -1406,11 +1410,88 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../data/fields/transformer_text_field/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          transformer_text_field
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         transformer_text_field
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transformertextfield" class="md-nav__link">
+    TransformerTextField
+  </a>
+  
+    <nav class="md-nav" aria-label="TransformerTextField">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_padding_lengths" class="md-nav__link">
+    get_padding_lengths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as_tensor" class="md-nav__link">
+    as_tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty_field" class="md-nav__link">
+    empty_field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_tensors" class="md-nav__link">
+    batch_tensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human_readable_repr" class="md-nav__link">
+    human_readable_repr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1426,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/image_loader/" class="md-nav__link">
+      <a href="../../image_loader/" class="md-nav__link">
         image_loader
       </a>
     </li>
@@ -1438,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/instance/" class="md-nav__link">
+      <a href="../../instance/" class="md-nav__link">
         instance
       </a>
     </li>
@@ -1471,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/samplers/batch_sampler/" class="md-nav__link">
+      <a href="../../samplers/batch_sampler/" class="md-nav__link">
         batch_sampler
       </a>
     </li>
@@ -1483,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/samplers/bucket_batch_sampler/" class="md-nav__link">
+      <a href="../../samplers/bucket_batch_sampler/" class="md-nav__link">
         bucket_batch_sampler
       </a>
     </li>
@@ -1495,7 +1576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/samplers/max_tokens_batch_sampler/" class="md-nav__link">
+      <a href="../../samplers/max_tokens_batch_sampler/" class="md-nav__link">
         max_tokens_batch_sampler
       </a>
     </li>
@@ -1534,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/elmo_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/elmo_indexer/" class="md-nav__link">
         elmo_indexer
       </a>
     </li>
@@ -1546,7 +1627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/pretrained_transformer_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/pretrained_transformer_indexer/" class="md-nav__link">
         pretrained_transformer_indexer
       </a>
     </li>
@@ -1558,7 +1639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/pretrained_transformer_mismatched_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/pretrained_transformer_mismatched_indexer/" class="md-nav__link">
         pretrained_transformer_mismatched_indexer
       </a>
     </li>
@@ -1570,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/single_id_token_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/single_id_token_indexer/" class="md-nav__link">
         single_id_token_indexer
       </a>
     </li>
@@ -1582,7 +1663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/spacy_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/spacy_indexer/" class="md-nav__link">
         spacy_indexer
       </a>
     </li>
@@ -1594,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/token_characters_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/token_characters_indexer/" class="md-nav__link">
         token_characters_indexer
       </a>
     </li>
@@ -1606,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/token_indexers/token_indexer/" class="md-nav__link">
+      <a href="../../token_indexers/token_indexer/" class="md-nav__link">
         token_indexer
       </a>
     </li>
@@ -1645,7 +1726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/character_tokenizer/" class="md-nav__link">
+      <a href="../../tokenizers/character_tokenizer/" class="md-nav__link">
         character_tokenizer
       </a>
     </li>
@@ -1657,7 +1738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/letters_digits_tokenizer/" class="md-nav__link">
+      <a href="../../tokenizers/letters_digits_tokenizer/" class="md-nav__link">
         letters_digits_tokenizer
       </a>
     </li>
@@ -1669,7 +1750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/pretrained_transformer_tokenizer/" class="md-nav__link">
+      <a href="../../tokenizers/pretrained_transformer_tokenizer/" class="md-nav__link">
         pretrained_transformer_tokenizer
       </a>
     </li>
@@ -1681,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/sentence_splitter/" class="md-nav__link">
+      <a href="../../tokenizers/sentence_splitter/" class="md-nav__link">
         sentence_splitter
       </a>
     </li>
@@ -1693,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/spacy_tokenizer/" class="md-nav__link">
+      <a href="../../tokenizers/spacy_tokenizer/" class="md-nav__link">
         spacy_tokenizer
       </a>
     </li>
@@ -1705,7 +1786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/token_class/" class="md-nav__link">
+      <a href="../../tokenizers/token_class/" class="md-nav__link">
         token_class
       </a>
     </li>
@@ -1717,7 +1798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/tokenizer/" class="md-nav__link">
+      <a href="../../tokenizers/tokenizer/" class="md-nav__link">
         tokenizer
       </a>
     </li>
@@ -1729,7 +1810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/tokenizers/whitespace_tokenizer/" class="md-nav__link">
+      <a href="../../tokenizers/whitespace_tokenizer/" class="md-nav__link">
         whitespace_tokenizer
       </a>
     </li>
@@ -1747,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data/vocabulary/" class="md-nav__link">
+      <a href="../../vocabulary/" class="md-nav__link">
         vocabulary
       </a>
     </li>
@@ -3869,14 +3950,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" >
       
       <label class="md-nav__link" for="__nav_4_12">
         training
@@ -3915,7 +3994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/backward/" class="md-nav__link">
+      <a href="../../../training/callbacks/backward/" class="md-nav__link">
         backward
       </a>
     </li>
@@ -3927,7 +4006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/callback/" class="md-nav__link">
+      <a href="../../../training/callbacks/callback/" class="md-nav__link">
         callback
       </a>
     </li>
@@ -3939,7 +4018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/confidence_checks/" class="md-nav__link">
+      <a href="../../../training/callbacks/confidence_checks/" class="md-nav__link">
         confidence_checks
       </a>
     </li>
@@ -3951,7 +4030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/console_logger/" class="md-nav__link">
+      <a href="../../../training/callbacks/console_logger/" class="md-nav__link">
         console_logger
       </a>
     </li>
@@ -3963,7 +4042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/log_writer/" class="md-nav__link">
+      <a href="../../../training/callbacks/log_writer/" class="md-nav__link">
         log_writer
       </a>
     </li>
@@ -3975,7 +4054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/tensorboard/" class="md-nav__link">
+      <a href="../../../training/callbacks/tensorboard/" class="md-nav__link">
         tensorboard
       </a>
     </li>
@@ -3987,7 +4066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/track_epoch/" class="md-nav__link">
+      <a href="../../../training/callbacks/track_epoch/" class="md-nav__link">
         track_epoch
       </a>
     </li>
@@ -3999,7 +4078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../callbacks/wandb/" class="md-nav__link">
+      <a href="../../../training/callbacks/wandb/" class="md-nav__link">
         wandb
       </a>
     </li>
@@ -4017,7 +4096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../checkpointer/" class="md-nav__link">
+      <a href="../../../training/checkpointer/" class="md-nav__link">
         checkpointer
       </a>
     </li>
@@ -4029,7 +4108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gradient_descent_trainer/" class="md-nav__link">
+      <a href="../../../training/gradient_descent_trainer/" class="md-nav__link">
         gradient_descent_trainer
       </a>
     </li>
@@ -4039,14 +4118,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12_4" type="checkbox" id="__nav_4_12_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12_4" type="checkbox" id="__nav_4_12_4" >
       
       <label class="md-nav__link" for="__nav_4_12_4">
         learning_rate_schedulers
@@ -4064,7 +4141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../combined/" class="md-nav__link">
+      <a href="../../../training/learning_rate_schedulers/combined/" class="md-nav__link">
         combined
       </a>
     </li>
@@ -4076,7 +4153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cosine/" class="md-nav__link">
+      <a href="../../../training/learning_rate_schedulers/cosine/" class="md-nav__link">
         cosine
       </a>
     </li>
@@ -4088,7 +4165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learning_rate_scheduler/" class="md-nav__link">
+      <a href="../../../training/learning_rate_schedulers/learning_rate_scheduler/" class="md-nav__link">
         learning_rate_scheduler
       </a>
     </li>
@@ -4100,7 +4177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linear_with_warmup/" class="md-nav__link">
+      <a href="../../../training/learning_rate_schedulers/linear_with_warmup/" class="md-nav__link">
         linear_with_warmup
       </a>
     </li>
@@ -4112,7 +4189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../noam/" class="md-nav__link">
+      <a href="../../../training/learning_rate_schedulers/noam/" class="md-nav__link">
         noam
       </a>
     </li>
@@ -4122,74 +4199,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          polynomial_decay
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../training/learning_rate_schedulers/polynomial_decay/" class="md-nav__link">
         polynomial_decay
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#polynomialdecay" class="md-nav__link">
-    PolynomialDecay
-  </a>
-  
-    <nav class="md-nav" aria-label="PolynomialDecay">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_values" class="md-nav__link">
-    get_values
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step" class="md-nav__link">
-    step
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step_batch" class="md-nav__link">
-    step_batch
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4199,7 +4213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slanted_triangular/" class="md-nav__link">
+      <a href="../../../training/learning_rate_schedulers/slanted_triangular/" class="md-nav__link">
         slanted_triangular
       </a>
     </li>
@@ -4217,7 +4231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metric_tracker/" class="md-nav__link">
+      <a href="../../../training/metric_tracker/" class="md-nav__link">
         metric_tracker
       </a>
     </li>
@@ -4250,7 +4264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/attachment_scores/" class="md-nav__link">
+      <a href="../../../training/metrics/attachment_scores/" class="md-nav__link">
         attachment_scores
       </a>
     </li>
@@ -4262,7 +4276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/auc/" class="md-nav__link">
+      <a href="../../../training/metrics/auc/" class="md-nav__link">
         auc
       </a>
     </li>
@@ -4274,7 +4288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/average/" class="md-nav__link">
+      <a href="../../../training/metrics/average/" class="md-nav__link">
         average
       </a>
     </li>
@@ -4286,7 +4300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/bleu/" class="md-nav__link">
+      <a href="../../../training/metrics/bleu/" class="md-nav__link">
         bleu
       </a>
     </li>
@@ -4298,7 +4312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/boolean_accuracy/" class="md-nav__link">
+      <a href="../../../training/metrics/boolean_accuracy/" class="md-nav__link">
         boolean_accuracy
       </a>
     </li>
@@ -4310,7 +4324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/categorical_accuracy/" class="md-nav__link">
+      <a href="../../../training/metrics/categorical_accuracy/" class="md-nav__link">
         categorical_accuracy
       </a>
     </li>
@@ -4322,7 +4336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/covariance/" class="md-nav__link">
+      <a href="../../../training/metrics/covariance/" class="md-nav__link">
         covariance
       </a>
     </li>
@@ -4334,7 +4348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/entropy/" class="md-nav__link">
+      <a href="../../../training/metrics/entropy/" class="md-nav__link">
         entropy
       </a>
     </li>
@@ -4346,7 +4360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/evalb_bracketing_scorer/" class="md-nav__link">
+      <a href="../../../training/metrics/evalb_bracketing_scorer/" class="md-nav__link">
         evalb_bracketing_scorer
       </a>
     </li>
@@ -4358,7 +4372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/f1_measure/" class="md-nav__link">
+      <a href="../../../training/metrics/f1_measure/" class="md-nav__link">
         f1_measure
       </a>
     </li>
@@ -4370,7 +4384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/fbeta_measure/" class="md-nav__link">
+      <a href="../../../training/metrics/fbeta_measure/" class="md-nav__link">
         fbeta_measure
       </a>
     </li>
@@ -4382,7 +4396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/fbeta_multi_label_measure/" class="md-nav__link">
+      <a href="../../../training/metrics/fbeta_multi_label_measure/" class="md-nav__link">
         fbeta_multi_label_measure
       </a>
     </li>
@@ -4394,7 +4408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/mean_absolute_error/" class="md-nav__link">
+      <a href="../../../training/metrics/mean_absolute_error/" class="md-nav__link">
         mean_absolute_error
       </a>
     </li>
@@ -4406,7 +4420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/metric/" class="md-nav__link">
+      <a href="../../../training/metrics/metric/" class="md-nav__link">
         metric
       </a>
     </li>
@@ -4418,7 +4432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/pearson_correlation/" class="md-nav__link">
+      <a href="../../../training/metrics/pearson_correlation/" class="md-nav__link">
         pearson_correlation
       </a>
     </li>
@@ -4430,7 +4444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/perplexity/" class="md-nav__link">
+      <a href="../../../training/metrics/perplexity/" class="md-nav__link">
         perplexity
       </a>
     </li>
@@ -4442,7 +4456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/rouge/" class="md-nav__link">
+      <a href="../../../training/metrics/rouge/" class="md-nav__link">
         rouge
       </a>
     </li>
@@ -4454,7 +4468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/sequence_accuracy/" class="md-nav__link">
+      <a href="../../../training/metrics/sequence_accuracy/" class="md-nav__link">
         sequence_accuracy
       </a>
     </li>
@@ -4466,7 +4480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/span_based_f1_measure/" class="md-nav__link">
+      <a href="../../../training/metrics/span_based_f1_measure/" class="md-nav__link">
         span_based_f1_measure
       </a>
     </li>
@@ -4478,7 +4492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/spearman_correlation/" class="md-nav__link">
+      <a href="../../../training/metrics/spearman_correlation/" class="md-nav__link">
         spearman_correlation
       </a>
     </li>
@@ -4490,7 +4504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../metrics/unigram_recall/" class="md-nav__link">
+      <a href="../../../training/metrics/unigram_recall/" class="md-nav__link">
         unigram_recall
       </a>
     </li>
@@ -4529,7 +4543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../momentum_schedulers/inverted_triangular/" class="md-nav__link">
+      <a href="../../../training/momentum_schedulers/inverted_triangular/" class="md-nav__link">
         inverted_triangular
       </a>
     </li>
@@ -4541,7 +4555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../momentum_schedulers/momentum_scheduler/" class="md-nav__link">
+      <a href="../../../training/momentum_schedulers/momentum_scheduler/" class="md-nav__link">
         momentum_scheduler
       </a>
     </li>
@@ -4559,7 +4573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../moving_average/" class="md-nav__link">
+      <a href="../../../training/moving_average/" class="md-nav__link">
         moving_average
       </a>
     </li>
@@ -4571,7 +4585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../no_op_trainer/" class="md-nav__link">
+      <a href="../../../training/no_op_trainer/" class="md-nav__link">
         no_op_trainer
       </a>
     </li>
@@ -4583,7 +4597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optimizers/" class="md-nav__link">
+      <a href="../../../training/optimizers/" class="md-nav__link">
         optimizers
       </a>
     </li>
@@ -4595,7 +4609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scheduler/" class="md-nav__link">
+      <a href="../../../training/scheduler/" class="md-nav__link">
         scheduler
       </a>
     </li>
@@ -4607,7 +4621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../trainer/" class="md-nav__link">
+      <a href="../../../training/trainer/" class="md-nav__link">
         trainer
       </a>
     </li>
@@ -4619,7 +4633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../util/" class="md-nav__link">
+      <a href="../../../training/util/" class="md-nav__link">
         util
       </a>
     </li>
@@ -4707,30 +4721,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#polynomialdecay" class="md-nav__link">
-    PolynomialDecay
+  <a href="#transformertextfield" class="md-nav__link">
+    TransformerTextField
   </a>
   
-    <nav class="md-nav" aria-label="PolynomialDecay">
+    <nav class="md-nav" aria-label="TransformerTextField">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get_values" class="md-nav__link">
-    get_values
+  <a href="#get_padding_lengths" class="md-nav__link">
+    get_padding_lengths
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step" class="md-nav__link">
-    step
+  <a href="#as_tensor" class="md-nav__link">
+    as_tensor
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step_batch" class="md-nav__link">
-    step_batch
+  <a href="#empty_field" class="md-nav__link">
+    empty_field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch_tensors" class="md-nav__link">
+    batch_tensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human_readable_repr" class="md-nav__link">
+    human_readable_repr
   </a>
   
 </li>
@@ -4753,69 +4781,71 @@
               
                 
                 
-                  <h1>polynomial_decay</h1>
+                  <h1>transformer_text_field</h1>
                 
                 <div>
- <p class="alignleft"><i>allennlp</i><i>.training</i><i>.learning_rate_schedulers</i><strong>.polynomial_decay</strong></p>
- <p class="alignright"><a class="sourcelink" href="https://github.com/allenai/allennlp/blob/main/allennlp/training/learning_rate_schedulers/polynomial_decay.py">[SOURCE]</a></p>
+ <p class="alignleft"><i>allennlp</i><i>.data</i><i>.fields</i><strong>.transformer_text_field</strong></p>
+ <p class="alignright"><a class="sourcelink" href="https://github.com/allenai/allennlp/blob/main/allennlp/data/fields/transformer_text_field.py">[SOURCE]</a></p>
 </div>
 <div style="clear: both;"></div>
 
 <hr />
-<p><a name=".allennlp.training.learning_rate_schedulers.polynomial_decay.PolynomialDecay"></a></p>
-<h2 id="polynomialdecay">PolynomialDecay<a class="headerlink" href="#polynomialdecay" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nd">@LearningRateScheduler</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;polynomial_decay&quot;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PolynomialDecay</span><span class="p">(</span><span class="n">LearningRateScheduler</span><span class="p">):</span>
+<p><a name=".allennlp.data.fields.transformer_text_field.TransformerTextField"></a></p>
+<h2 id="transformertextfield">TransformerTextField<a class="headerlink" href="#transformertextfield" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerTextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
  <span class="o">|</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
  <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">optimizer</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">num_epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">num_steps_per_epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">power</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">warmup_steps</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">end_learning_rate</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">last_epoch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
- <span class="o">|</span> <span class="p">)</span>
+ <span class="o">|</span>     <span class="n">input_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">token_type_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">attention_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">special_tokens_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">offsets_mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">padding_token_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
-<p>Implements polynomial decay Learning rate scheduling. The learning rate is first
-linearly increased for the first <code>warmup_steps</code> training steps. Then it is decayed for
-<code>total_steps</code> - <code>warmup_steps</code> from the initial learning rate to <code>end_learning_rate</code> using a polynomial
-of degree <code>power</code>.</p>
-<p>Formally,</p>
-<p><code>lr</code> = (<code>initial_lr</code> - <code>end_learning_rate</code>) *
-       ((<code>total_steps</code> - <code>steps</code>)/(<code>total_steps</code> - <code>warmup_steps</code>)) ** <code>power</code></p>
-<h4 id="polynomialdecay.parameters">Parameters<a class="headerlink" href="#polynomialdecay.parameters" title="Permanent link">&para;</a></h4>
-
-<ul>
-<li><strong>total_steps</strong> : <code>int</code> <br>
-    The total number of steps to adjust the learning rate for.</li>
-<li><strong>warmup_steps</strong> : <code>int</code> <br>
-    The number of steps to linearly increase the learning rate.</li>
-<li><strong>power</strong> : <code>float</code>, optional (default = <code>1.0</code>) <br>
-    The power of the polynomial used for decaying.</li>
-<li><strong>end_learning_rate</strong> : <code>float</code>, optional (default = <code>0.0</code>) <br>
-    Final learning rate to decay towards.</li>
-</ul>
-<p><a name=".allennlp.training.learning_rate_schedulers.polynomial_decay.PolynomialDecay.get_values"></a></p>
-<h3 id="get_values">get_values<a class="headerlink" href="#get_values" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PolynomialDecay</span><span class="p">(</span><span class="n">LearningRateScheduler</span><span class="p">):</span>
+<p>A <code>TransformerTextField</code> is a collection of several tensors that are are a representation of text,
+tokenized and ready to become input to a transformer.</p>
+<p>The naming pattern of the tensors follows the pattern that's produced by the huggingface tokenizers,
+and expected by the huggingface transformers.</p>
+<p><a name=".allennlp.data.fields.transformer_text_field.TransformerTextField.get_padding_lengths"></a></p>
+<h3 id="get_padding_lengths">get_padding_lengths<a class="headerlink" href="#get_padding_lengths" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerTextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
  <span class="o">|</span> <span class="o">...</span>
  <span class="o">|</span> <span class="nd">@overrides</span>
- <span class="o">|</span> <span class="k">def</span> <span class="nf">get_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">get_padding_lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
 </code></pre></div>
-<p><a name=".allennlp.training.learning_rate_schedulers.polynomial_decay.PolynomialDecay.step"></a></p>
-<h3 id="step">step<a class="headerlink" href="#step" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PolynomialDecay</span><span class="p">(</span><span class="n">LearningRateScheduler</span><span class="p">):</span>
+<p><a name=".allennlp.data.fields.transformer_text_field.TransformerTextField.as_tensor"></a></p>
+<h3 id="as_tensor">as_tensor<a class="headerlink" href="#as_tensor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerTextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
  <span class="o">|</span> <span class="o">...</span>
  <span class="o">|</span> <span class="nd">@overrides</span>
- <span class="o">|</span> <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">as_tensor</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">padding_lengths</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
 </code></pre></div>
-<p><a name=".allennlp.training.learning_rate_schedulers.polynomial_decay.PolynomialDecay.step_batch"></a></p>
-<h3 id="step_batch">step_batch<a class="headerlink" href="#step_batch" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PolynomialDecay</span><span class="p">(</span><span class="n">LearningRateScheduler</span><span class="p">):</span>
+<p><a name=".allennlp.data.fields.transformer_text_field.TransformerTextField.empty_field"></a></p>
+<h3 id="empty_field">empty_field<a class="headerlink" href="#empty_field" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerTextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
  <span class="o">|</span> <span class="o">...</span>
  <span class="o">|</span> <span class="nd">@overrides</span>
- <span class="o">|</span> <span class="k">def</span> <span class="nf">step_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_num_total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">empty_field</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.data.fields.transformer_text_field.TransformerTextField.batch_tensors"></a></p>
+<h3 id="batch_tensors">batch_tensors<a class="headerlink" href="#batch_tensors" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerTextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="nd">@overrides</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">batch_tensors</span><span class="p">(</span>
+ <span class="o">|</span>     <span class="bp">self</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">tensor_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]</span>
+ <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</code></pre></div>
+<p><a name=".allennlp.data.fields.transformer_text_field.TransformerTextField.human_readable_repr"></a></p>
+<h3 id="human_readable_repr">human_readable_repr<a class="headerlink" href="#human_readable_repr" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerTextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]):</span>
+ <span class="o">|</span> <span class="o">...</span>
+ <span class="o">|</span> <span class="k">def</span> <span class="nf">human_readable_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
 </code></pre></div>
                 
               
@@ -4836,7 +4866,7 @@ of degree <code>power</code>.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../noam/" class="md-footer__link md-footer__link--prev" aria-label="Previous: noam" rel="prev">
+        <a href="../text_field/" class="md-footer__link md-footer__link--prev" aria-label="Previous: text_field" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -4845,20 +4875,20 @@ of degree <code>power</code>.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              noam
+              text_field
             </div>
           </div>
         </a>
       
       
         
-        <a href="../slanted_triangular/" class="md-footer__link md-footer__link--next" aria-label="Next: slanted_triangular" rel="next">
+        <a href="../../image_loader/" class="md-footer__link md-footer__link--next" aria-label="Next: image_loader" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              slanted_triangular
+              image_loader
             </div>
           </div>
           <div class="md-footer__button md-icon">

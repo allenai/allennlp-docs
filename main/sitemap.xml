@@ -288,6 +288,10 @@
      <lastmod>2021-06-24</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://allennlp.org/api/data/fields/transformer_text_field/</loc>
+     <lastmod>2021-06-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://allennlp.org/api/data/image_loader/</loc>
      <lastmod>2021-06-24</lastmod>
      <changefreq>daily</changefreq>
