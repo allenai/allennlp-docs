@@ -3505,22 +3505,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_tied_weights" class="md-nav__link">
-    _tied_weights
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_from_config" class="md-nav__link">
     _from_config
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tie_weights" class="md-nav__link">
-    tie_weights
   </a>
   
 </li>
@@ -4766,22 +4752,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_tied_weights" class="md-nav__link">
-    _tied_weights
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_from_config" class="md-nav__link">
     _from_config
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tie_weights" class="md-nav__link">
-    tie_weights
   </a>
   
 </li>
@@ -4860,14 +4832,6 @@ models. The search is carried out in the order of the list.</p>
 </code></pre></div>
 <p>An optional list of regular expressions that specifies which weights are allowed to be missing
 from a pretrained state dictionary.</p>
-<p><a name=".allennlp.modules.transformer.transformer_module.TransformerModule._tied_weights"></a></p>
-<h3 id="_tied_weights">_tied_weights<a class="headerlink" href="#_tied_weights" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
- <span class="o">|</span> <span class="o">...</span>
- <span class="o">|</span> <span class="n">_tied_weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span>
-</code></pre></div>
-<p>A mapping that defines any weights that need to be tied. Keys and values are parameter names.
-The values will be tied to the corresponding key.</p>
 <p><a name=".allennlp.modules.transformer.transformer_module.TransformerModule._from_config"></a></p>
 <h3 id="_from_config">_from_config<a class="headerlink" href="#_from_config" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -4881,15 +4845,6 @@ The values will be tied to the corresponding key.</p>
 </code></pre></div>
 <p>Instantiate this module from a HuggingFace config. Subclasses should override
 this method if you want to be able to instantiate them with <code>from_pretrained_module()</code>.</p>
-<p><a name=".allennlp.modules.transformer.transformer_module.TransformerModule.tie_weights"></a></p>
-<h3 id="tie_weights">tie_weights<a class="headerlink" href="#tie_weights" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
- <span class="o">|</span> <span class="o">...</span>
- <span class="o">|</span> <span class="k">def</span> <span class="nf">tie_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
-</code></pre></div>
-<p>Tie weights according to the <code>_tied_weights</code> class attribute.</p>
-<p>This should always be called after loading a state dictionary. It will be called
-automatically within <code>from_pretrained_module()</code>.</p>
 <p><a name=".allennlp.modules.transformer.transformer_module.TransformerModule.from_pretrained_module"></a></p>
 <h3 id="from_pretrained_module">from_pretrained_module<a class="headerlink" href="#from_pretrained_module" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TransformerModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>

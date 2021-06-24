@@ -4641,6 +4641,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4778,7 +4785,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed" class="md-nav__link">
+  <a href="#removed_1" class="md-nav__link">
     Removed
   </a>
   
@@ -4819,7 +4826,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_1" class="md-nav__link">
+  <a href="#removed_2" class="md-nav__link">
     Removed
   </a>
   
@@ -4921,7 +4928,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_2" class="md-nav__link">
+  <a href="#removed_3" class="md-nav__link">
     Removed
   </a>
   
@@ -4962,7 +4969,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_3" class="md-nav__link">
+  <a href="#removed_4" class="md-nav__link">
     Removed
   </a>
   
@@ -5125,7 +5132,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_4" class="md-nav__link">
+  <a href="#removed_5" class="md-nav__link">
     Removed
   </a>
   
@@ -5247,7 +5254,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_5" class="md-nav__link">
+  <a href="#removed_6" class="md-nav__link">
     Removed
   </a>
   
@@ -5471,6 +5478,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5608,7 +5622,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed" class="md-nav__link">
+  <a href="#removed_1" class="md-nav__link">
     Removed
   </a>
   
@@ -5649,7 +5663,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_1" class="md-nav__link">
+  <a href="#removed_2" class="md-nav__link">
     Removed
   </a>
   
@@ -5751,7 +5765,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_2" class="md-nav__link">
+  <a href="#removed_3" class="md-nav__link">
     Removed
   </a>
   
@@ -5792,7 +5806,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_3" class="md-nav__link">
+  <a href="#removed_4" class="md-nav__link">
     Removed
   </a>
   
@@ -5955,7 +5969,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_4" class="md-nav__link">
+  <a href="#removed_5" class="md-nav__link">
     Removed
   </a>
   
@@ -6077,7 +6091,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removed_5" class="md-nav__link">
+  <a href="#removed_6" class="md-nav__link">
     Removed
   </a>
   
@@ -6251,6 +6265,8 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>The activation layer in the transformer toolkit now can be queried for its output dimension.</li>
 <li><code>TransformerEmbeddings</code> now takes, but ignores, a parameter for the attention mask. This is needed for compatibility with some other modules that get called the same way and use the mask.</li>
 <li><code>TransformerPooler</code> can now be instantiated from a pretrained transformer module, just like the other modules in the transformer toolkit.</li>
+<li>Added <code>TransformerModule._post_load_pretrained_state_dict_hook()</code> method. Can be used to modify <code>missing_keys</code> and <code>unexpected_keys</code> after
+  loading a pretrained state dictionary. This is useful when tying weights, for example.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
@@ -6259,10 +6275,18 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed <code>IndexOutOfBoundsException</code> in <code>MultiOptimizer</code> when checking if optimizer received any parameters.</li>
 <li>Removed confusing zero mask from VilBERT.</li>
 <li>Ensured <code>ensure_model_can_train_save_and_load</code> is consistently random.</li>
+<li>Fixed weight tying logic in <code>T5</code> transformer module. Previously input/output embeddings were always tied. Now this is optional,
+  and the default behavior is taken from the <code>config.tie_word_embeddings</code> value when instantiating <code>from_pretrained_module()</code>.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Changed behavior of <code>MultiOptimizer</code> so that while a default optimizer is still required, an error is not thrown if the default optimizer receives no parameters.</li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Removed <code>TransformerModule._tied_weights</code>. Weights should now just be tied directly in the <code>__init__()</code> method.
+  You can also override <code>TransformerModule._post_load_pretrained_state_dict_hook()</code> to remove keys associated with tied weights from <code>missing_keys</code>
+  after loading a pretrained state dictionary.</li>
 </ul>
 <h2 id="v250-2021-06-03"><a href="https://github.com/allenai/allennlp/releases/tag/v2.5.0">v2.5.0</a> - 2021-06-03<a class="headerlink" href="#v250-2021-06-03" title="Permanent link">&para;</a></h2>
 <h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
@@ -6381,7 +6405,7 @@ on a downstream task.</li>
 <li>Fixed a bug regarding token indexers with the <code>InterleavingDatasetReader</code> when used with multi-process data loading.</li>
 <li>Fixed a warning from <code>transformers</code> when using <code>max_length</code> in the <code>PretrainedTransformerTokenizer</code>.</li>
 </ul>
-<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
+<h3 id="removed_1">Removed<a class="headerlink" href="#removed_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Removed the <code>stride</code> parameter to <code>PretrainedTransformerTokenizer</code>. This parameter had no effect.</li>
 </ul>
@@ -6412,7 +6436,7 @@ on a downstream task.</li>
 <li>Fixed a bug where the <code>ROUGE</code> metric couldn't be picked.</li>
 <li>Fixed a bug reported by https://github.com/allenai/allennlp/issues/5036. We keeps our spacy POS tagger on.</li>
 </ul>
-<h3 id="removed_1">Removed<a class="headerlink" href="#removed_1" title="Permanent link">&para;</a></h3>
+<h3 id="removed_2">Removed<a class="headerlink" href="#removed_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Removed <code>TensorBoardWriter</code>. Please use the <code>TensorBoardCallback</code> instead.</li>
 </ul>
@@ -6478,7 +6502,7 @@ on a downstream task.</li>
 <li><code>TensorboardWriter</code> renamed to <code>TensorBoardWriter</code>, and removed as an argument to the <code>GradientDescentTrainer</code>.
   In order to enable TensorBoard logging during training, you should utilize the <code>TensorBoardCallback</code> instead.</li>
 </ul>
-<h3 id="removed_2">Removed<a class="headerlink" href="#removed_2" title="Permanent link">&para;</a></h3>
+<h3 id="removed_3">Removed<a class="headerlink" href="#removed_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Removed <code>EpochCallback</code>, <code>BatchCallback</code> in favour of <code>TrainerCallback</code>.
   The metaclass-wrapping implementation is removed as well.</li>
@@ -6543,7 +6567,7 @@ on a downstream task.</li>
 <li>'master' branch renamed to 'main'</li>
 <li>Torch version bumped to 1.7.1 in Docker images.</li>
 </ul>
-<h3 id="removed_3">Removed<a class="headerlink" href="#removed_3" title="Permanent link">&para;</a></h3>
+<h3 id="removed_4">Removed<a class="headerlink" href="#removed_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Removed <code>nn.util.has_tensor</code>.</li>
 </ul>
@@ -6698,7 +6722,7 @@ on a downstream task.</li>
 <li>Load dataset readers in <code>load_archive</code>.</li>
 <li>Updated <code>AllenNlpTestCase</code> docstring to remove reference to <code>unittest.TestCase</code></li>
 </ul>
-<h3 id="removed_4">Removed<a class="headerlink" href="#removed_4" title="Permanent link">&para;</a></h3>
+<h3 id="removed_5">Removed<a class="headerlink" href="#removed_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Removed <code>common.util.is_master</code> function.</li>
 </ul>
@@ -6791,7 +6815,7 @@ on a downstream task.</li>
 <li>Added an <code>EpochCallback</code> to track current epoch as a model class member.</li>
 <li>Added the option to enable or disable gradient checkpointing for transformer token embedders via boolean parameter <code>gradient_checkpointing</code>.</li>
 </ul>
-<h3 id="removed_5">Removed<a class="headerlink" href="#removed_5" title="Permanent link">&para;</a></h3>
+<h3 id="removed_6">Removed<a class="headerlink" href="#removed_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Removed the <code>opt_level</code> parameter to <code>Model.load</code> and <code>load_archive</code>. In order to use AMP with a loaded
   model now, just run the model's forward pass within torch's <a href="https://pytorch.org/docs/stable/amp.html#torch.cuda.amp.autocast"><code>autocast</code></a>
