@@ -448,6 +448,10 @@
      <lastmod>2021-06-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://allennlp.org/models/vision/dataset_readers/flickr30k/</loc>
+     <lastmod>2021-06-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://allennlp.org/models/vision/dataset_readers/gqa/</loc>
      <lastmod>2021-06-25</lastmod>
      <changefreq>daily</changefreq>
@@ -496,6 +500,10 @@
      <lastmod>2021-06-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://allennlp.org/models/vision/models/vilbert_image_retrieval/</loc>
+     <lastmod>2021-06-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://allennlp.org/models/vision/models/vilbert_vqa/</loc>
      <lastmod>2021-06-25</lastmod>
      <changefreq>daily</changefreq>
@@ -509,6 +517,10 @@
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://allennlp.org/models/vision/predictors/nlvr2/</loc>
+     <lastmod>2021-06-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://allennlp.org/models/vision/predictors/vilbert_ir/</loc>
      <lastmod>2021-06-25</lastmod>
      <changefreq>daily</changefreq>
     </url><url>

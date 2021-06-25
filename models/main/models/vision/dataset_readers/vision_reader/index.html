@@ -3080,6 +3080,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../flickr30k/" class="md-nav__link">
+        flickr30k
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../gqa/" class="md-nav__link">
         gqa
       </a>
@@ -3361,6 +3373,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../models/vilbert_image_retrieval/" class="md-nav__link">
+        vilbert_image_retrieval
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../models/vilbert_vqa/" class="md-nav__link">
         vilbert_vqa
       </a>
@@ -3426,6 +3450,18 @@
     <li class="md-nav__item">
       <a href="../../predictors/nlvr2/" class="md-nav__link">
         nlvr2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predictors/vilbert_ir/" class="md-nav__link">
+        vilbert_ir
       </a>
     </li>
   
@@ -3591,7 +3627,9 @@
  <span class="o">|</span>     <span class="n">cuda_device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">max_instances</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
  <span class="o">|</span>     <span class="n">image_processing_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
- <span class="o">|</span>     <span class="n">write_to_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+ <span class="o">|</span>     <span class="n">write_to_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">manual_distributed_sharding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="o">|</span>     <span class="n">manual_multiprocess_sharding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
  <span class="o">|</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 <p>Base class for dataset readers for vision tasks.</p>
