@@ -4801,20 +4801,29 @@ architecture in <a href="https://www.semanticscholar.org/paper/Attention-Is-All-
 <ul>
 <li><strong>input_dim</strong> : <code>int</code> <br>
     The input dimension of the encoder.</li>
+<li><strong>num_layers</strong> : <code>int</code> <br>
+    The number of stacked self attention -&gt; feedforward -&gt; layer normalisation blocks.</li>
 <li><strong>feedforward_hidden_dim</strong> : <code>int</code> <br>
     The middle dimension of the FeedForward network. The input and output
     dimensions are fixed to ensure sizes match up for the self attention layers.</li>
-<li><strong>num_layers</strong> : <code>int</code> <br>
-    The number of stacked self attention -&gt; feedforward -&gt; layer normalisation blocks.</li>
 <li><strong>num_attention_heads</strong> : <code>int</code> <br>
     The number of attention heads to use per layer.</li>
-<li><strong>use_positional_encoding</strong> : <code>bool</code>, optional (default = <code>True</code>) <br>
-    Whether to add sinusoidal frequencies to the input tensor. This is strongly recommended,
-    as without this feature, the self attention layers have no idea of absolute or relative
-    position (as they are just computing pairwise similarity between vectors of elements),
-    which can be important features for many tasks.</li>
+<li><strong>positional_encoding</strong> : <code>str</code>, optional (default = <code>None</code>) <br>
+    Specifies the type of positional encodings to use. Your options are<ul>
+<li><code>None</code> to have no positional encodings.</li>
+<li><code>"sinusoidal"</code> to have sinusoidal encodings, as described in https://api.semanticscholar.org/CorpusID:13756489.</li>
+<li><code>"embedding"</code> to treat positional encodings as learnable parameters
+Without positional encoding, the self attention layers have no idea of absolute or relative
+position (as they are just computing pairwise similarity between vectors of elements),
+which can be important features for many tasks.</li>
+</ul>
+</li>
+<li><strong>positional_embedding_size</strong> : <code>int</code>, optional (default = <code>512</code>) <br>
+    The number of positional embeddings.</li>
 <li><strong>dropout_prob</strong> : <code>float</code>, optional (default = <code>0.1</code>) <br>
     The dropout probability for the feedforward network.</li>
+<li><strong>activation</strong> : <code>str</code>, optional (default = <code>"relu"</code>) <br>
+    The activation function of intermediate layers. Must be either <code>"relu"</code> or <code>"gelu"</code>.</li>
 </ul>
 <p><a name=".allennlp.modules.seq2seq_encoders.pytorch_transformer_wrapper.PytorchTransformer.get_input_dim"></a></p>
 <h3 id="get_input_dim">get_input_dim<a class="headerlink" href="#get_input_dim" title="Permanent link">&para;</a></h3>
