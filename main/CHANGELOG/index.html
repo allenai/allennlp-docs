@@ -6290,6 +6290,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Ensured <code>ensure_model_can_train_save_and_load</code> is consistently random.</li>
 <li>Fixed weight tying logic in <code>T5</code> transformer module. Previously input/output embeddings were always tied. Now this is optional,
   and the default behavior is taken from the <code>config.tie_word_embeddings</code> value when instantiating <code>from_pretrained_module()</code>.</li>
+<li>Implemented slightly faster label smoothing.</li>
 <li>Fixed the docs for <code>PytorchTransformerWrapper</code></li>
 <li>Fixed recovering training jobs with models that expect <code>get_metrics()</code> to not be called until they have seen at least one batch.</li>
 </ul>
