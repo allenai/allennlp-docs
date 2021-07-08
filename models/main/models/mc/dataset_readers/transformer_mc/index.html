@@ -1610,6 +1610,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../piqa_tt/" class="md-nav__link">
+        piqa_tt
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../swag/" class="md-nav__link">
         swag
       </a>
@@ -1678,6 +1690,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transformer_mc_tt/" class="md-nav__link">
+        transformer_mc_tt
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1712,6 +1736,18 @@
     <li class="md-nav__item">
       <a href="../../models/transformer_mc/" class="md-nav__link">
         transformer_mc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/transformer_mc_tt/" class="md-nav__link">
+        transformer_mc_tt
       </a>
     </li>
   
@@ -3610,9 +3646,10 @@
 <p>Read input data for the TransformerMC model. This is the base class for all readers that produce
 data for TransformerMC.</p>
 <p>Instances have two fields:
- * <code>alternatives</code>, a ListField of TextField
- * <code>correct_alternative</code>, IndexField with the correct answer among <code>alternatives</code></p>
-<h4 id="transformermcreader.parameterstransformer_model_name_:_`str`,_optional_(default=`roberta-large`)">Parameterstransformer_model_name : `str`, optional (default=`roberta-large`)<a class="headerlink" href="#transformermcreader.parameterstransformer_model_name_:_`str`,_optional_(default=`roberta-large`)" title="Permanent link">&para;</a></h4>
+ * <code>alternatives</code>, a <code>ListField</code> of <code>TextField</code>
+ * <code>correct_alternative</code>, <code>IndexField</code> with the correct answer among <code>alternatives</code>
+ * <code>qid</code>, a <code>MetadataField</code> containing question ids</p>
+<h4 id="transformermcreader.parameterstransformer_model_name_:_`str`,_optional_(default=`"roberta-large"`)">Parameterstransformer_model_name : `str`, optional (default=`"roberta-large"`)<a class="headerlink" href="#transformermcreader.parameterstransformer_model_name_:_`str`,_optional_(default=`"roberta-large"`)" title="Permanent link">&para;</a></h4>
 
 <div class="highlight"><pre><span></span><code>This reader chooses tokenizer and token indexer according to this setting.
 </code></pre></div>
@@ -3667,13 +3704,13 @@ data for TransformerMC.</p>
       
       
         
-        <a href="../../models/transformer_mc/" class="md-footer__link md-footer__link--next" aria-label="Next: transformer_mc" rel="next">
+        <a href="../transformer_mc_tt/" class="md-footer__link md-footer__link--next" aria-label="Next: transformer_mc_tt" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              transformer_mc
+              transformer_mc_tt
             </div>
           </div>
           <div class="md-footer__button md-icon">
