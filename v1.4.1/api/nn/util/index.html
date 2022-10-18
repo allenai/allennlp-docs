@@ -1,0 +1,5486 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AllenNLP is a ..">
+      
+      
+      
+      
+        <link rel="canonical" href="https://allennlp.org/api/nn/util/">
+      
+      <link rel="shortcut icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>util - AllenNLP v1.4.1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="grey">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#t" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://allennlp.org/" title="AllenNLP v1.4.1" class="md-header-nav__button md-logo" aria-label="AllenNLP v1.4.1">
+      
+  <img src="../../../img/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            AllenNLP v1.4.1
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              util
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://allennlp.org/" title="AllenNLP v1.4.1" class="md-nav__button md-logo" aria-label="AllenNLP v1.4.1">
+      
+  <img src="../../../img/favicon.ico" alt="logo">
+
+    </a>
+    AllenNLP v1.4.1
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/allenai/allennlp" class="md-nav__link">
+        Repository
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Versions
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Versions" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Versions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/latest/" class="md-nav__link">
+        Latest
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/stable/" class="md-nav__link">
+        Stable
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/main/" class="md-nav__link">
+        Commit
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-1">
+        commands
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="commands" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/build_vocab/" class="md-nav__link">
+        build_vocab
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cached_path/" class="md-nav__link">
+        cached_path
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/evaluate/" class="md-nav__link">
+        evaluate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/find_learning_rate/" class="md-nav__link">
+        find_learning_rate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/predict/" class="md-nav__link">
+        predict
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/print_results/" class="md-nav__link">
+        print_results
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/subcommand/" class="md-nav__link">
+        subcommand
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/test_install/" class="md-nav__link">
+        test_install
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/train/" class="md-nav__link">
+        train
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        common
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="common" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          common
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/cached_transformers/" class="md-nav__link">
+        cached_transformers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/checks/" class="md-nav__link">
+        checks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/file_utils/" class="md-nav__link">
+        file_utils
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/from_params/" class="md-nav__link">
+        from_params
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/lazy/" class="md-nav__link">
+        lazy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/logging/" class="md-nav__link">
+        logging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/model_card/" class="md-nav__link">
+        model_card
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/params/" class="md-nav__link">
+        params
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/plugins/" class="md-nav__link">
+        plugins
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/registrable/" class="md-nav__link">
+        registrable
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/task_card/" class="md-nav__link">
+        task_card
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-12" type="checkbox" id="nav-4-2-12" >
+      
+      <label class="md-nav__link" for="nav-4-2-12">
+        testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="testing" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-12">
+          <span class="md-nav__icon md-icon"></span>
+          testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/testing/distributed_test/" class="md-nav__link">
+        distributed_test
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/testing/interpret_test/" class="md-nav__link">
+        interpret_test
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/testing/model_test_case/" class="md-nav__link">
+        model_test_case
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/testing/test_case/" class="md-nav__link">
+        test_case
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/tqdm/" class="md-nav__link">
+        tqdm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/util/" class="md-nav__link">
+        util
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+      
+      <label class="md-nav__link" for="nav-4-3">
+        data
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="data" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-3">
+          <span class="md-nav__icon md-icon"></span>
+          data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/batch/" class="md-nav__link">
+        batch
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataloader/" class="md-nav__link">
+        dataloader
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+      
+      <label class="md-nav__link" for="nav-4-3-3">
+        dataset_readers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-3-3">
+          <span class="md-nav__icon md-icon"></span>
+          dataset_readers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/babi/" class="md-nav__link">
+        babi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/conll2003/" class="md-nav__link">
+        conll2003
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/dataset_reader/" class="md-nav__link">
+        dataset_reader
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3-4" type="checkbox" id="nav-4-3-3-4" >
+      
+      <label class="md-nav__link" for="nav-4-3-3-4">
+        dataset_utils
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="dataset_utils" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-3-3-4">
+          <span class="md-nav__icon md-icon"></span>
+          dataset_utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/dataset_utils/span_utils/" class="md-nav__link">
+        span_utils
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/interleaving_dataset_reader/" class="md-nav__link">
+        interleaving_dataset_reader
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/sequence_tagging/" class="md-nav__link">
+        sequence_tagging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/sharded_dataset_reader/" class="md-nav__link">
+        sharded_dataset_reader
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/dataset_readers/text_classification_json/" class="md-nav__link">
+        text_classification_json
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-4" type="checkbox" id="nav-4-3-4" >
+      
+      <label class="md-nav__link" for="nav-4-3-4">
+        fields
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="fields" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-3-4">
+          <span class="md-nav__icon md-icon"></span>
+          fields
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/adjacency_field/" class="md-nav__link">
+        adjacency_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/array_field/" class="md-nav__link">
+        array_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/field/" class="md-nav__link">
+        field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/flag_field/" class="md-nav__link">
+        flag_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/index_field/" class="md-nav__link">
+        index_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/label_field/" class="md-nav__link">
+        label_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/list_field/" class="md-nav__link">
+        list_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/metadata_field/" class="md-nav__link">
+        metadata_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/multilabel_field/" class="md-nav__link">
+        multilabel_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/namespace_swapping_field/" class="md-nav__link">
+        namespace_swapping_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/sequence_field/" class="md-nav__link">
+        sequence_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/sequence_label_field/" class="md-nav__link">
+        sequence_label_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/span_field/" class="md-nav__link">
+        span_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/fields/text_field/" class="md-nav__link">
+        text_field
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/instance/" class="md-nav__link">
+        instance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-6" type="checkbox" id="nav-4-3-6" >
+      
+      <label class="md-nav__link" for="nav-4-3-6">
+        samplers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="samplers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-3-6">
+          <span class="md-nav__icon md-icon"></span>
+          samplers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/samplers/bucket_batch_sampler/" class="md-nav__link">
+        bucket_batch_sampler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/samplers/max_tokens_batch_sampler/" class="md-nav__link">
+        max_tokens_batch_sampler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/samplers/samplers/" class="md-nav__link">
+        samplers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-7" type="checkbox" id="nav-4-3-7" >
+      
+      <label class="md-nav__link" for="nav-4-3-7">
+        token_indexers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="token_indexers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-3-7">
+          <span class="md-nav__icon md-icon"></span>
+          token_indexers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/elmo_indexer/" class="md-nav__link">
+        elmo_indexer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/pretrained_transformer_indexer/" class="md-nav__link">
+        pretrained_transformer_indexer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/pretrained_transformer_mismatched_indexer/" class="md-nav__link">
+        pretrained_transformer_mismatched_indexer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/single_id_token_indexer/" class="md-nav__link">
+        single_id_token_indexer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/spacy_indexer/" class="md-nav__link">
+        spacy_indexer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/token_characters_indexer/" class="md-nav__link">
+        token_characters_indexer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/token_indexers/token_indexer/" class="md-nav__link">
+        token_indexer
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-8" type="checkbox" id="nav-4-3-8" >
+      
+      <label class="md-nav__link" for="nav-4-3-8">
+        tokenizers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="tokenizers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-3-8">
+          <span class="md-nav__icon md-icon"></span>
+          tokenizers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/character_tokenizer/" class="md-nav__link">
+        character_tokenizer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/letters_digits_tokenizer/" class="md-nav__link">
+        letters_digits_tokenizer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/pretrained_transformer_tokenizer/" class="md-nav__link">
+        pretrained_transformer_tokenizer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/sentence_splitter/" class="md-nav__link">
+        sentence_splitter
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/spacy_tokenizer/" class="md-nav__link">
+        spacy_tokenizer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/token_class/" class="md-nav__link">
+        token_class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/tokenizer/" class="md-nav__link">
+        tokenizer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/tokenizers/whitespace_tokenizer/" class="md-nav__link">
+        whitespace_tokenizer
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/vocabulary/" class="md-nav__link">
+        vocabulary
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+      
+      <label class="md-nav__link" for="nav-4-4">
+        interpret
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="interpret" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-4">
+          <span class="md-nav__icon md-icon"></span>
+          interpret
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-1" type="checkbox" id="nav-4-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-4-1">
+        attackers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="attackers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          attackers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/attackers/attacker/" class="md-nav__link">
+        attacker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/attackers/hotflip/" class="md-nav__link">
+        hotflip
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/attackers/input_reduction/" class="md-nav__link">
+        input_reduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/attackers/utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-2" type="checkbox" id="nav-4-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-4-2">
+        saliency_interpreters
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="saliency_interpreters" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          saliency_interpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/saliency_interpreters/integrated_gradient/" class="md-nav__link">
+        integrated_gradient
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/saliency_interpreters/saliency_interpreter/" class="md-nav__link">
+        saliency_interpreter
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/saliency_interpreters/simple_gradient/" class="md-nav__link">
+        simple_gradient
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interpret/saliency_interpreters/smooth_gradient/" class="md-nav__link">
+        smooth_gradient
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+      
+      <label class="md-nav__link" for="nav-4-5">
+        models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="models" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-5">
+          <span class="md-nav__icon md-icon"></span>
+          models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/archival/" class="md-nav__link">
+        archival
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/basic_classifier/" class="md-nav__link">
+        basic_classifier
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/model/" class="md-nav__link">
+        model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/simple_tagger/" class="md-nav__link">
+        simple_tagger
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+      
+      <label class="md-nav__link" for="nav-4-6">
+        modules
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="modules" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-6">
+          <span class="md-nav__icon md-icon"></span>
+          modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-1" type="checkbox" id="nav-4-6-1" >
+      
+      <label class="md-nav__link" for="nav-4-6-1">
+        attention
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="attention" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-1">
+          <span class="md-nav__icon md-icon"></span>
+          attention
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/attention/additive_attention/" class="md-nav__link">
+        additive_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/attention/attention/" class="md-nav__link">
+        attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/attention/bilinear_attention/" class="md-nav__link">
+        bilinear_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/attention/cosine_attention/" class="md-nav__link">
+        cosine_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/attention/dot_product_attention/" class="md-nav__link">
+        dot_product_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/attention/linear_attention/" class="md-nav__link">
+        linear_attention
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/augmented_lstm/" class="md-nav__link">
+        augmented_lstm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/bimpm_matching/" class="md-nav__link">
+        bimpm_matching
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/conditional_random_field/" class="md-nav__link">
+        conditional_random_field
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/elmo/" class="md-nav__link">
+        elmo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/elmo_lstm/" class="md-nav__link">
+        elmo_lstm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/encoder_base/" class="md-nav__link">
+        encoder_base
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/feedforward/" class="md-nav__link">
+        feedforward
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/gated_sum/" class="md-nav__link">
+        gated_sum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/highway/" class="md-nav__link">
+        highway
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/input_variational_dropout/" class="md-nav__link">
+        input_variational_dropout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/layer_norm/" class="md-nav__link">
+        layer_norm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/lstm_cell_with_projection/" class="md-nav__link">
+        lstm_cell_with_projection
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/masked_layer_norm/" class="md-nav__link">
+        masked_layer_norm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-15" type="checkbox" id="nav-4-6-15" >
+      
+      <label class="md-nav__link" for="nav-4-6-15">
+        matrix_attention
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="matrix_attention" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-15">
+          <span class="md-nav__icon md-icon"></span>
+          matrix_attention
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/matrix_attention/bilinear_matrix_attention/" class="md-nav__link">
+        bilinear_matrix_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/matrix_attention/cosine_matrix_attention/" class="md-nav__link">
+        cosine_matrix_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/matrix_attention/dot_product_matrix_attention/" class="md-nav__link">
+        dot_product_matrix_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/matrix_attention/linear_matrix_attention/" class="md-nav__link">
+        linear_matrix_attention
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/matrix_attention/matrix_attention/" class="md-nav__link">
+        matrix_attention
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/maxout/" class="md-nav__link">
+        maxout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/residual_with_layer_dropout/" class="md-nav__link">
+        residual_with_layer_dropout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/sampled_softmax_loss/" class="md-nav__link">
+        sampled_softmax_loss
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/scalar_mix/" class="md-nav__link">
+        scalar_mix
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-20" type="checkbox" id="nav-4-6-20" >
+      
+      <label class="md-nav__link" for="nav-4-6-20">
+        seq2seq_encoders
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="seq2seq_encoders" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-20">
+          <span class="md-nav__icon md-icon"></span>
+          seq2seq_encoders
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/compose_encoder/" class="md-nav__link">
+        compose_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/feedforward_encoder/" class="md-nav__link">
+        feedforward_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/gated_cnn_encoder/" class="md-nav__link">
+        gated_cnn_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/pass_through_encoder/" class="md-nav__link">
+        pass_through_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/pytorch_seq2seq_wrapper/" class="md-nav__link">
+        pytorch_seq2seq_wrapper
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/pytorch_transformer_wrapper/" class="md-nav__link">
+        pytorch_transformer_wrapper
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2seq_encoders/seq2seq_encoder/" class="md-nav__link">
+        seq2seq_encoder
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-21" type="checkbox" id="nav-4-6-21" >
+      
+      <label class="md-nav__link" for="nav-4-6-21">
+        seq2vec_encoders
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="seq2vec_encoders" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-21">
+          <span class="md-nav__icon md-icon"></span>
+          seq2vec_encoders
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/bert_pooler/" class="md-nav__link">
+        bert_pooler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/boe_encoder/" class="md-nav__link">
+        boe_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/cls_pooler/" class="md-nav__link">
+        cls_pooler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/cnn_encoder/" class="md-nav__link">
+        cnn_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/cnn_highway_encoder/" class="md-nav__link">
+        cnn_highway_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/pytorch_seq2vec_wrapper/" class="md-nav__link">
+        pytorch_seq2vec_wrapper
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/seq2vec_encoders/seq2vec_encoder/" class="md-nav__link">
+        seq2vec_encoder
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/softmax_loss/" class="md-nav__link">
+        softmax_loss
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-23" type="checkbox" id="nav-4-6-23" >
+      
+      <label class="md-nav__link" for="nav-4-6-23">
+        span_extractors
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="span_extractors" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-23">
+          <span class="md-nav__icon md-icon"></span>
+          span_extractors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/span_extractors/bidirectional_endpoint_span_extractor/" class="md-nav__link">
+        bidirectional_endpoint_span_extractor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/span_extractors/endpoint_span_extractor/" class="md-nav__link">
+        endpoint_span_extractor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/span_extractors/self_attentive_span_extractor/" class="md-nav__link">
+        self_attentive_span_extractor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/span_extractors/span_extractor/" class="md-nav__link">
+        span_extractor
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/stacked_alternating_lstm/" class="md-nav__link">
+        stacked_alternating_lstm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/stacked_bidirectional_lstm/" class="md-nav__link">
+        stacked_bidirectional_lstm
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-26" type="checkbox" id="nav-4-6-26" >
+      
+      <label class="md-nav__link" for="nav-4-6-26">
+        text_field_embedders
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="text_field_embedders" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-26">
+          <span class="md-nav__icon md-icon"></span>
+          text_field_embedders
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/text_field_embedders/basic_text_field_embedder/" class="md-nav__link">
+        basic_text_field_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/text_field_embedders/text_field_embedder/" class="md-nav__link">
+        text_field_embedder
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/time_distributed/" class="md-nav__link">
+        time_distributed
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-28" type="checkbox" id="nav-4-6-28" >
+      
+      <label class="md-nav__link" for="nav-4-6-28">
+        token_embedders
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="token_embedders" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-6-28">
+          <span class="md-nav__icon md-icon"></span>
+          token_embedders
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/bag_of_word_counts_token_embedder/" class="md-nav__link">
+        bag_of_word_counts_token_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/elmo_token_embedder/" class="md-nav__link">
+        elmo_token_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/embedding/" class="md-nav__link">
+        embedding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/empty_embedder/" class="md-nav__link">
+        empty_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/pass_through_token_embedder/" class="md-nav__link">
+        pass_through_token_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/pretrained_transformer_embedder/" class="md-nav__link">
+        pretrained_transformer_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/pretrained_transformer_mismatched_embedder/" class="md-nav__link">
+        pretrained_transformer_mismatched_embedder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/token_characters_encoder/" class="md-nav__link">
+        token_characters_encoder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/token_embedders/token_embedder/" class="md-nav__link">
+        token_embedder
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7" checked>
+      
+      <label class="md-nav__link" for="nav-4-7">
+        nn
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="nn" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-7">
+          <span class="md-nav__icon md-icon"></span>
+          nn
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../activations/" class="md-nav__link">
+        activations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beam_search/" class="md-nav__link">
+        beam_search
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chu_liu_edmonds/" class="md-nav__link">
+        chu_liu_edmonds
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../initializers/" class="md-nav__link">
+        initializers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7-5" type="checkbox" id="nav-4-7-5" >
+      
+      <label class="md-nav__link" for="nav-4-7-5">
+        regularizers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="regularizers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-7-5">
+          <span class="md-nav__icon md-icon"></span>
+          regularizers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regularizers/regularizer/" class="md-nav__link">
+        regularizer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regularizers/regularizer_applicator/" class="md-nav__link">
+        regularizer_applicator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regularizers/regularizers/" class="md-nav__link">
+        regularizers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          util
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        util
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    T
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#has_tensor" class="md-nav__link">
+    has_tensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move_to_device" class="md-nav__link">
+    move_to_device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clamp_tensor" class="md-nav__link">
+    clamp_tensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch_tensor_dicts" class="md-nav__link">
+    batch_tensor_dicts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_lengths_from_binary_sequence_mask" class="md-nav__link">
+    get_lengths_from_binary_sequence_mask
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_mask_from_sequence_lengths" class="md-nav__link">
+    get_mask_from_sequence_lengths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort_batch_by_length" class="md-nav__link">
+    sort_batch_by_length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_final_encoder_states" class="md-nav__link">
+    get_final_encoder_states
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_dropout_mask" class="md-nav__link">
+    get_dropout_mask
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_softmax" class="md-nav__link">
+    masked_softmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_log_softmax" class="md-nav__link">
+    masked_log_softmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_max" class="md-nav__link">
+    masked_max
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_mean" class="md-nav__link">
+    masked_mean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_flip" class="md-nav__link">
+    masked_flip
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viterbi_decode" class="md-nav__link">
+    viterbi_decode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_text_field_mask" class="md-nav__link">
+    get_text_field_mask
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_token_ids_from_text_field_tensors" class="md-nav__link">
+    get_token_ids_from_text_field_tensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weighted_sum" class="md-nav__link">
+    weighted_sum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence_cross_entropy_with_logits" class="md-nav__link">
+    sequence_cross_entropy_with_logits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace_masked_values" class="md-nav__link">
+    replace_masked_values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensors_equal" class="md-nav__link">
+    tensors_equal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device_mapping" class="md-nav__link">
+    device_mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine_tensors" class="md-nav__link">
+    combine_tensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine_tensors_and_multiply" class="md-nav__link">
+    combine_tensors_and_multiply
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_combined_dim" class="md-nav__link">
+    get_combined_dim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logsumexp" class="md-nav__link">
+    logsumexp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_device_of" class="md-nav__link">
+    get_device_of
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flatten_and_batch_shift_indices" class="md-nav__link">
+    flatten_and_batch_shift_indices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batched_index_select" class="md-nav__link">
+    batched_index_select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_index_fill" class="md-nav__link">
+    masked_index_fill
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_index_replace" class="md-nav__link">
+    masked_index_replace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batched_span_select" class="md-nav__link">
+    batched_span_select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flattened_index_select" class="md-nav__link">
+    flattened_index_select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_range_vector" class="md-nav__link">
+    get_range_vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bucket_values" class="md-nav__link">
+    bucket_values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add_sentence_boundary_token_ids" class="md-nav__link">
+    add_sentence_boundary_token_ids
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove_sentence_boundaries" class="md-nav__link">
+    remove_sentence_boundaries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add_positional_features" class="md-nav__link">
+    add_positional_features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone" class="md-nav__link">
+    clone
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine_initial_dims" class="md-nav__link">
+    combine_initial_dims
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncombine_initial_dims" class="md-nav__link">
+    uncombine_initial_dims
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect_parameters" class="md-nav__link">
+    inspect_parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find_text_field_embedder" class="md-nav__link">
+    find_text_field_embedder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find_embedding_layer" class="md-nav__link">
+    find_embedding_layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_token_offsets_from_text_field_inputs" class="md-nav__link">
+    get_token_offsets_from_text_field_inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extend_layer" class="md-nav__link">
+    extend_layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_topk" class="md-nav__link">
+    masked_topk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#info_value_of_dtype" class="md-nav__link">
+    info_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#min_value_of_dtype" class="md-nav__link">
+    min_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#max_value_of_dtype" class="md-nav__link">
+    max_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tiny_value_of_dtype" class="md-nav__link">
+    tiny_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dist_reduce" class="md-nav__link">
+    dist_reduce
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8" >
+      
+      <label class="md-nav__link" for="nav-4-8">
+        predictors
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="predictors" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-8">
+          <span class="md-nav__icon md-icon"></span>
+          predictors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predictors/predictor/" class="md-nav__link">
+        predictor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predictors/sentence_tagger/" class="md-nav__link">
+        sentence_tagger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predictors/text_classifier/" class="md-nav__link">
+        text_classifier
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9" >
+      
+      <label class="md-nav__link" for="nav-4-9">
+        tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="tools" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-9">
+          <span class="md-nav__icon md-icon"></span>
+          tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/archive_surgery/" class="md-nav__link">
+        archive_surgery
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/create_elmo_embeddings_from_vocab/" class="md-nav__link">
+        create_elmo_embeddings_from_vocab
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/inspect_cache/" class="md-nav__link">
+        inspect_cache
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" >
+      
+      <label class="md-nav__link" for="nav-4-10">
+        training
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="training" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-10">
+          <span class="md-nav__icon md-icon"></span>
+          training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/checkpointer/" class="md-nav__link">
+        checkpointer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-2" type="checkbox" id="nav-4-10-2" >
+      
+      <label class="md-nav__link" for="nav-4-10-2">
+        learning_rate_schedulers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="learning_rate_schedulers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-10-2">
+          <span class="md-nav__icon md-icon"></span>
+          learning_rate_schedulers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/combined/" class="md-nav__link">
+        combined
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/cosine/" class="md-nav__link">
+        cosine
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/learning_rate_scheduler/" class="md-nav__link">
+        learning_rate_scheduler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/linear_with_warmup/" class="md-nav__link">
+        linear_with_warmup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/noam/" class="md-nav__link">
+        noam
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/polynomial_decay/" class="md-nav__link">
+        polynomial_decay
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/learning_rate_schedulers/slanted_triangular/" class="md-nav__link">
+        slanted_triangular
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metric_tracker/" class="md-nav__link">
+        metric_tracker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-4" type="checkbox" id="nav-4-10-4" >
+      
+      <label class="md-nav__link" for="nav-4-10-4">
+        metrics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="metrics" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-10-4">
+          <span class="md-nav__icon md-icon"></span>
+          metrics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/attachment_scores/" class="md-nav__link">
+        attachment_scores
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/auc/" class="md-nav__link">
+        auc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/average/" class="md-nav__link">
+        average
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/bleu/" class="md-nav__link">
+        bleu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/boolean_accuracy/" class="md-nav__link">
+        boolean_accuracy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/categorical_accuracy/" class="md-nav__link">
+        categorical_accuracy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/covariance/" class="md-nav__link">
+        covariance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/entropy/" class="md-nav__link">
+        entropy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/evalb_bracketing_scorer/" class="md-nav__link">
+        evalb_bracketing_scorer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/f1_measure/" class="md-nav__link">
+        f1_measure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/fbeta_measure/" class="md-nav__link">
+        fbeta_measure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/fbeta_multi_label_measure/" class="md-nav__link">
+        fbeta_multi_label_measure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/mean_absolute_error/" class="md-nav__link">
+        mean_absolute_error
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/metric/" class="md-nav__link">
+        metric
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/pearson_correlation/" class="md-nav__link">
+        pearson_correlation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/perplexity/" class="md-nav__link">
+        perplexity
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/rouge/" class="md-nav__link">
+        rouge
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/sequence_accuracy/" class="md-nav__link">
+        sequence_accuracy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/span_based_f1_measure/" class="md-nav__link">
+        span_based_f1_measure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/spearman_correlation/" class="md-nav__link">
+        spearman_correlation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/metrics/unigram_recall/" class="md-nav__link">
+        unigram_recall
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-5" type="checkbox" id="nav-4-10-5" >
+      
+      <label class="md-nav__link" for="nav-4-10-5">
+        momentum_schedulers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="momentum_schedulers" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-10-5">
+          <span class="md-nav__icon md-icon"></span>
+          momentum_schedulers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/momentum_schedulers/inverted_triangular/" class="md-nav__link">
+        inverted_triangular
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/momentum_schedulers/momentum_scheduler/" class="md-nav__link">
+        momentum_scheduler
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/moving_average/" class="md-nav__link">
+        moving_average
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/no_op_trainer/" class="md-nav__link">
+        no_op_trainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/optimizers/" class="md-nav__link">
+        optimizers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/scheduler/" class="md-nav__link">
+        scheduler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/tensorboard_writer/" class="md-nav__link">
+        tensorboard_writer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/trainer/" class="md-nav__link">
+        trainer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../training/util/" class="md-nav__link">
+        util
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG/" class="md-nav__link">
+        CHANGELOG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://raw.githubusercontent.com/allenai/allennlp/main/LICENSE" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    T
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#has_tensor" class="md-nav__link">
+    has_tensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move_to_device" class="md-nav__link">
+    move_to_device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clamp_tensor" class="md-nav__link">
+    clamp_tensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch_tensor_dicts" class="md-nav__link">
+    batch_tensor_dicts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_lengths_from_binary_sequence_mask" class="md-nav__link">
+    get_lengths_from_binary_sequence_mask
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_mask_from_sequence_lengths" class="md-nav__link">
+    get_mask_from_sequence_lengths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort_batch_by_length" class="md-nav__link">
+    sort_batch_by_length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_final_encoder_states" class="md-nav__link">
+    get_final_encoder_states
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_dropout_mask" class="md-nav__link">
+    get_dropout_mask
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_softmax" class="md-nav__link">
+    masked_softmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_log_softmax" class="md-nav__link">
+    masked_log_softmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_max" class="md-nav__link">
+    masked_max
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_mean" class="md-nav__link">
+    masked_mean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_flip" class="md-nav__link">
+    masked_flip
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viterbi_decode" class="md-nav__link">
+    viterbi_decode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_text_field_mask" class="md-nav__link">
+    get_text_field_mask
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_token_ids_from_text_field_tensors" class="md-nav__link">
+    get_token_ids_from_text_field_tensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weighted_sum" class="md-nav__link">
+    weighted_sum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence_cross_entropy_with_logits" class="md-nav__link">
+    sequence_cross_entropy_with_logits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace_masked_values" class="md-nav__link">
+    replace_masked_values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensors_equal" class="md-nav__link">
+    tensors_equal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device_mapping" class="md-nav__link">
+    device_mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine_tensors" class="md-nav__link">
+    combine_tensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine_tensors_and_multiply" class="md-nav__link">
+    combine_tensors_and_multiply
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_combined_dim" class="md-nav__link">
+    get_combined_dim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logsumexp" class="md-nav__link">
+    logsumexp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_device_of" class="md-nav__link">
+    get_device_of
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flatten_and_batch_shift_indices" class="md-nav__link">
+    flatten_and_batch_shift_indices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batched_index_select" class="md-nav__link">
+    batched_index_select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_index_fill" class="md-nav__link">
+    masked_index_fill
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_index_replace" class="md-nav__link">
+    masked_index_replace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batched_span_select" class="md-nav__link">
+    batched_span_select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flattened_index_select" class="md-nav__link">
+    flattened_index_select
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_range_vector" class="md-nav__link">
+    get_range_vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bucket_values" class="md-nav__link">
+    bucket_values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add_sentence_boundary_token_ids" class="md-nav__link">
+    add_sentence_boundary_token_ids
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove_sentence_boundaries" class="md-nav__link">
+    remove_sentence_boundaries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add_positional_features" class="md-nav__link">
+    add_positional_features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone" class="md-nav__link">
+    clone
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine_initial_dims" class="md-nav__link">
+    combine_initial_dims
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncombine_initial_dims" class="md-nav__link">
+    uncombine_initial_dims
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect_parameters" class="md-nav__link">
+    inspect_parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find_text_field_embedder" class="md-nav__link">
+    find_text_field_embedder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find_embedding_layer" class="md-nav__link">
+    find_embedding_layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_token_offsets_from_text_field_inputs" class="md-nav__link">
+    get_token_offsets_from_text_field_inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extend_layer" class="md-nav__link">
+    extend_layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked_topk" class="md-nav__link">
+    masked_topk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#info_value_of_dtype" class="md-nav__link">
+    info_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#min_value_of_dtype" class="md-nav__link">
+    min_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#max_value_of_dtype" class="md-nav__link">
+    max_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tiny_value_of_dtype" class="md-nav__link">
+    tiny_value_of_dtype
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dist_reduce" class="md-nav__link">
+    dist_reduce
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>util</h1>
+                
+                <div>
+ <p class="alignleft"><i>allennlp</i><i>.nn</i><strong>.util</strong></p>
+ <p class="alignright"><a class="sourcelink" href="https://github.com/allenai/allennlp/blob/v1.4.1/allennlp/nn/util.py">[SOURCE]</a></p>
+</div>
+<div style="clear: both;"></div>
+
+<hr />
+<p>Assorted utilities for working with neural networks in AllenNLP.</p>
+<p><a name=".allennlp.nn.util.T"></a></p>
+<h2 id="t">T<a class="headerlink" href="#t" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><a name=".allennlp.nn.util.has_tensor"></a></p>
+<h2 id="has_tensor">has_tensor<a class="headerlink" href="#has_tensor" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">has_tensor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+<p>Given a possibly complex data structure,
+check if it has any torch.Tensors in it.</p>
+<p><a name=".allennlp.nn.util.move_to_device"></a></p>
+<h2 id="move_to_device">move_to_device<a class="headerlink" href="#move_to_device" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">move_to_device</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">cuda_device</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span>
+</code></pre></div>
+<p>Given a structure (possibly) containing Tensors on the CPU,
+move all the Tensors to the specified GPU (or do nothing, if they should be on the CPU).</p>
+<p><a name=".allennlp.nn.util.clamp_tensor"></a></p>
+<h2 id="clamp_tensor">clamp_tensor<a class="headerlink" href="#clamp_tensor" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">clamp_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">)</span>
+</code></pre></div>
+<p>Supports sparse and dense tensors.
+Returns a tensor with values clamped between the provided minimum and maximum,
+without modifying the original tensor.</p>
+<p><a name=".allennlp.nn.util.batch_tensor_dicts"></a></p>
+<h2 id="batch_tensor_dicts">batch_tensor_dicts<a class="headerlink" href="#batch_tensor_dicts" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">batch_tensor_dicts</span><span class="p">(</span>
+    <span class="n">tensor_dicts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span>
+    <span class="n">remove_trailing_dimension</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</code></pre></div>
+<p>Takes a list of tensor dictionaries, where each dictionary is assumed to have matching keys,
+and returns a single dictionary with all tensors with the same key batched together.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tensor_dicts</strong> : <code>List[Dict[str, torch.Tensor]]</code> <br>
+    The list of tensor dictionaries to batch.</li>
+<li><strong>remove_trailing_dimension</strong> : <code>bool</code> <br>
+    If <code>True</code>, we will check for a trailing dimension of size 1 on the tensors that are being
+    batched, and remove it if we find it.</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_lengths_from_binary_sequence_mask"></a></p>
+<h2 id="get_lengths_from_binary_sequence_mask">get_lengths_from_binary_sequence_mask<a class="headerlink" href="#get_lengths_from_binary_sequence_mask" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_lengths_from_binary_sequence_mask</span><span class="p">(</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span>
+</code></pre></div>
+<p>Compute sequence lengths for each batch element in a tensor using a
+binary mask.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>mask</strong> : <code>torch.BoolTensor</code> <br>
+    A 2D binary mask of shape (batch_size, sequence_length) to
+    calculate the per-batch sequence lengths from.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.LongTensor</code> <br>
+    A torch.LongTensor of shape (batch_size,) representing the lengths
+    of the sequences in the batch.</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_mask_from_sequence_lengths"></a></p>
+<h2 id="get_mask_from_sequence_lengths">get_mask_from_sequence_lengths<a class="headerlink" href="#get_mask_from_sequence_lengths" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_mask_from_sequence_lengths</span><span class="p">(</span>
+    <span class="n">sequence_lengths</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span>
+</code></pre></div>
+<p>Given a variable of shape <code>(batch_size,)</code> that represents the sequence lengths of each batch
+element, this function returns a <code>(batch_size, max_length)</code> mask variable.  For example, if
+our input was <code>[2, 2, 3]</code>, with a <code>max_length</code> of 4, we'd return
+<code>[[1, 1, 0, 0], [1, 1, 0, 0], [1, 1, 1, 0]]</code>.</p>
+<p>We require <code>max_length</code> here instead of just computing it from the input <code>sequence_lengths</code>
+because it lets us avoid finding the max, then copying that value from the GPU to the CPU so
+that we can use it to construct a new tensor.</p>
+<p><a name=".allennlp.nn.util.sort_batch_by_length"></a></p>
+<h2 id="sort_batch_by_length">sort_batch_by_length<a class="headerlink" href="#sort_batch_by_length" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sort_batch_by_length</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">sequence_lengths</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Sort a batch first tensor by some specified lengths.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tensor</strong> : <code>torch.FloatTensor</code> <br>
+    A batch first Pytorch tensor.</li>
+<li><strong>sequence_lengths</strong> : <code>torch.LongTensor</code> <br>
+    A tensor representing the lengths of some dimension of the tensor which
+    we want to sort by.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>sorted_tensor</strong> : <code>torch.FloatTensor</code> <br>
+    The original tensor sorted along the batch dimension with respect to sequence_lengths.</li>
+<li><strong>sorted_sequence_lengths</strong> : <code>torch.LongTensor</code> <br>
+    The original sequence_lengths sorted by decreasing size.</li>
+<li><strong>restoration_indices</strong> : <code>torch.LongTensor</code> <br>
+    Indices into the sorted_tensor such that
+    <code>sorted_tensor.index_select(0, restoration_indices) == original_tensor</code></li>
+<li><strong>permutation_index</strong> : <code>torch.LongTensor</code> <br>
+    The indices used to sort the tensor. This is useful if you want to sort many
+    tensors using the same ordering.</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_final_encoder_states"></a></p>
+<h2 id="get_final_encoder_states">get_final_encoder_states<a class="headerlink" href="#get_final_encoder_states" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_final_encoder_states</span><span class="p">(</span>
+    <span class="n">encoder_outputs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">bidirectional</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Given the output from a <code>Seq2SeqEncoder</code>, with shape <code>(batch_size, sequence_length,
+encoding_dim)</code>, this method returns the final hidden state for each element of the batch,
+giving a tensor of shape <code>(batch_size, encoding_dim)</code>.  This is not as simple as
+<code>encoder_outputs[:, -1]</code>, because the sequences could have different lengths.  We use the
+mask (which has shape <code>(batch_size, sequence_length)</code>) to find the final state for each batch
+instance.</p>
+<p>Additionally, if <code>bidirectional</code> is <code>True</code>, we will split the final dimension of the
+<code>encoder_outputs</code> into two and assume that the first half is for the forward direction of the
+encoder and the second half is for the backward direction.  We will concatenate the last state
+for each encoder dimension, giving <code>encoder_outputs[:, -1, :encoding_dim/2]</code> concatenated with
+<code>encoder_outputs[:, 0, encoding_dim/2:]</code>.</p>
+<p><a name=".allennlp.nn.util.get_dropout_mask"></a></p>
+<h2 id="get_dropout_mask">get_dropout_mask<a class="headerlink" href="#get_dropout_mask" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dropout_mask</span><span class="p">(</span>
+    <span class="n">dropout_probability</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">tensor_for_masking</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Computes and returns an element-wise dropout mask for a given tensor, where
+each element in the mask is dropped out with probability dropout_probability.
+Note that the mask is NOT applied to the tensor - the tensor is passed to retain
+the correct CUDA tensor type for the mask.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>dropout_probability</strong> : <code>float</code> <br>
+    Probability of dropping a dimension of the input.</li>
+<li><strong>tensor_for_masking</strong> : <code>torch.Tensor</code> <br></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.FloatTensor</code> <br>
+    A torch.FloatTensor consisting of the binary mask scaled by 1/ (1 - dropout_probability).
+    This scaling ensures expected values and variances of the output of applying this mask
+    and the original tensor are the same.</li>
+</ul>
+<p><a name=".allennlp.nn.util.masked_softmax"></a></p>
+<h2 id="masked_softmax">masked_softmax<a class="headerlink" href="#masked_softmax" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_softmax</span><span class="p">(</span>
+    <span class="n">vector</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">memory_efficient</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p><code>torch.nn.functional.softmax(vector)</code> does not work if some elements of <code>vector</code> should be
+masked.  This performs a softmax on just the non-masked portions of <code>vector</code>.  Passing
+<code>None</code> in for the mask is also acceptable; you'll just get a regular softmax.</p>
+<p><code>vector</code> can have an arbitrary number of dimensions; the only requirement is that <code>mask</code> is
+broadcastable to <code>vector's</code> shape.  If <code>mask</code> has fewer dimensions than <code>vector</code>, we will
+unsqueeze on dimension 1 until they match.  If you need a different unsqueezing of your mask,
+do it yourself before passing the mask into this function.</p>
+<p>If <code>memory_efficient</code> is set to true, we will simply use a very large negative number for those
+masked positions so that the probabilities of those positions would be approximately 0.
+This is not accurate in math, but works for most cases and consumes less memory.</p>
+<p>In the case that the input vector is completely masked and <code>memory_efficient</code> is false, this function
+returns an array of <code>0.0</code>. This behavior may cause <code>NaN</code> if this is used as the last layer of
+a model that uses categorical cross-entropy loss. Instead, if <code>memory_efficient</code> is true, this function
+will treat every element as equal, and do softmax over equal numbers.</p>
+<p><a name=".allennlp.nn.util.masked_log_softmax"></a></p>
+<h2 id="masked_log_softmax">masked_log_softmax<a class="headerlink" href="#masked_log_softmax" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_log_softmax</span><span class="p">(</span>
+    <span class="n">vector</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p><code>torch.nn.functional.log_softmax(vector)</code> does not work if some elements of <code>vector</code> should be
+masked.  This performs a log_softmax on just the non-masked portions of <code>vector</code>.  Passing
+<code>None</code> in for the mask is also acceptable; you'll just get a regular log_softmax.</p>
+<p><code>vector</code> can have an arbitrary number of dimensions; the only requirement is that <code>mask</code> is
+broadcastable to <code>vector's</code> shape.  If <code>mask</code> has fewer dimensions than <code>vector</code>, we will
+unsqueeze on dimension 1 until they match.  If you need a different unsqueezing of your mask,
+do it yourself before passing the mask into this function.</p>
+<p>In the case that the input vector is completely masked, the return value of this function is
+arbitrary, but not <code>nan</code>.  You should be masking the result of whatever computation comes out
+of this in that case, anyway, so the specific values returned shouldn't matter.  Also, the way
+that we deal with this case relies on having single-precision floats; mixing half-precision
+floats with fully-masked vectors will likely give you <code>nans</code>.</p>
+<p>If your logits are all extremely negative (i.e., the max value in your logit vector is -50 or
+lower), the way we handle masking here could mess you up.  But if you've got logit values that
+extreme, you've got bigger problems than this.</p>
+<p><a name=".allennlp.nn.util.masked_max"></a></p>
+<h2 id="masked_max">masked_max<a class="headerlink" href="#masked_max" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_max</span><span class="p">(</span>
+    <span class="n">vector</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>To calculate max along certain dimensions on masked values</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>vector</strong> : <code>torch.Tensor</code> <br>
+    The vector to calculate max, assume unmasked parts are already zeros</li>
+<li><strong>mask</strong> : <code>torch.BoolTensor</code> <br>
+    The mask of the vector. It must be broadcastable with vector.</li>
+<li><strong>dim</strong> : <code>int</code> <br>
+    The dimension to calculate max</li>
+<li><strong>keepdim</strong> : <code>bool</code> <br>
+    Whether to keep dimension</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.Tensor</code> <br>
+    A <code>torch.Tensor</code> of including the maximum values.</li>
+</ul>
+<p><a name=".allennlp.nn.util.masked_mean"></a></p>
+<h2 id="masked_mean">masked_mean<a class="headerlink" href="#masked_mean" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_mean</span><span class="p">(</span>
+    <span class="n">vector</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>To calculate mean along certain dimensions on masked values</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>vector</strong> : <code>torch.Tensor</code> <br>
+    The vector to calculate mean.</li>
+<li><strong>mask</strong> : <code>torch.BoolTensor</code> <br>
+    The mask of the vector. It must be broadcastable with vector.</li>
+<li><strong>dim</strong> : <code>int</code> <br>
+    The dimension to calculate mean</li>
+<li><strong>keepdim</strong> : <code>bool</code> <br>
+    Whether to keep dimension</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.Tensor</code> <br>
+    A <code>torch.Tensor</code> of including the mean values.</li>
+</ul>
+<p><a name=".allennlp.nn.util.masked_flip"></a></p>
+<h2 id="masked_flip">masked_flip<a class="headerlink" href="#masked_flip" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_flip</span><span class="p">(</span>
+    <span class="n">padded_sequence</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">sequence_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Flips a padded tensor along the time dimension without affecting masked entries.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>padded_sequence</strong> : <code>torch.Tensor</code> <br>
+    The tensor to flip along the time dimension.
+    Assumed to be of dimensions (batch size, num timesteps, ...)</li>
+<li><strong>sequence_lengths</strong> : <code>torch.Tensor</code> <br>
+    A list containing the lengths of each unpadded sequence in the batch.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.Tensor</code> <br>
+    A <code>torch.Tensor</code> of the same shape as padded_sequence.</li>
+</ul>
+<p><a name=".allennlp.nn.util.viterbi_decode"></a></p>
+<h2 id="viterbi_decode">viterbi_decode<a class="headerlink" href="#viterbi_decode" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">viterbi_decode</span><span class="p">(</span>
+    <span class="n">tag_sequence</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">transition_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">tag_observations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">allowed_start_transitions</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">allowed_end_transitions</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Perform Viterbi decoding in log space over a sequence given a transition matrix
+specifying pairwise (transition) potentials between tags and a matrix of shape
+(sequence_length, num_tags) specifying unary potentials for possible tags per
+timestep.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tag_sequence</strong> : <code>torch.Tensor</code> <br>
+    A tensor of shape (sequence_length, num_tags) representing scores for
+    a set of tags over a given sequence.</li>
+<li><strong>transition_matrix</strong> : <code>torch.Tensor</code> <br>
+    A tensor of shape (num_tags, num_tags) representing the binary potentials
+    for transitioning between a given pair of tags.</li>
+<li><strong>tag_observations</strong> : <code>Optional[List[int]]</code>, optional (default = <code>None</code>) <br>
+    A list of length <code>sequence_length</code> containing the class ids of observed
+    elements in the sequence, with unobserved elements being set to -1. Note that
+    it is possible to provide evidence which results in degenerate labelings if
+    the sequences of tags you provide as evidence cannot transition between each
+    other, or those transitions are extremely unlikely. In this situation we log a
+    warning, but the responsibility for providing self-consistent evidence ultimately
+    lies with the user.</li>
+<li><strong>allowed_start_transitions</strong> : <code>torch.Tensor</code>, optional (default = <code>None</code>) <br>
+    An optional tensor of shape (num_tags,) describing which tags the START token
+    may transition <em>to</em>. If provided, additional transition constraints will be used for
+    determining the start element of the sequence.</li>
+<li><strong>allowed_end_transitions</strong> : <code>torch.Tensor</code>, optional (default = <code>None</code>) <br>
+    An optional tensor of shape (num_tags,) describing which tags may transition <em>to</em> the
+    end tag. If provided, additional transition constraints will be used for determining
+    the end element of the sequence.</li>
+<li><strong>top_k</strong> : <code>int</code>, optional (default = <code>None</code>) <br>
+    Optional integer specifying how many of the top paths to return. For top_k&gt;=1, returns
+    a tuple of two lists: top_k_paths, top_k_scores, For top_k==None, returns a flattened
+    tuple with just the top path and its score (not in lists, for backwards compatibility).</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>viterbi_path</strong> : <code>List[int]</code> <br>
+    The tag indices of the maximum likelihood tag sequence.</li>
+<li><strong>viterbi_score</strong> : <code>torch.Tensor</code> <br>
+    The score of the viterbi path.</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_text_field_mask"></a></p>
+<h2 id="get_text_field_mask">get_text_field_mask<a class="headerlink" href="#get_text_field_mask" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_text_field_mask</span><span class="p">(</span>
+    <span class="n">text_field_tensors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span>
+    <span class="n">num_wrapping_dims</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">padding_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span>
+</code></pre></div>
+<p>Takes the dictionary of tensors produced by a <code>TextField</code> and returns a mask
+with 0 where the tokens are padding, and 1 otherwise. <code>padding_id</code> specifies the id of padding tokens.
+We also handle <code>TextFields</code> wrapped by an arbitrary number of <code>ListFields</code>, where the number of wrapping
+<code>ListFields</code> is given by <code>num_wrapping_dims</code>.</p>
+<p>If <code>num_wrapping_dims == 0</code>, the returned mask has shape <code>(batch_size, num_tokens)</code>.
+If <code>num_wrapping_dims &gt; 0</code> then the returned mask has <code>num_wrapping_dims</code> extra
+dimensions, so the shape will be <code>(batch_size, ..., num_tokens)</code>.</p>
+<p>There could be several entries in the tensor dictionary with different shapes (e.g., one for
+word ids, one for character ids).  In order to get a token mask, we use the tensor in
+the dictionary with the lowest number of dimensions.  After subtracting <code>num_wrapping_dims</code>,
+if this tensor has two dimensions we assume it has shape <code>(batch_size, ..., num_tokens)</code>,
+and use it for the mask.  If instead it has three dimensions, we assume it has shape
+<code>(batch_size, ..., num_tokens, num_features)</code>, and sum over the last dimension to produce
+the mask.  Most frequently this will be a character id tensor, but it could also be a
+featurized representation of each token, etc.</p>
+<p>If the input <code>text_field_tensors</code> contains the "mask" key, this is returned instead of inferring the mask.</p>
+<p><a name=".allennlp.nn.util.get_token_ids_from_text_field_tensors"></a></p>
+<h2 id="get_token_ids_from_text_field_tensors">get_token_ids_from_text_field_tensors<a class="headerlink" href="#get_token_ids_from_text_field_tensors" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_token_ids_from_text_field_tensors</span><span class="p">(</span>
+    <span class="n">text_field_tensors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Our <code>TextFieldTensors</code> are complex output structures, because they try to handle a lot of
+potential variation. Sometimes, you just want to grab the token ids from this data structure,
+and that's not trivial without hard-coding assumptions about your data processing, which defeats
+the entire purpose of that generality. This method tries to let you get the token ids out of the
+data structure in your model without hard-coding any assumptions.</p>
+<p><a name=".allennlp.nn.util.weighted_sum"></a></p>
+<h2 id="weighted_sum">weighted_sum<a class="headerlink" href="#weighted_sum" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">weighted_sum</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">attention</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Takes a matrix of vectors and a set of weights over the rows in the matrix (which we call an
+"attention" vector), and returns a weighted sum of the rows in the matrix.  This is the typical
+computation performed after an attention mechanism.</p>
+<p>Note that while we call this a "matrix" of vectors and an attention "vector", we also handle
+higher-order tensors.  We always sum over the second-to-last dimension of the "matrix", and we
+assume that all dimensions in the "matrix" prior to the last dimension are matched in the
+"vector".  Non-matched dimensions in the "vector" must be <code>directly after the batch dimension</code>.</p>
+<p>For example, say I have a "matrix" with dimensions <code>(batch_size, num_queries, num_words,
+embedding_dim)</code>.  The attention "vector" then must have at least those dimensions, and could
+have more. Both:</p>
+<div class="highlight"><pre><span></span><code>- `(batch_size, num_queries, num_words)` (distribution over words for each query)
+- `(batch_size, num_documents, num_queries, num_words)` (distribution over words in a
+  query for each document)
+</code></pre></div>
+<p>are valid input "vectors", producing tensors of shape:
+<code>(batch_size, num_queries, embedding_dim)</code> and
+<code>(batch_size, num_documents, num_queries, embedding_dim)</code> respectively.</p>
+<p><a name=".allennlp.nn.util.sequence_cross_entropy_with_logits"></a></p>
+<h2 id="sequence_cross_entropy_with_logits">sequence_cross_entropy_with_logits<a class="headerlink" href="#sequence_cross_entropy_with_logits" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sequence_cross_entropy_with_logits</span><span class="p">(</span>
+    <span class="n">logits</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span>
+    <span class="n">targets</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span>
+    <span class="n">weights</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">],</span>
+    <span class="n">average</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;batch&quot;</span><span class="p">,</span>
+    <span class="n">label_smoothing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
+</code></pre></div>
+<p>Computes the cross entropy loss of a sequence, weighted with respect to
+some user provided weights. Note that the weighting here is not the same as
+in the <code>torch.nn.CrossEntropyLoss()</code> criterion, which is weighting
+classes; here we are weighting the loss contribution from particular elements
+in the sequence. This allows loss computations for models which use padding.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>logits</strong> : <code>torch.FloatTensor</code> <br>
+    A <code>torch.FloatTensor</code> of size (batch_size, sequence_length, num_classes)
+    which contains the unnormalized probability for each class.</li>
+<li><strong>targets</strong> : <code>torch.LongTensor</code> <br>
+    A <code>torch.LongTensor</code> of size (batch, sequence_length) which contains the
+    index of the true class for each corresponding step.</li>
+<li><strong>weights</strong> : <code>Union[torch.FloatTensor, torch.BoolTensor]</code> <br>
+    A <code>torch.FloatTensor</code> of size (batch, sequence_length)</li>
+<li><strong>average</strong> : <code>str</code>, optional (default = <code>"batch"</code>) <br>
+    If "batch", average the loss across the batches. If "token", average
+    the loss across each item in the input. If <code>None</code>, return a vector
+    of losses per batch element.</li>
+<li><strong>label_smoothing</strong> : <code>float</code>, optional (default = <code>None</code>) <br>
+    Whether or not to apply label smoothing to the cross-entropy loss.
+    For example, with a label smoothing value of 0.2, a 4 class classification
+    target would look like <code>[0.05, 0.05, 0.85, 0.05]</code> if the 3rd class was
+    the correct label.</li>
+<li><strong>gamma</strong> : <code>float</code>, optional (default = <code>None</code>) <br>
+    Focal loss[*] focusing parameter <code>gamma</code> to reduces the relative loss for
+    well-classified examples and put more focus on hard. The greater value
+    <code>gamma</code> is, the more focus on hard examples.</li>
+<li><strong>alpha</strong> : <code>Union[float, List[float]]</code>, optional (default = <code>None</code>) <br>
+    Focal loss[<em>] weighting factor <code>alpha</code> to balance between classes. Can be
+    used independently with <code>gamma</code>. If a single <code>float</code> is provided, it
+    is assumed binary case using <code>alpha</code> and <code>1 - alpha</code> for positive and
+    negative respectively. If a list of <code>float</code> is provided, with the same
+    length as the number of classes, the weights will match the classes.
+    [</em>] T. Lin, P. Goyal, R. Girshick, K. He and P. Dollár, "Focal Loss for
+    Dense Object Detection," 2017 IEEE International Conference on Computer
+    Vision (ICCV), Venice, 2017, pp. 2999-3007.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.FloatTensor</code> <br>
+    A torch.FloatTensor representing the cross entropy loss.
+    If <code>average=="batch"</code> or <code>average=="token"</code>, the returned loss is a scalar.
+    If <code>average is None</code>, the returned loss is a vector of shape (batch_size,).</li>
+</ul>
+<p><a name=".allennlp.nn.util.replace_masked_values"></a></p>
+<h2 id="replace_masked_values">replace_masked_values<a class="headerlink" href="#replace_masked_values" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">replace_masked_values</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">replace_with</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Replaces all masked values in <code>tensor</code> with <code>replace_with</code>.  <code>mask</code> must be broadcastable
+to the same shape as <code>tensor</code>. We require that <code>tensor.dim() == mask.dim()</code>, as otherwise we
+won't know which dimensions of the mask to unsqueeze.</p>
+<p>This just does <code>tensor.masked_fill()</code>, except the pytorch method fills in things with a mask
+value of 1, where we want the opposite.  You can do this in your own code with
+<code>tensor.masked_fill(~mask, replace_with)</code>.</p>
+<p><a name=".allennlp.nn.util.tensors_equal"></a></p>
+<h2 id="tensors_equal">tensors_equal<a class="headerlink" href="#tensors_equal" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tensors_equal</span><span class="p">(</span>
+    <span class="n">tensor1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">tensor2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+<p>A check for tensor equality (by value).  We make sure that the tensors have the same shape,
+then check all of the entries in the tensor for equality.  We additionally allow the input
+tensors to be lists or dictionaries, where we then do the above check on every position in the
+list / item in the dictionary.  If we find objects that aren't tensors as we're doing that, we
+just defer to their equality check.</p>
+<p>This is kind of a catch-all method that's designed to make implementing <code>__eq__</code> methods
+easier, in a way that's really only intended to be useful for tests.</p>
+<p><a name=".allennlp.nn.util.device_mapping"></a></p>
+<h2 id="device_mapping">device_mapping<a class="headerlink" href="#device_mapping" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">device_mapping</span><span class="p">(</span><span class="n">cuda_device</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+</code></pre></div>
+<p>In order to <code>torch.load()</code> a GPU-trained model onto a CPU (or specific GPU),
+you have to supply a <code>map_location</code> function. Call this with
+the desired <code>cuda_device</code> to get the function that <code>torch.load()</code> needs.</p>
+<p><a name=".allennlp.nn.util.combine_tensors"></a></p>
+<h2 id="combine_tensors">combine_tensors<a class="headerlink" href="#combine_tensors" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">combine_tensors</span><span class="p">(</span>
+    <span class="n">combination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">tensors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Combines a list of tensors using element-wise operations and concatenation, specified by a
+<code>combination</code> string.  The string refers to (1-indexed) positions in the input tensor list,
+and looks like <code>"1,2,1+2,3-1"</code>.</p>
+<p>We allow the following kinds of combinations : <code>x</code>, <code>x*y</code>, <code>x+y</code>, <code>x-y</code>, and <code>x/y</code>,
+where <code>x</code> and <code>y</code> are positive integers less than or equal to <code>len(tensors)</code>.  Each of
+the binary operations is performed elementwise.  You can give as many combinations as you want
+in the <code>combination</code> string.  For example, for the input string <code>"1,2,1*2"</code>, the result
+would be <code>[1;2;1*2]</code>, as you would expect, where <code>[;]</code> is concatenation along the last
+dimension.</p>
+<p>If you have a fixed, known way to combine tensors that you use in a model, you should probably
+just use something like <code>torch.cat([x_tensor, y_tensor, x_tensor * y_tensor])</code>.  This
+function adds some complexity that is only necessary if you want the specific combination used
+to be <code>configurable</code>.</p>
+<p>If you want to do any element-wise operations, the tensors involved in each element-wise
+operation must have the same shape.</p>
+<p>This function also accepts <code>x</code> and <code>y</code> in place of <code>1</code> and <code>2</code> in the combination
+string.</p>
+<p><a name=".allennlp.nn.util.combine_tensors_and_multiply"></a></p>
+<h2 id="combine_tensors_and_multiply">combine_tensors_and_multiply<a class="headerlink" href="#combine_tensors_and_multiply" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">combine_tensors_and_multiply</span><span class="p">(</span>
+    <span class="n">combination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">tensors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span>
+    <span class="n">weights</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Like <a href="./#combine_tensors"><code>combine_tensors</code></a>, but does a weighted (linear)
+multiplication while combining. This is a separate function from <code>combine_tensors</code>
+because we try to avoid instantiating large intermediate tensors during the combination,
+which is possible because we know that we're going to be multiplying by a weight vector in the end.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>combination</strong> : <code>str</code> <br>
+    Same as in <code>combine_tensors</code></li>
+<li><strong>tensors</strong> : <code>List[torch.Tensor]</code> <br>
+    A list of tensors to combine, where the integers in the <code>combination</code> are (1-indexed)
+    positions in this list of tensors.  These tensors are all expected to have either three or
+    four dimensions, with the final dimension being an embedding.  If there are four
+    dimensions, one of them must have length 1.</li>
+<li><strong>weights</strong> : <code>torch.nn.Parameter</code> <br>
+    A vector of weights to use for the combinations.  This should have shape (combined_dim,),
+    as calculated by <code>get_combined_dim</code>.</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_combined_dim"></a></p>
+<h2 id="get_combined_dim">get_combined_dim<a class="headerlink" href="#get_combined_dim" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_combined_dim</span><span class="p">(</span><span class="n">combination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tensor_dims</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+<p>For use with <a href="./#combine_tensors"><code>combine_tensors</code></a>.
+This function computes the resultant dimension when calling <code>combine_tensors(combination, tensors)</code>,
+when the tensor dimension is known.  This is necessary for knowing the sizes of weight matrices
+when building models that use <code>combine_tensors</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>combination</strong> : <code>str</code> <br>
+    A comma-separated list of combination pieces, like <code>"1,2,1*2"</code>, specified identically to
+    <code>combination</code> in <code>combine_tensors</code>.</li>
+<li><strong>tensor_dims</strong> : <code>List[int]</code> <br>
+    A list of tensor dimensions, where each dimension is from the <code>last axis</code> of the tensors
+    that will be input to <code>combine_tensors</code>.</li>
+</ul>
+<p><a name=".allennlp.nn.util.logsumexp"></a></p>
+<h2 id="logsumexp">logsumexp<a class="headerlink" href="#logsumexp" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">logsumexp</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>A numerically stable computation of logsumexp. This is mathematically equivalent to
+<code>tensor.exp().sum(dim, keep=keepdim).log()</code>.  This function is typically used for summing log
+probabilities.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tensor</strong> : <code>torch.FloatTensor</code> <br>
+    A tensor of arbitrary size.</li>
+<li><strong>dim</strong> : <code>int</code>, optional (default = <code>-1</code>) <br>
+    The dimension of the tensor to apply the logsumexp to.</li>
+<li><strong>keepdim</strong> : <code>bool</code>, optional (default = <code>False</code>) <br>
+    Whether to retain a dimension of size one at the dimension we reduce over.</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_device_of"></a></p>
+<h2 id="get_device_of">get_device_of<a class="headerlink" href="#get_device_of" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_device_of</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+<p>Returns the device of the tensor.</p>
+<p><a name=".allennlp.nn.util.flatten_and_batch_shift_indices"></a></p>
+<h2 id="flatten_and_batch_shift_indices">flatten_and_batch_shift_indices<a class="headerlink" href="#flatten_and_batch_shift_indices" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flatten_and_batch_shift_indices</span><span class="p">(</span>
+    <span class="n">indices</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">sequence_length</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>This is a subroutine for <a href="./#batched_index_select"><code>batched_index_select</code></a>.
+The given <code>indices</code> of size <code>(batch_size, d_1, ..., d_n)</code> indexes into dimension 2 of a
+target tensor, which has size <code>(batch_size, sequence_length, embedding_size)</code>. This
+function returns a vector that correctly indexes into the flattened target. The sequence
+length of the target must be provided to compute the appropriate offsets.</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+    <span class="c1"># Sequence length of the target tensor.</span>
+    <span class="n">sequence_length</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">shifted_indices</span> <span class="o">=</span> <span class="n">flatten_and_batch_shift_indices</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">sequence_length</span><span class="p">)</span>
+    <span class="c1"># Indices into the second element in the batch are correctly shifted</span>
+    <span class="c1"># to take into account that the target tensor will be flattened before</span>
+    <span class="c1"># the indices are applied.</span>
+    <span class="k">assert</span> <span class="n">shifted_indices</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>indices</strong> : <code>torch.LongTensor</code> <br></li>
+<li><strong>sequence_length</strong> : <code>int</code> <br>
+    The length of the sequence the indices index into.
+    This must be the second dimension of the tensor.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>offset_indices</strong> : <code>torch.LongTensor</code> <br></li>
+</ul>
+<p><a name=".allennlp.nn.util.batched_index_select"></a></p>
+<h2 id="batched_index_select">batched_index_select<a class="headerlink" href="#batched_index_select" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">batched_index_select</span><span class="p">(</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">indices</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span>
+    <span class="n">flattened_indices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>The given <code>indices</code> of size <code>(batch_size, d_1, ..., d_n)</code> indexes into the sequence
+dimension (dimension 2) of the target, which has size <code>(batch_size, sequence_length,
+embedding_size)</code>.</p>
+<p>This function returns selected values in the target with respect to the provided indices, which
+have size <code>(batch_size, d_1, ..., d_n, embedding_size)</code>. This can use the optionally
+precomputed <code>flattened_indices</code> with size <code>(batch_size * d_1 * ... * d_n)</code> if given.</p>
+<p>An example use case of this function is looking up the start and end indices of spans in a
+sequence tensor. This is used in the
+<a href="https://docs.allennlp.org/models/master/models/coref/models/coref/">CoreferenceResolver</a>
+model to select contextual word representations corresponding to the start and end indices of
+mentions.</p>
+<p>The key reason this can't be done with basic torch functions is that we want to be able to use look-up
+tensors with an arbitrary number of dimensions (for example, in the coref model, we don't know
+a-priori how many spans we are looking up).</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>target</strong> : <code>torch.Tensor</code> <br>
+    A 3 dimensional tensor of shape (batch_size, sequence_length, embedding_size).
+    This is the tensor to be indexed.</li>
+<li><strong>indices</strong> : <code>torch.LongTensor</code> <br>
+    A tensor of shape (batch_size, ...), where each element is an index into the
+    <code>sequence_length</code> dimension of the <code>target</code> tensor.</li>
+<li><strong>flattened_indices</strong> : <code>Optional[torch.Tensor]</code>, optional (default = <code>None</code>) <br>
+    An optional tensor representing the result of calling <code>flatten_and_batch_shift_indices</code>
+    on <code>indices</code>. This is helpful in the case that the indices can be flattened once and
+    cached for many batch lookups.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>selected_targets</strong> : <code>torch.Tensor</code> <br>
+    A tensor with shape [indices.size(), target.size(-1)] representing the embedded indices
+    extracted from the batch flattened target tensor.</li>
+</ul>
+<p><a name=".allennlp.nn.util.masked_index_fill"></a></p>
+<h2 id="masked_index_fill">masked_index_fill<a class="headerlink" href="#masked_index_fill" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_index_fill</span><span class="p">(</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">indices</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">fill_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>The given <code>indices</code> in <code>target</code> will be will be filled with <code>fill_value</code> given a <code>mask</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>target</strong> : <code>torch.Tensor</code> <br>
+    A 2 dimensional tensor of shape (batch_size, sequence_length).
+    This is the tensor to be filled.</li>
+<li><strong>indices</strong> : <code>torch.LongTensor</code> <br>
+    A 2 dimensional tensor of shape (batch_size, num_indices),
+    These are the indices that will be filled in the original tensor.</li>
+<li><strong>mask</strong> : <code>torch.Tensor</code> <br>
+    A 2 dimensional tensor of shape (batch_size, num_indices), mask.sum() == <code>nonzero_indices</code>.</li>
+<li><strong>fill_value</strong> : <code>int</code>, optional (default = <code>1</code>) <br>
+    The value we fill the tensor with.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>filled_target</strong> : <code>torch.Tensor</code> <br>
+    A tensor with shape (batch_size, sequence_length) where 'indices' are filled with <code>fill_value</code></li>
+</ul>
+<p><a name=".allennlp.nn.util.masked_index_replace"></a></p>
+<h2 id="masked_index_replace">masked_index_replace<a class="headerlink" href="#masked_index_replace" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_index_replace</span><span class="p">(</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">indices</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>The given <code>indices</code> in <code>target</code> will be will be replaced with corresponding index
+from the <code>replace</code> tensor given a <code>mask</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>target</strong> : <code>torch.Tensor</code> <br>
+    A 3 dimensional tensor of shape (batch_size, sequence_length, embedding_dim).
+    This is the tensor to be replaced into.</li>
+<li><strong>indices</strong> : <code>torch.LongTensor</code> <br>
+    A 2 dimensional tensor of shape (batch_size, num_indices),
+    These are the indices that will be replaced in the original tensor.</li>
+<li><strong>mask</strong> : <code>torch.Tensor</code> <br>
+    A 2 dimensional tensor of shape (batch_size, num_indices), mask.sum() == <code>nonzero_indices</code>.</li>
+<li><strong>replace</strong> : <code>torch.Tensor</code> <br>
+    A 3 dimensional tensor of shape (batch_size, num_indices, embedding_dim),
+    The tensor to perform scatter from.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>replaced_target</strong> : <code>torch.Tensor</code> <br>
+    A tensor with shape (batch_size, sequence_length, embedding_dim) where 'indices'
+    are replaced with the corrosponding vector from <code>replace</code></li>
+</ul>
+<p><a name=".allennlp.nn.util.batched_span_select"></a></p>
+<h2 id="batched_span_select">batched_span_select<a class="headerlink" href="#batched_span_select" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">batched_span_select</span><span class="p">(</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">spans</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>The given <code>spans</code> of size <code>(batch_size, num_spans, 2)</code> indexes into the sequence
+dimension (dimension 2) of the target, which has size <code>(batch_size, sequence_length,
+embedding_size)</code>.</p>
+<p>This function returns segmented spans in the target with respect to the provided span indices.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>target</strong> : <code>torch.Tensor</code> <br>
+    A 3 dimensional tensor of shape (batch_size, sequence_length, embedding_size).
+    This is the tensor to be indexed.</li>
+<li><strong>indices</strong> : <code>torch.LongTensor</code> <br>
+    A 3 dimensional tensor of shape (batch_size, num_spans, 2) representing start and end
+    indices (both inclusive) into the <code>sequence_length</code> dimension of the <code>target</code> tensor.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>span_embeddings</strong> : <code>torch.Tensor</code> <br>
+    A tensor with shape (batch_size, num_spans, max_batch_span_width, embedding_size]
+    representing the embedded spans extracted from the batch flattened target tensor.</li>
+<li><strong>span_mask</strong> : <code>torch.BoolTensor</code> <br>
+    A tensor with shape (batch_size, num_spans, max_batch_span_width) representing the mask on
+    the returned span embeddings.</li>
+</ul>
+<p><a name=".allennlp.nn.util.flattened_index_select"></a></p>
+<h2 id="flattened_index_select">flattened_index_select<a class="headerlink" href="#flattened_index_select" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flattened_index_select</span><span class="p">(</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">indices</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>The given <code>indices</code> of size <code>(set_size, subset_size)</code> specifies subsets of the <code>target</code>
+that each of the set_size rows should select. The <code>target</code> has size
+<code>(batch_size, sequence_length, embedding_size)</code>, and the resulting selected tensor has size
+<code>(batch_size, set_size, subset_size, embedding_size)</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>target</strong> : <code>torch.Tensor</code> <br>
+    A Tensor of shape (batch_size, sequence_length, embedding_size).</li>
+<li><strong>indices</strong> : <code>torch.LongTensor</code> <br>
+    A LongTensor of shape (set_size, subset_size). All indices must be &lt; sequence_length
+    as this tensor is an index into the sequence_length dimension of the target.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>selected</strong> : <code>torch.Tensor</code>, required. <br>
+    A Tensor of shape (batch_size, set_size, subset_size, embedding_size).</li>
+</ul>
+<p><a name=".allennlp.nn.util.get_range_vector"></a></p>
+<h2 id="get_range_vector">get_range_vector<a class="headerlink" href="#get_range_vector" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_range_vector</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Returns a range vector with the desired size, starting at 0. The CUDA implementation
+is meant to avoid copy data from CPU to GPU.</p>
+<p><a name=".allennlp.nn.util.bucket_values"></a></p>
+<h2 id="bucket_values">bucket_values<a class="headerlink" href="#bucket_values" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bucket_values</span><span class="p">(</span>
+    <span class="n">distances</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">num_identity_buckets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">num_total_buckets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Places the given values (designed for distances) into <code>num_total_buckets</code>semi-logscale
+buckets, with <code>num_identity_buckets</code> of these capturing single values.</p>
+<p>The default settings will bucket values into the following buckets:
+[0, 1, 2, 3, 4, 5-7, 8-15, 16-31, 32-63, 64+].</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>distances</strong> : <code>torch.Tensor</code> <br>
+    A Tensor of any size, to be bucketed.</li>
+<li><strong>num_identity_buckets</strong> : <code>int</code>, optional (default = <code>4</code>) <br>
+    The number of identity buckets (those only holding a single value).</li>
+<li><strong>num_total_buckets</strong> : <code>int</code>, optional (default = <code>10</code>) <br>
+    The total number of buckets to bucket values into.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.Tensor</code> <br>
+    A tensor of the same shape as the input, containing the indices of the buckets
+    the values were placed in.</li>
+</ul>
+<p><a name=".allennlp.nn.util.add_sentence_boundary_token_ids"></a></p>
+<h2 id="add_sentence_boundary_token_ids">add_sentence_boundary_token_ids<a class="headerlink" href="#add_sentence_boundary_token_ids" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_sentence_boundary_token_ids</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">sentence_begin_token</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">sentence_end_token</span><span class="p">:</span> <span class="n">Any</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">]</span>
+</code></pre></div>
+<p>Add begin/end of sentence tokens to the batch of sentences.
+Given a batch of sentences with size <code>(batch_size, timesteps)</code> or
+<code>(batch_size, timesteps, dim)</code> this returns a tensor of shape
+<code>(batch_size, timesteps + 2)</code> or <code>(batch_size, timesteps + 2, dim)</code> respectively.</p>
+<p>Returns both the new tensor and updated mask.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tensor</strong> : <code>torch.Tensor</code> <br>
+    A tensor of shape <code>(batch_size, timesteps)</code> or <code>(batch_size, timesteps, dim)</code></li>
+<li><strong>mask</strong> : <code>torch.BoolTensor</code> <br>
+     A tensor of shape <code>(batch_size, timesteps)</code></li>
+<li><strong>sentence_begin_token</strong> : <code>Any</code> <br>
+    Can be anything that can be broadcast in torch for assignment.
+    For 2D input, a scalar with the <code>&lt;S&gt;</code> id. For 3D input, a tensor with length dim.</li>
+<li><strong>sentence_end_token</strong> : <code>Any</code> <br>
+    Can be anything that can be broadcast in torch for assignment.
+    For 2D input, a scalar with the <code>&lt;/S&gt;</code> id. For 3D input, a tensor with length dim.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tensor_with_boundary_tokens</strong> : <code>torch.Tensor</code> <br>
+    The tensor with the appended and prepended boundary tokens. If the input was 2D,
+    it has shape (batch_size, timesteps + 2) and if the input was 3D, it has shape
+    (batch_size, timesteps + 2, dim).</li>
+<li><strong>new_mask</strong> : <code>torch.BoolTensor</code> <br>
+    The new mask for the tensor, taking into account the appended tokens
+    marking the beginning and end of the sentence.</li>
+</ul>
+<p><a name=".allennlp.nn.util.remove_sentence_boundaries"></a></p>
+<h2 id="remove_sentence_boundaries">remove_sentence_boundaries<a class="headerlink" href="#remove_sentence_boundaries" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">remove_sentence_boundaries</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</code></pre></div>
+<p>Remove begin/end of sentence embeddings from the batch of sentences.
+Given a batch of sentences with size <code>(batch_size, timesteps, dim)</code>
+this returns a tensor of shape <code>(batch_size, timesteps - 2, dim)</code> after removing
+the beginning and end sentence markers.  The sentences are assumed to be padded on the right,
+with the beginning of each sentence assumed to occur at index 0 (i.e., <code>mask[:, 0]</code> is assumed
+to be 1).</p>
+<p>Returns both the new tensor and updated mask.</p>
+<p>This function is the inverse of <code>add_sentence_boundary_token_ids</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tensor</strong> : <code>torch.Tensor</code> <br>
+    A tensor of shape <code>(batch_size, timesteps, dim)</code></li>
+<li><strong>mask</strong> : <code>torch.BoolTensor</code> <br>
+     A tensor of shape <code>(batch_size, timesteps)</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tensor_without_boundary_tokens</strong> : <code>torch.Tensor</code> <br>
+    The tensor after removing the boundary tokens of shape <code>(batch_size, timesteps - 2, dim)</code></li>
+<li><strong>new_mask</strong> : <code>torch.BoolTensor</code> <br>
+    The new mask for the tensor of shape <code>(batch_size, timesteps - 2)</code>.</li>
+</ul>
+<p><a name=".allennlp.nn.util.add_positional_features"></a></p>
+<h2 id="add_positional_features">add_positional_features<a class="headerlink" href="#add_positional_features" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_positional_features</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">min_timescale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">max_timescale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e4</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Implements the frequency-based positional encoding described
+in <a href="https://www.semanticscholar.org/paper/Attention-Is-All-You-Need-Vaswani-Shazeer/0737da0767d77606169cbf4187b83e1ab62f6077">Attention is All you Need</a>.</p>
+<p>Adds sinusoids of different frequencies to a <code>Tensor</code>. A sinusoid of a
+different frequency and phase is added to each dimension of the input <code>Tensor</code>.
+This allows the attention heads to use absolute and relative positions.</p>
+<p>The number of timescales is equal to hidden_dim / 2 within the range
+(min_timescale, max_timescale). For each timescale, the two sinusoidal
+signals sin(timestep / timescale) and cos(timestep / timescale) are
+generated and concatenated along the hidden_dim dimension.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>tensor</strong> : <code>torch.Tensor</code> <br>
+    a Tensor with shape (batch_size, timesteps, hidden_dim).</li>
+<li><strong>min_timescale</strong> : <code>float</code>, optional (default = <code>1.0</code>) <br>
+    The smallest timescale to use.</li>
+<li><strong>max_timescale</strong> : <code>float</code>, optional (default = <code>1.0e4</code>) <br>
+    The largest timescale to use.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>torch.Tensor</code> <br>
+    The input tensor augmented with the sinusoidal frequencies.</li>
+</ul>
+<p><a name=".allennlp.nn.util.clone"></a></p>
+<h2 id="clone">clone<a class="headerlink" href="#clone" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">clone</span><span class="p">(</span>
+    <span class="n">module</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="n">num_copies</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span>
+</code></pre></div>
+<p>Produce N identical layers.</p>
+<p><a name=".allennlp.nn.util.combine_initial_dims"></a></p>
+<h2 id="combine_initial_dims">combine_initial_dims<a class="headerlink" href="#combine_initial_dims" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">combine_initial_dims</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Given a (possibly higher order) tensor of ids with shape
+(d1, ..., dn, sequence_length)
+Return a view that's (d1 * ... * dn, sequence_length).
+If original tensor is 1-d or 2-d, return it as is.</p>
+<p><a name=".allennlp.nn.util.uncombine_initial_dims"></a></p>
+<h2 id="uncombine_initial_dims">uncombine_initial_dims<a class="headerlink" href="#uncombine_initial_dims" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">uncombine_initial_dims</span><span class="p">(</span>
+    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">original_size</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+</code></pre></div>
+<p>Given a tensor of embeddings with shape
+(d1 * ... * dn, sequence_length, embedding_dim)
+and the original shape
+(d1, ..., dn, sequence_length),
+return the reshaped tensor of embeddings with shape
+(d1, ..., dn, sequence_length, embedding_dim).
+If original size is 1-d or 2-d, return it as is.</p>
+<p><a name=".allennlp.nn.util.inspect_parameters"></a></p>
+<h2 id="inspect_parameters">inspect_parameters<a class="headerlink" href="#inspect_parameters" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inspect_parameters</span><span class="p">(</span>
+    <span class="n">module</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</code></pre></div>
+<p>Inspects the model/module parameters and their tunability. The output is structured
+in a nested dict so that parameters in same sub-modules are grouped together.
+This can be helpful to setup module path based regex, for example in initializer.
+It prints it by default (optional) and returns the inspection dict. Eg. output::</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;_text_field_embedder&quot;: {
+        &quot;token_embedder_tokens&quot;: {
+            &quot;_projection&quot;: {
+                &quot;bias&quot;: &quot;tunable&quot;,
+                &quot;weight&quot;: &quot;tunable&quot;
+            },
+            &quot;weight&quot;: &quot;frozen&quot;
+        }
+    }
+}
+</code></pre></div>
+<p><a name=".allennlp.nn.util.find_text_field_embedder"></a></p>
+<h2 id="find_text_field_embedder">find_text_field_embedder<a class="headerlink" href="#find_text_field_embedder" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_text_field_embedder</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span>
+</code></pre></div>
+<p>Takes a <code>Model</code> and returns the <code>Module</code> that is a <code>TextFieldEmbedder</code>.  We return just the
+first one, as it's very rare to have more than one.  If there isn't a <code>TextFieldEmbedder</code> in the
+given <code>Model</code>, we raise a <code>ValueError</code>.</p>
+<p><a name=".allennlp.nn.util.find_embedding_layer"></a></p>
+<h2 id="find_embedding_layer">find_embedding_layer<a class="headerlink" href="#find_embedding_layer" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_embedding_layer</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span>
+</code></pre></div>
+<p>Takes a model (typically an AllenNLP <code>Model</code>, but this works for any <code>torch.nn.Module</code>) and
+makes a best guess about which module is the embedding layer.  For typical AllenNLP models,
+this often is the <code>TextFieldEmbedder</code>, but if you're using a pre-trained contextualizer, we
+really want layer 0 of that contextualizer, not the output.  So there are a bunch of hacks in
+here for specific pre-trained contextualizers.</p>
+<p><a name=".allennlp.nn.util.get_token_offsets_from_text_field_inputs"></a></p>
+<h2 id="get_token_offsets_from_text_field_inputs">get_token_offsets_from_text_field_inputs<a class="headerlink" href="#get_token_offsets_from_text_field_inputs" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_token_offsets_from_text_field_inputs</span><span class="p">(</span>
+    <span class="n">text_field_inputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</code></pre></div>
+<p>Given a list of inputs to a TextFieldEmbedder, tries to find token offsets from those inputs, if
+there are any.  You will have token offsets if you are using a mismatched token embedder; if
+you're not, the return value from this function should be None.  This function is intended to be
+called from a <code>forward_hook</code> attached to a <code>TextFieldEmbedder</code>, so the inputs are formatted just
+as a list.</p>
+<p>It's possible in theory that you could have multiple offsets as inputs to a single call to a
+<code>TextFieldEmbedder</code>, but that's an extremely rare use case (I can't really imagine anyone
+wanting to do that).  In that case, we'll only return the first one.  If you need different
+behavior for your model, open an issue on github describing what you're doing.</p>
+<p><a name=".allennlp.nn.util.extend_layer"></a></p>
+<h2 id="extend_layer">extend_layer<a class="headerlink" href="#extend_layer" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">extend_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">new_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+<p><a name=".allennlp.nn.util.masked_topk"></a></p>
+<h2 id="masked_topk">masked_topk<a class="headerlink" href="#masked_topk" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">masked_topk</span><span class="p">(</span>
+    <span class="n">input_</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">BoolTensor</span><span class="p">,</span>
+    <span class="n">k</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">],</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">]</span>
+</code></pre></div>
+<p>Extracts the top-k items along a certain dimension. This is similar to <code>torch.topk</code> except:
+(1) we allow of a <code>mask</code> that makes the function not consider certain elements;
+(2) the returned top input, mask, and indices are sorted in their original order in the input;
+(3) May use the same k for all dimensions, or different k for each.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>input_</strong> : <code>torch.FloatTensor</code> <br>
+    A tensor containing the items that we want to prune.</li>
+<li><strong>mask</strong> : <code>torch.BoolTensor</code> <br>
+    A tensor with the same shape as <code>input_</code> that makes the function not consider masked out
+    (i.e. False) elements.</li>
+<li><strong>k</strong> : <code>Union[int, torch.LongTensor]</code> <br>
+    If a tensor of shape as <code>input_</code> except without dimension <code>dim</code>, specifies the number of
+    items to keep for each dimension.
+    If an int, keep the same number of items for all dimensions.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>top_input</strong> : <code>torch.FloatTensor</code> <br>
+    The values of the top-k scoring items.
+    Has the same shape as <code>input_</code> except dimension <code>dim</code> has value <code>k</code> when it's an <code>int</code>
+    or <code>k.max()</code> when it's a tensor.</li>
+<li><strong>top_mask</strong> : <code>torch.BoolTensor</code> <br>
+    The corresponding mask for <code>top_input</code>.
+    Has the shape as <code>top_input</code>.</li>
+<li><strong>top_indices</strong> : <code>torch.IntTensor</code> <br>
+    The indices of the top-k scoring items into the original <code>input_</code>
+    tensor. This is returned because it can be useful to retain pointers to
+    the original items, if each item is being scored by multiple distinct
+    scorers, for instance.
+    Has the shape as <code>top_input</code>.</li>
+</ul>
+<p><a name=".allennlp.nn.util.info_value_of_dtype"></a></p>
+<h2 id="info_value_of_dtype">info_value_of_dtype<a class="headerlink" href="#info_value_of_dtype" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">info_value_of_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<p>Returns the <code>finfo</code> or <code>iinfo</code> object of a given PyTorch data type. Does not allow torch.bool.</p>
+<p><a name=".allennlp.nn.util.min_value_of_dtype"></a></p>
+<h2 id="min_value_of_dtype">min_value_of_dtype<a class="headerlink" href="#min_value_of_dtype" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_value_of_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<p>Returns the minimum value of a given PyTorch data type. Does not allow torch.bool.</p>
+<p><a name=".allennlp.nn.util.max_value_of_dtype"></a></p>
+<h2 id="max_value_of_dtype">max_value_of_dtype<a class="headerlink" href="#max_value_of_dtype" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">max_value_of_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<p>Returns the maximum value of a given PyTorch data type. Does not allow torch.bool.</p>
+<p><a name=".allennlp.nn.util.tiny_value_of_dtype"></a></p>
+<h2 id="tiny_value_of_dtype">tiny_value_of_dtype<a class="headerlink" href="#tiny_value_of_dtype" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tiny_value_of_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<p>Returns a moderately tiny value for a given PyTorch data type that is used to avoid numerical
+issues such as division by zero.
+This is different from <code>info_value_of_dtype(dtype).tiny</code> because it causes some NaN bugs.
+Only supports floating point dtypes.</p>
+<p><a name=".allennlp.nn.util.dist_reduce"></a></p>
+<h2 id="dist_reduce">dist_reduce<a class="headerlink" href="#dist_reduce" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dist_reduce</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">_V</span><span class="p">,</span> <span class="n">reduce_op</span><span class="p">:</span> <span class="n">ReduceOp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_V</span>
+</code></pre></div>
+<p>Reduces the given <code>value</code> across all distributed worker nodes according the given
+reduction operation.</p>
+<p>If called outside of a distributed context, it will just return <code>value</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><strong>value</strong> : <code>_V</code> <br>
+    The value to reduce across distributed nodes.</li>
+<li><strong>reduce_op</strong> : <code>ReduceOp</code> <br>
+    The reduction operation to use.</li>
+<li><strong>**kwargs</strong> : <code>Any</code> <br>
+    Additional arguments used to construct the tensor that will wrap <code>value</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><code>_V</code> <br>
+    The final value.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../regularizers/regularizers/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                regularizers
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../predictors/predictor/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                predictor
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

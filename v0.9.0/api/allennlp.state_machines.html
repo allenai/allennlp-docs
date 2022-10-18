@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.state_machines &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.state_machines.states" href="allennlp.state_machines.states.html" />
+    <link rel="prev" title="allennlp.service.config_explorer" href="allennlp.service.config_explorer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>allennlp.state_machines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.state_machines.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.state_machines">
+<span id="allennlp-state-machines"></span><h1>allennlp.state_machines<a class="headerlink" href="#module-allennlp.state_machines" title="Permalink to this headline">¶</a></h1>
+<p>This module contains code for using state machines in a model to do transition-based decoding.
+“Transition-based decoding” is where you start in some state, iteratively transition between
+states, and have some kind of supervision signal that tells you which end states, or which
+transition sequences, are “good”.</p>
+<p>Typical seq2seq decoding, where you have a fixed vocabulary and no constraints on your output, can
+be done much more efficiently than we do in this code.  This is intended for structured models that
+have constraints on their outputs.</p>
+<p>The key abstractions in this code are the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">State</span></code> represents the current state of decoding, containing a list of all of the actions
+taken so far, and a current score for the state.  It also has methods around determining
+whether the state is “finished” and for combining states for batched computation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code> is a <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code> that models the transition function between
+states.  Its main method is <code class="docutils literal notranslate"><span class="pre">take_step</span></code>, which generates a ranked list of next states given
+a current state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DecoderTrainer</span></code> is an algorithm for training the transition function with some kind of
+supervision signal.  There are many options for training algorithms and supervision signals;
+this is an abstract class that is generic over the type of the supervision signal.</p></li>
+</ul>
+</div></blockquote>
+<p>There is also a generic <code class="docutils literal notranslate"><span class="pre">BeamSearch</span></code> class for finding the <code class="docutils literal notranslate"><span class="pre">k</span></code> highest-scoring transition
+sequences given a trained <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code> and an initial <code class="docutils literal notranslate"><span class="pre">State</span></code>.</p>
+<span class="target" id="module-allennlp.state_machines.beam_search"></span><dl class="class">
+<dt id="allennlp.state_machines.beam_search.BeamSearch">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.beam_search.</code><code class="sig-name descname">BeamSearch</code><span class="sig-paren">(</span><em class="sig-param">beam_size: int</em>, <em class="sig-param">per_node_beam_size: int = None</em>, <em class="sig-param">initial_sequence: torch.Tensor = None</em>, <em class="sig-param">keep_beam_details: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/beam_search.py#L14-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.beam_search.BeamSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.common.from_params.html#allennlp.common.from_params.FromParams" title="allennlp.common.from_params.FromParams"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.common.from_params.FromParams</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Generic</span></code></p>
+<p>This class implements beam search over transition sequences given an initial <code class="docutils literal notranslate"><span class="pre">State</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code>, returning the highest scoring final states found by the beam (the
+states will keep track of the transition sequence themselves).</p>
+<p>The initial <code class="docutils literal notranslate"><span class="pre">State</span></code> is assumed to be <cite>batched</cite>.  The value we return from the search is a
+dictionary from batch indices to ranked finished states.</p>
+<p>IMPORTANT: We assume that the <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code> that you are using returns possible next
+states in sorted order, so we do not do an additional sort inside of <code class="docutils literal notranslate"><span class="pre">BeamSearch.search()</span></code>.
+If you’re implementing your own <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code>, you must ensure that you’ve sorted the
+states that you return.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>beam_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>The beam size to use.</p>
+</dd>
+<dt><strong>per_node_beam_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = beam_size)</span></dt><dd><p>The maximum number of candidates to consider per node, at each step in the search.
+If not given, this just defaults to <cite>beam_size</cite>. Setting this parameter
+to a number smaller than <cite>beam_size</cite> may give better results, as it can introduce
+more diversity into the search. See Freitag and Al-Onaizan 2017,
+“Beam Search Strategies for Neural Machine Translation”.</p>
+</dd>
+<dt><strong>initial_sequence</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>, optional (default = None)</span></dt><dd><p>If you provide a (sequence_length,) tensor here, the beam search will be constrained
+to only sequences that begin with the provided initial_sequence.</p>
+</dd>
+<dt><strong>keep_beam_details</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = False)</span></dt><dd><p>If True, we store snapshots of each beam in an instance variable <code class="docutils literal notranslate"><span class="pre">beam_snapshots</span></code>,
+which is a dict: { batch_index -&gt; [timestep0_histories, …, timestepk_histories] },
+where a “timestep history” is just a pair (score, action_history) that was considered
+at that timestep.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.beam_search.BeamSearch.constrained_to">
+<code class="sig-name descname">constrained_to</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">initial_sequence: torch.Tensor</em>, <em class="sig-param">keep_beam_details: bool = True</em><span class="sig-paren">)</span> &#x2192; 'BeamSearch'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/beam_search.py#L70-L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.beam_search.BeamSearch.constrained_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new BeamSearch instance that’s like this one but with the specified constraint.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.state_machines.beam_search.BeamSearch.search">
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">num_steps: int</em>, <em class="sig-param">initial_state: ~StateType</em>, <em class="sig-param">transition_function: allennlp.state_machines.transition_functions.transition_function.TransitionFunction</em>, <em class="sig-param">keep_final_unfinished_states: bool = True</em><span class="sig-paren">)</span> &#x2192; Dict[int, List[~StateType]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/beam_search.py#L76-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.beam_search.BeamSearch.search" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>num_steps</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>How many steps should we take in our search?  This is an upper bound, as it’s possible
+for the search to run out of valid actions before hitting this number, or for all
+states on the beam to finish.</p>
+</dd>
+<dt><strong>initial_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">StateType</span></code></span></dt><dd><p>The starting state of our search.  This is assumed to be <cite>batched</cite>, and our beam search
+is batch-aware - we’ll keep <code class="docutils literal notranslate"><span class="pre">beam_size</span></code> states around for each instance in the batch.</p>
+</dd>
+<dt><strong>transition_function</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code></span></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code> object that defines and scores transitions from one state to the
+next.</p>
+</dd>
+<dt><strong>keep_final_unfinished_states</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=True)</span></dt><dd><p>If we run out of steps before a state is “finished”, should we return that state in our
+search results?</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><strong>best_states</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[int,</span> <span class="pre">List[StateType]]</span></code></span></dt><dd><p>This is a mapping from batch index to the top states for that instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.constrained_beam_search"></span><dl class="class">
+<dt id="allennlp.state_machines.constrained_beam_search.ConstrainedBeamSearch">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.state_machines.constrained_beam_search.</code><code class="sig-name descname">ConstrainedBeamSearch</code><span class="sig-paren">(</span><em class="sig-param">beam_size: Optional[int], allowed_sequences: torch.Tensor, allowed_sequence_mask: torch.Tensor, per_node_beam_size: int = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/constrained_beam_search.py#L11-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.constrained_beam_search.ConstrainedBeamSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class implements beam search over transition sequences given an initial <code class="docutils literal notranslate"><span class="pre">State</span></code>, a
+<code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code>, and a list of allowed transition sequences.  We will do a beam search
+<cite>over the list of allowed sequences</cite> and return the highest scoring states found by the beam.
+This is only actually a <cite>beam search</cite> if your beam size is smaller than the list of allowed
+transition sequences; otherwise, we are just scoring and sorting the sequences using a prefix
+tree.</p>
+<p>The initial <code class="docutils literal notranslate"><span class="pre">State</span></code> is assumed to be <cite>batched</cite>.  The value we return from the search is a
+dictionary from batch indices to ranked finished states.</p>
+<p>IMPORTANT: We assume that the <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code> that you are using returns possible next
+states in sorted order, so we do not do an additional sort inside of
+<code class="docutils literal notranslate"><span class="pre">ConstrainedBeamSearch.search()</span></code>.  If you’re implementing your own <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code>,
+you must ensure that you’ve sorted the states that you return.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>beam_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Optional[int]</span></code></span></dt><dd><p>The beam size to use.  Because this is a <cite>constrained</cite> beam search, we allow for the case
+where you just want to evaluate all options in the constrained set.  In that case, you
+don’t need a beam, and you can pass a beam size of <code class="docutils literal notranslate"><span class="pre">None</span></code>, and we will just evaluate
+everything.  This lets us be more efficient in <code class="xref py py-func docutils literal notranslate"><span class="pre">TransitionFunction.take_step()</span></code> and
+skip the sorting that is typically done there.</p>
+</dd>
+<dt><strong>allowed_sequences</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_sequences,</span> <span class="pre">sequence_length)</span></code> tensor containing the transition
+sequences that we will search in.  The values in this tensor must match whatever the
+<code class="docutils literal notranslate"><span class="pre">State</span></code> keeps in its <code class="docutils literal notranslate"><span class="pre">action_history</span></code> variable (typically this is action indices).</p>
+</dd>
+<dt><strong>allowed_sequence_mask</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code></span></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_sequences,</span> <span class="pre">sequence_length)</span></code> tensor indicating whether each entry in
+the <code class="docutils literal notranslate"><span class="pre">allowed_sequences</span></code> tensor is padding.  The allowed sequences could be padded both on
+the <code class="docutils literal notranslate"><span class="pre">num_sequences</span></code> dimension and the <code class="docutils literal notranslate"><span class="pre">sequence_length</span></code> dimension.</p>
+</dd>
+<dt><strong>per_node_beam_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = beam_size)</span></dt><dd><p>The maximum number of candidates to consider per node, at each step in the search.
+If not given, this just defaults to <cite>beam_size</cite>. Setting this parameter
+to a number smaller than <cite>beam_size</cite> may give better results, as it can introduce
+more diversity into the search. See Freitag and Al-Onaizan 2017,
+“Beam Search Strategies for Neural Machine Translation”.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.state_machines.constrained_beam_search.ConstrainedBeamSearch.search">
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">initial_state: allennlp.state_machines.states.state.State</em>, <em class="sig-param">transition_function: allennlp.state_machines.transition_functions.transition_function.TransitionFunction</em><span class="sig-paren">)</span> &#x2192; Dict[int, List[allennlp.state_machines.states.state.State]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/constrained_beam_search.py#L60-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.constrained_beam_search.ConstrainedBeamSearch.search" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>initial_state</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">State</span></code></span></dt><dd><p>The starting state of our search.  This is assumed to be <cite>batched</cite>, and our beam search
+is batch-aware - we’ll keep <code class="docutils literal notranslate"><span class="pre">beam_size</span></code> states around for each instance in the batch.</p>
+</dd>
+<dt><strong>transition_function</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code></span></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code> object that defines and scores transitions from one state to the
+next.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><strong>best_states</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[int,</span> <span class="pre">List[State]]</span></code></span></dt><dd><p>This is a mapping from batch index to the top states for that instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.state_machines.util"></span><dl class="function">
+<dt id="allennlp.state_machines.util.construct_prefix_tree">
+<code class="sig-prename descclassname">allennlp.state_machines.util.</code><code class="sig-name descname">construct_prefix_tree</code><span class="sig-paren">(</span><em class="sig-param">targets: Union[torch.Tensor, List[List[List[int]]]], target_mask: Union[torch.Tensor, NoneType] = None</em><span class="sig-paren">)</span> &#x2192; List[Dict[Tuple[int, ...], Set[int]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/state_machines/util.py#L7-L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.state_machines.util.construct_prefix_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a list of valid target action sequences and creates a mapping from all possible
+(valid) action prefixes to allowed actions given that prefix.  While the method is called
+<code class="docutils literal notranslate"><span class="pre">construct_prefix_tree</span></code>, we’re actually returning a map that has as keys the paths to
+<cite>all internal nodes of the trie</cite>, and as values all of the outgoing edges from that node.</p>
+<p><code class="docutils literal notranslate"><span class="pre">targets</span></code> is assumed to be a tensor of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_valid_sequences,</span>
+<span class="pre">sequence_length)</span></code>.  If the mask is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is assumed to have the same shape, and
+we will ignore any value in <code class="docutils literal notranslate"><span class="pre">targets</span></code> that has a value of <code class="docutils literal notranslate"><span class="pre">0</span></code> in the corresponding
+position in the mask.  We assume that the mask has the format 1*0* for each item in
+<code class="docutils literal notranslate"><span class="pre">targets</span></code> - that is, once we see our first zero, we stop processing that target.</p>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">targets</span></code> is the following tensor: <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2,</span> <span class="pre">3],</span> <span class="pre">[1,</span> <span class="pre">4,</span> <span class="pre">5]]</span></code>, the return
+value will be: <code class="docutils literal notranslate"><span class="pre">{():</span> <span class="pre">set([1]),</span> <span class="pre">(1,):</span> <span class="pre">set([2,</span> <span class="pre">4]),</span> <span class="pre">(1,</span> <span class="pre">2):</span> <span class="pre">set([3]),</span> <span class="pre">(1,</span> <span class="pre">4):</span> <span class="pre">set([5])}</span></code>.</p>
+<p>This could be used, e.g., to do an efficient constrained beam search, or to efficiently
+evaluate the probability of all of the target sequences.</p>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.state_machines.states.html" class="btn btn-neutral float-right" title="allennlp.state_machines.states" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.service.config_explorer.html" class="btn btn-neutral float-left" title="allennlp.service.config_explorer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.data.dataset_readers.semantic_parsing &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.data.dataset_readers.semantic_parsing.wikitables" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html" />
+    <link rel="prev" title="allennlp.data.dataset_readers.semantic_dependency_parsing" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.html">allennlp.data</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a> &raquo;</li>
+        
+      <li>allennlp.data.dataset_readers.semantic_parsing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.data.dataset_readers.semantic_parsing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="allennlp-data-dataset-readers-semantic-parsing">
+<h1>allennlp.data.dataset_readers.semantic_parsing<a class="headerlink" href="#allennlp-data-dataset-readers-semantic-parsing" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</div>
+<span class="target" id="module-allennlp.data.dataset_readers.semantic_parsing"></span><span class="target" id="module-allennlp.data.dataset_readers.semantic_parsing.atis"></span><dl class="class">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.atis.AtisDatasetReader">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.semantic_parsing.atis.</code><code class="sig-name descname">AtisDatasetReader</code><span class="sig-paren">(</span><em class="sig-param">token_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em>, <em class="sig-param">keep_if_unparseable: bool = False</em>, <em class="sig-param">lazy: bool = False</em>, <em class="sig-param">tokenizer: allennlp.data.tokenizers.tokenizer.Tokenizer = None</em>, <em class="sig-param">database_file: str = None</em>, <em class="sig-param">num_turns_to_concatenate: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/atis.py#L31-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.atis.AtisDatasetReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<p>This <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> takes json files and converts them into <code class="docutils literal notranslate"><span class="pre">Instances</span></code> for the
+<code class="docutils literal notranslate"><span class="pre">AtisSemanticParser</span></code>.</p>
+<p>Each line in the file is a JSON object that represent an interaction in the ATIS dataset
+that has the following keys and values:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&quot;id&quot;:</span> <span class="pre">The</span> <span class="pre">original</span> <span class="pre">filepath</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">LDC</span> <span class="pre">corpus</span>
+<span class="pre">&quot;interaction&quot;:</span> <span class="pre">&lt;list</span> <span class="pre">where</span> <span class="pre">each</span> <span class="pre">element</span> <span class="pre">represents</span> <span class="pre">a</span> <span class="pre">turn</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">interaction&gt;</span>
+<span class="pre">&quot;scenario&quot;:</span> <span class="pre">A</span> <span class="pre">code</span> <span class="pre">that</span> <span class="pre">refers</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">scenario</span> <span class="pre">that</span> <span class="pre">served</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">prompt</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">interaction</span>
+<span class="pre">&quot;ut_date&quot;:</span> <span class="pre">Date</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">interaction</span>
+<span class="pre">&quot;zc09_path&quot;:</span> <span class="pre">Path</span> <span class="pre">that</span> <span class="pre">was</span> <span class="pre">used</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">original</span> <span class="pre">paper</span> <span class="pre">`Learning</span> <span class="pre">Context-Dependent</span> <span class="pre">Mappings</span> <span class="pre">from</span>
+<span class="pre">Sentences</span> <span class="pre">to</span> <span class="pre">Logical</span> <span class="pre">Form</span>
+<span class="pre">&lt;https://www.semanticscholar.org/paper/Learning-Context-Dependent-Mappings-from-Sentences-Zettlemoyer-Collins/44a8fcee0741139fa15862dc4b6ce1e11444878f&gt;'_</span> <span class="pre">by</span> <span class="pre">Zettlemoyer</span> <span class="pre">and</span> <span class="pre">Collins</span> <span class="pre">(ACL/IJCNLP</span> <span class="pre">2009)</span>
+<span class="pre">`</span></code></p>
+<p>Each element in the <code class="docutils literal notranslate"><span class="pre">interaction</span></code> list has the following keys and values:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&quot;utterance&quot;:</span> <span class="pre">Natural</span> <span class="pre">language</span> <span class="pre">input</span>
+<span class="pre">&quot;sql&quot;:</span> <span class="pre">A</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">SQL</span> <span class="pre">queries</span> <span class="pre">that</span> <span class="pre">the</span> <span class="pre">utterance</span> <span class="pre">maps</span> <span class="pre">to,</span> <span class="pre">it</span> <span class="pre">could</span> <span class="pre">be</span> <span class="pre">multiple</span> <span class="pre">SQL</span> <span class="pre">queries</span>
+<span class="pre">or</span> <span class="pre">none</span> <span class="pre">at</span> <span class="pre">all.</span>
+<span class="pre">`</span></code></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>token_indexers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code>, optional</span></dt><dd><p>Token indexers for the utterances. Will default to <code class="docutils literal notranslate"><span class="pre">{&quot;tokens&quot;:</span> <span class="pre">SingleIdTokenIndexer()}</span></code>.</p>
+</dd>
+<dt><strong>lazy</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>Passed to <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code>.  If this is <code class="docutils literal notranslate"><span class="pre">True</span></code>, training will start sooner, but will
+take longer per batch.</p>
+</dd>
+<dt><strong>tokenizer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Tokenizer</span></code>, optional</span></dt><dd><p>Tokenizer to use for the utterances. Will default to <code class="docutils literal notranslate"><span class="pre">WordTokenizer()</span></code> with Spacy’s tagger
+enabled.</p>
+</dd>
+<dt><strong>database_file: ``str``, optional</strong></dt><dd><p>The directory to find the sqlite database file. We query the sqlite database to find the strings
+that are allowed.</p>
+</dd>
+<dt><strong>num_turns_to_concatenate: ``str``, optional</strong></dt><dd><p>The number of utterances to concatenate as the conversation context.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.atis.AtisDatasetReader.text_to_instance">
+<code class="sig-name descname">text_to_instance</code><span class="sig-paren">(</span><em class="sig-param">self, utterances: List[str], sql_query_labels: List[str] = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/atis.py#L105-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.atis.AtisDatasetReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>utterances: ``List[str]``, required.</strong></dt><dd><p>List of utterances in the interaction, the last element is the current utterance.</p>
+</dd>
+<dt><strong>sql_query_labels: ``List[str]``, optional</strong></dt><dd><p>The SQL queries that are given as labels during training or validation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.semantic_parsing.nlvr"></span><dl class="class">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.nlvr.NlvrDatasetReader">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.semantic_parsing.nlvr.</code><code class="sig-name descname">NlvrDatasetReader</code><span class="sig-paren">(</span><em class="sig-param">lazy: bool = False</em>, <em class="sig-param">tokenizer: allennlp.data.tokenizers.tokenizer.Tokenizer = None</em>, <em class="sig-param">sentence_token_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em>, <em class="sig-param">nonterminal_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em>, <em class="sig-param">terminal_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em>, <em class="sig-param">output_agendas: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/nlvr.py#L22-L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.nlvr.NlvrDatasetReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> for the NLVR domain. In addition to the usual methods for reading files and
+instances from text, this class contains a method for creating an agenda of actions that each
+sentence triggers, if needed. Note that we deal with the version of the dataset with structured
+representations of the synthetic images instead of the actual images themselves.</p>
+<p>We support multiple data formats here:
+1) The original json version of the NLVR dataset (<a class="reference external" href="http://lic.nlp.cornell.edu/nlvr/">http://lic.nlp.cornell.edu/nlvr/</a>) where the
+format of each line in the jsonl file is
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&quot;sentence&quot;:</span> <span class="pre">&lt;sentence&gt;,</span>
+<span class="pre">&quot;label&quot;:</span> <span class="pre">&lt;true/false&gt;,</span>
+<span class="pre">&quot;identifier&quot;:</span> <span class="pre">&lt;id&gt;,</span>
+<span class="pre">&quot;evals&quot;:</span> <span class="pre">&lt;dict</span> <span class="pre">containing</span> <span class="pre">all</span> <span class="pre">annotations&gt;,</span>
+<span class="pre">&quot;structured_rep&quot;:</span> <span class="pre">&lt;list</span> <span class="pre">of</span> <span class="pre">three</span> <span class="pre">box</span> <span class="pre">representations,</span> <span class="pre">where</span> <span class="pre">each</span> <span class="pre">box</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">object</span>
+<span class="pre">representation</span> <span class="pre">dicts,</span> <span class="pre">containing</span> <span class="pre">fields</span> <span class="pre">&quot;x_loc&quot;,</span> <span class="pre">&quot;y_loc&quot;,</span> <span class="pre">&quot;color&quot;,</span> <span class="pre">&quot;type&quot;,</span> <span class="pre">&quot;size&quot;&gt;</span>
+<span class="pre">`</span></code></p>
+<p>2) A grouped version (constructed using <code class="docutils literal notranslate"><span class="pre">scripts/nlvr/group_nlvr_worlds.py</span></code>) where we group
+all the worlds that a sentence appears in. We use the fields <code class="docutils literal notranslate"><span class="pre">sentence</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code> and
+<code class="docutils literal notranslate"><span class="pre">structured_rep</span></code>.  And the format of the grouped files is
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&quot;sentence&quot;:</span> <span class="pre">&lt;sentence&gt;,</span>
+<span class="pre">&quot;labels&quot;:</span> <span class="pre">&lt;list</span> <span class="pre">of</span> <span class="pre">labels</span> <span class="pre">corresponding</span> <span class="pre">to</span> <span class="pre">worlds</span> <span class="pre">the</span> <span class="pre">sentence</span> <span class="pre">appears</span> <span class="pre">in&gt;</span>
+<span class="pre">&quot;identifier&quot;:</span> <span class="pre">&lt;id</span> <span class="pre">that</span> <span class="pre">is</span> <span class="pre">only</span> <span class="pre">the</span> <span class="pre">prefix</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">original</span> <span class="pre">data&gt;</span>
+<span class="pre">&quot;worlds&quot;:</span> <span class="pre">&lt;list</span> <span class="pre">of</span> <span class="pre">structured</span> <span class="pre">representations&gt;</span>
+<span class="pre">`</span></code></p>
+<p>3) A processed version that contains action sequences that lead to the correct denotations (or
+not), using some search. This format is very similar to the grouped format, and has the
+following extra field</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&quot;correct_sequences&quot;:</span> <span class="pre">&lt;list</span> <span class="pre">of</span> <span class="pre">lists</span> <span class="pre">of</span> <span class="pre">action</span> <span class="pre">sequences</span> <span class="pre">corresponding</span> <span class="pre">to</span> <span class="pre">logical</span> <span class="pre">forms</span> <span class="pre">that</span>
+<span class="pre">evaluate</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">correct</span> <span class="pre">denotations&gt;</span>
+<span class="pre">`</span></code></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>lazy</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>Passed to <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code>.  If this is <code class="docutils literal notranslate"><span class="pre">True</span></code>, training will start sooner, but will
+take longer per batch.</p>
+</dd>
+<dt><strong>tokenizer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Tokenizer</span></code> (optional)</span></dt><dd><p>The tokenizer used for sentences in NLVR. Default is <code class="docutils literal notranslate"><span class="pre">WordTokenizer</span></code></p>
+</dd>
+<dt><strong>sentence_token_indexers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code> (optional)</span></dt><dd><p>Token indexers for tokens in input sentences.
+Default is <code class="docutils literal notranslate"><span class="pre">{&quot;tokens&quot;:</span> <span class="pre">SingleIdTokenIndexer()}</span></code></p>
+</dd>
+<dt><strong>nonterminal_indexers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code> (optional)</span></dt><dd><p>Indexers for non-terminals in production rules. The default is to index terminals and
+non-terminals in the same way, but you may want to change it.
+Default is <code class="docutils literal notranslate"><span class="pre">{&quot;tokens&quot;:</span> <span class="pre">SingleIdTokenIndexer(&quot;rule_labels&quot;)}</span></code></p>
+</dd>
+<dt><strong>terminal_indexers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code> (optional)</span></dt><dd><p>Indexers for terminals in production rules. The default is to index terminals and
+non-terminals in the same way, but you may want to change it.
+Default is <code class="docutils literal notranslate"><span class="pre">{&quot;tokens&quot;:</span> <span class="pre">SingleIdTokenIndexer(&quot;rule_labels&quot;)}</span></code></p>
+</dd>
+<dt><strong>output_agendas</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional)</span></dt><dd><p>If preparing data for a trainer that uses agendas, set this flag and the datset reader will
+output agendas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.nlvr.NlvrDatasetReader.text_to_instance">
+<code class="sig-name descname">text_to_instance</code><span class="sig-paren">(</span><em class="sig-param">self, sentence: str, structured_representations: List[List[List[Dict[str, Any]]]], labels: List[str] = None, target_sequences: List[List[str]] = None, identifier: str = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/nlvr.py#L135-L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.nlvr.NlvrDatasetReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>sentence</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd><p>The query sentence.</p>
+</dd>
+<dt><strong>structured_representations</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[List[JsonDict]]]</span></code></span></dt><dd><p>A list of Json representations of all the worlds. See expected format in this class’ docstring.</p>
+</dd>
+<dt><strong>labels</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code> (optional)</span></dt><dd><p>List of string representations of the labels (true or false) corresponding to the
+<code class="docutils literal notranslate"><span class="pre">structured_representations</span></code>. Not required while testing.</p>
+</dd>
+<dt><strong>target_sequences</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[str]]</span></code> (optional)</span></dt><dd><p>List of target action sequences for each element which lead to the correct denotation in
+worlds corresponding to the structured representations.</p>
+</dd>
+<dt><strong>identifier</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code> (optional)</span></dt><dd><p>The identifier from the dataset if available.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.semantic_parsing.template_text2sql"></span><dl class="class">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.template_text2sql.TemplateText2SqlDatasetReader">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.semantic_parsing.template_text2sql.</code><code class="sig-name descname">TemplateText2SqlDatasetReader</code><span class="sig-paren">(</span><em class="sig-param">use_all_sql: bool = False</em>, <em class="sig-param">token_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em>, <em class="sig-param">cross_validation_split_to_exclude: int = None</em>, <em class="sig-param">lazy: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/template_text2sql.py#L22-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.template_text2sql.TemplateText2SqlDatasetReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<p>Reads text2sql data for the sequence tagging and template prediction baseline
+from <a class="reference external" href="https://arxiv.org/abs/1806.09029">“Improving Text to SQL Evaluation Methodology”</a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>use_all_sql</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = False)</span></dt><dd><p>Whether to use all of the sql queries which have identical semantics,
+or whether to just use the first one.</p>
+</dd>
+<dt><strong>token_indexers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code>, optional (default=``{“tokens”: SingleIdTokenIndexer()}``)</span></dt><dd><p>We use this to define the input representation for the text.  See <code class="xref py py-class docutils literal notranslate"><span class="pre">TokenIndexer</span></code>.
+Note that the <cite>output</cite> tags will always correspond to single token IDs based on how they
+are pre-tokenised in the data file.</p>
+</dd>
+<dt><strong>cross_validation_split_to_exclude</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = None)</span></dt><dd><p>Some of the text2sql datasets are very small, so you may need to do cross validation.
+Here, you can specify a integer corresponding to a split_{int}.json file not to include
+in the training set.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.template_text2sql.TemplateText2SqlDatasetReader.text_to_instance">
+<code class="sig-name descname">text_to_instance</code><span class="sig-paren">(</span><em class="sig-param">self, query: List[str], slot_tags: List[str] = None, sql_template: str = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/template_text2sql.py#L77-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.template_text2sql.TemplateText2SqlDatasetReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does whatever tokenization or processing is necessary to go from textual input to an
+<code class="docutils literal notranslate"><span class="pre">Instance</span></code>.  The primary intended use for this is with a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Predictor</span></code>, which gets text input as a JSON
+object and needs to process it to be input to a model.</p>
+<p>The intent here is to share code between <code class="xref py py-func docutils literal notranslate"><span class="pre">_read()</span></code> and what happens at
+model serving time, or any other time you want to make a prediction from new data.  We need
+to process the data in the same way it was done at training time.  Allowing the
+<code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> to process new text lets us accomplish this, as we can just call
+<code class="docutils literal notranslate"><span class="pre">DatasetReader.text_to_instance</span></code> when serving predictions.</p>
+<p>The input type here is rather vaguely specified, unfortunately.  The <code class="docutils literal notranslate"><span class="pre">Predictor</span></code> will
+have to make some assumptions about the kind of <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> that it’s using, in order
+to pass it the right information.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.semantic_parsing.grammar_based_text2sql"></span><dl class="class">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.grammar_based_text2sql.GrammarBasedText2SqlDatasetReader">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.semantic_parsing.grammar_based_text2sql.</code><code class="sig-name descname">GrammarBasedText2SqlDatasetReader</code><span class="sig-paren">(</span><em class="sig-param">schema_path: str</em>, <em class="sig-param">database_file: str = None</em>, <em class="sig-param">use_all_sql: bool = False</em>, <em class="sig-param">remove_unneeded_aliases: bool = True</em>, <em class="sig-param">use_prelinked_entities: bool = True</em>, <em class="sig-param">use_untyped_entities: bool = True</em>, <em class="sig-param">token_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em>, <em class="sig-param">cross_validation_split_to_exclude: int = None</em>, <em class="sig-param">keep_if_unparseable: bool = True</em>, <em class="sig-param">lazy: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/grammar_based_text2sql.py#L25-L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.grammar_based_text2sql.GrammarBasedText2SqlDatasetReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<p>Reads text2sql data from
+<a class="reference external" href="https://arxiv.org/abs/1806.09029">“Improving Text to SQL Evaluation Methodology”</a>
+for a type constrained semantic parser.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>schema_path</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, required.</span></dt><dd><p>The path to the database schema.</p>
+</dd>
+<dt><strong>database_path</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default = None)</span></dt><dd><p>The path to a database.</p>
+</dd>
+<dt><strong>use_all_sql</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = False)</span></dt><dd><p>Whether to use all of the sql queries which have identical semantics,
+or whether to just use the first one.</p>
+</dd>
+<dt><strong>remove_unneeded_aliases</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, (default = True)</span></dt><dd><p>Whether or not to remove table aliases in the SQL which
+are not required.</p>
+</dd>
+<dt><strong>use_prelinked_entities</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, (default = True)</span></dt><dd><p>Whether or not to use the pre-linked entities in the text2sql data.</p>
+</dd>
+<dt><strong>use_untyped_entities</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, (default = True)</span></dt><dd><p>Whether or not to attempt to infer the pre-linked entity types.</p>
+</dd>
+<dt><strong>token_indexers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code>, optional (default=``{“tokens”: SingleIdTokenIndexer()}``)</span></dt><dd><p>We use this to define the input representation for the text.  See <code class="xref py py-class docutils literal notranslate"><span class="pre">TokenIndexer</span></code>.
+Note that the <cite>output</cite> tags will always correspond to single token IDs based on how they
+are pre-tokenised in the data file.</p>
+</dd>
+<dt><strong>cross_validation_split_to_exclude</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default = None)</span></dt><dd><p>Some of the text2sql datasets are very small, so you may need to do cross validation.
+Here, you can specify a integer corresponding to a split_{int}.json file not to include
+in the training set.</p>
+</dd>
+<dt><strong>keep_if_unparsable</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default = True)</span></dt><dd><p>Whether or not to keep examples that we can’t parse using the grammar.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.grammar_based_text2sql.GrammarBasedText2SqlDatasetReader.text_to_instance">
+<code class="sig-name descname">text_to_instance</code><span class="sig-paren">(</span><em class="sig-param">self, query: List[str], prelinked_entities: Dict[str, Dict[str, str]] = None, sql: List[str] = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/grammar_based_text2sql.py#L127-L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.grammar_based_text2sql.GrammarBasedText2SqlDatasetReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does whatever tokenization or processing is necessary to go from textual input to an
+<code class="docutils literal notranslate"><span class="pre">Instance</span></code>.  The primary intended use for this is with a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Predictor</span></code>, which gets text input as a JSON
+object and needs to process it to be input to a model.</p>
+<p>The intent here is to share code between <code class="xref py py-func docutils literal notranslate"><span class="pre">_read()</span></code> and what happens at
+model serving time, or any other time you want to make a prediction from new data.  We need
+to process the data in the same way it was done at training time.  Allowing the
+<code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> to process new text lets us accomplish this, as we can just call
+<code class="docutils literal notranslate"><span class="pre">DatasetReader.text_to_instance</span></code> when serving predictions.</p>
+<p>The input type here is rather vaguely specified, unfortunately.  The <code class="docutils literal notranslate"><span class="pre">Predictor</span></code> will
+have to make some assumptions about the kind of <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> that it’s using, in order
+to pass it the right information.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.semantic_parsing.quarel"></span><p>Reader for QuaRel dataset</p>
+<dl class="class">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.quarel.QuarelDatasetReader">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.data.dataset_readers.semantic_parsing.quarel.</code><code class="sig-name descname">QuarelDatasetReader</code><span class="sig-paren">(</span><em class="sig-param">lazy: bool = False</em>, <em class="sig-param">sample: int = -1</em>, <em class="sig-param">lf_syntax: str = None</em>, <em class="sig-param">replace_world_entities: bool = False</em>, <em class="sig-param">align_world_extractions: bool = False</em>, <em class="sig-param">gold_world_extractions: bool = False</em>, <em class="sig-param">tagger_only: bool = False</em>, <em class="sig-param">denotation_only: bool = False</em>, <em class="sig-param">world_extraction_model: Optional[str] = None</em>, <em class="sig-param">skip_attributes_regex: Optional[str] = None</em>, <em class="sig-param">entity_bits_mode: Optional[str] = None</em>, <em class="sig-param">entity_types: Optional[List[str]] = None</em>, <em class="sig-param">lexical_cues: List[str] = None</em>, <em class="sig-param">tokenizer: allennlp.data.tokenizers.tokenizer.Tokenizer = None</em>, <em class="sig-param">question_token_indexers: Dict[str</em>, <em class="sig-param">allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/quarel.py#L35-L508"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.quarel.QuarelDatasetReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>lazy</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>Passed to <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code>.  If this is <code class="docutils literal notranslate"><span class="pre">True</span></code>, training will start sooner, but will
+take longer per batch.</p>
+</dd>
+<dt><strong>replace_world_entities</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>Replace world entities (w/stemming) with “worldone” and “worldtwo” directly in the question</p>
+</dd>
+<dt><strong>world_extraction_model: ``str`` (optional, default=None)</strong></dt><dd><p>Reference (file or URL) to world tagger model used to extract worlds.</p>
+</dd>
+<dt><strong>align_world_extractions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>Use alignment of extracted worlds with gold worlds, to pick the appropriate gold LF.</p>
+</dd>
+<dt><strong>gold_world_extractions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional, default=False)</span></dt><dd><p>Use gold worlds rather than world extractor</p>
+</dd>
+<dt><strong>tagger_only</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code> (optional default=False)</span></dt><dd><p>Only output tagging information, in format for CRF tagger</p>
+</dd>
+<dt><strong>denotation_only: ``bool`` (optional, default=False)</strong></dt><dd><p>Only output information needed for a denotation-only model (no LF)</p>
+</dd>
+<dt><strong>entity_bits_mode</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code> (optional, default=None)</span></dt><dd><p>If set, add a field for entity bits (“simple” = 1.0 value for world1 and world2,
+“simple_collapsed” = single 1.0 value for any world).</p>
+</dd>
+<dt><strong>entity_types</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code> (optional, default=None)</span></dt><dd><p>List of entity types used for tagger model</p>
+</dd>
+<dt><strong>world_extraction_model</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code> (optional, default=None)</span></dt><dd><p>Reference to model file for world tagger model</p>
+</dd>
+<dt><strong>lexical_cues</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code> (optional, default=None)</span></dt><dd><p>List of lexical cue categories to include when using dynamic attributes</p>
+</dd>
+<dt><strong>skip_attributes_regex: ``str`` (optional, default=None)</strong></dt><dd><p>Regex string for which examples and attributes to skip if the LF matches</p>
+</dd>
+<dt><strong>lf_syntax: ``str``</strong></dt><dd><p>Which logical form formalism to use</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.quarel.QuarelDatasetReader.preprocess">
+<code class="sig-name descname">preprocess</code><span class="sig-paren">(</span><em class="sig-param">self, question_data: Dict[str, Any], predict: bool = False</em><span class="sig-paren">)</span> &#x2192; List[Dict[str, Any]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/quarel.py#L165-L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.quarel.QuarelDatasetReader.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.semantic_parsing.quarel.QuarelDatasetReader.text_to_instance">
+<code class="sig-name descname">text_to_instance</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">question: str</em>, <em class="sig-param">logical_forms: List[str] = None</em>, <em class="sig-param">additional_metadata: Dict[str</em>, <em class="sig-param">Any] = None</em>, <em class="sig-param">world_extractions: Dict[str</em>, <em class="sig-param">Union[str</em>, <em class="sig-param">List[str]]] = None</em>, <em class="sig-param">entity_literals: Dict[str</em>, <em class="sig-param">Union[str</em>, <em class="sig-param">List[str]]] = None</em>, <em class="sig-param">tokenized_question: List[allennlp.data.tokenizers.token.Token] = None</em>, <em class="sig-param">debug_counter: int = None</em>, <em class="sig-param">qr_spec_override: List[Dict[str</em>, <em class="sig-param">int]] = None</em>, <em class="sig-param">dynamic_entities_override: Dict[str</em>, <em class="sig-param">str] = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/semantic_parsing/quarel.py#L256-L359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.semantic_parsing.quarel.QuarelDatasetReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does whatever tokenization or processing is necessary to go from textual input to an
+<code class="docutils literal notranslate"><span class="pre">Instance</span></code>.  The primary intended use for this is with a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Predictor</span></code>, which gets text input as a JSON
+object and needs to process it to be input to a model.</p>
+<p>The intent here is to share code between <code class="xref py py-func docutils literal notranslate"><span class="pre">_read()</span></code> and what happens at
+model serving time, or any other time you want to make a prediction from new data.  We need
+to process the data in the same way it was done at training time.  Allowing the
+<code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> to process new text lets us accomplish this, as we can just call
+<code class="docutils literal notranslate"><span class="pre">DatasetReader.text_to_instance</span></code> when serving predictions.</p>
+<p>The input type here is rather vaguely specified, unfortunately.  The <code class="docutils literal notranslate"><span class="pre">Predictor</span></code> will
+have to make some assumptions about the kind of <code class="docutils literal notranslate"><span class="pre">DatasetReader</span></code> that it’s using, in order
+to pass it the right information.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html" class="btn btn-neutral float-right" title="allennlp.data.dataset_readers.semantic_parsing.wikitables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.data.dataset_readers.semantic_dependency_parsing.html" class="btn btn-neutral float-left" title="allennlp.data.dataset_readers.semantic_dependency_parsing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

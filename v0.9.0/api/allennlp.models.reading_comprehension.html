@@ -1,0 +1,976 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.models.reading_comprehension &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.models.semantic_parsing" href="allennlp.models.semantic_parsing.html" />
+    <link rel="prev" title="allennlp.models.next_token_lm" href="allennlp.models.next_token_lm.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.models.html">allennlp.models</a> &raquo;</li>
+        
+      <li>allennlp.models.reading_comprehension</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.models.reading_comprehension.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.models.reading_comprehension">
+<span id="allennlp-models-reading-comprehension"></span><h1>allennlp.models.reading_comprehension<a class="headerlink" href="#module-allennlp.models.reading_comprehension" title="Permalink to this headline">¶</a></h1>
+<p>Reading comprehension is loosely defined as follows: given a question and a passage of text that
+contains the answer, answer the question.</p>
+<p>These submodules contain models for things that are predominantly focused on reading comprehension.</p>
+<span class="target" id="module-allennlp.models.reading_comprehension.bidaf"></span><dl class="class">
+<dt id="allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.reading_comprehension.bidaf.</code><code class="sig-name descname">BidirectionalAttentionFlow</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">num_highway_layers: int</em>, <em class="sig-param">phrase_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">similarity_function: allennlp.modules.similarity_functions.similarity_function.SimilarityFunction</em>, <em class="sig-param">modeling_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">span_end_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">dropout: float = 0.2</em>, <em class="sig-param">mask_lstms: bool = True</em>, <em class="sig-param">initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em class="sig-param">regularizer: Optional[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf.py#L21-L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.model.Model</span></code></a></p>
+<p>This class implements Minjoon Seo’s <a class="reference external" href="https://www.semanticscholar.org/paper/Bidirectional-Attention-Flow-for-Machine-Seo-Kembhavi/7586b7cca1deba124af80609327395e613a20e9d">Bidirectional Attention Flow model</a>
+for answering reading comprehension questions (ICLR 2017).</p>
+<p>The basic layout is pretty simple: encode words as a combination of word embeddings and a
+character-level encoder, pass the word representations through a bi-LSTM/GRU, use a matrix of
+attentions to put question information into the passage word representations (this is the only
+part that is at all non-standard), pass this through another few layers of bi-LSTMs/GRUs, and
+do a softmax over span start and span end.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code></span></dt><dd></dd>
+<dt><strong>text_field_embedder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code></span></dt><dd><p>Used to embed the <code class="docutils literal notranslate"><span class="pre">question</span></code> and <code class="docutils literal notranslate"><span class="pre">passage</span></code> <code class="docutils literal notranslate"><span class="pre">TextFields</span></code> we get as input to the model.</p>
+</dd>
+<dt><strong>num_highway_layers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>The number of highway layers to use in between embedding the input and passing it through
+the phrase layer.</p>
+</dd>
+<dt><strong>phrase_layer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder (with its own internal stacking) that we will use in between embedding tokens
+and doing the bidirectional attention.</p>
+</dd>
+<dt><strong>similarity_function</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">SimilarityFunction</span></code></span></dt><dd><p>The similarity function that we will use when comparing encoded passage and question
+representations.</p>
+</dd>
+<dt><strong>modeling_layer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder (with its own internal stacking) that we will use in between the bidirectional
+attention and predicting span start and end.</p>
+</dd>
+<dt><strong>span_end_encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder that we will use to incorporate span start predictions into the passage state
+before predicting span end.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0.2)</span></dt><dd><p>If greater than 0, we will apply dropout with this probability after all encoders (pytorch
+LSTMs do not apply dropout to their last layer).</p>
+</dd>
+<dt><strong>mask_lstms</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=True)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, we will skip passing the mask to the LSTM layers.  This gives a ~2x speedup,
+with only a slight performance decrease, if any.  We haven’t experimented much with this
+yet, but have confirmed that we still get very similar performance with much faster
+training times.  We still use the mask for all softmaxes, but avoid the shuffling that’s
+required when using masking with pytorch LSTMs.</p>
+</dd>
+<dt><strong>initializer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">InitializerApplicator</span></code>, optional (default=``InitializerApplicator()``)</span></dt><dd><p>Used to initialize the model parameters.</p>
+</dd>
+<dt><strong>regularizer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">RegularizerApplicator</span></code>, optional (default=``None``)</span></dt><dd><p>If provided, will be used to calculate the regularization penalty during training.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], passage: Dict[str, torch.LongTensor], span_start: torch.IntTensor = None, span_end: torch.IntTensor = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf.py#L118-L288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.</p>
+</dd>
+<dt><strong>passage</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.  The model assumes that this passage contains the answer to the
+question, and predicts the beginning and ending positions of the answer within the
+passage.</p>
+</dd>
+<dt><strong>span_start</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+beginning position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>span_end</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+ending position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional</span></dt><dd><p>metadata : <code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional
+If present, this should contain the question tokens, passage tokens, original passage
+text, and token offsets into the passage for each instance in the batch.  The length
+of this list should be the batch size, and each dictionary should have the keys
+<code class="docutils literal notranslate"><span class="pre">question_tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">passage_tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">original_passage</span></code>, and <code class="docutils literal notranslate"><span class="pre">token_offsets</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>An output dictionary consisting of:</dt><dd></dd>
+<dt><strong>span_start_logits</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>A tensor of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">passage_length)</span></code> representing unnormalized log
+probabilities of the span start position.</p>
+</dd>
+<dt><strong>span_start_probs</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>The result of <code class="docutils literal notranslate"><span class="pre">softmax(span_start_logits)</span></code>.</p>
+</dd>
+<dt><strong>span_end_logits</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>A tensor of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">passage_length)</span></code> representing unnormalized log
+probabilities of the span end position (inclusive).</p>
+</dd>
+<dt><strong>span_end_probs</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>The result of <code class="docutils literal notranslate"><span class="pre">softmax(span_end_logits)</span></code>.</p>
+</dd>
+<dt><strong>best_span</strong><span class="classifier">torch.IntTensor</span></dt><dd><p>The result of a constrained inference over <code class="docutils literal notranslate"><span class="pre">span_start_logits</span></code> and
+<code class="docutils literal notranslate"><span class="pre">span_end_logits</span></code> to find the most probable span.  Shape is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">2)</span></code>
+and each offset is a token index.</p>
+</dd>
+<dt><strong>loss</strong><span class="classifier">torch.FloatTensor, optional</span></dt><dd><p>A scalar loss to be optimised.</p>
+</dd>
+<dt><strong>best_span_str</strong><span class="classifier">List[str]</span></dt><dd><p>If sufficient metadata was provided for the instances in the batch, we also return the
+string from the original passage that the model thinks is the best answer to the
+question.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow.get_best_span">
+<em class="property">static </em><code class="sig-name descname">get_best_span</code><span class="sig-paren">(</span><em class="sig-param">span_start_logits: torch.Tensor</em>, <em class="sig-param">span_end_logits: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf.py#L300-L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow.get_best_span" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf.py#L290-L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of metrics. This method will be called by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
+stopping and model serialization.  We return an empty dictionary here rather than raising
+as it is not required to implement metrics for a new model.  A boolean <cite>reset</cite> parameter is
+passed, as frequently a metric accumulator will have some state which should be reset
+between epochs. This is also compatible with <code class="xref py py-class docutils literal notranslate"> <span class="pre">Metrics</span>
+<span class="pre">should</span> <span class="pre">be</span> <span class="pre">populated</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">call</span> <span class="pre">to</span> <span class="pre">``forward`</span></code>, with the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> handling the accumulation of the metric until this
+method is called.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.reading_comprehension.bidaf_ensemble"></span><dl class="class">
+<dt id="allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.reading_comprehension.bidaf_ensemble.</code><code class="sig-name descname">BidafEnsemble</code><span class="sig-paren">(</span><em class="sig-param">submodels: List[allennlp.models.reading_comprehension.bidaf.BidirectionalAttentionFlow]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf_ensemble.py#L17-L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.models.ensemble.html#allennlp.models.ensemble.Ensemble" title="allennlp.models.ensemble.Ensemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.ensemble.Ensemble</span></code></a></p>
+<p>This class ensembles the output from multiple BiDAF models.</p>
+<p>It combines results from the submodels by averaging the start and end span probabilities.</p>
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], passage: Dict[str, torch.LongTensor], span_start: torch.IntTensor = None, span_end: torch.IntTensor = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf_ensemble.py#L29-L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The forward method runs each of the submodels, then selects the best span from the subresults.
+The best span is determined by averaging the probabilities for the start and end of the spans.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.</p>
+</dd>
+<dt><strong>passage</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.  The model assumes that this passage contains the answer to the
+question, and predicts the beginning and ending positions of the answer within the
+passage.</p>
+</dd>
+<dt><strong>span_start</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+beginning position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>span_end</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+ending position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional</span></dt><dd><p>If present, this should contain the question ID, original passage text, and token
+offsets into the passage for each instance in the batch.  We use this for computing
+official metrics using the official SQuAD evaluation script.  The length of this list
+should be the batch size, and each dictionary should have the keys <code class="docutils literal notranslate"><span class="pre">id</span></code>,
+<code class="docutils literal notranslate"><span class="pre">original_passage</span></code>, and <code class="docutils literal notranslate"><span class="pre">token_offsets</span></code>.  If you only want the best span string and
+don’t care about official metrics, you can omit the <code class="docutils literal notranslate"><span class="pre">id</span></code> key.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>An output dictionary consisting of:</dt><dd></dd>
+<dt><strong>best_span</strong><span class="classifier">torch.IntTensor</span></dt><dd><p>The result of a constrained inference over <code class="docutils literal notranslate"><span class="pre">span_start_logits</span></code> and
+<code class="docutils literal notranslate"><span class="pre">span_end_logits</span></code> to find the most probable span.  Shape is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">2)</span></code>
+and each offset is a token index.</p>
+</dd>
+<dt><strong>best_span_str</strong><span class="classifier">List[str]</span></dt><dd><p>If sufficient metadata was provided for the instances in the batch, we also return the
+string from the original passage that the model thinks is the best answer to the
+question.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble.from_params">
+<em class="property">classmethod </em><code class="sig-name descname">from_params</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; 'BidafEnsemble'<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf_ensemble.py#L111-L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble.from_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the automatic implementation of <cite>from_params</cite>. Any class that subclasses <cite>FromParams</cite>
+(or <cite>Registrable</cite>, which itself subclasses <cite>FromParams</cite>) gets this implementation for free.
+If you want your class to be instantiated from params in the “obvious” way – pop off parameters
+and hand them to your constructor with the same names – this provides that functionality.</p>
+<p>If you need more complex logic in your from <cite>from_params</cite> method, you’ll have to implement
+your own method that overrides this one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf_ensemble.py#L103-L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf_ensemble.BidafEnsemble.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of metrics. This method will be called by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
+stopping and model serialization.  We return an empty dictionary here rather than raising
+as it is not required to implement metrics for a new model.  A boolean <cite>reset</cite> parameter is
+passed, as frequently a metric accumulator will have some state which should be reset
+between epochs. This is also compatible with <code class="xref py py-class docutils literal notranslate"> <span class="pre">Metrics</span>
+<span class="pre">should</span> <span class="pre">be</span> <span class="pre">populated</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">call</span> <span class="pre">to</span> <span class="pre">``forward`</span></code>, with the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> handling the accumulation of the metric until this
+method is called.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.models.reading_comprehension.bidaf_ensemble.ensemble">
+<code class="sig-prename descclassname">allennlp.models.reading_comprehension.bidaf_ensemble.</code><code class="sig-name descname">ensemble</code><span class="sig-paren">(</span><em class="sig-param">subresults: List[Dict[str, torch.Tensor]]</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/bidaf_ensemble.py#L124-L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.bidaf_ensemble.ensemble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies the best prediction given the results from the submodels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>subresults</strong><span class="classifier">List[Dict[str, torch.Tensor]]</span></dt><dd><p>Results of each submodel.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The index of the best submodel.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.reading_comprehension.dialog_qa"></span><dl class="class">
+<dt id="allennlp.models.reading_comprehension.dialog_qa.DialogQA">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.reading_comprehension.dialog_qa.</code><code class="sig-name descname">DialogQA</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">phrase_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">residual_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">span_start_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">span_end_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">initializer: allennlp.nn.initializers.InitializerApplicator</em>, <em class="sig-param">dropout: float = 0.2</em>, <em class="sig-param">num_context_answers: int = 0</em>, <em class="sig-param">marker_embedding_dim: int = 10</em>, <em class="sig-param">max_span_length: int = 30</em>, <em class="sig-param">max_turn_length: int = 12</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/dialog_qa.py#L23-L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.dialog_qa.DialogQA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.model.Model</span></code></a></p>
+<p>This class implements modified version of BiDAF
+(with self attention and residual layer, from Clark and Gardner ACL 17 paper) model as used in
+Question Answering in Context (EMNLP 2018) paper [<a class="reference external" href="https://arxiv.org/pdf/1808.07036.pdf">https://arxiv.org/pdf/1808.07036.pdf</a>].</p>
+<p>In this set-up, a single instance is a dialog, list of question answer pairs.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code></span></dt><dd></dd>
+<dt><strong>text_field_embedder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code></span></dt><dd><p>Used to embed the <code class="docutils literal notranslate"><span class="pre">question</span></code> and <code class="docutils literal notranslate"><span class="pre">passage</span></code> <code class="docutils literal notranslate"><span class="pre">TextFields</span></code> we get as input to the model.</p>
+</dd>
+<dt><strong>phrase_layer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder (with its own internal stacking) that we will use in between embedding tokens
+and doing the bidirectional attention.</p>
+</dd>
+<dt><strong>span_start_encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder that we will use to incorporate span start predictions into the passage state
+before predicting span end.</p>
+</dd>
+<dt><strong>span_end_encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder that we will use to incorporate span end predictions into the passage state.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0.2)</span></dt><dd><p>If greater than 0, we will apply dropout with this probability after all encoders (pytorch
+LSTMs do not apply dropout to their last layer).</p>
+</dd>
+<dt><strong>num_context_answers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=0)</span></dt><dd><p>If greater than 0, the model will consider previous question answering context.</p>
+</dd>
+<dt><strong>max_span_length: ``int``, optional (default=0)</strong></dt><dd><p>Maximum token length of the output span.</p>
+</dd>
+<dt><strong>max_turn_length: ``int``, optional (default=12)</strong></dt><dd><p>Maximum length of an interaction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.dialog_qa.DialogQA.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">self, output_dict: Dict[str, torch.Tensor]</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/dialog_qa.py#L410-L418"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.dialog_qa.DialogQA.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the result of <a class="reference internal" href="#allennlp.models.reading_comprehension.dialog_qa.DialogQA.forward" title="allennlp.models.reading_comprehension.dialog_qa.DialogQA.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a> and runs inference / decoding / whatever
+post-processing you need to do your model.  The intent is that <code class="docutils literal notranslate"><span class="pre">model.forward()</span></code> should
+produce potentials or probabilities, and then <code class="docutils literal notranslate"><span class="pre">model.decode()</span></code> can take those results and
+run some kind of beam search or constrained inference or whatever is necessary.  This does
+not handle all possible decoding use cases, but it at least handles simple kinds of
+decoding.</p>
+<p>This method <cite>modifies</cite> the input dictionary, and also <cite>returns</cite> the same dictionary.</p>
+<p>By default in the base class we do nothing.  If your model has some special decoding step,
+override this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.dialog_qa.DialogQA.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], passage: Dict[str, torch.LongTensor], span_start: torch.IntTensor = None, span_end: torch.IntTensor = None, p1_answer_marker: torch.IntTensor = None, p2_answer_marker: torch.IntTensor = None, p3_answer_marker: torch.IntTensor = None, yesno_list: torch.IntTensor = None, followup_list: torch.IntTensor = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/dialog_qa.py#L119-L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.dialog_qa.DialogQA.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.</p>
+</dd>
+<dt><strong>passage</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.  The model assumes that this passage contains the answer to the
+question, and predicts the beginning and ending positions of the answer within the
+passage.</p>
+</dd>
+<dt><strong>span_start</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+beginning position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>span_end</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+ending position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>p1_answer_marker</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>This is one of the inputs, but only when num_context_answers &gt; 0.
+This is a tensor that has a shape [batch_size, max_qa_count, max_passage_length].
+Most passage token will have assigned ‘O’, except the passage tokens belongs to the previous answer
+in the dialog, which will be assigned labels such as &lt;1_start&gt;, &lt;1_in&gt;, &lt;1_end&gt;.
+For more details, look into dataset_readers/util/make_reading_comprehension_instance_quac</p>
+</dd>
+<dt><strong>p2_answer_marker</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>This is one of the inputs, but only when num_context_answers &gt; 1.
+It is similar to p1_answer_marker, but marking previous previous answer in passage.</p>
+</dd>
+<dt><strong>p3_answer_marker</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>This is one of the inputs, but only when num_context_answers &gt; 2.
+It is similar to p1_answer_marker, but marking previous previous previous answer in passage.</p>
+</dd>
+<dt><strong>yesno_list</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>This is one of the outputs that we are trying to predict.
+Three way classification (the yes/no/not a yes no question).</p>
+</dd>
+<dt><strong>followup_list</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>This is one of the outputs that we are trying to predict.
+Three way classification (followup / maybe followup / don’t followup).</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional</span></dt><dd><p>If present, this should contain the question ID, original passage text, and token
+offsets into the passage for each instance in the batch.  We use this for computing
+official metrics using the official SQuAD evaluation script.  The length of this list
+should be the batch size, and each dictionary should have the keys <code class="docutils literal notranslate"><span class="pre">id</span></code>,
+<code class="docutils literal notranslate"><span class="pre">original_passage</span></code>, and <code class="docutils literal notranslate"><span class="pre">token_offsets</span></code>.  If you only want the best span string and
+don’t care about official metrics, you can omit the <code class="docutils literal notranslate"><span class="pre">id</span></code> key.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>An output dictionary consisting of the followings.</dt><dd></dd>
+<dt>Each of the followings is a nested list because first iterates over dialog, then questions in dialog.</dt><dd></dd>
+<dt><strong>qid</strong><span class="classifier">List[List[str]]</span></dt><dd><p>A list of list, consisting of question ids.</p>
+</dd>
+<dt><strong>followup</strong><span class="classifier">List[List[int]]</span></dt><dd><p>A list of list, consisting of continuation marker prediction index.
+(y :yes, m: maybe follow up, n: don’t follow up)</p>
+</dd>
+<dt><strong>yesno</strong><span class="classifier">List[List[int]]</span></dt><dd><p>A list of list, consisting of affirmation marker prediction index.
+(y :yes, x: not a yes/no question, n: np)</p>
+</dd>
+<dt><strong>best_span_str</strong><span class="classifier">List[List[str]]</span></dt><dd><p>If sufficient metadata was provided for the instances in the batch, we also return the
+string from the original passage that the model thinks is the best answer to the
+question.</p>
+</dd>
+<dt><strong>loss</strong><span class="classifier">torch.FloatTensor, optional</span></dt><dd><p>A scalar loss to be optimised.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.dialog_qa.DialogQA.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/dialog_qa.py#L420-L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.dialog_qa.DialogQA.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of metrics. This method will be called by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
+stopping and model serialization.  We return an empty dictionary here rather than raising
+as it is not required to implement metrics for a new model.  A boolean <cite>reset</cite> parameter is
+passed, as frequently a metric accumulator will have some state which should be reset
+between epochs. This is also compatible with <code class="xref py py-class docutils literal notranslate"> <span class="pre">Metrics</span>
+<span class="pre">should</span> <span class="pre">be</span> <span class="pre">populated</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">call</span> <span class="pre">to</span> <span class="pre">``forward`</span></code>, with the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> handling the accumulation of the metric until this
+method is called.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.reading_comprehension.qanet"></span><dl class="class">
+<dt id="allennlp.models.reading_comprehension.qanet.QaNet">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.reading_comprehension.qanet.</code><code class="sig-name descname">QaNet</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">num_highway_layers: int</em>, <em class="sig-param">phrase_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">matrix_attention_layer: allennlp.modules.matrix_attention.matrix_attention.MatrixAttention</em>, <em class="sig-param">modeling_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">dropout_prob: float = 0.1</em>, <em class="sig-param">initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em class="sig-param">regularizer: Optional[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/qanet.py#L18-L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.qanet.QaNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.model.Model</span></code></a></p>
+<p>This class implements Adams Wei Yu’s <a class="reference external" href="https://openreview.net/forum?id=B14TlG-RW">QANet Model</a>
+for machine reading comprehension published at ICLR 2018.</p>
+<p>The overall architecture of QANet is very similar to BiDAF. The main difference is that QANet
+replaces the RNN encoder with CNN + self-attention. There are also some minor differences in the
+modeling layer and output layer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code></span></dt><dd></dd>
+<dt><strong>text_field_embedder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code></span></dt><dd><p>Used to embed the <code class="docutils literal notranslate"><span class="pre">question</span></code> and <code class="docutils literal notranslate"><span class="pre">passage</span></code> <code class="docutils literal notranslate"><span class="pre">TextFields</span></code> we get as input to the model.</p>
+</dd>
+<dt><strong>num_highway_layers</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>The number of highway layers to use in between embedding the input and passing it through
+the phrase layer.</p>
+</dd>
+<dt><strong>phrase_layer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder (with its own internal stacking) that we will use in between embedding tokens
+and doing the passage-question attention.</p>
+</dd>
+<dt><strong>matrix_attention_layer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">MatrixAttention</span></code></span></dt><dd><p>The matrix attention function that we will use when comparing encoded passage and question
+representations.</p>
+</dd>
+<dt><strong>modeling_layer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder (with its own internal stacking) that we will use in between the bidirectional
+attention and predicting span start and end.</p>
+</dd>
+<dt><strong>dropout_prob</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0.1)</span></dt><dd><p>If greater than 0, we will apply dropout with this probability between layers.</p>
+</dd>
+<dt><strong>initializer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">InitializerApplicator</span></code>, optional (default=``InitializerApplicator()``)</span></dt><dd><p>Used to initialize the model parameters.</p>
+</dd>
+<dt><strong>regularizer</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">RegularizerApplicator</span></code>, optional (default=``None``)</span></dt><dd><p>If provided, will be used to calculate the regularization penalty during training.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.qanet.QaNet.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], passage: Dict[str, torch.LongTensor], span_start: torch.IntTensor = None, span_end: torch.IntTensor = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/qanet.py#L92-L251"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.qanet.QaNet.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.</p>
+</dd>
+<dt><strong>passage</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>From a <code class="docutils literal notranslate"><span class="pre">TextField</span></code>.  The model assumes that this passage contains the answer to the
+question, and predicts the beginning and ending positions of the answer within the
+passage.</p>
+</dd>
+<dt><strong>span_start</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+beginning position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>span_end</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.IntTensor</span></code>, optional</span></dt><dd><p>From an <code class="docutils literal notranslate"><span class="pre">IndexField</span></code>.  This is one of the things we are trying to predict - the
+ending position of the answer with the passage.  This is an <cite>inclusive</cite> token index.
+If this is given, we will compute a loss that gets included in the output dictionary.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional</span></dt><dd><p>If present, this should contain the question tokens, passage tokens, original passage
+text, and token offsets into the passage for each instance in the batch.  The length
+of this list should be the batch size, and each dictionary should have the keys
+<code class="docutils literal notranslate"><span class="pre">question_tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">passage_tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">original_passage</span></code>, and <code class="docutils literal notranslate"><span class="pre">token_offsets</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>An output dictionary consisting of:</dt><dd></dd>
+<dt><strong>span_start_logits</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>A tensor of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">passage_length)</span></code> representing unnormalized log
+probabilities of the span start position.</p>
+</dd>
+<dt><strong>span_start_probs</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>The result of <code class="docutils literal notranslate"><span class="pre">softmax(span_start_logits)</span></code>.</p>
+</dd>
+<dt><strong>span_end_logits</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>A tensor of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">passage_length)</span></code> representing unnormalized log
+probabilities of the span end position (inclusive).</p>
+</dd>
+<dt><strong>span_end_probs</strong><span class="classifier">torch.FloatTensor</span></dt><dd><p>The result of <code class="docutils literal notranslate"><span class="pre">softmax(span_end_logits)</span></code>.</p>
+</dd>
+<dt><strong>best_span</strong><span class="classifier">torch.IntTensor</span></dt><dd><p>The result of a constrained inference over <code class="docutils literal notranslate"><span class="pre">span_start_logits</span></code> and
+<code class="docutils literal notranslate"><span class="pre">span_end_logits</span></code> to find the most probable span.  Shape is <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">2)</span></code>
+and each offset is a token index.</p>
+</dd>
+<dt><strong>loss</strong><span class="classifier">torch.FloatTensor, optional</span></dt><dd><p>A scalar loss to be optimised.</p>
+</dd>
+<dt><strong>best_span_str</strong><span class="classifier">List[str]</span></dt><dd><p>If sufficient metadata was provided for the instances in the batch, we also return the
+string from the original passage that the model thinks is the best answer to the
+question.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.qanet.QaNet.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/qanet.py#L253-L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.qanet.QaNet.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of metrics. This method will be called by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
+stopping and model serialization.  We return an empty dictionary here rather than raising
+as it is not required to implement metrics for a new model.  A boolean <cite>reset</cite> parameter is
+passed, as frequently a metric accumulator will have some state which should be reset
+between epochs. This is also compatible with <code class="xref py py-class docutils literal notranslate"> <span class="pre">Metrics</span>
+<span class="pre">should</span> <span class="pre">be</span> <span class="pre">populated</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">call</span> <span class="pre">to</span> <span class="pre">``forward`</span></code>, with the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> handling the accumulation of the metric until this
+method is called.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.reading_comprehension.naqanet"></span><dl class="class">
+<dt id="allennlp.models.reading_comprehension.naqanet.NumericallyAugmentedQaNet">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.reading_comprehension.naqanet.</code><code class="sig-name descname">NumericallyAugmentedQaNet</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">num_highway_layers: int</em>, <em class="sig-param">phrase_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">matrix_attention_layer: allennlp.modules.matrix_attention.matrix_attention.MatrixAttention</em>, <em class="sig-param">modeling_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">dropout_prob: float = 0.1</em>, <em class="sig-param">initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em class="sig-param">regularizer: Optional[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator] = None</em>, <em class="sig-param">answering_abilities: List[str] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/naqanet.py#L22-L505"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.naqanet.NumericallyAugmentedQaNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.model.Model</span></code></a></p>
+<p>This class augments the QANet model with some rudimentary numerical reasoning abilities, as
+published in the original DROP paper.</p>
+<p>The main idea here is that instead of just predicting a passage span after doing all of the
+QANet modeling stuff, we add several different “answer abilities”: predicting a span from the
+question, predicting a count, or predicting an arithmetic expression.  Near the end of the
+QANet model, we have a variable that predicts what kind of answer type we need, and each branch
+has separate modeling logic to predict that answer type.  We then marginalize over all possible
+ways of getting to the right answer through each of these answer types.</p>
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.naqanet.NumericallyAugmentedQaNet.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], passage: Dict[str, torch.LongTensor], number_indices: torch.LongTensor, answer_as_passage_spans: torch.LongTensor = None, answer_as_question_spans: torch.LongTensor = None, answer_as_add_sub_expressions: torch.LongTensor = None, answer_as_counts: torch.LongTensor = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/naqanet.py#L131-L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.naqanet.NumericallyAugmentedQaNet.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the forward pass of the model. In addition, to facilitate easy training,
+this method is designed to compute a loss function defined by a user.</p>
+<p>The input is comprised of everything required to perform a
+training update, <cite>including</cite> labels - you define the signature here!
+It is down to the user to ensure that inference can be performed
+without the presence of these labels. Hence, any inputs not available at
+inference time should only be used inside a conditional block.</p>
+<p>The intended sketch of this method is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="o">....</span>
+    <span class="o">....</span>
+    <span class="n">output1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span><span class="p">(</span><span class="n">input1</span><span class="p">)</span>
+    <span class="n">output2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span><span class="p">(</span><span class="n">input2</span><span class="p">)</span>
+    <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;output1&quot;</span><span class="p">:</span> <span class="n">output1</span><span class="p">,</span> <span class="s2">&quot;output2&quot;</span><span class="p">:</span> <span class="n">output2</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Function returning a scalar torch.Tensor, defined by the user.</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_loss</span><span class="p">(</span><span class="n">output1</span><span class="p">,</span> <span class="n">output2</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+        <span class="n">output_dict</span><span class="p">[</span><span class="s2">&quot;loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss</span>
+    <span class="k">return</span> <span class="n">output_dict</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inputs:</strong></dt><dd><p>Tensors comprising everything needed to perform a training update, <cite>including</cite> labels,
+which should be optional (i.e have a default value of <code class="docutils literal notranslate"><span class="pre">None</span></code>).  At inference time,
+simply pass the relevant inputs, not including the labels.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>output_dict: <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.Tensor]</span></code></dt><dd><p>The outputs from the model. In order to train a model using the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code> api, you must provide a “loss” key pointing to a
+scalar <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> representing the loss to be optimized.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.reading_comprehension.naqanet.NumericallyAugmentedQaNet.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/naqanet.py#L503-L505"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.naqanet.NumericallyAugmentedQaNet.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of metrics. This method will be called by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
+stopping and model serialization.  We return an empty dictionary here rather than raising
+as it is not required to implement metrics for a new model.  A boolean <cite>reset</cite> parameter is
+passed, as frequently a metric accumulator will have some state which should be reset
+between epochs. This is also compatible with <code class="xref py py-class docutils literal notranslate"> <span class="pre">Metrics</span>
+<span class="pre">should</span> <span class="pre">be</span> <span class="pre">populated</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">call</span> <span class="pre">to</span> <span class="pre">``forward`</span></code>, with the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> handling the accumulation of the metric until this
+method is called.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.reading_comprehension.util"></span><dl class="function">
+<dt id="allennlp.models.reading_comprehension.util.get_best_span">
+<code class="sig-prename descclassname">allennlp.models.reading_comprehension.util.</code><code class="sig-name descname">get_best_span</code><span class="sig-paren">(</span><em class="sig-param">span_start_logits: torch.Tensor</em>, <em class="sig-param">span_end_logits: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/reading_comprehension/util.py#L4-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.reading_comprehension.util.get_best_span" title="Permalink to this definition">¶</a></dt>
+<dd><p>This acts the same as the static method <code class="docutils literal notranslate"><span class="pre">BidirectionalAttentionFlow.get_best_span()</span></code>
+in <code class="docutils literal notranslate"><span class="pre">allennlp/models/reading_comprehension/bidaf.py</span></code>. We keep it here so that users can
+directly import this function without the class.</p>
+<p>We call the inputs “logits” - they could either be unnormalized logits or normalized log
+probabilities.  A log_softmax operation is a constant shifting of the entire logit
+vector, so taking an argmax over either one gives the same result.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.models.semantic_parsing.html" class="btn btn-neutral float-right" title="allennlp.models.semantic_parsing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.models.next_token_lm.html" class="btn btn-neutral float-left" title="allennlp.models.next_token_lm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

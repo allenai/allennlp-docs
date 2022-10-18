@@ -1,0 +1,3788 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AllenNLP is a ..">
+      
+      
+        <link rel="canonical" href="https://allennlp.org/CHANGELOG/">
+      
+      
+      <link rel="shortcut icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>CHANGELOG - AllenNLP Models v1.2.0</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ff6e42">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-orange" data-md-color-accent="grey">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://allennlp.org/" title="AllenNLP Models v1.2.0" class="md-header-nav__button md-logo" aria-label="AllenNLP Models v1.2.0">
+      
+  <img src="../img/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            AllenNLP Models v1.2.0
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              CHANGELOG
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://allennlp.org/" title="AllenNLP Models v1.2.0" class="md-nav__button md-logo" aria-label="AllenNLP Models v1.2.0">
+      
+  <img src="../img/favicon.ico" alt="logo">
+
+    </a>
+    AllenNLP Models v1.2.0
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/allenai/allennlp-models" class="md-nav__link">
+      Repository
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Versions
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Versions" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Versions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/models/latest/" class="md-nav__link">
+      Latest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/models/stable/" class="md-nav__link">
+      Stable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/models/master/" class="md-nav__link">
+      Master
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Models" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      classification
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="classification" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        classification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-1" type="checkbox" id="nav-4-1-1">
+    
+    <label class="md-nav__link" for="nav-4-1-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-1-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/classification/dataset_readers/stanford_sentiment_tree_bank/" class="md-nav__link">
+      stanford_sentiment_tree_bank
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-2" type="checkbox" id="nav-4-1-2">
+    
+    <label class="md-nav__link" for="nav-4-1-2">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/classification/models/biattentive_classification_network/" class="md-nav__link">
+      biattentive_classification_network
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      common
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="common" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon"></span>
+        common
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/common/model_card/" class="md-nav__link">
+      model_card
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/common/ontonotes/" class="md-nav__link">
+      ontonotes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      coref
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="coref" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        coref
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-1" type="checkbox" id="nav-4-3-1">
+    
+    <label class="md-nav__link" for="nav-4-3-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/dataset_readers/conll/" class="md-nav__link">
+      conll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/dataset_readers/preco/" class="md-nav__link">
+      preco
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/dataset_readers/winobias/" class="md-nav__link">
+      winobias
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-2" type="checkbox" id="nav-4-3-2">
+    
+    <label class="md-nav__link" for="nav-4-3-2">
+      metrics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="metrics" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/metrics/conll_coref_scores/" class="md-nav__link">
+      conll_coref_scores
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/metrics/mention_recall/" class="md-nav__link">
+      mention_recall
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3">
+    
+    <label class="md-nav__link" for="nav-4-3-3">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/models/coref/" class="md-nav__link">
+      coref
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-4" type="checkbox" id="nav-4-3-4">
+    
+    <label class="md-nav__link" for="nav-4-3-4">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/predictors/coref/" class="md-nav__link">
+      coref
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/coref/util/" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      generation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="generation" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        generation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-1" type="checkbox" id="nav-4-4-1">
+    
+    <label class="md-nav__link" for="nav-4-4-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/dataset_readers/cnn_dm/" class="md-nav__link">
+      cnn_dm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/dataset_readers/copynet_seq2seq/" class="md-nav__link">
+      copynet_seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/dataset_readers/seq2seq/" class="md-nav__link">
+      seq2seq
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-2" type="checkbox" id="nav-4-4-2">
+    
+    <label class="md-nav__link" for="nav-4-4-2">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-2">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/models/bart/" class="md-nav__link">
+      bart
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/models/composed_seq2seq/" class="md-nav__link">
+      composed_seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/models/copynet_seq2seq/" class="md-nav__link">
+      copynet_seq2seq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/models/simple_seq2seq/" class="md-nav__link">
+      simple_seq2seq
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-3" type="checkbox" id="nav-4-4-3">
+    
+    <label class="md-nav__link" for="nav-4-4-3">
+      modules
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-3-1" type="checkbox" id="nav-4-4-3-1">
+    
+    <label class="md-nav__link" for="nav-4-4-3-1">
+      decoder_nets
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="decoder_nets" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-4-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        decoder_nets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/modules/decoder_nets/decoder_net/" class="md-nav__link">
+      decoder_net
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/modules/decoder_nets/lstm_cell/" class="md-nav__link">
+      lstm_cell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/modules/decoder_nets/stacked_self_attention/" class="md-nav__link">
+      stacked_self_attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-3-2" type="checkbox" id="nav-4-4-3-2">
+    
+    <label class="md-nav__link" for="nav-4-4-3-2">
+      seq_decoders
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="seq_decoders" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-4-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        seq_decoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/modules/seq_decoders/auto_regressive/" class="md-nav__link">
+      auto_regressive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/modules/seq_decoders/seq_decoder/" class="md-nav__link">
+      seq_decoder
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-4" type="checkbox" id="nav-4-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4-4">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-4">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/generation/predictors/seq2seq/" class="md-nav__link">
+      seq2seq
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      lm
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="lm" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon"></span>
+        lm
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-1" type="checkbox" id="nav-4-5-1">
+    
+    <label class="md-nav__link" for="nav-4-5-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/dataset_readers/masked_language_model/" class="md-nav__link">
+      masked_language_model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/dataset_readers/next_token_lm/" class="md-nav__link">
+      next_token_lm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/dataset_readers/simple_language_modeling/" class="md-nav__link">
+      simple_language_modeling
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-2" type="checkbox" id="nav-4-5-2">
+    
+    <label class="md-nav__link" for="nav-4-5-2">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/models/bidirectional_lm/" class="md-nav__link">
+      bidirectional_lm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/models/language_model/" class="md-nav__link">
+      language_model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/models/masked_language_model/" class="md-nav__link">
+      masked_language_model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/models/next_token_lm/" class="md-nav__link">
+      next_token_lm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-3" type="checkbox" id="nav-4-5-3">
+    
+    <label class="md-nav__link" for="nav-4-5-3">
+      modules
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-3-1" type="checkbox" id="nav-4-5-3-1">
+    
+    <label class="md-nav__link" for="nav-4-5-3-1">
+      language_model_heads
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="language_model_heads" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-5-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        language_model_heads
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/language_model_heads/bert/" class="md-nav__link">
+      bert
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/language_model_heads/gpt2/" class="md-nav__link">
+      gpt2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/language_model_heads/language_model_head/" class="md-nav__link">
+      language_model_head
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/language_model_heads/linear/" class="md-nav__link">
+      linear
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-3-2" type="checkbox" id="nav-4-5-3-2">
+    
+    <label class="md-nav__link" for="nav-4-5-3-2">
+      seq2seq_encoders
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="seq2seq_encoders" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-5-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        seq2seq_encoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/seq2seq_encoders/bidirectional_lm_transformer/" class="md-nav__link">
+      bidirectional_lm_transformer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-3-3" type="checkbox" id="nav-4-5-3-3">
+    
+    <label class="md-nav__link" for="nav-4-5-3-3">
+      token_embedders
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="token_embedders" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-5-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        token_embedders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/token_embedders/bidirectional_lm/" class="md-nav__link">
+      bidirectional_lm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/modules/token_embedders/language_model/" class="md-nav__link">
+      language_model
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-4" type="checkbox" id="nav-4-5-4">
+    
+    <label class="md-nav__link" for="nav-4-5-4">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-4">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/predictors/masked_language_model/" class="md-nav__link">
+      masked_language_model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/predictors/next_token_lm/" class="md-nav__link">
+      next_token_lm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-5" type="checkbox" id="nav-4-5-5">
+    
+    <label class="md-nav__link" for="nav-4-5-5">
+      util
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="util" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-5-5">
+        <span class="md-nav__icon md-icon"></span>
+        util
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5-5-1" type="checkbox" id="nav-4-5-5-1">
+    
+    <label class="md-nav__link" for="nav-4-5-5-1">
+      beam_search_generators
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="beam_search_generators" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-5-5-1">
+        <span class="md-nav__icon md-icon"></span>
+        beam_search_generators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/util/beam_search_generators/beam_search_generator/" class="md-nav__link">
+      beam_search_generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lm/util/beam_search_generators/transformer_beam_search_generator/" class="md-nav__link">
+      transformer_beam_search_generator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+    
+    <label class="md-nav__link" for="nav-4-6">
+      mc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="mc" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon"></span>
+        mc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-1" type="checkbox" id="nav-4-6-1">
+    
+    <label class="md-nav__link" for="nav-4-6-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/dataset_readers/commonsenseqa/" class="md-nav__link">
+      commonsenseqa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/dataset_readers/fake/" class="md-nav__link">
+      fake
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/dataset_readers/piqa/" class="md-nav__link">
+      piqa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/dataset_readers/swag/" class="md-nav__link">
+      swag
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/dataset_readers/transformer_mc/" class="md-nav__link">
+      transformer_mc
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-2" type="checkbox" id="nav-4-6-2">
+    
+    <label class="md-nav__link" for="nav-4-6-2">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-2">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/models/transformer_mc/" class="md-nav__link">
+      transformer_mc
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6-3" type="checkbox" id="nav-4-6-3">
+    
+    <label class="md-nav__link" for="nav-4-6-3">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-6-3">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/mc/predictors/transformer_mc/" class="md-nav__link">
+      transformer_mc
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+    
+    <label class="md-nav__link" for="nav-4-7">
+      pair_classification
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="pair_classification" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon"></span>
+        pair_classification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7-1" type="checkbox" id="nav-4-7-1">
+    
+    <label class="md-nav__link" for="nav-4-7-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-7-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pair_classification/dataset_readers/quora_paraphrase/" class="md-nav__link">
+      quora_paraphrase
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pair_classification/dataset_readers/snli/" class="md-nav__link">
+      snli
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7-2" type="checkbox" id="nav-4-7-2">
+    
+    <label class="md-nav__link" for="nav-4-7-2">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pair_classification/models/bimpm/" class="md-nav__link">
+      bimpm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pair_classification/models/decomposable_attention/" class="md-nav__link">
+      decomposable_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pair_classification/models/esim/" class="md-nav__link">
+      esim
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7-3" type="checkbox" id="nav-4-7-3">
+    
+    <label class="md-nav__link" for="nav-4-7-3">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-7-3">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pair_classification/predictors/textual_entailment/" class="md-nav__link">
+      textual_entailment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/pretrained/" class="md-nav__link">
+      pretrained
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      rc
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="rc" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon"></span>
+        rc
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-1" type="checkbox" id="nav-4-9-1">
+    
+    <label class="md-nav__link" for="nav-4-9-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-9-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/drop/" class="md-nav__link">
+      drop
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/qangaroo/" class="md-nav__link">
+      qangaroo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/quac/" class="md-nav__link">
+      quac
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/squad/" class="md-nav__link">
+      squad
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/transformer_squad/" class="md-nav__link">
+      transformer_squad
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/triviaqa/" class="md-nav__link">
+      triviaqa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/dataset_readers/utils/" class="md-nav__link">
+      utils
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-2" type="checkbox" id="nav-4-9-2">
+    
+    <label class="md-nav__link" for="nav-4-9-2">
+      metrics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="metrics" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-9-2">
+        <span class="md-nav__icon md-icon"></span>
+        metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/metrics/drop_em_and_f1/" class="md-nav__link">
+      drop_em_and_f1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/metrics/squad_em_and_f1/" class="md-nav__link">
+      squad_em_and_f1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-3" type="checkbox" id="nav-4-9-3">
+    
+    <label class="md-nav__link" for="nav-4-9-3">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-9-3">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/bidaf/" class="md-nav__link">
+      bidaf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/bidaf_ensemble/" class="md-nav__link">
+      bidaf_ensemble
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/dialog_qa/" class="md-nav__link">
+      dialog_qa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/naqanet/" class="md-nav__link">
+      naqanet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/qanet/" class="md-nav__link">
+      qanet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/transformer_qa/" class="md-nav__link">
+      transformer_qa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/models/utils/" class="md-nav__link">
+      utils
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-4" type="checkbox" id="nav-4-9-4">
+    
+    <label class="md-nav__link" for="nav-4-9-4">
+      modules
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-9-4">
+        <span class="md-nav__icon md-icon"></span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-4-1" type="checkbox" id="nav-4-9-4-1">
+    
+    <label class="md-nav__link" for="nav-4-9-4-1">
+      seq2seq_encoders
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="seq2seq_encoders" data-md-level="4">
+      <label class="md-nav__title" for="nav-4-9-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        seq2seq_encoders
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/modules/seq2seq_encoders/multi_head_self_attention/" class="md-nav__link">
+      multi_head_self_attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/modules/seq2seq_encoders/qanet_encoder/" class="md-nav__link">
+      qanet_encoder
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/modules/seq2seq_encoders/stacked_self_attention/" class="md-nav__link">
+      stacked_self_attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-5" type="checkbox" id="nav-4-9-5">
+    
+    <label class="md-nav__link" for="nav-4-9-5">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-9-5">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/predictors/bidaf/" class="md-nav__link">
+      bidaf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/predictors/dialog_qa/" class="md-nav__link">
+      dialog_qa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/predictors/transformer_qa/" class="md-nav__link">
+      transformer_qa
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9-6" type="checkbox" id="nav-4-9-6">
+    
+    <label class="md-nav__link" for="nav-4-9-6">
+      tools
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="tools" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-9-6">
+        <span class="md-nav__icon md-icon"></span>
+        tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/drop/" class="md-nav__link">
+      drop
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/narrativeqa/" class="md-nav__link">
+      narrativeqa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/orb/" class="md-nav__link">
+      orb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/orb_utils/" class="md-nav__link">
+      orb_utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/quoref/" class="md-nav__link">
+      quoref
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/squad/" class="md-nav__link">
+      squad
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rc/tools/transformer_qa_eval/" class="md-nav__link">
+      transformer_qa_eval
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      structured_prediction
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="structured_prediction" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon"></span>
+        structured_prediction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-1" type="checkbox" id="nav-4-10-1">
+    
+    <label class="md-nav__link" for="nav-4-10-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/dataset_readers/penn_tree_bank/" class="md-nav__link">
+      penn_tree_bank
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/dataset_readers/semantic_dependencies/" class="md-nav__link">
+      semantic_dependencies
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/dataset_readers/srl/" class="md-nav__link">
+      srl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/dataset_readers/universal_dependencies/" class="md-nav__link">
+      universal_dependencies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-2" type="checkbox" id="nav-4-10-2">
+    
+    <label class="md-nav__link" for="nav-4-10-2">
+      metrics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="metrics" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-2">
+        <span class="md-nav__icon md-icon"></span>
+        metrics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/metrics/srl_eval_scorer/" class="md-nav__link">
+      srl_eval_scorer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-3" type="checkbox" id="nav-4-10-3">
+    
+    <label class="md-nav__link" for="nav-4-10-3">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-3">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/models/biaffine_dependency_parser/" class="md-nav__link">
+      biaffine_dependency_parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/models/constituency_parser/" class="md-nav__link">
+      constituency_parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/models/graph_parser/" class="md-nav__link">
+      graph_parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/models/srl/" class="md-nav__link">
+      srl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/models/srl_bert/" class="md-nav__link">
+      srl_bert
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-4" type="checkbox" id="nav-4-10-4">
+    
+    <label class="md-nav__link" for="nav-4-10-4">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-4">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/predictors/biaffine_dependency_parser/" class="md-nav__link">
+      biaffine_dependency_parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/predictors/constituency_parser/" class="md-nav__link">
+      constituency_parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/predictors/openie/" class="md-nav__link">
+      openie
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/predictors/srl/" class="md-nav__link">
+      srl
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10-5" type="checkbox" id="nav-4-10-5">
+    
+    <label class="md-nav__link" for="nav-4-10-5">
+      tools
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="tools" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-10-5">
+        <span class="md-nav__icon md-icon"></span>
+        tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/tools/convert_openie_to_conll/" class="md-nav__link">
+      convert_openie_to_conll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/structured_prediction/tools/write_srl_predictions_to_conll_format/" class="md-nav__link">
+      write_srl_predictions_to_conll_format
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11">
+    
+    <label class="md-nav__link" for="nav-4-11">
+      tagging
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="tagging" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-11">
+        <span class="md-nav__icon md-icon"></span>
+        tagging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11-1" type="checkbox" id="nav-4-11-1">
+    
+    <label class="md-nav__link" for="nav-4-11-1">
+      dataset_readers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="dataset_readers" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-11-1">
+        <span class="md-nav__icon md-icon"></span>
+        dataset_readers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/tagging/dataset_readers/ccgbank/" class="md-nav__link">
+      ccgbank
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/tagging/dataset_readers/conll2000/" class="md-nav__link">
+      conll2000
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/tagging/dataset_readers/conll2003/" class="md-nav__link">
+      conll2003
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/tagging/dataset_readers/ontonotes_ner/" class="md-nav__link">
+      ontonotes_ner
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11-2" type="checkbox" id="nav-4-11-2">
+    
+    <label class="md-nav__link" for="nav-4-11-2">
+      models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-11-2">
+        <span class="md-nav__icon md-icon"></span>
+        models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/tagging/models/crf_tagger/" class="md-nav__link">
+      crf_tagger
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11-3" type="checkbox" id="nav-4-11-3">
+    
+    <label class="md-nav__link" for="nav-4-11-3">
+      predictors
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="predictors" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-11-3">
+        <span class="md-nav__icon md-icon"></span>
+        predictors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/tagging/predictors/sentence_tagger/" class="md-nav__link">
+      sentence_tagger
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        CHANGELOG
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      CHANGELOG
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v120-2020-10-29" class="md-nav__link">
+    v1.2.0 - 2020-10-29
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.2.0 - 2020-10-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v120rc1-2020-10-22" class="md-nav__link">
+    v1.2.0rc1 - 2020-10-22
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.2.0rc1 - 2020-10-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110-2020-09-08" class="md-nav__link">
+    v1.1.0 - 2020-09-08
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0 - 2020-09-08">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc4-2020-08-21" class="md-nav__link">
+    v1.1.0rc4 - 2020-08-21
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc4 - 2020-08-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc3-2020-08-12" class="md-nav__link">
+    v1.1.0rc3 - 2020-08-12
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc3 - 2020-08-12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_3" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc2-2020-07-31" class="md-nav__link">
+    v1.1.0rc2 - 2020-07-31
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc2 - 2020-07-31">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_4" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc1-2020-07-14" class="md-nav__link">
+    v1.1.0rc1 - 2020-07-14
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc1 - 2020-07-14">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_5" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100-2020-06-16" class="md-nav__link">
+    v1.0.0 - 2020-06-16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100rc6-2020-06-11" class="md-nav__link">
+    v1.0.0rc6 - 2020-06-11
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.0.0rc6 - 2020-06-11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_6" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100rc5-2020-05-14" class="md-nav__link">
+    v1.0.0rc5 - 2020-05-14
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.0.0rc5 - 2020-05-14">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_7" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100rc4-2020-05-14" class="md-nav__link">
+    v1.0.0rc4 - 2020-05-14
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://raw.githubusercontent.com/allenai/allennlp-models/master/LICENSE" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v120-2020-10-29" class="md-nav__link">
+    v1.2.0 - 2020-10-29
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.2.0 - 2020-10-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v120rc1-2020-10-22" class="md-nav__link">
+    v1.2.0rc1 - 2020-10-22
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.2.0rc1 - 2020-10-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110-2020-09-08" class="md-nav__link">
+    v1.1.0 - 2020-09-08
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0 - 2020-09-08">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc4-2020-08-21" class="md-nav__link">
+    v1.1.0rc4 - 2020-08-21
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc4 - 2020-08-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc3-2020-08-12" class="md-nav__link">
+    v1.1.0rc3 - 2020-08-12
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc3 - 2020-08-12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_3" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc2-2020-07-31" class="md-nav__link">
+    v1.1.0rc2 - 2020-07-31
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc2 - 2020-07-31">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_4" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v110rc1-2020-07-14" class="md-nav__link">
+    v1.1.0rc1 - 2020-07-14
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.1.0rc1 - 2020-07-14">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_5" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100-2020-06-16" class="md-nav__link">
+    v1.0.0 - 2020-06-16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100rc6-2020-06-11" class="md-nav__link">
+    v1.0.0rc6 - 2020-06-11
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.0.0rc6 - 2020-06-11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_6" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100rc5-2020-05-14" class="md-nav__link">
+    v1.0.0rc5 - 2020-05-14
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.0.0rc5 - 2020-05-14">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_7" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v100rc4-2020-05-14" class="md-nav__link">
+    v1.0.0rc4 - 2020-05-14
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">#</a></h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<h2 id="v120-2020-10-29"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.2.0">v1.2.0</a> - 2020-10-29<a class="headerlink" href="#v120-2020-10-29" title="Permanent link">#</a></h2>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<ul>
+<li>Updated docstring for Transformer MC.</li>
+<li>Added more information to model cards for multiple choice models (<code>mc-roberta-commonsenseqa</code>,
+<code>mc-roberta-piqa</code>, and <code>mc-roberta-swag</code>).</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed many training configs to work out-of-the box. These include the configs for <code>bart_cnn_dm</code>, <code>swag</code>, <code>bidaf</code>, <code>bidaf_elmo</code>,
+  <code>naqanet</code>, and <code>qanet</code>.</li>
+<li>Fixed minor bug in MaskedLanguageModel, where getting token ids used hard-coded assumptions (that
+  could be wrong) instead of our standard utility function.</li>
+</ul>
+<h2 id="v120rc1-2020-10-22"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.2.0rc1">v1.2.0rc1</a> - 2020-10-22<a class="headerlink" href="#v120rc1-2020-10-22" title="Permanent link">#</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">#</a></h3>
+<ul>
+<li>Added dataset reader support for SQuAD 2.0 with both the <code>SquadReader</code> and <code>TransformerSquadReader</code>.</li>
+<li>Updated the SQuAD v1.1 metric to work with SQuAD 2.0 as well.</li>
+<li>Updated the <code>TransformerQA</code> model to work for SQuAD 2.0.</li>
+<li>Added official support for Python 3.8.</li>
+<li>Added a json template for model cards.</li>
+<li>Added <code>training_config</code> as a field in model cards.</li>
+<li>Added a <code>BeamSearchGenerator</code> registrable class which can be provided to a <code>NextTokenLM</code> model
+  to utilize beam search for predicting a sequence of tokens, instead of a single next token.
+  <code>BeamSearchGenerator</code> is an abstract class, so a concrete registered implementation needs to be used.
+  One implementation is provided so far: <code>TransformerBeamSearchGenerator</code>, registered as <code>transformer</code>,
+  which will work with any <code>NextTokenLM</code> that uses a <code>PretrainedTransformerEmbedder</code>.</li>
+<li>Added an <code>overrides</code> parameter to <code>pretrained.load_predictor()</code>.</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
+<ul>
+<li><code>rc-transformer-qa</code> pretrained model is now an updated version trained on SQuAD v2.0.</li>
+<li><code>skip_invalid_examples</code> parameter in SQuAD dataset readers has been deprecated. Please use
+  <code>skip_impossible_questions</code> instead.</li>
+</ul>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed <code>lm-masked-language-model</code> pretrained model.</li>
+<li>Fixed BART for latest <code>transformers</code> version.</li>
+<li>Fixed BiDAF predictor and BiDAF predictor tests.</li>
+<li>Fixed a bug with <code>Seq2SeqDatasetReader</code> that would cause an exception when
+  the desired behavior is to not add start or end symbols to either the source or the target
+  and the default <code>start_symbol</code> or <code>end_symbol</code> are not part of the tokenizer's vocabulary.</li>
+</ul>
+<h2 id="v110-2020-09-08"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.1.0">v1.1.0</a> - 2020-09-08<a class="headerlink" href="#v110-2020-09-08" title="Permanent link">#</a></h2>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">#</a></h3>
+<ul>
+<li>Updated <code>LanguageModelTokenEmbedder</code> to allow allow multiple token embedders, but only use first with non-empty type</li>
+<li>Fixed evaluation of metrics when using distributed setting.</li>
+<li>Fixed a bug introduced in 1.0 where the SRL model did not reproduce the original result.</li>
+</ul>
+<h2 id="v110rc4-2020-08-21"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.1.0rc4">v1.1.0rc4</a> - 2020-08-21<a class="headerlink" href="#v110rc4-2020-08-21" title="Permanent link">#</a></h2>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Added regression tests for training configs that run on a scheduled workflow.</li>
+<li>Added a test for the pretrained sentiment analysis model.</li>
+<li>Added way for questions from quora dataset to be concatenated like the sequences in the SNLI dataset.</li>
+</ul>
+<h2 id="v110rc3-2020-08-12"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.1.0rc3">v1.1.0rc3</a> - 2020-08-12<a class="headerlink" href="#v110rc3-2020-08-12" title="Permanent link">#</a></h2>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed <code>GraphParser.get_metrics</code> so that it expects a dict from <code>F1Measure.get_metric</code>.</li>
+<li><code>CopyNet</code> and <code>SimpleSeq2Seq</code> models now work with AMP.</li>
+<li>Made the SST reader a little more strict in the kinds of input it accepts.</li>
+</ul>
+<h2 id="v110rc2-2020-07-31"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.1.0rc2">v1.1.0rc2</a> - 2020-07-31<a class="headerlink" href="#v110rc2-2020-07-31" title="Permanent link">#</a></h2>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
+<ul>
+<li>Updated to PyTorch 1.6.</li>
+</ul>
+<h3 id="fixed_4">Fixed<a class="headerlink" href="#fixed_4" title="Permanent link">#</a></h3>
+<ul>
+<li>Updated the RoBERTa SST config to make proper use of the CLS token</li>
+<li>Updated RoBERTa SNLI and MNLI pretrained models for latest <code>transformers</code> version</li>
+</ul>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">#</a></h3>
+<ul>
+<li>Added BART model</li>
+<li>Added <code>ModelCard</code> and related classes. Added model cards for all the pretrained models.</li>
+<li>Added a field <code>registered_predictor_name</code> to <code>ModelCard</code>.</li>
+<li>Added a method <code>load_predictor</code> to <code>allennlp_models.pretrained</code>.</li>
+<li>Added support to multi-layer decoder in simple seq2seq model.</li>
+</ul>
+<h2 id="v110rc1-2020-07-14"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.1.0rc1">v1.1.0rc1</a> - 2020-07-14<a class="headerlink" href="#v110rc1-2020-07-14" title="Permanent link">#</a></h2>
+<h3 id="fixed_5">Fixed<a class="headerlink" href="#fixed_5" title="Permanent link">#</a></h3>
+<ul>
+<li>Updated the BERT SRL model to be compatible with the new huggingface tokenizers.</li>
+<li><code>CopyNetSeq2Seq</code> model now works with pretrained transformers.</li>
+<li>A bug with <code>NextTokenLM</code> that caused simple gradient interpreters to fail.</li>
+<li>A bug in <code>training_config</code> of <code>qanet</code> and <code>bimpm</code> that used the old version of <code>regularizer</code> and <code>initializer</code>.</li>
+<li>The fine-grained NER transformer model did not survive an upgrade of the transformers library, but it is now fixed.</li>
+<li>Fixed many minor formatting issues in docstrings. Docs are now published at <a href="https://docs.allennlp.org/models/">https://docs.allennlp.org/models/</a>.</li>
+</ul>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
+<ul>
+<li><code>CopyNetDatasetReader</code> no longer automatically adds <code>START_TOKEN</code> and <code>END_TOKEN</code>
+  to the tokenized source. If you want these in the tokenized source, it's up to
+  the source tokenizer.</li>
+</ul>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">#</a></h3>
+<ul>
+<li>Added two models for fine-grained NER</li>
+<li>Added a category for multiple choice models, including a few reference implementations</li>
+<li>Implemented manual distributed sharding for SNLI dataset reader.</li>
+</ul>
+<h2 id="v100-2020-06-16"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.0.0">v1.0.0</a> - 2020-06-16<a class="headerlink" href="#v100-2020-06-16" title="Permanent link">#</a></h2>
+<p>No additional note-worthy changes since rc6.</p>
+<h2 id="v100rc6-2020-06-11"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.0.0rc6">v1.0.0rc6</a> - 2020-06-11<a class="headerlink" href="#v100rc6-2020-06-11" title="Permanent link">#</a></h2>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">#</a></h3>
+<ul>
+<li>Removed deprecated <code>"simple_seq2seq"</code> predictor</li>
+</ul>
+<h3 id="fixed_6">Fixed<a class="headerlink" href="#fixed_6" title="Permanent link">#</a></h3>
+<ul>
+<li>Replaced <code>deepcopy</code> of <code>Instance</code>s with new <code>Instance.duplicate()</code> method.</li>
+<li>A bug where pretrained sentence taggers would fail to be initialized because some of the models
+  were not imported.</li>
+<li>A bug in some RC models that would cause mixed precision training to crash when using NVIDIA apex.</li>
+<li>Predictor names were inconsistently switching between dashes and underscores. Now they all use underscores.</li>
+</ul>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">#</a></h3>
+<ul>
+<li>Added option to SemanticDependenciesDatasetReader to not skip instances that have no arcs, for validation data</li>
+<li>Added a default predictors to several models</li>
+<li>Added sentiment analysis models to pretrained.py</li>
+<li>Added NLI models to pretrained.py</li>
+</ul>
+<h2 id="v100rc5-2020-05-14"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.0.0rc5">v1.0.0rc5</a> - 2020-05-14<a class="headerlink" href="#v100rc5-2020-05-14" title="Permanent link">#</a></h2>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">#</a></h3>
+<ul>
+<li>Moved the models into categories based on their format</li>
+</ul>
+<h3 id="fixed_7">Fixed<a class="headerlink" href="#fixed_7" title="Permanent link">#</a></h3>
+<ul>
+<li>Made <code>transformer_qa</code> predictor accept JSON input with the keys "question" and "passage" to be consistent with the <code>reading_comprehension</code> predictor.</li>
+</ul>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">#</a></h3>
+<ul>
+<li><code>conllu</code> dependency (previously part of <code>allennlp</code>'s dependencies)</li>
+</ul>
+<h2 id="v100rc4-2020-05-14"><a href="https://github.com/allenai/allennlp-models/releases/tag/v1.0.0rc4">v1.0.0rc4</a> - 2020-05-14<a class="headerlink" href="#v100rc4-2020-05-14" title="Permanent link">#</a></h2>
+<p>We first introduced this <code>CHANGELOG</code> after release <code>v1.0.0rc4</code>, so please refer to the GitHub release
+notes for this and earlier releases.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../models/tagging/predictors/sentence_tagger/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                sentence_tagger
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

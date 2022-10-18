@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.tools &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.training" href="allennlp.training.html" />
+    <link rel="prev" title="allennlp.state_machines.transition_functions" href="allennlp.state_machines.transition_functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>allennlp.tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.tools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="allennlp-tools">
+<h1>allennlp.tools<a class="headerlink" href="#allennlp-tools" title="Permalink to this headline">¶</a></h1>
+<p>Modules containing official evaluators of various
+tasks for which we build models.</p>
+<span class="target" id="module-allennlp.tools"></span><span class="target" id="module-allennlp.tools.drop_eval"></span><dl class="function">
+<dt id="allennlp.tools.drop_eval.answer_json_to_strings">
+<code class="sig-prename descclassname">allennlp.tools.drop_eval.</code><code class="sig-name descname">answer_json_to_strings</code><span class="sig-paren">(</span><em class="sig-param">answer: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Tuple[Tuple[str, ...], str]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/drop_eval.py#L143-L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.drop_eval.answer_json_to_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes an answer JSON blob from the DROP data release and converts it into strings used for
+evaluation.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.drop_eval.evaluate_json">
+<code class="sig-prename descclassname">allennlp.tools.drop_eval.</code><code class="sig-name descname">evaluate_json</code><span class="sig-paren">(</span><em class="sig-param">annotations: Dict[str, Any], predicted_answers: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/drop_eval.py#L160-L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.drop_eval.evaluate_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes gold annotations and predicted answers and  evaluates the predictions for each question
+in the gold annotations.  Both JSON dictionaries must have query_id keys, which are used to
+match predictions to gold annotations (note that these are somewhat deep in the JSON for the
+gold annotations, but must be top-level keys in the predicted answers).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">annotations</span></code> are assumed to have the format of the dev set in the DROP data release.
+The <code class="docutils literal notranslate"><span class="pre">predicted_answers</span></code> JSON must be a dictionary keyed by query id, where the value is a string
+(or list of strings) that is the answer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.drop_eval.evaluate_prediction_file">
+<code class="sig-prename descclassname">allennlp.tools.drop_eval.</code><code class="sig-name descname">evaluate_prediction_file</code><span class="sig-paren">(</span><em class="sig-param">prediction_path: str</em>, <em class="sig-param">gold_path: str</em>, <em class="sig-param">output_path: Union[str</em>, <em class="sig-param">NoneType] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/drop_eval.py#L222-L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.drop_eval.evaluate_prediction_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a prediction file and a gold file and evaluates the predictions for each question in the
+gold file.  Both files must be json formatted and must have query_id keys, which are used to
+match predictions to gold annotations.  The gold file is assumed to have the format of the dev
+set in the DROP data release.  The prediction file must be a JSON dictionary keyed by query id,
+where the value is either a JSON dictionary with an “answer” key, or just a string (or list of
+strings) that is the answer. Writes a json with global_em and global_f1 metrics to file at
+the specified output path, unless None is passed as output path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.drop_eval.get_metrics">
+<code class="sig-prename descclassname">allennlp.tools.drop_eval.</code><code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">predicted: Union[str, List[str], Tuple[str, ...]], gold: Union[str, List[str], Tuple[str, ...]]</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/drop_eval.py#L120-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.drop_eval.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a predicted answer and a gold answer (that are both either a string or a list of
+strings), and returns exact match and the DROP F1 metric for the prediction.  If you are
+writing a script for evaluating objects in memory (say, the output of predictions during
+validation, or while training), this is the function you want to call, after using
+<a class="reference internal" href="#allennlp.tools.drop_eval.answer_json_to_strings" title="allennlp.tools.drop_eval.answer_json_to_strings"><code class="xref py py-func docutils literal notranslate"><span class="pre">answer_json_to_strings()</span></code></a> when reading the gold answer from the released data file.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.tools.quoref_eval"></span><p>This evaluation script relies heavily on the one for DROP (<code class="docutils literal notranslate"><span class="pre">allennlp/tools/drop_eval.py</span></code>). We need a separate
+script for Quoref only because the data formats are slightly different.</p>
+<dl class="function">
+<dt id="allennlp.tools.quoref_eval.evaluate_json">
+<code class="sig-prename descclassname">allennlp.tools.quoref_eval.</code><code class="sig-name descname">evaluate_json</code><span class="sig-paren">(</span><em class="sig-param">annotations: Dict[str, Any], predicted_answers: Dict[str, Any]</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/quoref_eval.py#L27-L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.quoref_eval.evaluate_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes gold annotations and predicted answers and  evaluates the predictions for each question
+in the gold annotations.  Both JSON dictionaries must have query_id keys, which are used to
+match predictions to gold annotations.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">predicted_answers</span></code> JSON must be a dictionary keyed by query id, where the value is a
+list of strings (or just one string) that is the answer.
+The <code class="docutils literal notranslate"><span class="pre">annotations</span></code> are assumed to have either the format of the dev set in the Quoref data release, or the
+same format as the predicted answers file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.quoref_eval.evaluate_prediction_file">
+<code class="sig-prename descclassname">allennlp.tools.quoref_eval.</code><code class="sig-name descname">evaluate_prediction_file</code><span class="sig-paren">(</span><em class="sig-param">prediction_path: str</em>, <em class="sig-param">gold_path: str</em>, <em class="sig-param">output_path: Union[str</em>, <em class="sig-param">NoneType] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/quoref_eval.py#L70-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.quoref_eval.evaluate_prediction_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a prediction file and a gold file and evaluates the predictions for each question in the gold file.  Both
+files must be json formatted and must have query_id keys, which are used to match predictions to gold
+annotations. Writes a json with global_em and global_f1 metrics to file at the specified output
+path, unless None is passed as output path.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.tools.squad_eval"></span><p>Official evaluation script for v1.1 of the SQuAD dataset.</p>
+<dl class="function">
+<dt id="allennlp.tools.squad_eval.evaluate">
+<code class="sig-prename descclassname">allennlp.tools.squad_eval.</code><code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">predictions</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/squad_eval.py#L55-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.squad_eval.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.squad_eval.exact_match_score">
+<code class="sig-prename descclassname">allennlp.tools.squad_eval.</code><code class="sig-name descname">exact_match_score</code><span class="sig-paren">(</span><em class="sig-param">prediction</em>, <em class="sig-param">ground_truth</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/squad_eval.py#L43-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.squad_eval.exact_match_score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.squad_eval.f1_score">
+<code class="sig-prename descclassname">allennlp.tools.squad_eval.</code><code class="sig-name descname">f1_score</code><span class="sig-paren">(</span><em class="sig-param">prediction</em>, <em class="sig-param">ground_truth</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/squad_eval.py#L30-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.squad_eval.f1_score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.squad_eval.metric_max_over_ground_truths">
+<code class="sig-prename descclassname">allennlp.tools.squad_eval.</code><code class="sig-name descname">metric_max_over_ground_truths</code><span class="sig-paren">(</span><em class="sig-param">metric_fn</em>, <em class="sig-param">prediction</em>, <em class="sig-param">ground_truths</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/squad_eval.py#L47-L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.squad_eval.metric_max_over_ground_truths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.squad_eval.normalize_answer">
+<code class="sig-prename descclassname">allennlp.tools.squad_eval.</code><code class="sig-name descname">normalize_answer</code><span class="sig-paren">(</span><em class="sig-param">s</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/squad_eval.py#L12-L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.squad_eval.normalize_answer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lower text and remove punctuation, articles and extra whitespace.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.tools.wikitables_evaluator"></span><p>This is the official evaluator taken from the original dataset. I made minimal changes to make it
+Python 3 compatible, and conform to our style guidelines.</p>
+<dl class="class">
+<dt id="allennlp.tools.wikitables_evaluator.DateValue">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">DateValue</code><span class="sig-paren">(</span><em class="sig-param">year</em>, <em class="sig-param">month</em>, <em class="sig-param">day</em>, <em class="sig-param">original_string=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L186-L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.DateValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.tools.wikitables_evaluator.Value" title="allennlp.tools.wikitables_evaluator.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.tools.wikitables_evaluator.Value</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.DateValue.match">
+<code class="sig-name descname">match</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L221-L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.DateValue.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the value matches the other value.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other (Value)</p>
+</dd>
+<dt>Returns:</dt><dd><p>a boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.DateValue.parse">
+<em class="property">static </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L229-L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.DateValue.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to parse into a date.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>tuple (year, month, date) if successful; otherwise None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.DateValue.ymd">
+<em class="property">property </em><code class="sig-name descname">ymd</code><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.DateValue.ymd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.tools.wikitables_evaluator.NumberValue">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">NumberValue</code><span class="sig-paren">(</span><em class="sig-param">amount</em>, <em class="sig-param">original_string=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L132-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.NumberValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.tools.wikitables_evaluator.Value" title="allennlp.tools.wikitables_evaluator.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.tools.wikitables_evaluator.Value</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.NumberValue.amount">
+<em class="property">property </em><code class="sig-name descname">amount</code><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.NumberValue.amount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.NumberValue.match">
+<code class="sig-name descname">match</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L160-L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.NumberValue.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the value matches the other value.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other (Value)</p>
+</dd>
+<dt>Returns:</dt><dd><p>a boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.NumberValue.parse">
+<em class="property">static </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L168-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.NumberValue.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to parse into a number.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>the number (int or float) if successful; otherwise None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.tools.wikitables_evaluator.StringValue">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">StringValue</code><span class="sig-paren">(</span><em class="sig-param">content</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L111-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.StringValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.tools.wikitables_evaluator.Value" title="allennlp.tools.wikitables_evaluator.Value"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.tools.wikitables_evaluator.Value</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.StringValue.match">
+<code class="sig-name descname">match</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L127-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.StringValue.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the value matches the other value.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other (Value)</p>
+</dd>
+<dt>Returns:</dt><dd><p>a boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.tools.wikitables_evaluator.Value">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">Value</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L89-L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.Value.match">
+<em class="property">abstract </em><code class="sig-name descname">match</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L95-L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.Value.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the value matches the other value.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other (Value)</p>
+</dd>
+<dt>Returns:</dt><dd><p>a boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.tools.wikitables_evaluator.Value.normalized">
+<em class="property">property </em><code class="sig-name descname">normalized</code><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.Value.normalized" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.check_denotation">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">check_denotation</code><span class="sig-paren">(</span><em class="sig-param">target_values</em>, <em class="sig-param">predicted_values</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L301-L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.check_denotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the predicted denotation is correct.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>target_values (list[Value])
+predicted_values (list[Value])</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.main">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L351-L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.normalize">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">normalize</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L61-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.normalize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.to_value">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">to_value</code><span class="sig-paren">(</span><em class="sig-param">original_string</em>, <em class="sig-param">corenlp_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L252-L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.to_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the string to Value object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>original_string (basestring): Original string
+corenlp_value (basestring): Optional value returned from CoreNLP</p>
+</dd>
+<dt>Returns:</dt><dd><p>Value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.to_value_list">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">to_value_list</code><span class="sig-paren">(</span><em class="sig-param">original_strings</em>, <em class="sig-param">corenlp_values=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L280-L296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.to_value_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a list of strings to a list of Values</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>original_strings (list[basestring])
+corenlp_values (list[basestring or None])</p>
+</dd>
+<dt>Returns:</dt><dd><p>list[Value]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.tsv_unescape">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">tsv_unescape</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L322-L338"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.tsv_unescape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unescape strings in the TSV file.
+Escaped characters include:
+- newline (0x10) -&gt; backslash + n
+- vertical bar (0x7C) -&gt; backslash + p
+- backslash (0x5C) -&gt; backslash + backslash</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code></span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">str</span></code></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.tools.wikitables_evaluator.tsv_unescape_list">
+<code class="sig-prename descclassname">allennlp.tools.wikitables_evaluator.</code><code class="sig-name descname">tsv_unescape_list</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/wikitables_evaluator.py#L340-L349"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.wikitables_evaluator.tsv_unescape_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unescape a list in the TSV file.
+List items are joined with vertical bars (0x5C)</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x (str or unicode)</p>
+</dd>
+<dt>Returns:</dt><dd><p>a list of unicodes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-allennlp.tools.archive_surgery"></span><p>Helper script for modifying config.json files that are locked inside
+model.tar.gz archives. This is useful if you need to rename things or
+add or remove values, usually because of changes to the library.</p>
+<p>This script will untar the archive to a temp directory, launch an editor
+to modify the config.json, and then re-tar everything to a new archive.
+If your $EDITOR environment variable is not set, you’ll have to explicitly
+specify which editor to use.</p>
+<dl class="function">
+<dt id="allennlp.tools.archive_surgery.main">
+<code class="sig-prename descclassname">allennlp.tools.archive_surgery.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/archive_surgery.py#L29-L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.archive_surgery.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-allennlp.tools.create_elmo_embeddings_from_vocab"></span><dl class="function">
+<dt id="allennlp.tools.create_elmo_embeddings_from_vocab.main">
+<code class="sig-prename descclassname">allennlp.tools.create_elmo_embeddings_from_vocab.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">vocab_path: str</em>, <em class="sig-param">elmo_config_path: str</em>, <em class="sig-param">elmo_weights_path: str</em>, <em class="sig-param">output_dir: str</em>, <em class="sig-param">batch_size: int</em>, <em class="sig-param">device: int</em>, <em class="sig-param">use_custom_oov_token: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/create_elmo_embeddings_from_vocab.py#L15-L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.create_elmo_embeddings_from_vocab.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates ELMo word representations from a vocabulary file. These
+word representations are _independent_ - they are the result of running
+the CNN and Highway layers of the ELMo model, but not the Bidirectional LSTM.
+ELMo requires 2 additional tokens: &lt;S&gt; and &lt;/S&gt;. The first token
+in this file is assumed to be an unknown token.</p>
+<p>This script produces two artifacts: A new vocabulary file
+with the &lt;S&gt; and &lt;/S&gt; tokens inserted and a glove formatted embedding
+file containing word : vector pairs, one per line, with all values
+separated by a space.</p>
+</dd></dl>
+
+<span class="target" id="module-allennlp.tools.inspect_cache"></span><dl class="function">
+<dt id="allennlp.tools.inspect_cache.main">
+<code class="sig-prename descclassname">allennlp.tools.inspect_cache.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/tools/inspect_cache.py#L7-L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.tools.inspect_cache.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.training.html" class="btn btn-neutral float-right" title="allennlp.training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.state_machines.transition_functions.html" class="btn btn-neutral float-left" title="allennlp.state_machines.transition_functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

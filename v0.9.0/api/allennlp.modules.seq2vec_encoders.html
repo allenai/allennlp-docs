@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.modules.seq2vec_encoders &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.modules.span_extractors" href="allennlp.modules.span_extractors.html" />
+    <link rel="prev" title="allennlp.modules.seq2seq_decoders" href="allennlp.modules.seq2seq_decoders.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
+        
+      <li>allennlp.modules.seq2vec_encoders</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.modules.seq2vec_encoders.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.modules.seq2vec_encoders">
+<span id="allennlp-modules-seq2vec-encoders"></span><h1>allennlp.modules.seq2vec_encoders<a class="headerlink" href="#module-allennlp.modules.seq2vec_encoders" title="Permalink to this headline">¶</a></h1>
+<p>Modules that transform a sequence of input vectors
+into a single output vector.
+Some are just basic wrappers around existing PyTorch modules,
+others are AllenNLP modules.</p>
+<p>The available Seq2Vec encoders are</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pytorch.org/docs/master/nn.html#torch.nn.GRU">“gru”</a></p></li>
+<li><p><a class="reference external" href="https://pytorch.org/docs/master/nn.html#torch.nn.LSTM">“lstm”</a></p></li>
+<li><p><a class="reference external" href="https://pytorch.org/docs/master/nn.html#torch.nn.RNN">“rnn”</a></p></li>
+<li><p><a class="reference internal" href="#allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder" title="allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">&quot;cnn&quot;</span></code></a></p></li>
+<li><p><a class="reference internal" href="allennlp.modules.augmented_lstm.html#allennlp.modules.augmented_lstm.AugmentedLstm" title="allennlp.modules.augmented_lstm.AugmentedLstm"><code class="xref py py-class docutils literal notranslate"><span class="pre">&quot;augmented_lstm&quot;</span></code></a></p></li>
+<li><p><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html#allennlp.modules.stacked_alternating_lstm.StackedAlternatingLstm" title="allennlp.modules.stacked_alternating_lstm.StackedAlternatingLstm"><code class="xref py py-class docutils literal notranslate"><span class="pre">&quot;alternating_lstm&quot;</span></code></a></p></li>
+<li><p><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html#allennlp.modules.stacked_bidirectional_lstm.StackedBidirectionalLstm" title="allennlp.modules.stacked_bidirectional_lstm.StackedBidirectionalLstm"><code class="xref py py-class docutils literal notranslate"><span class="pre">&quot;stacked_bidirectional_lstm&quot;</span></code></a></p></li>
+</ul>
+<span class="target" id="module-allennlp.modules.seq2vec_encoders.bert_pooler"></span><dl class="class">
+<dt id="allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.seq2vec_encoders.bert_pooler.</code><code class="sig-name descname">BertPooler</code><span class="sig-paren">(</span><em class="sig-param">pretrained_model: Union[str, pytorch_pretrained_bert.modeling.BertModel], requires_grad: bool = True, dropout: float = 0.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/bert_pooler.py#L14-L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></a></p>
+<p>The pooling layer at the end of the BERT model. This returns an embedding for the
+[CLS] token, after passing it through a non-linear tanh activation; the non-linear layer
+is also part of the BERT model. If you want to use the pretrained BERT model
+to build a classifier and you want to use the AllenNLP token-indexer -&gt;
+token-embedder -&gt; seq2vec encoder setup, this is the Seq2VecEncoder to use.
+(For example, if you want to experiment with other embedding / encoding combinations.)</p>
+<p>If you just want to train a BERT classifier, it’s simpler to just use the
+<code class="docutils literal notranslate"><span class="pre">BertForClassification</span></code> model.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>pretrained_model</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Union[str,</span> <span class="pre">BertModel]</span></code></span></dt><dd><p>The pretrained BERT model to use. If this is a string,
+we will call <code class="docutils literal notranslate"><span class="pre">BertModel.from_pretrained(pretrained_model)</span></code>
+and use that.</p>
+</dd>
+<dt><strong>requires_grad</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional, (default = True)</span></dt><dd><p>If True, the weights of the pooler will be updated during training.
+Otherwise they will not.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional, (default = 0.0)</span></dt><dd><p>Amount of dropout to apply after pooling</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tokens: torch.Tensor</em>, <em class="sig-param">mask: torch.Tensor = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/bert_pooler.py#L64-L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler.get_input_dim">
+<code class="sig-name descname">get_input_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/bert_pooler.py#L56-L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector input for each element in the sequence input
+to a <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
+last element of that shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/bert_pooler.py#L60-L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.bert_pooler.BertPooler.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the final vector output by this <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
+the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.seq2vec_encoders.cnn_encoder"></span><dl class="class">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.seq2vec_encoders.cnn_encoder.</code><code class="sig-name descname">CnnEncoder</code><span class="sig-paren">(</span><em class="sig-param">embedding_dim: int</em>, <em class="sig-param">num_filters: int</em>, <em class="sig-param">ngram_filter_sizes: Tuple[int</em>, <em class="sig-param">...] = (2</em>, <em class="sig-param">3</em>, <em class="sig-param">4</em>, <em class="sig-param">5)</em>, <em class="sig-param">conv_layer_activation: allennlp.nn.activations.Activation = None</em>, <em class="sig-param">output_dim: Optional[int] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_encoder.py#L12-L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">CnnEncoder</span></code> is a combination of multiple convolution layers and max pooling layers.  As a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>, the input to this module is of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_tokens,</span>
+<span class="pre">input_dim)</span></code>, and the output is of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">output_dim)</span></code>.</p>
+<p>The CNN has one convolution layer for each ngram filter size. Each convolution operation gives
+out a vector of size num_filters. The number of times a convolution layer will be used
+is <code class="docutils literal notranslate"><span class="pre">num_tokens</span> <span class="pre">-</span> <span class="pre">ngram_size</span> <span class="pre">+</span> <span class="pre">1</span></code>. The corresponding maxpooling layer aggregates all these
+outputs from the convolution layer and outputs the max.</p>
+<p>This operation is repeated for every ngram size passed, and consequently the dimensionality of
+the output after maxpooling is <code class="docutils literal notranslate"><span class="pre">len(ngram_filter_sizes)</span> <span class="pre">*</span> <span class="pre">num_filters</span></code>.  This then gets
+(optionally) projected down to a lower dimensional output, specified by <code class="docutils literal notranslate"><span class="pre">output_dim</span></code>.</p>
+<p>We then use a fully connected layer to project in back to the desired output_dim.  For more
+details, refer to “A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural
+Networks for Sentence Classification”, Zhang and Wallace 2016, particularly Figure 1.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>embedding_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>This is the input dimension to the encoder.  We need this because we can’t do shape
+inference in pytorch, and we need to know what size filters to construct in the CNN.</p>
+</dd>
+<dt><strong>num_filters: ``int``</strong></dt><dd><p>This is the output dim for each convolutional layer, which is the number of “filters”
+learned by that layer.</p>
+</dd>
+<dt><strong>ngram_filter_sizes: ``Tuple[int]``, optional (default=``(2, 3, 4, 5)``)</strong></dt><dd><p>This specifies both the number of convolutional layers we will create and their sizes.  The
+default of <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5)</span></code> will have four convolutional layers, corresponding to encoding
+ngrams of size 2 to 5 with some number of filters.</p>
+</dd>
+<dt><strong>conv_layer_activation: ``Activation``, optional (default=``torch.nn.ReLU``)</strong></dt><dd><p>Activation to use after the convolution layers.</p>
+</dd>
+<dt><strong>output_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Optional[int]</span></code>, optional (default=``None``)</span></dt><dd><p>After doing convolutions and pooling, we’ll project the collected features into a vector of
+this size.  If this value is <code class="docutils literal notranslate"><span class="pre">None</span></code>, we will just return the result of the max pooling,
+giving an output of shape <code class="docutils literal notranslate"><span class="pre">len(ngram_filter_sizes)</span> <span class="pre">*</span> <span class="pre">num_filters</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tokens: torch.Tensor</em>, <em class="sig-param">mask: torch.Tensor</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_encoder.py#L85-L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder.get_input_dim">
+<code class="sig-name descname">get_input_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_encoder.py#L77-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector input for each element in the sequence input
+to a <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
+last element of that shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_encoder.py#L81-L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_encoder.CnnEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the final vector output by this <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
+the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper"></span><dl class="class">
+<dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.</code><code class="sig-name descname">PytorchSeq2VecWrapper</code><span class="sig-paren">(</span><em class="sig-param">module: torch.nn.modules.rnn.RNNBase</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L7-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></a></p>
+<p>Pytorch’s RNNs have two outputs: the hidden state for every time step, and the hidden state at
+the last time step for every layer.  We just want the second one as a single output.  This
+wrapper pulls out that output, and adds a <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim" title="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_output_dim()</span></code></a> method, which is useful if you
+want to, e.g., define a linear + softmax layer on top of this to get some distribution over a
+set of labels.  The linear layer needs to know its input dimension before it is called, and you
+can get that from <code class="docutils literal notranslate"><span class="pre">get_output_dim</span></code>.</p>
+<p>Also, there are lots of ways you could imagine going from an RNN hidden state at every
+timestep to a single vector - you could take the last vector at all layers in the stack, do
+some kind of pooling, take the last vector of the top layer in a stack, or many other  options.
+We just take the final hidden state vector, or in the case of a bidirectional RNN cell, we
+concatenate the forward and backward final states together. TODO(mattg): allow for other ways
+of wrapping RNNs.</p>
+<p>In order to be wrapped with this wrapper, a class must have the following members:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">self.input_size:</span> <span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.hidden_size:</span> <span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">forward(inputs:</span> <span class="pre">PackedSequence,</span> <span class="pre">hidden_state:</span> <span class="pre">torch.tensor)</span> <span class="pre">-&gt;</span>
+<span class="pre">Tuple[PackedSequence,</span> <span class="pre">torch.Tensor]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.bidirectional:</span> <span class="pre">bool</span></code> (optional)</p></li>
+</ul>
+</div></blockquote>
+<p>This is what pytorch’s RNN’s look like - just make sure your class looks like those, and it
+should work.</p>
+<p>Note that we <em>require</em> you to pass sequence lengths when you call this module, to avoid subtle
+bugs around masking.  If you already have a <code class="docutils literal notranslate"><span class="pre">PackedSequence</span></code> you can pass <code class="docutils literal notranslate"><span class="pre">None</span></code> as the
+second parameter.</p>
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em>, <em class="sig-param">mask: torch.Tensor</em>, <em class="sig-param">hidden_state: torch.Tensor = None</em><span class="sig-paren">)</span> &#x2192; torch.Tensor<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L58-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_input_dim">
+<code class="sig-name descname">get_input_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L48-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector input for each element in the sequence input
+to a <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
+last element of that shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L51-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the final vector output by this <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
+the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.seq2vec_encoders.seq2vec_encoder"></span><dl class="class">
+<dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.seq2vec_encoders.seq2vec_encoder.</code><code class="sig-name descname">Seq2VecEncoder</code><span class="sig-paren">(</span><em class="sig-param">stateful: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L5-L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.encoder_base._EncoderBase</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code> is a <code class="docutils literal notranslate"><span class="pre">Module</span></code> that takes as input a sequence of vectors and returns a
+single vector.  Input shape: <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">input_dim)</span></code>; output shape:
+<code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">output_dim)</span></code>.</p>
+<p>We add two methods to the basic <code class="docutils literal notranslate"><span class="pre">Module</span></code> API: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_input_dim()</span></code></a> and <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_output_dim()</span></code></a>.
+You might need this if you want to construct a <code class="docutils literal notranslate"><span class="pre">Linear</span></code> layer using the output of this encoder,
+or to raise sensible errors for mis-matching input dimensions.</p>
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim">
+<code class="sig-name descname">get_input_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L15-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector input for each element in the sequence input
+to a <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
+last element of that shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L23-L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the final vector output by this <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
+the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.seq2vec_encoders.boe_encoder"></span><dl class="class">
+<dt id="allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.seq2vec_encoders.boe_encoder.</code><code class="sig-name descname">BagOfEmbeddingsEncoder</code><span class="sig-paren">(</span><em class="sig-param">embedding_dim: int</em>, <em class="sig-param">averaged: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/boe_encoder.py#L10-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">BagOfEmbeddingsEncoder</span></code> is a simple <code class="xref py py-class docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code> which simply sums the embeddings
+of a sequence across the time dimension. The input to this module is of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_tokens,</span>
+<span class="pre">embedding_dim)</span></code>, and the output is of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">embedding_dim)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>embedding_dim: ``int``</strong></dt><dd><p>This is the input dimension to the encoder.</p>
+</dd>
+<dt><strong>averaged: ``bool``, optional (default=``False``)</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, this module will average the embeddings across time, rather than simply summing
+(ie. we will divide the summed embeddings by the length of the sentence).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">tokens: torch.Tensor</em>, <em class="sig-param">mask: torch.Tensor = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/boe_encoder.py#L39-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder.get_input_dim">
+<code class="sig-name descname">get_input_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/boe_encoder.py#L31-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector input for each element in the sequence input
+to a <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
+last element of that shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/boe_encoder.py#L35-L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.boe_encoder.BagOfEmbeddingsEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the final vector output by this <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
+the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.seq2vec_encoders.cnn_highway_encoder"></span><dl class="class">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.modules.seq2vec_encoders.cnn_highway_encoder.</code><code class="sig-name descname">CnnHighwayEncoder</code><span class="sig-paren">(</span><em class="sig-param">embedding_dim: int, filters: Sequence[Sequence[int]], num_highway: int, projection_dim: int, activation: str = 'relu', projection_location: str = 'after_highway', do_layer_norm: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_highway_encoder.py#L14-L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></a></p>
+<p>The character CNN + highway encoder from Kim et al “Character aware neural language models”
+<a class="reference external" href="https://arxiv.org/abs/1508.06615">https://arxiv.org/abs/1508.06615</a>
+with an optional projection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>embedding_dim: int</strong></dt><dd><p>The dimension of the initial character embedding.</p>
+</dd>
+<dt><strong>filters: ``Sequence[Sequence[int]]``</strong></dt><dd><p>A sequence of pairs (filter_width, num_filters).</p>
+</dd>
+<dt><strong>num_highway: int</strong></dt><dd><p>The number of highway layers.</p>
+</dd>
+<dt><strong>projection_dim: int</strong></dt><dd><p>The output dimension of the projection layer.</p>
+</dd>
+<dt><strong>activation: str, optional (default = ‘relu’)</strong></dt><dd><p>The activation function for the convolutional layers.</p>
+</dd>
+<dt><strong>projection_location: str, optional (default = ‘after_highway’)</strong></dt><dd><p>Where to apply the projection layer. Valid values are
+‘after_highway’, ‘after_cnn’, and None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">inputs: torch.Tensor</em>, <em class="sig-param">mask: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_highway_encoder.py#L98-L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute context insensitive token embeddings for ELMo representations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inputs:</strong></dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_characters,</span> <span class="pre">embedding_dim)</span></code>
+Character embeddings representing the current batch.</p>
+</dd>
+<dt><strong>mask:</strong></dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_characters)</span></code>
+Currently unused. The mask for characters is implicit. See TokenCharactersEncoder.forward.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">encoding</span></code>:</dt><dd><p>Shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">projection_dim)</span></code> tensor with context-insensitive token representations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder.get_input_dim">
+<code class="sig-name descname">get_input_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_highway_encoder.py#L149-L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector input for each element in the sequence input
+to a <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
+last element of that shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/cnn_highway_encoder.py#L152-L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.cnn_highway_encoder.CnnHighwayEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the final vector output by this <code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
+the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.modules.span_extractors.html" class="btn btn-neutral float-right" title="allennlp.modules.span_extractors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.modules.seq2seq_decoders.html" class="btn btn-neutral float-left" title="allennlp.modules.seq2seq_decoders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

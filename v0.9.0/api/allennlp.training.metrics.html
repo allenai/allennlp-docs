@@ -1,0 +1,1272 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.training.metrics &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.training.moving_average" href="allennlp.training.moving_average.html" />
+    <link rel="prev" title="allennlp.training.metric_tracker" href="allennlp.training.metric_tracker.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.wikitables.html">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.training.html">allennlp.training</a> &raquo;</li>
+        
+      <li>allennlp.training.metrics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.training.metrics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.training.metrics">
+<span id="allennlp-training-metrics"></span><h1>allennlp.training.metrics<a class="headerlink" href="#module-allennlp.training.metrics" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></a> is some quantity or quantities
+that can be accumulated during training or evaluation; for example,
+accuracy or F1 score.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#metric"><span class="std std-ref">Metric</span></a></p></li>
+<li><p><a class="reference internal" href="#attachment-scores"><span class="std std-ref">AttachmentScores</span></a></p></li>
+<li><p><a class="reference internal" href="#auc"><span class="std std-ref">AUC</span></a></p></li>
+<li><p><a class="reference internal" href="#average"><span class="std std-ref">Average</span></a></p></li>
+<li><p><a class="reference internal" href="#boolean-accuracy"><span class="std std-ref">BooleanAccuracy</span></a></p></li>
+<li><p><a class="reference internal" href="#categorical-accuracy"><span class="std std-ref">CategoricalAccuracy</span></a></p></li>
+<li><p><a class="reference internal" href="#conll-coref-scores"><span class="std std-ref">ConllCorefScores</span></a></p></li>
+<li><p><a class="reference internal" href="#covariance"><span class="std std-ref">Covariance</span></a></p></li>
+<li><p><a class="reference internal" href="#drop-em-and-f1"><span class="std std-ref">DropEmAndF1</span></a></p></li>
+<li><p><a class="reference internal" href="#entropy"><span class="std std-ref">Entropy</span></a></p></li>
+<li><p><a class="reference internal" href="#evalb"><span class="std std-ref">EvalbBracketingScorer</span></a></p></li>
+<li><p><a class="reference internal" href="#fbeta-measure"><span class="std std-ref">FBetaMeasure</span></a></p></li>
+<li><p><a class="reference internal" href="#f1-measure"><span class="std std-ref">F1Measure</span></a></p></li>
+<li><p><a class="reference internal" href="#mean-absolute-error"><span class="std std-ref">MeanAbsoluteError</span></a></p></li>
+<li><p><a class="reference internal" href="#mention-recall"><span class="std std-ref">MentionRecall</span></a></p></li>
+<li><p><a class="reference internal" href="#pearson-correlation"><span class="std std-ref">PearsonCorrelation</span></a></p></li>
+<li><p><a class="reference internal" href="#sequence-accuracy"><span class="std std-ref">SequenceAccuracy</span></a></p></li>
+<li><p><a class="reference internal" href="#span-based-f1-measure"><span class="std std-ref">SpanBasedF1Measure</span></a></p></li>
+<li><p><a class="reference internal" href="#squad-em-and-f1"><span class="std std-ref">SquadEmAndF1</span></a></p></li>
+<li><p><a class="reference internal" href="#srl-eval"><span class="std std-ref">SrlEvalScorer</span></a></p></li>
+<li><p><a class="reference internal" href="#unigram-recall"><span class="std std-ref">UnigramRecall</span></a></p></li>
+</ul>
+<span class="target" id="module-allennlp.training.metrics.metric"><span id="metric"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.metric.Metric">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.metric.</code><code class="sig-name descname">Metric</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/metric.py#L7-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.metric.Metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>A very general abstract class representing a metric which can be
+accumulated.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.metric.Metric.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool</em><span class="sig-paren">)</span> &#x2192; Union[float, Tuple[float, ...], Dict[str, float], Dict[str, List[float]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/metric.py#L29-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.metric.Metric.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal notranslate"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.metric.Metric.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/metric.py#L35-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.metric.Metric.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.metric.Metric.unwrap_to_tensors">
+<em class="property">static </em><code class="sig-name descname">unwrap_to_tensors</code><span class="sig-paren">(</span><em class="sig-param">*tensors: torch.Tensor</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/metric.py#L41-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.metric.Metric.unwrap_to_tensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you actually passed gradient-tracking Tensors to a Metric, there will be
+a huge memory leak, because it will prevent garbage collection for the computation
+graph. This method ensures that you’re using tensors directly and that they are on
+the CPU.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.attachment_scores"><span id="attachment-scores"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.attachment_scores.AttachmentScores">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.attachment_scores.</code><code class="sig-name descname">AttachmentScores</code><span class="sig-paren">(</span><em class="sig-param">ignore_classes: List[int] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/attachment_scores.py#L10-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.attachment_scores.AttachmentScores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Computes labeled and unlabeled attachment scores for a
+dependency parse, as well as sentence level exact match
+for both labeled and unlabeled trees. Note that the input
+to this metric is the sampled predictions, not the distribution
+itself.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ignore_classes</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[int]</span></code>, optional (default = None)</span></dt><dd><p>A list of label ids to ignore when computing metrics.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.training.metrics.attachment_scores.AttachmentScores.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/attachment_scores.py#L82-L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.attachment_scores.AttachmentScores.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated metrics as a dictionary.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.attachment_scores.AttachmentScores.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/attachment_scores.py#L107-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.attachment_scores.AttachmentScores.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.auc"><span id="auc"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.auc.Auc">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.auc.</code><code class="sig-name descname">Auc</code><span class="sig-paren">(</span><em class="sig-param">positive_label=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/auc.py#L12-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.auc.Auc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>The AUC Metric measures the area under the receiver-operating characteristic
+(ROC) curve for binary classification problems.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.auc.Auc.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/auc.py#L70-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.auc.Auc.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal notranslate"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.auc.Auc.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/auc.py#L81-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.auc.Auc.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.average"><span id="average"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.average.Average">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.average.</code><code class="sig-name descname">Average</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/average.py#L7-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.average.Average" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This <code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> breaks with the typical <code class="docutils literal notranslate"><span class="pre">Metric</span></code> API and just stores values that were
+computed in some fashion outside of a <code class="docutils literal notranslate"><span class="pre">Metric</span></code>.  If you have some external code that computes
+the metric for you, for instance, you can use this to report the average result using our
+<code class="docutils literal notranslate"><span class="pre">Metric</span></code> API.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.average.Average.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/average.py#L29-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.average.Average.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The average of all values that were passed to <code class="docutils literal notranslate"><span class="pre">__call__</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.average.Average.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/average.py#L41-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.average.Average.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.boolean_accuracy"><span id="boolean-accuracy"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.boolean_accuracy.BooleanAccuracy">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.boolean_accuracy.</code><code class="sig-name descname">BooleanAccuracy</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/boolean_accuracy.py#L10-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.boolean_accuracy.BooleanAccuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Just checks batch-equality of two tensors and computes an accuracy metric based on that.
+That is, if your prediction has shape (batch_size, dim_1, …, dim_n), this metric considers that
+as a set of <cite>batch_size</cite> predictions and checks that each is <em>entirely</em> correct across the remaining dims.
+This means the denominator in the accuracy computation is <cite>batch_size</cite>, with the caveat that predictions
+that are totally masked are ignored (in which case the denominator is the number of predictions that have
+at least one unmasked element).</p>
+<p>This is similar to <code class="xref py py-class docutils literal notranslate"><span class="pre">CategoricalAccuracy</span></code>, if you’ve already done a <code class="docutils literal notranslate"><span class="pre">.max()</span></code> on your
+predictions.  If you have categorical output, though, you should typically just use
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CategoricalAccuracy</span></code>.  The reason you might want to use this instead is if you’ve done
+some kind of constrained inference and don’t have a prediction tensor that matches the API of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CategoricalAccuracy</span></code>, which assumes a final dimension of size <code class="docutils literal notranslate"><span class="pre">num_classes</span></code>.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.boolean_accuracy.BooleanAccuracy.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/boolean_accuracy.py#L81-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.boolean_accuracy.BooleanAccuracy.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated accuracy.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.boolean_accuracy.BooleanAccuracy.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/boolean_accuracy.py#L95-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.boolean_accuracy.BooleanAccuracy.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.bleu"><span id="bleu"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.bleu.BLEU">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.bleu.</code><code class="sig-name descname">BLEU</code><span class="sig-paren">(</span><em class="sig-param">ngram_weights: Iterable[float] = (0.25</em>, <em class="sig-param">0.25</em>, <em class="sig-param">0.25</em>, <em class="sig-param">0.25)</em>, <em class="sig-param">exclude_indices: Set[int] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/bleu.py#L12-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.bleu.BLEU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Bilingual Evaluation Understudy (BLEU).</p>
+<p>BLEU is a common metric used for evaluating the quality of machine translations
+against a set of reference translations. See <a class="reference external" href="https://www.semanticscholar.org/paper/8ff93cfd37dced279134c9d642337a2085b31f59/">Papineni et. al.,
+“BLEU: a method for automatic evaluation of machine translation”, 2002</a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ngram_weights</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Iterable[float]</span></code>, optional (default = (0.25, 0.25, 0.25, 0.25))</span></dt><dd><p>Weights to assign to scores for each ngram size.</p>
+</dd>
+<dt><strong>exclude_indices</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Set[int]</span></code>, optional (default = None)</span></dt><dd><p>Indices to exclude when calculating ngrams. This should usually include
+the indices of the start, end, and pad tokens.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>We chose to implement this from scratch instead of wrapping an existing implementation
+(such as <cite>nltk.translate.bleu_score</cite>) for a two reasons. First, so that we could
+pass tensors directly to this metric instead of first converting the tensors to lists of strings.
+And second, because functions like <cite>nltk.translate.bleu_score.corpus_bleu()</cite> are
+meant to be called once over the entire corpus, whereas it is more efficient
+in our use case to update the running precision counts every batch.</p>
+<p>This implementation only considers a reference set of size 1, i.e. a single
+gold target sequence for each predicted sequence.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.bleu.BLEU.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/bleu.py#L147-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.bleu.BLEU.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal notranslate"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.bleu.BLEU.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/bleu.py#L52-L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.bleu.BLEU.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.categorical_accuracy"><span id="categorical-accuracy"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.categorical_accuracy.CategoricalAccuracy">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.categorical_accuracy.</code><code class="sig-name descname">CategoricalAccuracy</code><span class="sig-paren">(</span><em class="sig-param">top_k: int = 1</em>, <em class="sig-param">tie_break: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/categorical_accuracy.py#L11-L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.categorical_accuracy.CategoricalAccuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Categorical Top-K accuracy. Assumes integer labels, with
+each item to be classified having a single correct class.
+Tie break enables equal distribution of scores among the
+classes with same maximum predicted scores.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.categorical_accuracy.CategoricalAccuracy.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/categorical_accuracy.py#L86-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.categorical_accuracy.CategoricalAccuracy.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated accuracy.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.categorical_accuracy.CategoricalAccuracy.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/categorical_accuracy.py#L100-L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.categorical_accuracy.CategoricalAccuracy.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.conll_coref_scores"><span id="conll-coref-scores"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.conll_coref_scores.</code><code class="sig-name descname">ConllCorefScores</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L12-L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_gold_clusters">
+<em class="property">static </em><code class="sig-name descname">get_gold_clusters</code><span class="sig-paren">(</span><em class="sig-param">gold_clusters</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L64-L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_gold_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L51-L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal notranslate"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_predicted_clusters">
+<em class="property">static </em><code class="sig-name descname">get_predicted_clusters</code><span class="sig-paren">(</span><em class="sig-param">top_spans: torch.Tensor</em>, <em class="sig-param">antecedent_indices: torch.Tensor</em>, <em class="sig-param">predicted_antecedents: torch.Tensor</em><span class="sig-paren">)</span> &#x2192; Tuple[List[Tuple[Tuple[int, int], ...]], Dict[Tuple[int, int], Tuple[Tuple[int, int], ...]]]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L73-L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_predicted_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L60-L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.conll_coref_scores.</code><code class="sig-name descname">Scorer</code><span class="sig-paren">(</span><em class="sig-param">metric</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L121-L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mostly borrowed from &lt;<a class="reference external" href="https://github.com/clarkkev/deep-coref/blob/master/evaluation.py">https://github.com/clarkkev/deep-coref/blob/master/evaluation.py</a>&gt;</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.b_cubed">
+<em class="property">static </em><code class="sig-name descname">b_cubed</code><span class="sig-paren">(</span><em class="sig-param">clusters</em>, <em class="sig-param">mention_to_gold</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L165-L185"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.b_cubed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Averaged per-mention precision and recall.
+&lt;<a class="reference external" href="https://pdfs.semanticscholar.org/cfe3/c24695f1c14b78a5b8e95bcbd1c666140fd1.pdf">https://pdfs.semanticscholar.org/cfe3/c24695f1c14b78a5b8e95bcbd1c666140fd1.pdf</a>&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.ceafe">
+<em class="property">static </em><code class="sig-name descname">ceafe</code><span class="sig-paren">(</span><em class="sig-param">clusters</em>, <em class="sig-param">gold_clusters</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L216-L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.ceafe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the  Constrained EntityAlignment F-Measure (CEAF) for evaluating coreference.
+Gold and predicted mentions are aligned into clusterings which maximise a metric - in
+this case, the F measure between gold and predicted clusters.</p>
+<p>&lt;<a class="reference external" href="https://www.semanticscholar.org/paper/On-Coreference-Resolution-Performance-Metrics-Luo/de133c1f22d0dfe12539e25dda70f28672459b99">https://www.semanticscholar.org/paper/On-Coreference-Resolution-Performance-Metrics-Luo/de133c1f22d0dfe12539e25dda70f28672459b99</a>&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_f1">
+<code class="sig-name descname">get_f1</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L143-L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_f1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_precision">
+<code class="sig-name descname">get_precision</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L156-L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_prf">
+<code class="sig-name descname">get_prf</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L162-L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_prf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_recall">
+<code class="sig-name descname">get_recall</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L150-L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_recall" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.muc">
+<em class="property">static </em><code class="sig-name descname">muc</code><span class="sig-paren">(</span><em class="sig-param">clusters</em>, <em class="sig-param">mention_to_gold</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L187-L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.muc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the mentions in each predicted cluster which need to be re-allocated in
+order for each predicted cluster to be contained by the respective gold cluster.
+&lt;<a class="reference external" href="https://aclweb.org/anthology/M/M95/M95-1005.pdf">https://aclweb.org/anthology/M/M95/M95-1005.pdf</a>&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.phi4">
+<em class="property">static </em><code class="sig-name descname">phi4</code><span class="sig-paren">(</span><em class="sig-param">gold_clustering</em>, <em class="sig-param">predicted_clustering</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L207-L214"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.phi4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subroutine for ceafe. Computes the mention F measure between gold and
+predicted mentions in a cluster.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">predicted</em>, <em class="sig-param">gold</em>, <em class="sig-param">mention_to_predicted</em>, <em class="sig-param">mention_to_gold</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L132-L141"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.covariance"><span id="covariance"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.covariance.Covariance">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.covariance.</code><code class="sig-name descname">Covariance</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/covariance.py#L10-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.covariance.Covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This <code class="docutils literal notranslate"><span class="pre">Metric</span></code> calculates the unbiased sample covariance between two tensors.
+Each element in the two tensors is assumed to be a different observation of the
+variable (i.e., the input tensors are implicitly flattened into vectors and the
+covariance is calculated between the vectors).</p>
+<p>This implementation is mostly modeled after the streaming_covariance function in Tensorflow. See:
+<a class="reference external" href="https://github.com/tensorflow/tensorflow/blob/v1.10.1/tensorflow/contrib/metrics/python/ops/metric_ops.py#L3127">https://github.com/tensorflow/tensorflow/blob/v1.10.1/tensorflow/contrib/metrics/python/ops/metric_ops.py#L3127</a></p>
+<p>The following is copied from the Tensorflow documentation:</p>
+<p>The algorithm used for this online computation is described in
+<a class="reference external" href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Online">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Online</a> .
+Specifically, the formula used to combine two sample comoments is
+<cite>C_AB = C_A + C_B + (E[x_A] - E[x_B]) * (E[y_A] - E[y_B]) * n_A * n_B / n_AB</cite>
+The comoment for a single batch of data is simply <cite>sum((x - E[x]) * (y - E[y]))</cite>, optionally masked.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.covariance.Covariance.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/covariance.py#L94-L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.covariance.Covariance.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated covariance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.covariance.Covariance.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/covariance.py#L105-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.covariance.Covariance.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.drop_em_and_f1"><span id="drop-em-and-f1"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.drop_em_and_f1.DropEmAndF1">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.drop_em_and_f1.</code><code class="sig-name descname">DropEmAndF1</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/drop_em_and_f1.py#L12-L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.drop_em_and_f1.DropEmAndF1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This <code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> takes the best span string computed by a model, along with the answer
+strings labeled in the data, and computes exact match and F1 score using the official DROP
+evaluator (which has special handling for numbers and for questions with multiple answer spans,
+among other things).</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.drop_em_and_f1.DropEmAndF1.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/drop_em_and_f1.py#L47-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.drop_em_and_f1.DropEmAndF1.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Average exact match and F1 score (in that order) as computed by the official DROP script</dt><dd></dd>
+<dt>over all inputs.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.drop_em_and_f1.DropEmAndF1.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/drop_em_and_f1.py#L61-L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.drop_em_and_f1.DropEmAndF1.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.entropy"><span id="entropy"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.entropy.Entropy">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.entropy.</code><code class="sig-name descname">Entropy</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/entropy.py#L10-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.entropy.Entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.training.metrics.entropy.Entropy.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/entropy.py#L41-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.entropy.Entropy.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The scalar average entropy.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.entropy.Entropy.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/entropy.py#L53-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.entropy.Entropy.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.evalb_bracketing_scorer"><span id="evalb"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.evalb_bracketing_scorer.</code><code class="sig-name descname">EvalbBracketingScorer</code><span class="sig-paren">(</span><em class="sig-param">evalb_directory_path: str = '/Users/michael/hack/allenai/allennlp/allennlp/tools/EVALB'</em>, <em class="sig-param">evalb_param_filename: str = 'COLLINS.prm'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/evalb_bracketing_scorer.py#L20-L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This class uses the external EVALB software for computing a broad range of metrics
+on parse trees. Here, we use it to compute the Precision, Recall and F1 metrics.
+You can download the source for EVALB from here: &lt;<a class="reference external" href="https://nlp.cs.nyu.edu/evalb/">https://nlp.cs.nyu.edu/evalb/</a>&gt;.</p>
+<p>Note that this software is 20 years old. In order to compile it on modern hardware,
+you may need to remove an <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">&lt;malloc.h&gt;</span></code> statement in <code class="docutils literal notranslate"><span class="pre">evalb.c</span></code> before it
+will compile.</p>
+<p>AllenNLP contains the EVALB software, but you will need to compile it yourself
+before using it because the binary it generates is system dependent. To build it,
+run <code class="docutils literal notranslate"><span class="pre">make</span></code> inside the <code class="docutils literal notranslate"><span class="pre">allennlp/tools/EVALB</span></code> directory.</p>
+<p>Note that this metric reads and writes from disk quite a bit. You probably don’t
+want to include it in your training loop; instead, you should calculate this on
+a validation set only.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>evalb_directory_path</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, required.</span></dt><dd><p>The directory containing the EVALB executable.</p>
+</dd>
+<dt><strong>evalb_param_filename: ``str``, optional (default = “COLLINS.prm”)</strong></dt><dd><p>The relative name of the EVALB configuration file used when scoring the trees.
+By default, this uses the COLLINS.prm configuration file which comes with EVALB.
+This configuration ignores POS tags and some punctuation labels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.clean_evalb">
+<em class="property">static </em><code class="sig-name descname">clean_evalb</code><span class="sig-paren">(</span><em class="sig-param">evalb_directory_path: str = '/Users/michael/hack/allenai/allennlp/allennlp/tools/EVALB'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/evalb_bracketing_scorer.py#L137-L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.clean_evalb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.compile_evalb">
+<em class="property">static </em><code class="sig-name descname">compile_evalb</code><span class="sig-paren">(</span><em class="sig-param">evalb_directory_path: str = '/Users/michael/hack/allenai/allennlp/allennlp/tools/EVALB'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/evalb_bracketing_scorer.py#L132-L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.compile_evalb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/evalb_bracketing_scorer.py#L111-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The average precision, recall and f1.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/evalb_bracketing_scorer.py#L126-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.evalb_bracketing_scorer.EvalbBracketingScorer.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.fbeta_measure"><span id="fbeta-measure"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.fbeta_measure.FBetaMeasure">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.fbeta_measure.</code><code class="sig-name descname">FBetaMeasure</code><span class="sig-paren">(</span><em class="sig-param">beta: float = 1.0</em>, <em class="sig-param">average: str = None</em>, <em class="sig-param">labels: List[int] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/fbeta_measure.py#L11-L228"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.fbeta_measure.FBetaMeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Compute precision, recall, F-measure and support for each class.</p>
+<p>The precision is the ratio <code class="docutils literal notranslate"><span class="pre">tp</span> <span class="pre">/</span> <span class="pre">(tp</span> <span class="pre">+</span> <span class="pre">fp)</span></code> where <code class="docutils literal notranslate"><span class="pre">tp</span></code> is the number of
+true positives and <code class="docutils literal notranslate"><span class="pre">fp</span></code> the number of false positives. The precision is
+intuitively the ability of the classifier not to label as positive a sample
+that is negative.</p>
+<p>The recall is the ratio <code class="docutils literal notranslate"><span class="pre">tp</span> <span class="pre">/</span> <span class="pre">(tp</span> <span class="pre">+</span> <span class="pre">fn)</span></code> where <code class="docutils literal notranslate"><span class="pre">tp</span></code> is the number of
+true positives and <code class="docutils literal notranslate"><span class="pre">fn</span></code> the number of false negatives. The recall is
+intuitively the ability of the classifier to find all the positive samples.</p>
+<p>The F-beta score can be interpreted as a weighted harmonic mean of
+the precision and recall, where an F-beta score reaches its best
+value at 1 and worst score at 0.</p>
+<p>If we have precision and recall, the F-beta score is simply:
+<code class="docutils literal notranslate"><span class="pre">F-beta</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">beta</span> <span class="pre">**</span> <span class="pre">2)</span> <span class="pre">*</span> <span class="pre">precision</span> <span class="pre">*</span> <span class="pre">recall</span> <span class="pre">/</span> <span class="pre">(beta</span> <span class="pre">**</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">precision</span> <span class="pre">+</span> <span class="pre">recall)</span></code></p>
+<p>The F-beta score weights recall more than precision by a factor of
+<code class="docutils literal notranslate"><span class="pre">beta</span></code>. <code class="docutils literal notranslate"><span class="pre">beta</span> <span class="pre">==</span> <span class="pre">1.0</span></code> means recall and precision are equally important.</p>
+<p>The support is the number of occurrences of each class in <code class="docutils literal notranslate"><span class="pre">y_true</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>beta</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default = 1.0)</span></dt><dd><p>The strength of recall versus precision in the F-score.</p>
+</dd>
+<dt><strong>average</strong><span class="classifier">string, [None (default), ‘micro’, ‘macro’]</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the scores for each class are returned. Otherwise, this
+determines the type of averaging performed on the data:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'micro'</span></code>:</dt><dd><p>Calculate metrics globally by counting the total true positives,
+false negatives and false positives.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">'macro'</span></code>:</dt><dd><p>Calculate metrics for each label, and find their unweighted mean.
+This does not take label imbalance into account.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>labels: list, optional</strong></dt><dd><p>The set of labels to include and their order if <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">is</span> <span class="pre">None</span></code>.
+Labels present in the data can be excluded, for example to calculate a
+multi-class average ignoring a majority negative class. Labels not present
+in the data will result in 0 components in a macro average.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.training.metrics.fbeta_measure.FBetaMeasure.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/fbeta_measure.py#L155-L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.fbeta_measure.FBetaMeasure.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A tuple of the following metrics based on the accumulated count statistics:</dt><dd></dd>
+<dt><strong>precisions</strong><span class="classifier">List[float]</span></dt><dd></dd>
+<dt><strong>recalls</strong><span class="classifier">List[float]</span></dt><dd></dd>
+<dt><strong>f1-measures</strong><span class="classifier">List[float]</span></dt><dd></dd>
+<dt>If <code class="docutils literal notranslate"><span class="pre">self.average</span></code> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, you will get <code class="docutils literal notranslate"><span class="pre">float</span></code> instead of <code class="docutils literal notranslate"><span class="pre">List[float]</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.fbeta_measure.FBetaMeasure.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/fbeta_measure.py#L215-L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.fbeta_measure.FBetaMeasure.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.f1_measure"><span id="f1-measure"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.f1_measure.F1Measure">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.f1_measure.</code><code class="sig-name descname">F1Measure</code><span class="sig-paren">(</span><em class="sig-param">positive_label: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/f1_measure.py#L8-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.f1_measure.F1Measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.fbeta_measure.FBetaMeasure" title="allennlp.training.metrics.fbeta_measure.FBetaMeasure"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.fbeta_measure.FBetaMeasure</span></code></a></p>
+<p>Computes Precision, Recall and F1 with respect to a given <code class="docutils literal notranslate"><span class="pre">positive_label</span></code>.
+For example, for a BIO tagging scheme, you would pass the classification index of
+the tag you are interested in, resulting in the Precision, Recall and F1 score being
+calculated for this tag only.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.f1_measure.F1Measure.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/f1_measure.py#L20-L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.f1_measure.F1Measure.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A tuple of the following metrics based on the accumulated count statistics:</dt><dd></dd>
+<dt><strong>precision</strong><span class="classifier">float</span></dt><dd></dd>
+<dt><strong>recall</strong><span class="classifier">float</span></dt><dd></dd>
+<dt><strong>f1-measure</strong><span class="classifier">float</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.mean_absolute_error"><span id="mean-absolute-error"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.mean_absolute_error.MeanAbsoluteError">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.mean_absolute_error.</code><code class="sig-name descname">MeanAbsoluteError</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mean_absolute_error.py#L10-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mean_absolute_error.MeanAbsoluteError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This <code class="docutils literal notranslate"><span class="pre">Metric</span></code> calculates the mean absolute error (MAE) between two tensors.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.mean_absolute_error.MeanAbsoluteError.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mean_absolute_error.py#L42-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mean_absolute_error.MeanAbsoluteError.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated mean absolute error.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.mean_absolute_error.MeanAbsoluteError.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mean_absolute_error.py#L53-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mean_absolute_error.MeanAbsoluteError.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.mention_recall"><span id="mention-recall"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.mention_recall.MentionRecall">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.mention_recall.</code><code class="sig-name descname">MentionRecall</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mention_recall.py#L10-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mention_recall.MentionRecall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.training.metrics.mention_recall.MentionRecall.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mention_recall.py#L27-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mention_recall.MentionRecall.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal notranslate"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.mention_recall.MentionRecall.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mention_recall.py#L37-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mention_recall.MentionRecall.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.pearson_correlation"><span id="pearson-correlation"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.pearson_correlation.PearsonCorrelation">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.pearson_correlation.</code><code class="sig-name descname">PearsonCorrelation</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/pearson_correlation.py#L13-L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.pearson_correlation.PearsonCorrelation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This <code class="docutils literal notranslate"><span class="pre">Metric</span></code> calculates the sample Pearson correlation coefficient (r)
+between two tensors. Each element in the two tensors is assumed to be
+a different observation of the variable (i.e., the input tensors are
+implicitly flattened into vectors and the correlation is calculated
+between the vectors).</p>
+<p>This implementation is mostly modeled after the streaming_pearson_correlation function in Tensorflow. See
+<a class="reference external" href="https://github.com/tensorflow/tensorflow/blob/v1.10.1/tensorflow/contrib/metrics/python/ops/metric_ops.py#L3267">https://github.com/tensorflow/tensorflow/blob/v1.10.1/tensorflow/contrib/metrics/python/ops/metric_ops.py#L3267</a></p>
+<p>This metric delegates to the Covariance metric the tracking of three [co]variances:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">covariance(predictions,</span> <span class="pre">labels)</span></code>, i.e. covariance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">covariance(predictions,</span> <span class="pre">predictions)</span></code>, i.e. variance of <code class="docutils literal notranslate"><span class="pre">predictions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">covariance(labels,</span> <span class="pre">labels)</span></code>, i.e. variance of <code class="docutils literal notranslate"><span class="pre">labels</span></code></p></li>
+</ul>
+<p>If we have these values, the sample Pearson correlation coefficient is simply:</p>
+<p>r = covariance / (sqrt(predictions_variance) * sqrt(labels_variance))</p>
+<p>if predictions_variance or labels_variance is 0, r is 0</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.pearson_correlation.PearsonCorrelation.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/pearson_correlation.py#L60-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.pearson_correlation.PearsonCorrelation.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated sample Pearson correlation.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.pearson_correlation.PearsonCorrelation.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/pearson_correlation.py#L78-L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.pearson_correlation.PearsonCorrelation.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.perplexity"><span id="perplexity"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.perplexity.Perplexity">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.perplexity.</code><code class="sig-name descname">Perplexity</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/perplexity.py#L9-L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.perplexity.Perplexity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.average.Average" title="allennlp.training.metrics.average.Average"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.average.Average</span></code></a></p>
+<p>Perplexity is a common metric used for evaluating how well a language model
+predicts a sample.</p>
+<p class="rubric">Notes</p>
+<p>Assumes negative log likelihood loss of each batch (base e). Provides the
+average perplexity of the batches.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.perplexity.Perplexity.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/perplexity.py#L20-L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.perplexity.Perplexity.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated perplexity.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.sequence_accuracy"><span id="sequence-accuracy"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.sequence_accuracy.SequenceAccuracy">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.sequence_accuracy.</code><code class="sig-name descname">SequenceAccuracy</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/sequence_accuracy.py#L11-L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.sequence_accuracy.SequenceAccuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Sequence Top-K accuracy. Assumes integer labels, with
+each item to be classified having a single correct class.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.sequence_accuracy.SequenceAccuracy.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/sequence_accuracy.py#L65-L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.sequence_accuracy.SequenceAccuracy.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated accuracy.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.sequence_accuracy.SequenceAccuracy.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/sequence_accuracy.py#L80-L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.sequence_accuracy.SequenceAccuracy.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.span_based_f1_measure"><span id="span-based-f1-measure"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.span_based_f1_measure.</code><code class="sig-name descname">SpanBasedF1Measure</code><span class="sig-paren">(</span><em class="sig-param">vocabulary: allennlp.data.vocabulary.Vocabulary, tag_namespace: str = 'tags', ignore_classes: List[str] = None, label_encoding: Optional[str] = 'BIO', tags_to_spans_function: Optional[Callable[[List[str], Optional[List[str]]], List[Tuple[str, Tuple[int, int]]]]] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L23-L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>The Conll SRL metrics are based on exact span matching. This metric
+implements span-based precision and recall metrics for a BIO tagging
+scheme. It will produce precision, recall and F1 measures per tag, as
+well as overall statistics. Note that the implementation of this metric
+is not exactly the same as the perl script used to evaluate the CONLL 2005
+data - particularly, it does not consider continuations or reference spans
+as constituents of the original span. However, it is a close proxy, which
+can be helpful for judging model performance during training. This metric
+works properly when the spans are unlabeled (i.e., your labels are
+simply “B”, “I”, “O” if using the “BIO” label encoding).</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L222-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A Dict per label containing following the span based metrics:</dt><dd></dd>
+<dt><strong>precision</strong><span class="classifier">float</span></dt><dd></dd>
+<dt><strong>recall</strong><span class="classifier">float</span></dt><dd></dd>
+<dt><strong>f1-measure</strong><span class="classifier">float</span></dt><dd></dd>
+<dt>Additionally, an <code class="docutils literal notranslate"><span class="pre">overall</span></code> key is included, which provides the precision,</dt><dd></dd>
+<dt>recall and f1-measure for all spans.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L268-L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.squad_em_and_f1"><span id="squad-em-and-f1"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.squad_em_and_f1.</code><code class="sig-name descname">SquadEmAndF1</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/squad_em_and_f1.py#L10-L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This <code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code> takes the best span string computed by a model, along with the answer
+strings labeled in the data, and computed exact match and F1 score using the official SQuAD
+evaluation script.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Tuple[float, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/squad_em_and_f1.py#L41-L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Average exact match and F1 score (in that order) as computed by the official SQuAD script</dt><dd></dd>
+<dt>over all inputs.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/squad_em_and_f1.py#L55-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.srl_eval_scorer"><span id="srl-eval"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.srl_eval_scorer.SrlEvalScorer">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.srl_eval_scorer.</code><code class="sig-name descname">SrlEvalScorer</code><span class="sig-paren">(</span><em class="sig-param">srl_eval_path: str = '/Users/michael/hack/allenai/allennlp/allennlp/tools/srl-eval.pl'</em>, <em class="sig-param">ignore_classes: List[str] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/srl_eval_scorer.py#L21-L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.srl_eval_scorer.SrlEvalScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>This class uses the external srl-eval.pl script for computing the CoNLL SRL metrics.</p>
+<p>AllenNLP contains the srl-eval.pl script, but you will need perl 5.x.</p>
+<p>Note that this metric reads and writes from disk quite a bit. In particular, it
+writes and subsequently reads two files per __call__, which is typically invoked
+once per batch. You probably don’t want to include it in your training loop;
+instead, you should calculate this on a validation set only.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>srl_eval_path</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional.</span></dt><dd><p>The path to the srl-eval.pl script.</p>
+</dd>
+<dt><strong>ignore_classes</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, optional (default=``None``).</span></dt><dd><p>A list of classes to ignore.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.training.metrics.srl_eval_scorer.SrlEvalScorer.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/srl_eval_scorer.py#L113-L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.srl_eval_scorer.SrlEvalScorer.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A Dict per label containing following the span based metrics:</dt><dd></dd>
+<dt><strong>precision</strong><span class="classifier">float</span></dt><dd></dd>
+<dt><strong>recall</strong><span class="classifier">float</span></dt><dd></dd>
+<dt><strong>f1-measure</strong><span class="classifier">float</span></dt><dd></dd>
+<dt>Additionally, an <code class="docutils literal notranslate"><span class="pre">overall</span></code> key is included, which provides the precision,</dt><dd></dd>
+<dt>recall and f1-measure for all spans.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.srl_eval_scorer.SrlEvalScorer.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/srl_eval_scorer.py#L162-L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.srl_eval_scorer.SrlEvalScorer.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.unigram_recall"><span id="unigram-recall"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.unigram_recall.UnigramRecall">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.training.metrics.unigram_recall.</code><code class="sig-name descname">UnigramRecall</code><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/unigram_recall.py#L13-L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.unigram_recall.UnigramRecall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<p>Unigram top-K recall. This does not take word order into account. Assumes
+integer labels, with each item to be classified having a single correct
+class.</p>
+<dl class="method">
+<dt id="allennlp.training.metrics.unigram_recall.UnigramRecall.get_metric">
+<code class="sig-name descname">get_metric</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/unigram_recall.py#L75-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.unigram_recall.UnigramRecall.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The accumulated recall.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.unigram_recall.UnigramRecall.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/unigram_recall.py#L86-L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.unigram_recall.UnigramRecall.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.training.moving_average.html" class="btn btn-neutral float-right" title="allennlp.training.moving_average" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.training.metric_tracker.html" class="btn btn-neutral float-left" title="allennlp.training.metric_tracker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

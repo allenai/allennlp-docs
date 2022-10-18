@@ -1,0 +1,723 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.models.semantic_parsing.wikitables &mdash; AllenNLP 0.9.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="allennlp.models.semantic_parsing.atis" href="allennlp.models.semantic_parsing.atis.html" />
+    <link rel="prev" title="allennlp.models.semantic_parsing.nlvr" href="allennlp.models.semantic_parsing.nlvr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.configure.html">allennlp.commands.configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.make_vocab.html">allennlp.commands.make_vocab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.fine_tune.html">allennlp.commands.fine_tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.elmo.html">allennlp.commands.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.dry_run.html">allennlp.commands.dry_run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.find_learning_rate.html">allennlp.commands.find_learning_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.test_install.html">allennlp.commands.test_install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.print_results.html">allennlp.commands.print_results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.configuration.html">allennlp.common.configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.from_params.html">allennlp.common.from_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tqdm.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_utils.html">allennlp.data.dataset_readers.dataset_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.babi.html">allennlp.data.dataset_readers.babi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ccgbank.html">allennlp.data.dataset_readers.ccgbank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2000.html">allennlp.data.dataset_readers.conll2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.event2mind.html">allennlp.data.dataset_readers.event2mind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.interleaving_dataset_reader.html">allennlp.data.dataset_readers.interleaving_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.masked_language_modeling.html">allennlp.data.dataset_readers.masked_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.multiprocess_dataset_reader.html">allennlp.data.dataset_readers.multiprocess_dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.next_token_lm.html">allennlp.data.dataset_readers.next_token_lm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.ontonotes_ner.html">allennlp.data.dataset_readers.ontonotes_ner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.penn_tree_bank.html">allennlp.data.dataset_readers.penn_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_dependency_parsing.html">allennlp.data.dataset_readers.semantic_dependency_parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.html">allennlp.data.dataset_readers.semantic_parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_parsing.wikitables.html">allennlp.data.dataset_readers.semantic_parsing.wikitables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.simple_language_modeling.html">allennlp.data.dataset_readers.simple_language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.stanford_sentiment_tree_bank.html">allennlp.data.dataset_readers.stanford_sentiment_tree_bank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies.html">allennlp.data.dataset_readers.universal_dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.universal_dependencies_multilang.html">allennlp.data.dataset_readers.universal_dependencies_multilang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.quora_paraphrase.html">allennlp.data.dataset_readers.quora_paraphrase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.copynet_seq2seq.html">allennlp.data.dataset_readers.copynet_seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.text_classification_json.html">allennlp.data.dataset_readers.text_classification_json</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.interpret.html">allennlp.interpret</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.attackers.html">allennlp.interpret.attackers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.interpret.saliency_interpreters.html">allennlp.interpret.saliency_interpreters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.basic_classifier.html">allennlp.models.basic_classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bert_for_classification.html">allennlp.models.bert_for_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser.html">allennlp.models.biaffine_dependency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biaffine_dependency_parser_multilang.html">allennlp.models.biaffine_dependency_parser_multilang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.biattentive_classification_network.html">allennlp.models.biattentive_classification_network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bimpm.html">allennlp.models.bimpm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.constituency_parser.html">allennlp.models.constituency_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.ensemble.html">allennlp.models.ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.esim.html">allennlp.models.esim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.event2mind.html">allennlp.models.event2mind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.graph_parser.html">allennlp.models.graph_parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.language_model.html">allennlp.models.language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.masked_language_model.html">allennlp.models.masked_language_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.next_token_lm.html">allennlp.models.next_token_lm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.nlvr.html">allennlp.models.semantic_parsing.nlvr</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">allennlp.models.semantic_parsing.wikitables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.atis.html">allennlp.models.semantic_parsing.atis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.models.semantic_parsing.quarel.html">allennlp.models.semantic_parsing.quarel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_bert.html">allennlp.models.srl_bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.srl_util.html">allennlp.models.srl_util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.predictors.html">allennlp.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.language_model_heads.html">allennlp.modules.language_model_heads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.openai_transformer.html">allennlp.modules.openai_transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_decoders.html">allennlp.modules.seq2seq_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.span_extractors.html">allennlp.modules.span_extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_bidirectional_lstm.html">allennlp.modules.stacked_bidirectional_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.layer_norm.html">allennlp.modules.layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.pruner.html">allennlp.modules.pruner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.maxout.html">allennlp.modules.maxout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.input_variational_dropout.html">allennlp.modules.input_variational_dropout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.bimpm_matching.html">allennlp.modules.bimpm_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.masked_layer_norm.html">allennlp.modules.masked_layer_norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.sampled_softmax_loss.html">allennlp.modules.sampled_softmax_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.residual_with_layer_dropout.html">allennlp.modules.residual_with_layer_dropout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.chu_liu_edmonds.html">allennlp.nn.chu_liu_edmonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.beam_search.html">allennlp.nn.beam_search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.semparse.html">allennlp.semparse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.common.html">allennlp.semparse.common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.contexts.html">allennlp.semparse.contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.type_declarations.html">allennlp.semparse.type_declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.worlds.html">allennlp.semparse.worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.executors.html">allennlp.semparse.executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.domain_languages.html">allennlp.semparse.domain_languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.semparse.util.html">allennlp.semparse.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_simple.html">allennlp.service.server_simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.config_explorer.html">allennlp.service.config_explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.state_machines.html">allennlp.state_machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.states.html">allennlp.state_machines.states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.trainers.html">allennlp.state_machines.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.state_machines.transition_functions.html">allennlp.state_machines.transition_functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.tools.html">allennlp.tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callbacks.html">allennlp.training.callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.callback_trainer.html">allennlp.training.callback_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.checkpointer.html">allennlp.training.checkpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.scheduler.html">allennlp.training.scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.momentum_schedulers.html">allennlp.training.momentum_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metric_tracker.html">allennlp.training.metric_tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.moving_average.html">allennlp.training.moving_average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.no_op_trainer.html">allennlp.training.no_op_trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.tensorboard_writer.html">allennlp.training.tensorboard_writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_base.html">allennlp.training.trainer_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer_pieces.html">allennlp.training.trainer_pieces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.util.html">allennlp.training.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.pretrained.html">allennlp.pretrained</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.models.html">allennlp.models</a> &raquo;</li>
+        
+          <li><a href="allennlp.models.semantic_parsing.html">allennlp.models.semantic_parsing</a> &raquo;</li>
+        
+      <li>allennlp.models.semantic_parsing.wikitables</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.models.semantic_parsing.wikitables.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.models.semantic_parsing.wikitables">
+<span id="allennlp-models-semantic-parsing-wikitables"></span><h1>allennlp.models.semantic_parsing.wikitables<a class="headerlink" href="#module-allennlp.models.semantic_parsing.wikitables" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser"></span><dl class="class">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.</code><code class="sig-name descname">WikiTablesSemanticParser</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">question_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">action_embedding_dim: int</em>, <em class="sig-param">encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">entity_encoder: allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</em>, <em class="sig-param">max_decoding_steps: int</em>, <em class="sig-param">add_action_bias: bool = True</em>, <em class="sig-param">use_neighbor_similarity_for_linking: bool = False</em>, <em class="sig-param">dropout: float = 0.0</em>, <em class="sig-param">num_linking_features: int = 10</em>, <em class="sig-param">rule_namespace: str = 'rule_labels'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_semantic_parser.py#L21-L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.model.Model</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">WikiTablesSemanticParser</span></code> is a <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code> which takes as input a table and a question,
+and produces a logical form that answers the question when executed over the table.  The
+logical form is generated by a <cite>type-constrained</cite>, <cite>transition-based</cite> parser. This is an
+abstract class that defines most of the functionality related to the transition-based parser. It
+does not contain the implementation for actually training the parser. You may want to train it
+using a learning-to-search algorithm, in which case you will want to use
+<code class="docutils literal notranslate"><span class="pre">WikiTablesErmSemanticParser</span></code>, or if you have a set of approximate logical forms that give the
+correct denotation, you will want to use <code class="docutils literal notranslate"><span class="pre">WikiTablesMmlSemanticParser</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code></span></dt><dd></dd>
+<dt><strong>question_embedder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code></span></dt><dd><p>Embedder for questions.</p>
+</dd>
+<dt><strong>action_embedding_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Dimension to use for action embeddings.</p>
+</dd>
+<dt><strong>encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder to use for the input question.</p>
+</dd>
+<dt><strong>entity_encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code></span></dt><dd><p>The encoder to used for averaging the words of an entity.</p>
+</dd>
+<dt><strong>max_decoding_steps</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>When we’re decoding with a beam search, what’s the maximum number of steps we should take?
+This only applies at evaluation time, not during training.</p>
+</dd>
+<dt><strong>add_action_bias</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=True)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, we will learn a bias weight for each action that gets used when predicting
+that action, in addition to its embedding.</p>
+</dd>
+<dt><strong>use_neighbor_similarity_for_linking</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=False)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, we will compute a max similarity between a question token and the <cite>neighbors</cite>
+of an entity as a component of the linking scores.  This is meant to capture the same kind
+of information as the <code class="docutils literal notranslate"><span class="pre">related_column</span></code> feature.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0)</span></dt><dd><p>If greater than 0, we will apply dropout with this probability after all encoders (pytorch
+LSTMs do not apply dropout to their last layer).</p>
+</dd>
+<dt><strong>num_linking_features</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=10)</span></dt><dd><p>We need to construct a parameter vector for the linking features, so we need to know how
+many there are.  The default of 8 here matches the default in the <code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField</span></code>,
+which is to use all eight defined features. If this is 0, another term will be added to the
+linking score. This term contains the maximum similarity value from the entity’s neighbors
+and the question.</p>
+</dd>
+<dt><strong>rule_namespace</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=rule_labels)</span></dt><dd><p>The vocabulary namespace to use for production rules.  The default corresponds to the
+default used in the dataset reader, so you likely don’t need to modify this.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">self, output_dict: Dict[str, torch.Tensor]</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_semantic_parser.py#L688-L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method overrides <code class="docutils literal notranslate"><span class="pre">Model.decode</span></code>, which gets called after <code class="docutils literal notranslate"><span class="pre">Model.forward</span></code>, at test
+time, to finalize predictions.  This is (confusingly) a separate notion from the “decoder”
+in “encoder/decoder”, where that decoder logic lives in the <code class="docutils literal notranslate"><span class="pre">TransitionFunction</span></code>.</p>
+<p>This method trims the output predictions to the first end symbol, replaces indices with
+corresponding tokens, and adds a field called <code class="docutils literal notranslate"><span class="pre">predicted_tokens</span></code> to the <code class="docutils literal notranslate"><span class="pre">output_dict</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_semantic_parser.py#L492-L518"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>We track three metrics here:</p>
+<blockquote>
+<div><p>1. lf_retrieval_acc, which is the percentage of the time that our best output action
+sequence is in the set of action sequences provided by offline search.  This is an
+easy-to-compute lower bound on denotation accuracy for the set of examples where we
+actually have offline output.  We only score lf_retrieval_acc on that subset.</p>
+<p>2. denotation_acc, which is the percentage of examples where we get the correct
+denotation.  This is the typical “accuracy” metric, and it is what you should usually
+report in an experimental result.  You need to be careful, though, that you’re
+computing this on the full data, and not just the subset that has DPD output (make sure
+you pass “keep_if_no_dpd=True” to the dataset reader, which we do for validation data,
+but not training data).</p>
+<p>3. lf_percent, which is the percentage of time that decoding actually produces a
+finished logical form.  We might not produce a valid logical form if the decoder gets
+into a repetitive loop, or we’re trying to produce a super long logical form and run
+out of time steps, or something.</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.semantic_parsing.wikitables.wikitables_mml_semantic_parser"></span><dl class="class">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_mml_semantic_parser.WikiTablesMmlSemanticParser">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.semantic_parsing.wikitables.wikitables_mml_semantic_parser.</code><code class="sig-name descname">WikiTablesMmlSemanticParser</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">question_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">action_embedding_dim: int</em>, <em class="sig-param">encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">entity_encoder: allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</em>, <em class="sig-param">decoder_beam_search: allennlp.state_machines.beam_search.BeamSearch</em>, <em class="sig-param">max_decoding_steps: int</em>, <em class="sig-param">attention: allennlp.modules.attention.attention.Attention</em>, <em class="sig-param">mixture_feedforward: allennlp.modules.feedforward.FeedForward = None</em>, <em class="sig-param">add_action_bias: bool = True</em>, <em class="sig-param">training_beam_size: int = None</em>, <em class="sig-param">use_neighbor_similarity_for_linking: bool = False</em>, <em class="sig-param">dropout: float = 0.0</em>, <em class="sig-param">num_linking_features: int = 10</em>, <em class="sig-param">rule_namespace: str = 'rule_labels'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_mml_semantic_parser.py#L19-L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_mml_semantic_parser.WikiTablesMmlSemanticParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser" title="allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">WikiTablesMmlSemanticParser</span></code> is a <code class="xref py py-class docutils literal notranslate"><span class="pre">WikiTablesSemanticParser</span></code> which is trained to
+maximize the marginal likelihood of an approximate set of logical forms which give the correct
+denotation. This is a re-implementation of the model used for the paper <a class="reference external" href="https://www.semanticscholar.org/paper/Neural-Semantic-Parsing-with-Type-Constraints-for-Krishnamurthy-Dasigi/8c6f58ed0ebf379858c0bbe02c53ee51b3eb398a">Neural Semantic Parsing with Type
+Constraints for Semi-Structured Tables</a>,
+by Jayant Krishnamurthy, Pradeep Dasigi, and Matt Gardner (EMNLP 2017). The language used by
+this model is different from LambdaDCS, the one in the paper above though. This model uses the
+variable free language from <code class="docutils literal notranslate"><span class="pre">allennlp.semparse.domain_languages.wikitables_language</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code></span></dt><dd></dd>
+<dt><strong>question_embedder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code></span></dt><dd><p>Embedder for questions. Passed to super class.</p>
+</dd>
+<dt><strong>action_embedding_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Dimension to use for action embeddings. Passed to super class.</p>
+</dd>
+<dt><strong>encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder to use for the input question. Passed to super class.</p>
+</dd>
+<dt><strong>entity_encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code></span></dt><dd><p>The encoder to used for averaging the words of an entity. Passed to super class.</p>
+</dd>
+<dt><strong>decoder_beam_search</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">BeamSearch</span></code></span></dt><dd><p>When we’re not training, this is how we will do decoding.</p>
+</dd>
+<dt><strong>max_decoding_steps</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>When we’re decoding with a beam search, what’s the maximum number of steps we should take?
+This only applies at evaluation time, not during training. Passed to super class.</p>
+</dd>
+<dt><strong>attention</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Attention</span></code></span></dt><dd><p>We compute an attention over the input question at each step of the decoder, using the
+decoder hidden state as the query.  Passed to the transition function.</p>
+</dd>
+<dt><strong>mixture_feedforward</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">FeedForward</span></code>, optional (default=None)</span></dt><dd><p>If given, we’ll use this to compute a mixture probability between global actions and linked
+actions given the hidden state at every timestep of decoding, instead of concatenating the
+logits for both (where the logits may not be compatible with each other).  Passed to
+the transition function.</p>
+</dd>
+<dt><strong>add_action_bias</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=True)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, we will learn a bias weight for each action that gets used when predicting
+that action, in addition to its embedding.  Passed to super class.</p>
+</dd>
+<dt><strong>training_beam_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=None)</span></dt><dd><p>If given, we will use a constrained beam search of this size during training, so that we
+use only the top <code class="docutils literal notranslate"><span class="pre">training_beam_size</span></code> action sequences according to the model in the MML
+computation.  If this is <code class="docutils literal notranslate"><span class="pre">None</span></code>, we will use all of the provided action sequences in the
+MML computation.</p>
+</dd>
+<dt><strong>use_neighbor_similarity_for_linking</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=False)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, we will compute a max similarity between a question token and the <cite>neighbors</cite>
+of an entity as a component of the linking scores.  This is meant to capture the same kind
+of information as the <code class="docutils literal notranslate"><span class="pre">related_column</span></code> feature. Passed to super class.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0)</span></dt><dd><p>If greater than 0, we will apply dropout with this probability after all encoders (pytorch
+LSTMs do not apply dropout to their last layer). Passed to super class.</p>
+</dd>
+<dt><strong>num_linking_features</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=10)</span></dt><dd><p>We need to construct a parameter vector for the linking features, so we need to know how
+many there are.  The default of 10 here matches the default in the <code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField</span></code>,
+which is to use all ten defined features. If this is 0, another term will be added to the
+linking score. This term contains the maximum similarity value from the entity’s neighbors
+and the question. Passed to super class.</p>
+</dd>
+<dt><strong>rule_namespace</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=rule_labels)</span></dt><dd><p>The vocabulary namespace to use for production rules.  The default corresponds to the
+default used in the dataset reader, so you likely don’t need to modify this. Passed to super
+class.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_mml_semantic_parser.WikiTablesMmlSemanticParser.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], table: Dict[str, torch.LongTensor], world: List[allennlp.semparse.domain_languages.wikitables_language.WikiTablesLanguage], actions: List[List[allennlp.data.fields.production_rule_field.ProductionRule]], target_values: List[List[str]] = None, target_action_sequences: torch.LongTensor = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_mml_semantic_parser.py#L117-L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_mml_semantic_parser.WikiTablesMmlSemanticParser.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this method we encode the table entities, link them to words in the question, then
+encode the question. Then we set up the initial state for the decoder, and pass that
+state off to either a DecoderTrainer, if we’re training, or a BeamSearch for inference,
+if we’re not.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>The output of <code class="docutils literal notranslate"><span class="pre">TextField.as_array()</span></code> applied on the question <code class="docutils literal notranslate"><span class="pre">TextField</span></code>. This will
+be passed through a <code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code> and then through an encoder.</p>
+</dd>
+<dt><strong>table</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.LongTensor]</span></code></span></dt><dd><p>The output of <code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField.as_array()</span></code> applied on the table
+<code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField</span></code>.  This output is similar to a <code class="docutils literal notranslate"><span class="pre">TextField</span></code> output, where each
+entity in the table is treated as a “token”, and we will use a <code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code> to
+get embeddings for each entity.</p>
+</dd>
+<dt><strong>world</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[WikiTablesLanguage]</span></code></span></dt><dd><p>We use a <code class="docutils literal notranslate"><span class="pre">MetadataField</span></code> to get the <code class="docutils literal notranslate"><span class="pre">WikiTablesLanguage</span></code> object for each input instance.
+Because of how <code class="docutils literal notranslate"><span class="pre">MetadataField</span></code> works, this gets passed to us as a <code class="docutils literal notranslate"><span class="pre">List[WikiTablesLanguage]</span></code>,</p>
+</dd>
+<dt><strong>actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[ProductionRuleArray]]</span></code></span></dt><dd><p>A list of all possible actions for each <code class="docutils literal notranslate"><span class="pre">world</span></code> in the batch, indexed into a
+<code class="docutils literal notranslate"><span class="pre">ProductionRuleArray</span></code> using a <code class="docutils literal notranslate"><span class="pre">ProductionRuleField</span></code>.  We will embed all of these
+and use the embeddings to determine which action to take at each timestep in the
+decoder.</p>
+</dd>
+<dt><strong>target_values</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[str]]</span></code>, optional (default = None)</span></dt><dd><p>For each instance, a list of target values taken from the example lisp string. We pass
+this list to the evaluator along with logical forms to compute denotation accuracy.</p>
+</dd>
+<dt><strong>target_action_sequences</strong><span class="classifier">torch.Tensor, optional (default = None)</span></dt><dd><p>A list of possibly valid action sequences, where each action is an index into the list
+of possible actions.  This tensor has shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_action_sequences,</span>
+<span class="pre">sequence_length)</span></code>.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional (default = None)</span></dt><dd><p>Metadata containing the original tokenized question within a ‘question_tokens’ field.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser"></span><dl class="class">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.WikiTablesErmSemanticParser">
+<em class="property">class </em><code class="sig-prename descclassname">allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.</code><code class="sig-name descname">WikiTablesErmSemanticParser</code><span class="sig-paren">(</span><em class="sig-param">vocab: allennlp.data.vocabulary.Vocabulary</em>, <em class="sig-param">question_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em class="sig-param">action_embedding_dim: int</em>, <em class="sig-param">encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em class="sig-param">entity_encoder: allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</em>, <em class="sig-param">attention: allennlp.modules.attention.attention.Attention</em>, <em class="sig-param">decoder_beam_size: int</em>, <em class="sig-param">decoder_num_finished_states: int</em>, <em class="sig-param">max_decoding_steps: int</em>, <em class="sig-param">mixture_feedforward: allennlp.modules.feedforward.FeedForward = None</em>, <em class="sig-param">add_action_bias: bool = True</em>, <em class="sig-param">normalize_beam_score_by_length: bool = False</em>, <em class="sig-param">checklist_cost_weight: float = 0.6</em>, <em class="sig-param">use_neighbor_similarity_for_linking: bool = False</em>, <em class="sig-param">dropout: float = 0.0</em>, <em class="sig-param">num_linking_features: int = 10</em>, <em class="sig-param">rule_namespace: str = 'rule_labels'</em>, <em class="sig-param">mml_model_file: str = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_erm_semantic_parser.py#L27-L405"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.WikiTablesErmSemanticParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser" title="allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.models.semantic_parsing.wikitables.wikitables_semantic_parser.WikiTablesSemanticParser</span></code></a></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">WikiTablesErmSemanticParser</span></code> is a <code class="xref py py-class docutils literal notranslate"><span class="pre">WikiTablesSemanticParser</span></code> that learns to search
+for logical forms that yield the correct denotations.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>vocab</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Vocabulary</span></code></span></dt><dd></dd>
+<dt><strong>question_embedder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code></span></dt><dd><p>Embedder for questions. Passed to super class.</p>
+</dd>
+<dt><strong>action_embedding_dim</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Dimension to use for action embeddings. Passed to super class.</p>
+</dd>
+<dt><strong>encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2SeqEncoder</span></code></span></dt><dd><p>The encoder to use for the input question. Passed to super class.</p>
+</dd>
+<dt><strong>entity_encoder</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Seq2VecEncoder</span></code></span></dt><dd><p>The encoder to used for averaging the words of an entity. Passed to super class.</p>
+</dd>
+<dt><strong>attention</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Attention</span></code></span></dt><dd><p>We compute an attention over the input question at each step of the decoder, using the
+decoder hidden state as the query.  Passed to the transition function.</p>
+</dd>
+<dt><strong>decoder_beam_size</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Beam size to be used by the ExpectedRiskMinimization algorithm.</p>
+</dd>
+<dt><strong>decoder_num_finished_states</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Number of finished states for which costs will be computed by the ExpectedRiskMinimization
+algorithm.</p>
+</dd>
+<dt><strong>max_decoding_steps</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code></span></dt><dd><p>Maximum number of steps the decoder should take before giving up. Used both during training
+and evaluation. Passed to super class.</p>
+</dd>
+<dt><strong>add_action_bias</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=True)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, we will learn a bias weight for each action that gets used when predicting
+that action, in addition to its embedding.  Passed to super class.</p>
+</dd>
+<dt><strong>normalize_beam_score_by_length</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=False)</span></dt><dd><p>Should we normalize the log-probabilities by length before renormalizing the beam? This was
+shown to work better for NML by Edunov et al., but that many not be the case for semantic
+parsing.</p>
+</dd>
+<dt><strong>checklist_cost_weight</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0.6)</span></dt><dd><p>Mixture weight (0-1) for combining coverage cost and denotation cost. As this increases, we
+weigh the coverage cost higher, with a value of 1.0 meaning that we do not care about
+denotation accuracy.</p>
+</dd>
+<dt><strong>use_neighbor_similarity_for_linking</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=False)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, we will compute a max similarity between a question token and the <cite>neighbors</cite>
+of an entity as a component of the linking scores.  This is meant to capture the same kind
+of information as the <code class="docutils literal notranslate"><span class="pre">related_column</span></code> feature. Passed to super class.</p>
+</dd>
+<dt><strong>dropout</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">float</span></code>, optional (default=0)</span></dt><dd><p>If greater than 0, we will apply dropout with this probability after all encoders (pytorch
+LSTMs do not apply dropout to their last layer). Passed to super class.</p>
+</dd>
+<dt><strong>num_linking_features</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=10)</span></dt><dd><p>We need to construct a parameter vector for the linking features, so we need to know how
+many there are.  The default of 10 here matches the default in the <code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField</span></code>,
+which is to use all ten defined features. If this is 0, another term will be added to the
+linking score. This term contains the maximum similarity value from the entity’s neighbors
+and the question. Passed to super class.</p>
+</dd>
+<dt><strong>rule_namespace</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=rule_labels)</span></dt><dd><p>The vocabulary namespace to use for production rules.  The default corresponds to the
+default used in the dataset reader, so you likely don’t need to modify this. Passed to super
+class.</p>
+</dd>
+<dt><strong>mml_model_file</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">str</span></code>, optional (default=None)</span></dt><dd><p>If you want to initialize this model using weights from another model trained using MML,
+pass the path to the <code class="docutils literal notranslate"><span class="pre">model.tar.gz</span></code> file of that model here.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.WikiTablesErmSemanticParser.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">self, question: Dict[str, torch.LongTensor], table: Dict[str, torch.LongTensor], world: List[allennlp.semparse.domain_languages.wikitables_language.WikiTablesLanguage], actions: List[List[allennlp.data.fields.production_rule_field.ProductionRule]], agenda: torch.LongTensor, target_values: List[List[str]] = None, metadata: List[Dict[str, Any]] = None</em><span class="sig-paren">)</span> &#x2192; Dict[str, torch.Tensor]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_erm_semantic_parser.py#L192-L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.WikiTablesErmSemanticParser.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>question</strong><span class="classifier">Dict[str, torch.LongTensor]</span></dt><dd><p>The output of <code class="docutils literal notranslate"><span class="pre">TextField.as_array()</span></code> applied on the question <code class="docutils literal notranslate"><span class="pre">TextField</span></code>. This will
+be passed through a <code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code> and then through an encoder.</p>
+</dd>
+<dt><strong>table</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.LongTensor]</span></code></span></dt><dd><p>The output of <code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField.as_array()</span></code> applied on the table
+<code class="docutils literal notranslate"><span class="pre">KnowledgeGraphField</span></code>.  This output is similar to a <code class="docutils literal notranslate"><span class="pre">TextField</span></code> output, where each
+entity in the table is treated as a “token”, and we will use a <code class="docutils literal notranslate"><span class="pre">TextFieldEmbedder</span></code> to
+get embeddings for each entity.</p>
+</dd>
+<dt><strong>world</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[WikiTablesLanguage]</span></code></span></dt><dd><p>We use a <code class="docutils literal notranslate"><span class="pre">MetadataField</span></code> to get the <code class="docutils literal notranslate"><span class="pre">WikiTablesLanguage</span></code> object for each input instance.
+Because of how <code class="docutils literal notranslate"><span class="pre">MetadataField</span></code> works, this gets passed to us as a <code class="docutils literal notranslate"><span class="pre">List[WikiTablesLanguage]</span></code>,</p>
+</dd>
+<dt><strong>actions</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[ProductionRule]]</span></code></span></dt><dd><p>A list of all possible actions for each <code class="docutils literal notranslate"><span class="pre">world</span></code> in the batch, indexed into a
+<code class="docutils literal notranslate"><span class="pre">ProductionRule</span></code> using a <code class="docutils literal notranslate"><span class="pre">ProductionRuleField</span></code>.  We will embed all of these
+and use the embeddings to determine which action to take at each timestep in the
+decoder.</p>
+</dd>
+<dt><strong>agenda</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code></span></dt><dd><p>Agenda vectors that the checklist vectors will be compared against to compute the checklist
+cost.</p>
+</dd>
+<dt><strong>target_values</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[List[str]]</span></code>, optional (default = None)</span></dt><dd><p>For each instance, a list of target values taken from the example lisp string. We pass
+this list to the evaluator along with logical forms to compute denotation accuracy.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">List[Dict[str,</span> <span class="pre">Any]]</span></code>, optional (default = None)</span></dt><dd><p>Metadata containing the original tokenized question within a ‘question_tokens’ field.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.WikiTablesErmSemanticParser.get_metrics">
+<code class="sig-name descname">get_metrics</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">reset: bool = False</em><span class="sig-paren">)</span> &#x2192; Dict[str, float]<a class="reference external" href="https://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_parsing/wikitables/wikitables_erm_semantic_parser.py#L397-L405"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_parsing.wikitables.wikitables_erm_semantic_parser.WikiTablesErmSemanticParser.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base class returns a dict with dpd accuracy, denotation accuracy, and logical form
+percentage metrics. We add the agenda coverage metric here.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.models.semantic_parsing.atis.html" class="btn btn-neutral float-right" title="allennlp.models.semantic_parsing.atis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.models.semantic_parsing.nlvr.html" class="btn btn-neutral float-left" title="allennlp.models.semantic_parsing.nlvr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Allen Institute for Artificial Intelligence
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
